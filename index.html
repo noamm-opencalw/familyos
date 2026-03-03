@@ -1134,6 +1134,30 @@ function refreshData() {
   setTimeout(() => { btn.style.opacity='1'; }, 800);
 }
 
+
+// ── CUSTODY BANNER ────────────────────────
+function renderCustodyBanner(custody) {
+  if (!custody) return;
+  let el = document.getElementById('custody-banner');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'custody-banner';
+    el.style.cssText = 'background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.3);border-radius:10px;padding:10px 16px;margin:0 16px 12px;font-size:13px;color:#c4b5fd;display:flex;align-items:center;gap:8px;';
+    const header = document.querySelector('.header');
+    if (header && header.nextSibling) header.parentNode.insertBefore(el, header.nextSibling);
+  }
+  if (custody.today) {
+    el.innerHTML = '👨‍👧‍👦 <strong>הילדים אצלך היום</strong>';
+  } else if (custody.next) {
+    const d = new Date(custody.next.start);
+    const days = Math.ceil((d - Date.now())/86400000);
+    const str = d.toLocaleDateString("he-IL",{weekday:"long",day:"numeric",month:"long"});
+    el.innerHTML = `📅 <strong>הילדים מגיעים בעוד  ימים</strong> — `;
+  } else {
+    el.innerHTML = '📅 הילדים אצל ההורה השני';
+  }
+}
+
 // ── INIT ──────────────────────────────────
 function loadData(data) {
   state.data = data;
@@ -1153,8 +1177,16 @@ function init() {
   // Init lucide icons
   lucide.createIcons();
 
-  // Load data (in prod: fetch('./data.json'))
-  loadData(SAMPLE);
+  // Load real data
+  fetch('./data.json?v='+Date.now())
+    .then(r=>r.json())
+    .then(data => {
+      // merge custody into state
+      if (data.custody) state.custody = data.custody;
+      loadData(data);
+      renderCustodyBanner(data.custody);
+    })
+    .catch(()=>{ console.warn('data.json not found, using sample'); loadData(SAMPLE); });
 }
 
 document.addEventListener('DOMContentLoaded', init);
