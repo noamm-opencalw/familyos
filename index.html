@@ -21,22 +21,26 @@
 
     :root {
       --bg: #0d0d14;
-      --surface: #13131d;
-      --surface-2: #1a1a28;
-      --surface-3: #222234;
-      --border: rgba(255,255,255,0.06);
-      --border-hi: rgba(255,255,255,0.12);
+      --surface: #111120;
+      --surface-2: #16162a;
+      --surface-3: #1e1e36;
+      --surface-glow: #1a1a32;
+      --border: rgba(255,255,255,0.05);
+      --border-hi: rgba(255,255,255,0.10);
+      --border-glow: rgba(130,130,255,0.08);
       --text-1: #eeeef5;
       --text-2: #8888a4;
       --text-3: #55556e;
+      --accent: #818cf8;
+      --accent-2: #c084fc;
       --ran: #6366f1;
       --itai: #10b981;
       --noga: #f59e0b;
       --alon: #f43f5e;
       --rinat: #ef4444;
       --all: #7878a0;
-      --nav-h: 64px;
-      --header-h: 56px;
+      --nav-h: 62px;
+      --header-h: 52px;
       --safe-b: env(safe-area-inset-bottom, 0px);
       --safe-t: env(safe-area-inset-top, 0px);
     }
@@ -60,23 +64,24 @@
       display: flex;
       flex-direction: column;
       height: 100dvh;
-      max-width: 600px;
+      max-width: 500px;
       margin: 0 auto;
+      position: relative;
     }
 
-    /* ── HEADER ───────────────────────────────────────── */
+    /* ── HEADER ──────────────────────────────────────── */
     .app-header {
       height: var(--header-h);
       padding-top: var(--safe-t);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-inline: 18px;
+      padding-inline: 20px;
       flex-shrink: 0;
-      background: rgba(13,13,20,0.92);
+      background: rgba(13,13,20,0.85);
+      backdrop-filter: blur(30px) saturate(1.4);
+      -webkit-backdrop-filter: blur(30px) saturate(1.4);
       border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
       position: relative;
       z-index: 20;
     }
@@ -88,41 +93,37 @@
     }
 
     .header-logo {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 900;
-      letter-spacing: -0.8px;
-      background: linear-gradient(135deg, #818cf8 0%, #c084fc 40%, #fb7185 100%);
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #c084fc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .header-status {
-      width: 7px;
-      height: 7px;
+    .header-pulse {
+      width: 6px;
+      height: 6px;
       background: #10b981;
       border-radius: 50%;
-      box-shadow: 0 0 8px rgba(16,185,129,0.6);
-      animation: pulse-dot 3s ease-in-out infinite;
+      box-shadow: 0 0 6px rgba(16,185,129,0.5);
+      animation: pulse-glow 3s ease-in-out infinite;
       flex-shrink: 0;
     }
 
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.75); }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(16,185,129,0.5); }
+      50% { opacity: 0.4; box-shadow: 0 0 3px rgba(16,185,129,0.2); }
     }
 
     .header-meta {
       font-size: 11px;
       color: var(--text-3);
-      background: var(--surface-2);
-      padding: 5px 12px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
       font-weight: 400;
     }
 
-    /* ── TAB AREA ─────────────────────────────────────── */
+    /* ── TAB PANELS ──────────────────────────────────── */
     .tab-area {
       flex: 1;
       overflow: hidden;
@@ -133,7 +134,7 @@
       display: none;
       height: 100%;
       overflow-y: auto;
-      padding: 16px 16px calc(16px + var(--safe-b));
+      padding: 12px 14px calc(12px + var(--safe-b));
       -webkit-overflow-scrolling: touch;
       overscroll-behavior: contain;
       scrollbar-width: none;
@@ -142,22 +143,22 @@
 
     .tab-panel.active {
       display: block;
-      animation: fadeSlideIn 0.25s cubic-bezier(0.22,1,0.36,1) forwards;
+      animation: panelIn 0.2s cubic-bezier(0.22,1,0.36,1) forwards;
     }
 
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(8px); }
+    @keyframes panelIn {
+      from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── BOTTOM NAV ───────────────────────────────────── */
+    /* ── BOTTOM NAV ──────────────────────────────────── */
     .bottom-nav {
       flex-shrink: 0;
       height: calc(var(--nav-h) + var(--safe-b));
       padding-bottom: var(--safe-b);
-      background: rgba(13,13,20,0.96);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: rgba(13,13,20,0.92);
+      backdrop-filter: blur(30px) saturate(1.4);
+      -webkit-backdrop-filter: blur(30px) saturate(1.4);
       border-top: 1px solid var(--border);
       display: flex;
       z-index: 100;
@@ -169,7 +170,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 3px;
+      gap: 2px;
       background: none;
       border: none;
       cursor: pointer;
@@ -183,70 +184,70 @@
       min-width: 44px;
     }
 
-    .nav-btn.active { color: var(--text-1); }
+    .nav-btn.active { color: var(--accent); }
 
-    .nav-indicator {
+    .nav-pip {
       position: absolute;
-      top: 0;
+      top: 2px;
       left: 50%;
-      width: 28px;
-      height: 3px;
-      background: linear-gradient(90deg, #818cf8, #c084fc);
-      border-radius: 0 0 4px 4px;
+      width: 20px;
+      height: 2.5px;
+      background: var(--accent);
+      border-radius: 0 0 3px 3px;
       transform: translateX(-50%) scaleX(0);
       transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
     }
 
-    .nav-btn.active .nav-indicator { transform: translateX(-50%) scaleX(1); }
+    .nav-btn.active .nav-pip { transform: translateX(-50%) scaleX(1); }
 
     .nav-icon {
-      width: 22px;
-      height: 22px;
-      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+      width: 21px;
+      height: 21px;
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
     }
 
-    .nav-btn.active .nav-icon { transform: scale(1.12) translateY(-1px); }
+    .nav-btn.active .nav-icon { transform: scale(1.1) translateY(-1px); }
 
     .nav-label {
       font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
     }
 
     .nav-badge {
       position: absolute;
-      top: 5px;
-      left: calc(50% + 5px);
-      background: #ef4444;
+      top: 4px;
+      left: calc(50% + 6px);
+      background: var(--rinat);
       color: #fff;
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 700;
-      min-width: 18px;
-      height: 18px;
-      border-radius: 10px;
+      min-width: 16px;
+      height: 16px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 5px;
+      padding: 0 4px;
       border: 2px solid var(--bg);
       line-height: 1;
       pointer-events: none;
     }
 
-    /* ── CARD ──────────────────────────────────────────── */
+    /* ── CARDS ────────────────────────────────────────── */
     .card {
       background: var(--surface);
-      border-radius: 14px;
+      border-radius: 16px;
       border: 1px solid var(--border);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       display: flex;
       align-items: stretch;
       overflow: hidden;
-      transition: transform 0.15s ease, border-color 0.15s ease;
+      transition: transform 0.12s ease, border-color 0.12s ease;
       cursor: pointer;
     }
 
-    .card:active { transform: scale(0.98); }
+    .card:active { transform: scale(0.985); }
 
     .card.is-unread {
       background: var(--surface-2);
@@ -256,24 +257,25 @@
     .card-strip {
       width: 4px;
       flex-shrink: 0;
+      border-radius: 0 4px 4px 0;
     }
 
-    .card-content {
+    .card-body {
       flex: 1;
-      padding: 14px;
+      padding: 13px 14px;
       min-width: 0;
     }
 
-    /* ── MESSAGE CARD ─────────────────────────────────── */
-    .msg-header {
+    /* ── MESSAGE CARD ────────────────────────────────── */
+    .msg-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
-    .msg-tags {
+    .msg-pills {
       display: flex;
       align-items: center;
       gap: 6px;
@@ -282,48 +284,50 @@
       flex-wrap: wrap;
     }
 
-    .child-tag {
+    .child-pill {
       font-size: 11px;
       font-weight: 700;
-      padding: 3px 10px;
+      padding: 2px 10px;
       border-radius: 20px;
       flex-shrink: 0;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
     }
 
-    .tag-pin {
+    .pin-tag {
       display: flex;
       align-items: center;
       gap: 3px;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 600;
       flex-shrink: 0;
+      opacity: 0.7;
     }
 
-    .unread-indicator {
-      width: 6px;
-      height: 6px;
+    .dot-unread {
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       flex-shrink: 0;
     }
 
     .msg-time {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--text-3);
       flex-shrink: 0;
       font-weight: 400;
+      font-variant-numeric: tabular-nums;
     }
 
-    .msg-sender {
+    .msg-from {
       font-size: 12px;
       color: var(--text-2);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .msg-body {
+    .msg-text {
       font-size: 14px;
       color: var(--text-1);
       line-height: 1.55;
@@ -333,106 +337,108 @@
       overflow: hidden;
     }
 
-    .card.is-unread .msg-body {
+    .card.is-unread .msg-text {
       font-weight: 500;
       color: #f5f5ff;
     }
 
-    /* ── RINAT PRIORITY SECTION ───────────────────────── */
+    /* ── RINAT ZONE ──────────────────────────────────── */
     .rinat-zone {
-      background: linear-gradient(135deg, rgba(239,68,68,0.10) 0%, rgba(239,68,68,0.03) 100%);
-      border: 1px solid rgba(239,68,68,0.25);
-      border-radius: 16px;
-      padding: 14px;
-      margin-bottom: 14px;
+      background: linear-gradient(135deg, rgba(239,68,68,0.08) 0%, rgba(239,68,68,0.02) 100%);
+      border: 1px solid rgba(239,68,68,0.20);
+      border-radius: 18px;
+      padding: 12px;
+      margin-bottom: 12px;
       position: sticky;
       top: 0;
       z-index: 5;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 0 30px rgba(239,68,68,0.06), 0 0 0 1px rgba(239,68,68,0.08);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow:
+        0 0 40px rgba(239,68,68,0.05),
+        0 0 0 1px rgba(239,68,68,0.06),
+        inset 0 1px 0 rgba(239,68,68,0.06);
     }
 
-    .rinat-title {
+    .rinat-header {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 10px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       color: #f87171;
     }
 
     .rinat-dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: #ef4444;
-      box-shadow: 0 0 0 0 rgba(239,68,68,0.6);
-      animation: rinat-ping 2s ease-in-out infinite;
+      box-shadow: 0 0 0 0 rgba(239,68,68,0.5);
+      animation: rinat-pulse 2s ease-in-out infinite;
       flex-shrink: 0;
     }
 
-    @keyframes rinat-ping {
-      0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.6); }
-      70% { box-shadow: 0 0 0 10px rgba(239,68,68,0); }
+    @keyframes rinat-pulse {
+      0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.5); }
+      70% { box-shadow: 0 0 0 8px rgba(239,68,68,0); }
       100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
     }
 
     .rinat-zone .card {
-      margin-bottom: 8px;
-      background: rgba(239,68,68,0.06);
-      border-color: rgba(239,68,68,0.15);
+      margin-bottom: 6px;
+      background: rgba(239,68,68,0.05);
+      border-color: rgba(239,68,68,0.12);
     }
     .rinat-zone .card:last-child { margin-bottom: 0; }
 
-    /* ── SECTION DIVIDER ──────────────────────────────── */
-    .section-divider {
+    /* ── SECTION DIVIDER ─────────────────────────────── */
+    .divider {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin: 20px 0 10px;
+      margin: 18px 0 8px;
       font-size: 11px;
       font-weight: 600;
       color: var(--text-3);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    .section-divider:first-child { margin-top: 4px; }
+    .divider:first-child { margin-top: 2px; }
 
-    .section-divider-line {
+    .divider-line {
       flex: 1;
       height: 1px;
       background: var(--border);
     }
 
-    /* ── EVENT / ACADEMIC CARDS ────────────────────────── */
+    /* ── EVENT / ACADEMIC CARDS ──────────────────────── */
     .item-title {
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 500;
       color: var(--text-1);
-      margin-bottom: 7px;
+      margin-bottom: 6px;
       line-height: 1.45;
     }
 
     .item-meta {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       flex-wrap: wrap;
     }
 
-    .child-tag-sm {
-      font-size: 11px;
+    .child-pill-sm {
+      font-size: 10.5px;
       font-weight: 700;
-      padding: 2px 9px;
+      padding: 2px 8px;
       border-radius: 20px;
       flex-shrink: 0;
     }
 
     .meta-date {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-3);
       display: flex;
       align-items: center;
@@ -440,50 +446,50 @@
     }
 
     .meta-date svg {
-      width: 13px;
-      height: 13px;
-      opacity: 0.6;
+      width: 12px;
+      height: 12px;
+      opacity: 0.5;
     }
 
     .meta-group {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--text-3);
       background: var(--surface-3);
-      padding: 2px 9px;
+      padding: 2px 8px;
       border-radius: 20px;
     }
 
     .type-badge {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
       color: var(--text-2);
       background: var(--surface-3);
       border: 1px solid var(--border);
-      padding: 2px 9px;
+      padding: 2px 8px;
       border-radius: 20px;
     }
 
-    /* ── EMPTY STATE ───────────────────────────────────── */
-    .empty-state {
+    /* ── EMPTY STATE ──────────────────────────────────── */
+    .empty {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 72px 24px;
+      padding: 80px 28px;
       text-align: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .empty-icon {
-      width: 56px;
-      height: 56px;
+      width: 48px;
+      height: 48px;
       color: var(--text-3);
       margin-bottom: 8px;
-      opacity: 0.4;
+      opacity: 0.3;
     }
 
     .empty-title {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 600;
       color: var(--text-2);
     }
@@ -494,22 +500,22 @@
       line-height: 1.6;
     }
 
-    /* ── LOADING ───────────────────────────────────────── */
-    .loading-state {
+    /* ── LOADING ──────────────────────────────────────── */
+    .loading {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      padding: 72px 24px;
+      gap: 10px;
+      padding: 80px 24px;
       color: var(--text-3);
-      font-size: 14px;
+      font-size: 13px;
     }
 
     .spinner {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       border: 2px solid var(--border);
-      border-top-color: #818cf8;
+      border-top-color: var(--accent);
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
       flex-shrink: 0;
@@ -517,9 +523,9 @@
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── FOCUS/A11Y ────────────────────────────────────── */
+    /* ── FOCUS/A11Y ───────────────────────────────────── */
     :focus-visible {
-      outline: 2px solid #818cf8;
+      outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
   </style>
@@ -530,36 +536,36 @@
   <header class="app-header">
     <div class="header-brand">
       <span class="header-logo">FamilyOS</span>
-      <div class="header-status" aria-hidden="true"></div>
+      <div class="header-pulse" aria-hidden="true"></div>
     </div>
-    <div id="header-meta" class="header-meta">...</div>
+    <span id="header-meta" class="header-meta"></span>
   </header>
 
   <div class="tab-area">
-    <section id="tab-feed" class="tab-panel active" role="tabpanel"><div class="loading-state"><div class="spinner"></div></div></section>
-    <section id="tab-academics" class="tab-panel" role="tabpanel"><div class="loading-state"><div class="spinner"></div></div></section>
-    <section id="tab-calendar" class="tab-panel" role="tabpanel"><div class="loading-state"><div class="spinner"></div></div></section>
-    <section id="tab-pinned" class="tab-panel" role="tabpanel"><div class="loading-state"><div class="spinner"></div></div></section>
+    <section id="tab-feed" class="tab-panel active" role="tabpanel"><div class="loading"><div class="spinner"></div></div></section>
+    <section id="tab-academics" class="tab-panel" role="tabpanel"><div class="loading"><div class="spinner"></div></div></section>
+    <section id="tab-calendar" class="tab-panel" role="tabpanel"><div class="loading"><div class="spinner"></div></div></section>
+    <section id="tab-pinned" class="tab-panel" role="tabpanel"><div class="loading"><div class="spinner"></div></div></section>
   </div>
 
   <nav class="bottom-nav" role="tablist" aria-label="ניווט ראשי">
     <button class="nav-btn active" data-tab="feed" role="tab" aria-selected="true" aria-label="פיד הודעות">
-      <div class="nav-indicator"></div>
+      <div class="nav-pip"></div>
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
       <span class="nav-label">פיד</span>
     </button>
-    <button class="nav-btn" data-tab="academics" role="tab" aria-selected="false" aria-label="לימודים ומטלות">
-      <div class="nav-indicator"></div>
+    <button class="nav-btn" data-tab="academics" role="tab" aria-selected="false" aria-label="לימודים">
+      <div class="nav-pip"></div>
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
       <span class="nav-label">לימודים</span>
     </button>
     <button class="nav-btn" data-tab="calendar" role="tab" aria-selected="false" aria-label="לוח שנה">
-      <div class="nav-indicator"></div>
-      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+      <div class="nav-pip"></div>
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
       <span class="nav-label">לוח שנה</span>
     </button>
-    <button class="nav-btn" data-tab="pinned" role="tab" aria-selected="false" aria-label="הודעות נעוצות">
-      <div class="nav-indicator"></div>
+    <button class="nav-btn" data-tab="pinned" role="tab" aria-selected="false" aria-label="נעוצים">
+      <div class="nav-pip"></div>
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>
       <span class="nav-label">נעוצים</span>
     </button>
@@ -567,19 +573,19 @@
 
 </div>
 <script>
-// ── SVG ICONS (inline Lucide) ────────────────────────────────────────────
-const ICONS = {
-  pin: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>',
-  calendar: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>',
-  chat: '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>',
-  book: '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>',
-  calendarBig: '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>',
-  pinBig: '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>',
-  alert: '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>',
+// ── SVG ICONS ──────────────────────────────────────────────────────────────
+const IC = {
+  pin: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>',
+  cal: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>',
+  chat48: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>',
+  book48: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>',
+  cal48: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>',
+  pin48: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>',
+  warn48: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>',
 };
 
-// ── CHILDREN ─────────────────────────────────────────────────────────────
-const CHILDREN = {
+// ── CHILDREN ────────────────────────────────────────────────────────────────
+const KIDS = {
   ran:   { name: '\u05E8\u05DF',    color: '#6366f1' },
   itai:  { name: '\u05D0\u05D9\u05EA\u05D9', color: '#10b981' },
   noga:  { name: '\u05E0\u05D5\u05D2\u05D4', color: '#f59e0b' },
@@ -588,13 +594,11 @@ const CHILDREN = {
   all:   { name: '\u05DB\u05D5\u05DC\u05DD', color: '#7878a0' },
 };
 
-function child(key) {
-  return CHILDREN[key] || { name: key, color: '#7878a0' };
-}
+function kid(key) { return KIDS[key] || { name: key, color: '#7878a0' }; }
 
-// ── UTILS ────────────────────────────────────────────────────────────────
-function esc(str) {
-  return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+// ── UTILS ───────────────────────────────────────────────────────────────────
+function esc(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 function rgba(hex, a) {
@@ -602,20 +606,20 @@ function rgba(hex, a) {
   return `rgba(${r},${g},${b},${a})`;
 }
 
-// ── TIME ─────────────────────────────────────────────────────────────────
+// ── TIME ────────────────────────────────────────────────────────────────────
 function fmtTime(iso) {
   const d = new Date(iso), now = new Date();
-  const diffH = (now - d) / 36e5;
-  if (diffH < 24)  return d.toLocaleTimeString('he-IL', { hour:'2-digit', minute:'2-digit' });
-  if (diffH < 168) return d.toLocaleDateString('he-IL', { weekday:'short' });
+  const h = (now - d) / 36e5;
+  if (h < 24) return d.toLocaleTimeString('he-IL', { hour:'2-digit', minute:'2-digit' });
+  if (h < 168) return d.toLocaleDateString('he-IL', { weekday:'short' });
   return d.toLocaleDateString('he-IL', { day:'numeric', month:'numeric' });
 }
 
 function fmtDateLabel(iso) {
   const d = new Date(iso), now = new Date();
-  const today  = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const msgDay = new Date(d.getFullYear(), d.getMonth(), d.getDate());
-  const diff   = Math.round((msgDay - today) / 864e5);
+  const diff = Math.round((msgDay - today) / 864e5);
   if (diff === 0) return '\u05D4\u05D9\u05D5\u05DD';
   if (diff === 1) return '\u05DE\u05D7\u05E8';
   if (diff === -1) return '\u05D0\u05EA\u05DE\u05D5\u05DC';
@@ -628,108 +632,105 @@ function dateKey(iso) {
 }
 
 function groupByDate(items) {
-  const map = new Map();
-  for (const item of items) {
-    const k = dateKey(item.date);
-    if (!map.has(k)) map.set(k, { label: fmtDateLabel(item.date), items: [] });
-    map.get(k).items.push(item);
+  const m = new Map();
+  for (const it of items) {
+    const k = dateKey(it.date);
+    if (!m.has(k)) m.set(k, { label: fmtDateLabel(it.date), items: [] });
+    m.get(k).items.push(it);
   }
-  return [...map.entries()].sort(([a],[b]) => a.localeCompare(b));
+  return [...m.entries()].sort(([a],[b]) => a.localeCompare(b));
 }
 
-// ── FILTERS ──────────────────────────────────────────────────────────────
-function isEmojiOnly(text) {
-  const stripped = text
+// ── FILTERS ─────────────────────────────────────────────────────────────────
+function isEmojiOnly(t) {
+  const s = t
     .replace(/[\u{1F000}-\u{1FFFF}]/gu, '')
     .replace(/[\u{2600}-\u{27BF}]/gu, '')
     .replace(/[\u{FE00}-\u{FEFF}]/gu, '')
     .replace(/[\u{1F900}-\u{1FAFF}]/gu, '')
     .replace(/\uFE0F/g, '')
     .replace(/[!\s.,;:'"()\-_*#@\u200f\u200e]/g, '');
-  return stripped.length === 0;
+  return s.length === 0;
 }
 
 function shouldShow(msg) {
   if (msg.isRinat) return true;
   const t = (msg.summary || msg.text || '').trim();
   if (!t || isEmojiOnly(t)) return false;
-  return t.trim().split(/\s+/).filter(Boolean).length >= 3;
+  return t.split(/\s+/).filter(Boolean).length >= 3;
 }
 
-// ── HTML BUILDERS ────────────────────────────────────────────────────────
-function sectionDivider(text) {
-  return `<div class="section-divider"><span>${esc(text)}</span><div class="section-divider-line"></div></div>`;
+// ── HTML BUILDERS ───────────────────────────────────────────────────────────
+function divider(text) {
+  return `<div class="divider"><span>${esc(text)}</span><div class="divider-line"></div></div>`;
 }
 
 function msgCard(msg) {
-  const c = child(msg.child);
+  const c = kid(msg.child);
   const txt = msg.summary || msg.text || '';
-  const bg = rgba(c.color, 0.14);
+  const bg = rgba(c.color, 0.13);
   const cls = ['card', !msg.read ? 'is-unread' : ''].filter(Boolean).join(' ');
 
-  return `
-    <div class="${cls}" data-id="${msg.id}">
-      <div class="card-strip" style="background:${c.color}"></div>
-      <div class="card-content">
-        <div class="msg-header">
-          <div class="msg-tags">
-            <span class="child-tag" style="background:${bg};color:${c.color}">${c.name}</span>
-            ${msg.pinned ? `<span class="tag-pin" style="color:${c.color}">${ICONS.pin} \u05E0\u05E2\u05D5\u05E5</span>` : ''}
-            ${!msg.read ? `<span class="unread-indicator" style="background:${c.color}"></span>` : ''}
-          </div>
-          <span class="msg-time">${fmtTime(msg.time)}</span>
+  return `<div class="${cls}" data-id="${msg.id}">
+    <div class="card-strip" style="background:${c.color}"></div>
+    <div class="card-body">
+      <div class="msg-top">
+        <div class="msg-pills">
+          <span class="child-pill" style="background:${bg};color:${c.color}">${c.name}</span>
+          ${msg.pinned ? `<span class="pin-tag" style="color:${c.color}">${IC.pin} \u05E0\u05E2\u05D5\u05E5</span>` : ''}
+          ${!msg.read ? `<span class="dot-unread" style="background:${c.color}"></span>` : ''}
         </div>
-        <div class="msg-sender">${esc(msg.from || msg.group || '')}</div>
-        <div class="msg-body">${esc(txt)}</div>
+        <span class="msg-time">${fmtTime(msg.time)}</span>
       </div>
-    </div>`;
+      <div class="msg-from">${esc(msg.from || msg.group || '')}</div>
+      <div class="msg-text">${esc(txt)}</div>
+    </div>
+  </div>`;
 }
 
 function eventCard(ev) {
-  const c = child(ev.child);
-  const bg = rgba(c.color, 0.14);
-  return `
-    <div class="card">
-      <div class="card-strip" style="background:${c.color}"></div>
-      <div class="card-content">
-        <div class="item-title">${esc(ev.title)}</div>
-        <div class="item-meta">
-          <span class="child-tag-sm" style="background:${bg};color:${c.color}">${c.name}</span>
-          <span class="meta-date">${ICONS.calendar} ${fmtDateLabel(ev.date)}</span>
-          ${ev.group ? `<span class="meta-group">${esc(ev.group)}</span>` : ''}
-        </div>
+  const c = kid(ev.child);
+  const bg = rgba(c.color, 0.13);
+  return `<div class="card">
+    <div class="card-strip" style="background:${c.color}"></div>
+    <div class="card-body">
+      <div class="item-title">${esc(ev.title)}</div>
+      <div class="item-meta">
+        <span class="child-pill-sm" style="background:${bg};color:${c.color}">${c.name}</span>
+        <span class="meta-date">${IC.cal} ${fmtDateLabel(ev.date)}</span>
+        ${ev.group ? `<span class="meta-group">${esc(ev.group)}</span>` : ''}
       </div>
-    </div>`;
+    </div>
+  </div>`;
 }
 
-function academicCard(item) {
-  const c = child(item.child);
-  const bg = rgba(c.color, 0.14);
-  return `
-    <div class="card">
-      <div class="card-strip" style="background:${c.color}"></div>
-      <div class="card-content">
-        <div class="item-title">${esc(item.title)}</div>
-        <div class="item-meta">
-          <span class="child-tag-sm" style="background:${bg};color:${c.color}">${c.name}</span>
-          ${item.type ? `<span class="type-badge">${esc(item.type)}</span>` : ''}
-          <span class="meta-date">${ICONS.calendar} ${fmtDateLabel(item.date)}</span>
-        </div>
+function academicCard(it) {
+  const c = kid(it.child);
+  const bg = rgba(c.color, 0.13);
+  return `<div class="card">
+    <div class="card-strip" style="background:${c.color}"></div>
+    <div class="card-body">
+      <div class="item-title">${esc(it.title)}</div>
+      <div class="item-meta">
+        <span class="child-pill-sm" style="background:${bg};color:${c.color}">${c.name}</span>
+        ${it.type ? `<span class="type-badge">${esc(it.type)}</span>` : ''}
+        <span class="meta-date">${IC.cal} ${fmtDateLabel(it.date)}</span>
       </div>
-    </div>`;
+    </div>
+  </div>`;
 }
 
 function emptyState(icon, title, sub) {
-  return `<div class="empty-state">
+  return `<div class="empty">
     <div class="empty-icon">${icon}</div>
     <div class="empty-title">${esc(title)}</div>
     <div class="empty-sub">${esc(sub)}</div>
   </div>`;
 }
 
-// ── RENDER ───────────────────────────────────────────────────────────────
+// ── RENDER ──────────────────────────────────────────────────────────────────
 function renderFeed(data) {
-  const tab = document.getElementById('tab-feed');
+  const el = document.getElementById('tab-feed');
   const msgs = (data.messages || []).filter(shouldShow);
   const rinat = msgs.filter(m => m.isRinat);
   const normal = msgs.filter(m => !m.isRinat);
@@ -737,18 +738,18 @@ function renderFeed(data) {
 
   if (rinat.length > 0) {
     html += `<div class="rinat-zone">
-      <div class="rinat-title"><div class="rinat-dot"></div>\u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05DE\u05E8\u05D9\u05E0\u05EA</div>
+      <div class="rinat-header"><div class="rinat-dot"></div>\u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05DE\u05E8\u05D9\u05E0\u05EA</div>
       ${rinat.map(msgCard).join('')}
     </div>`;
   }
 
   if (normal.length === 0 && rinat.length === 0) {
-    html += emptyState(ICONS.chat, '\u05D0\u05D9\u05DF \u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05E2\u05D3\u05D9\u05D9\u05DF', '\u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05DE\u05E7\u05D1\u05D5\u05E6\u05D5\u05EA \u05D4-WhatsApp \u05D9\u05D5\u05E4\u05D9\u05E2\u05D5 \u05DB\u05D0\u05DF');
+    html += emptyState(IC.chat48, '\u05D0\u05D9\u05DF \u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05E2\u05D3\u05D9\u05D9\u05DF', '\u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05DE\u05E7\u05D1\u05D5\u05E6\u05D5\u05EA \u05D4-WhatsApp \u05D9\u05D5\u05E4\u05D9\u05E2\u05D5 \u05DB\u05D0\u05DF');
   } else {
     html += normal.map(msgCard).join('');
   }
 
-  tab.innerHTML = html;
+  el.innerHTML = html;
 
   const unread = msgs.filter(m => !m.read).length;
   const btn = document.querySelector('[data-tab="feed"]');
@@ -757,41 +758,41 @@ function renderFeed(data) {
 }
 
 function renderAcademics(data) {
-  const tab = document.getElementById('tab-academics');
+  const el = document.getElementById('tab-academics');
   const items = data.academics || [];
 
   if (items.length === 0) {
-    tab.innerHTML = emptyState(ICONS.book, '\u05D0\u05D9\u05DF \u05DE\u05D8\u05DC\u05D5\u05EA \u05E7\u05E8\u05D5\u05D1\u05D5\u05EA', '\u05DE\u05D1\u05D7\u05E0\u05D9\u05DD, \u05D4\u05DB\u05EA\u05D1\u05D5\u05EA \u05D5\u05E9\u05D9\u05E2\u05D5\u05E8\u05D9 \u05D1\u05D9\u05EA \u05D9\u05D5\u05E4\u05D9\u05E2\u05D5 \u05DB\u05D0\u05DF');
+    el.innerHTML = emptyState(IC.book48, '\u05D0\u05D9\u05DF \u05DE\u05D8\u05DC\u05D5\u05EA \u05E7\u05E8\u05D5\u05D1\u05D5\u05EA', '\u05DE\u05D1\u05D7\u05E0\u05D9\u05DD, \u05D4\u05DB\u05EA\u05D1\u05D5\u05EA \u05D5\u05E9\u05D9\u05E2\u05D5\u05E8\u05D9 \u05D1\u05D9\u05EA \u05D9\u05D5\u05E4\u05D9\u05E2\u05D5 \u05DB\u05D0\u05DF');
     return;
   }
 
   const sorted = [...items].sort((a,b) => new Date(a.date) - new Date(b.date));
   let html = '';
-  for (const [, { label, items: grp }] of groupByDate(sorted)) {
-    html += sectionDivider(label) + grp.map(academicCard).join('');
+  for (const [, { label, items: g }] of groupByDate(sorted)) {
+    html += divider(label) + g.map(academicCard).join('');
   }
-  tab.innerHTML = html;
+  el.innerHTML = html;
 }
 
 function renderCalendar(data) {
-  const tab = document.getElementById('tab-calendar');
+  const el = document.getElementById('tab-calendar');
   const events = data.events || [];
 
   if (events.length === 0) {
-    tab.innerHTML = emptyState(ICONS.calendarBig, '\u05D0\u05D9\u05DF \u05D0\u05D9\u05E8\u05D5\u05E2\u05D9\u05DD \u05E7\u05E8\u05D5\u05D1\u05D9\u05DD', '\u05D0\u05D9\u05E8\u05D5\u05E2\u05D9 \u05DC\u05D5\u05D7 \u05D4\u05E9\u05E0\u05D4 \u05D9\u05D5\u05E4\u05D9\u05E2\u05D5 \u05DB\u05D0\u05DF');
+    el.innerHTML = emptyState(IC.cal48, '\u05D0\u05D9\u05DF \u05D0\u05D9\u05E8\u05D5\u05E2\u05D9\u05DD \u05E7\u05E8\u05D5\u05D1\u05D9\u05DD', '\u05D0\u05D9\u05E8\u05D5\u05E2\u05D9 \u05DC\u05D5\u05D7 \u05D4\u05E9\u05E0\u05D4 \u05D9\u05D5\u05E4\u05D9\u05E2\u05D5 \u05DB\u05D0\u05DF');
     return;
   }
 
   const sorted = [...events].sort((a,b) => new Date(a.date) - new Date(b.date));
   let html = '';
   for (const [, { label, items }] of groupByDate(sorted)) {
-    html += sectionDivider(label) + items.map(eventCard).join('');
+    html += divider(label) + items.map(eventCard).join('');
   }
-  tab.innerHTML = html;
+  el.innerHTML = html;
 }
 
 function renderPinned(data) {
-  const tab = document.getElementById('tab-pinned');
+  const el = document.getElementById('tab-pinned');
   const pinned = (data.messages || []).filter(m => m.pinned);
 
   const btn = document.querySelector('[data-tab="pinned"]');
@@ -799,14 +800,14 @@ function renderPinned(data) {
   if (pinned.length > 0) btn.insertAdjacentHTML('beforeend', `<span class="nav-badge">${pinned.length}</span>`);
 
   if (pinned.length === 0) {
-    tab.innerHTML = emptyState(ICONS.pinBig, '\u05D0\u05D9\u05DF \u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05E0\u05E2\u05D5\u05E6\u05D5\u05EA', '\u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05D7\u05E9\u05D5\u05D1\u05D5\u05EA \u05E9\u05EA\u05E0\u05E2\u05E5 \u05D9\u05D5\u05E4\u05D9\u05E2\u05D5 \u05DB\u05D0\u05DF');
+    el.innerHTML = emptyState(IC.pin48, '\u05D0\u05D9\u05DF \u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05E0\u05E2\u05D5\u05E6\u05D5\u05EA', '\u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05D7\u05E9\u05D5\u05D1\u05D5\u05EA \u05E9\u05EA\u05E0\u05E2\u05E5 \u05D9\u05D5\u05E4\u05D9\u05E2\u05D5 \u05DB\u05D0\u05DF');
     return;
   }
 
-  tab.innerHTML = pinned.map(msgCard).join('');
+  el.innerHTML = pinned.map(msgCard).join('');
 }
 
-// ── TAB SWITCHING ────────────────────────────────────────────────────────
+// ── TAB SWITCHING ───────────────────────────────────────────────────────────
 let activeTab = 'feed';
 
 function switchTab(id) {
@@ -814,9 +815,9 @@ function switchTab(id) {
   document.querySelector('.tab-panel.active')?.classList.remove('active');
   document.getElementById('tab-' + id).classList.add('active');
   document.querySelectorAll('.nav-btn').forEach(b => {
-    const isActive = b.dataset.tab === id;
-    b.classList.toggle('active', isActive);
-    b.setAttribute('aria-selected', isActive);
+    const on = b.dataset.tab === id;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-selected', on);
   });
   activeTab = id;
 }
@@ -825,15 +826,15 @@ document.querySelectorAll('.nav-btn').forEach(btn => {
   btn.addEventListener('click', () => switchTab(btn.dataset.tab));
 });
 
-// ── INIT ─────────────────────────────────────────────────────────────────
+// ── INIT ────────────────────────────────────────────────────────────────────
 async function init() {
   try {
     const res = await fetch('./data.json');
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
 
-    const meta = document.getElementById('header-meta');
-    meta.textContent = data.updated_at ? ('\u05E2\u05D5\u05D3\u05DB\u05DF ' + fmtTime(data.updated_at)) : '';
+    document.getElementById('header-meta').textContent =
+      data.updated_at ? ('\u05E2\u05D5\u05D3\u05DB\u05DF ' + fmtTime(data.updated_at)) : '';
 
     renderFeed(data);
     renderAcademics(data);
@@ -841,7 +842,7 @@ async function init() {
     renderPinned(data);
   } catch (err) {
     console.error(err);
-    document.getElementById('tab-feed').innerHTML = emptyState(ICONS.alert, '\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05D8\u05E2\u05D9\u05E0\u05D4', err.message);
+    document.getElementById('tab-feed').innerHTML = emptyState(IC.warn48, '\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05D8\u05E2\u05D9\u05E0\u05D4', err.message);
     document.getElementById('header-meta').textContent = '\u05E9\u05D2\u05D9\u05D0\u05D4';
   }
 }
