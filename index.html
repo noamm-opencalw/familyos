@@ -21,11 +21,12 @@
 
     :root {
       --bg: #0d0d14;
-      --surface: #111120;
-      --surface-2: #16162a;
-      --surface-3: #1c1c34;
-      --border: rgba(255,255,255,0.05);
-      --border-hi: rgba(255,255,255,0.10);
+      --surface: #12121f;
+      --surface-2: #181830;
+      --surface-3: #1e1e3a;
+      --surface-hover: #1a1a32;
+      --border: rgba(255,255,255,0.06);
+      --border-hi: rgba(255,255,255,0.12);
       --text-1: #eeeef5;
       --text-2: #8888a4;
       --text-3: #55556e;
@@ -37,10 +38,14 @@
       --alon: #f43f5e;
       --rinat: #ef4444;
       --all: #7878a0;
-      --nav-h: 60px;
-      --header-h: 54px;
+      --nav-h: 64px;
+      --header-h: 56px;
       --safe-b: env(safe-area-inset-bottom, 0px);
       --safe-t: env(safe-area-inset-top, 0px);
+      --radius-card: 16px;
+      --radius-pill: 20px;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 4px 12px rgba(0,0,0,0.15);
+      --shadow-card-hi: 0 2px 8px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.2);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -65,20 +70,21 @@
       max-width: 500px;
       margin: 0 auto;
       position: relative;
+      overflow: hidden;
     }
 
     /* ── HEADER ──────────────────────────────────────── */
     .app-header {
-      height: var(--header-h);
+      height: calc(var(--header-h) + var(--safe-t));
       padding-top: var(--safe-t);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-inline: 18px;
+      padding-inline: 20px;
       flex-shrink: 0;
-      background: rgba(13,13,20,0.88);
-      backdrop-filter: blur(30px) saturate(1.4);
-      -webkit-backdrop-filter: blur(30px) saturate(1.4);
+      background: rgba(13,13,20,0.92);
+      backdrop-filter: blur(40px) saturate(1.6);
+      -webkit-backdrop-filter: blur(40px) saturate(1.6);
       border-bottom: 1px solid var(--border);
       position: relative;
       z-index: 20;
@@ -91,7 +97,7 @@
     }
 
     .header-logo {
-      font-size: 22px;
+      font-size: 23px;
       font-weight: 900;
       letter-spacing: -1px;
       background: linear-gradient(135deg, #818cf8 0%, #a78bfa 50%, #c084fc 100%);
@@ -101,18 +107,18 @@
     }
 
     .header-pulse {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       background: #10b981;
       border-radius: 50%;
-      box-shadow: 0 0 6px rgba(16,185,129,0.5);
+      box-shadow: 0 0 8px rgba(16,185,129,0.6);
       animation: pulse-glow 3s ease-in-out infinite;
       flex-shrink: 0;
     }
 
     @keyframes pulse-glow {
-      0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(16,185,129,0.5); }
-      50% { opacity: 0.4; box-shadow: 0 0 3px rgba(16,185,129,0.2); }
+      0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(16,185,129,0.6); }
+      50% { opacity: 0.35; box-shadow: 0 0 4px rgba(16,185,129,0.2); }
     }
 
     .header-meta {
@@ -125,8 +131,8 @@
     .filter-bar {
       display: none;
       flex-shrink: 0;
-      padding: 8px 14px;
-      gap: 6px;
+      padding: 10px 16px;
+      gap: 8px;
       overflow-x: auto;
       scrollbar-width: none;
       background: var(--bg);
@@ -138,33 +144,40 @@
     .filter-chip {
       display: flex;
       align-items: center;
-      gap: 5px;
-      padding: 5px 12px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid var(--border);
       background: transparent;
       color: var(--text-2);
       font-family: inherit;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
       flex-shrink: 0;
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.22,1,0.36,1);
+      min-height: 36px;
     }
 
     .filter-chip .chip-dot {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       flex-shrink: 0;
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
     }
+
+    .filter-chip:active { transform: scale(0.95); }
 
     .filter-chip.active {
       border-color: var(--chip-color, var(--accent));
       background: var(--chip-bg, var(--accent-dim));
       color: var(--text-1);
+      box-shadow: 0 0 12px var(--chip-glow, rgba(129,140,248,0.15));
     }
+
+    .filter-chip.active .chip-dot { transform: scale(1.2); }
 
     /* ── TAB PANELS ──────────────────────────────────── */
     .tab-area {
@@ -177,7 +190,7 @@
       display: none;
       height: 100%;
       overflow-y: auto;
-      padding: 10px 12px calc(10px + var(--safe-b));
+      padding: 12px 14px calc(12px + var(--safe-b));
       -webkit-overflow-scrolling: touch;
       overscroll-behavior: contain;
       scrollbar-width: none;
@@ -186,11 +199,11 @@
 
     .tab-panel.active {
       display: block;
-      animation: panelIn 0.2s cubic-bezier(0.22,1,0.36,1) forwards;
+      animation: panelIn 0.25s cubic-bezier(0.22,1,0.36,1) forwards;
     }
 
     @keyframes panelIn {
-      from { opacity: 0; transform: translateY(6px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -199,9 +212,9 @@
       flex-shrink: 0;
       height: calc(var(--nav-h) + var(--safe-b));
       padding-bottom: var(--safe-b);
-      background: rgba(13,13,20,0.94);
-      backdrop-filter: blur(30px) saturate(1.4);
-      -webkit-backdrop-filter: blur(30px) saturate(1.4);
+      background: rgba(13,13,20,0.96);
+      backdrop-filter: blur(40px) saturate(1.6);
+      -webkit-backdrop-filter: blur(40px) saturate(1.6);
       border-top: 1px solid var(--border);
       display: flex;
       z-index: 100;
@@ -213,19 +226,21 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 2px;
+      gap: 3px;
       background: none;
       border: none;
       cursor: pointer;
       color: var(--text-3);
       padding: 0;
       position: relative;
-      transition: color 0.2s ease;
+      transition: color 0.25s cubic-bezier(0.22,1,0.36,1);
       -webkit-user-select: none;
       user-select: none;
-      min-height: 44px;
-      min-width: 44px;
+      min-height: 48px;
+      min-width: 48px;
     }
+
+    .nav-btn:active { transform: scale(0.92); }
 
     .nav-btn.active { color: var(--accent); }
 
@@ -233,10 +248,10 @@
       position: absolute;
       top: 0;
       left: 50%;
-      width: 22px;
-      height: 2.5px;
+      width: 24px;
+      height: 3px;
       background: var(--accent);
-      border-radius: 0 0 3px 3px;
+      border-radius: 0 0 4px 4px;
       transform: translateX(-50%) scaleX(0);
       transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
     }
@@ -244,15 +259,15 @@
     .nav-btn.active .nav-pip { transform: translateX(-50%) scaleX(1); }
 
     .nav-icon {
-      width: 20px;
-      height: 20px;
-      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+      width: 22px;
+      height: 22px;
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
     }
 
-    .nav-btn.active .nav-icon { transform: scale(1.08) translateY(-1px); }
+    .nav-btn.active .nav-icon { transform: scale(1.1) translateY(-1px); }
 
     .nav-label {
-      font-size: 10px;
+      font-size: 10.5px;
       font-weight: 600;
       letter-spacing: 0.01em;
     }
@@ -260,14 +275,14 @@
     .nav-badge {
       position: absolute;
       top: 4px;
-      left: calc(50% + 6px);
+      left: calc(50% + 7px);
       background: var(--rinat);
       color: #fff;
       font-size: 9px;
       font-weight: 700;
-      min-width: 16px;
-      height: 16px;
-      border-radius: 8px;
+      min-width: 17px;
+      height: 17px;
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -275,26 +290,29 @@
       border: 2px solid var(--bg);
       line-height: 1;
       pointer-events: none;
+      box-shadow: 0 2px 6px rgba(239,68,68,0.3);
     }
 
     /* ── CARDS ────────────────────────────────────────── */
     .card {
       background: var(--surface);
-      border-radius: 14px;
+      border-radius: var(--radius-card);
       border: 1px solid var(--border);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: flex;
       align-items: stretch;
       overflow: hidden;
-      transition: transform 0.12s ease;
+      transition: transform 0.15s cubic-bezier(0.22,1,0.36,1), box-shadow 0.15s ease;
       cursor: pointer;
+      box-shadow: var(--shadow-card);
     }
 
-    .card:active { transform: scale(0.985); }
+    .card:active { transform: scale(0.98); }
 
     .card.is-unread {
       background: var(--surface-2);
       border-color: var(--border-hi);
+      box-shadow: var(--shadow-card-hi);
     }
 
     .card-strip {
@@ -305,7 +323,7 @@
 
     .card-body {
       flex: 1;
-      padding: 11px 13px;
+      padding: 12px 14px;
       min-width: 0;
     }
 
@@ -315,23 +333,23 @@
       align-items: center;
       justify-content: space-between;
       gap: 8px;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
 
     .msg-pills {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
       flex: 1;
       min-width: 0;
       flex-wrap: wrap;
     }
 
     .child-pill {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 700;
-      padding: 2px 9px;
-      border-radius: 20px;
+      padding: 2px 10px;
+      border-radius: var(--radius-pill);
       flex-shrink: 0;
     }
 
@@ -346,48 +364,48 @@
     }
 
     .dot-unread {
-      width: 5px;
-      height: 5px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       flex-shrink: 0;
+      box-shadow: 0 0 6px currentColor;
     }
 
     .msg-time {
-      font-size: 10.5px;
+      font-size: 11px;
       color: var(--text-3);
       flex-shrink: 0;
       font-weight: 400;
       font-variant-numeric: tabular-nums;
     }
 
-    .msg-source {
-      font-size: 10px;
-      color: var(--text-3);
-      margin-bottom: 2px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .msg-source-icon {
-      width: 11px;
-      height: 11px;
-      opacity: 0.5;
-    }
-
     .msg-from {
-      font-size: 12px;
+      font-size: 12.5px;
       color: var(--text-2);
-      margin-bottom: 3px;
+      margin-bottom: 4px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .msg-source-badge {
+      font-size: 9.5px;
+      font-weight: 600;
+      color: var(--text-3);
+      background: var(--surface-3);
+      padding: 1px 6px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
     }
 
     .msg-text {
-      font-size: 14px;
+      font-size: 14.5px;
       color: var(--text-1);
-      line-height: 1.55;
+      line-height: 1.6;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
@@ -401,35 +419,41 @@
 
     /* ── RINAT ZONE ──────────────────────────────────── */
     .rinat-zone {
-      background: linear-gradient(135deg, rgba(239,68,68,0.07) 0%, rgba(239,68,68,0.02) 100%);
-      border: 1px solid rgba(239,68,68,0.18);
-      border-radius: 16px;
-      padding: 10px;
-      margin-bottom: 10px;
+      background: linear-gradient(135deg, rgba(239,68,68,0.08) 0%, rgba(239,68,68,0.02) 100%);
+      border: 1.5px solid rgba(239,68,68,0.20);
+      border-radius: 18px;
+      padding: 12px;
+      margin-bottom: 12px;
       position: sticky;
       top: 0;
       z-index: 5;
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
       box-shadow:
-        0 0 30px rgba(239,68,68,0.04),
-        0 0 0 1px rgba(239,68,68,0.05),
-        inset 0 1px 0 rgba(239,68,68,0.05);
+        0 0 40px rgba(239,68,68,0.06),
+        0 0 0 1px rgba(239,68,68,0.04),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+      animation: rinat-border-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes rinat-border-glow {
+      0%, 100% { border-color: rgba(239,68,68,0.20); box-shadow: 0 0 40px rgba(239,68,68,0.06), 0 0 0 1px rgba(239,68,68,0.04), inset 0 1px 0 rgba(255,255,255,0.03); }
+      50% { border-color: rgba(239,68,68,0.32); box-shadow: 0 0 50px rgba(239,68,68,0.10), 0 0 0 1px rgba(239,68,68,0.08), inset 0 1px 0 rgba(255,255,255,0.03); }
     }
 
     .rinat-header {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 8px;
-      font-size: 12px;
+      margin-bottom: 10px;
+      font-size: 12.5px;
       font-weight: 700;
       color: #f87171;
     }
 
     .rinat-dot {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: #ef4444;
       box-shadow: 0 0 0 0 rgba(239,68,68,0.5);
@@ -439,14 +463,14 @@
 
     @keyframes rinat-pulse {
       0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.5); }
-      70% { box-shadow: 0 0 0 8px rgba(239,68,68,0); }
+      70% { box-shadow: 0 0 0 10px rgba(239,68,68,0); }
       100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
     }
 
     .rinat-zone .card {
-      margin-bottom: 5px;
-      background: rgba(239,68,68,0.05);
-      border-color: rgba(239,68,68,0.10);
+      margin-bottom: 6px;
+      background: rgba(239,68,68,0.06);
+      border-color: rgba(239,68,68,0.12);
     }
     .rinat-zone .card:last-child { margin-bottom: 0; }
 
@@ -455,8 +479,8 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      margin: 16px 0 6px;
-      font-size: 11px;
+      margin: 18px 0 8px;
+      font-size: 11.5px;
       font-weight: 600;
       color: var(--text-3);
       letter-spacing: 0.05em;
@@ -472,17 +496,17 @@
 
     /* ── EVENT / ACADEMIC CARDS ──────────────────────── */
     .item-title {
-      font-size: 14px;
+      font-size: 14.5px;
       font-weight: 500;
       color: var(--text-1);
-      margin-bottom: 6px;
-      line-height: 1.45;
+      margin-bottom: 7px;
+      line-height: 1.5;
     }
 
     .item-meta {
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
@@ -490,7 +514,7 @@
       font-size: 10.5px;
       font-weight: 700;
       padding: 2px 8px;
-      border-radius: 20px;
+      border-radius: var(--radius-pill);
       flex-shrink: 0;
     }
 
@@ -502,14 +526,14 @@
       gap: 4px;
     }
 
-    .meta-date svg { width: 12px; height: 12px; opacity: 0.5; }
+    .meta-date svg { width: 13px; height: 13px; opacity: 0.5; }
 
     .meta-group {
       font-size: 10.5px;
       color: var(--text-3);
       background: var(--surface-3);
       padding: 2px 8px;
-      border-radius: 20px;
+      border-radius: var(--radius-pill);
     }
 
     .type-badge {
@@ -519,7 +543,7 @@
       background: var(--surface-3);
       border: 1px solid var(--border);
       padding: 2px 8px;
-      border-radius: 20px;
+      border-radius: var(--radius-pill);
     }
 
     /* ── EMPTY STATE ──────────────────────────────────── */
@@ -530,51 +554,74 @@
       justify-content: center;
       padding: 80px 28px;
       text-align: center;
-      gap: 6px;
+      gap: 8px;
     }
 
     .empty-icon {
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       color: var(--text-3);
-      margin-bottom: 8px;
-      opacity: 0.3;
+      margin-bottom: 10px;
+      opacity: 0.25;
     }
 
     .empty-title {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 600;
       color: var(--text-2);
     }
 
     .empty-sub {
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--text-3);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
-    /* ── LOADING ──────────────────────────────────────── */
-    .loading {
+    /* ── SKELETON LOADING ────────────────────────────── */
+    .skeleton-wrap { padding: 4px 0; }
+
+    .skeleton-card {
+      background: var(--surface);
+      border-radius: var(--radius-card);
+      border: 1px solid var(--border);
+      margin-bottom: 8px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 80px 24px;
-      color: var(--text-3);
-      font-size: 13px;
+      align-items: stretch;
+      overflow: hidden;
+      height: 88px;
     }
 
-    .spinner {
-      width: 18px;
-      height: 18px;
-      border: 2px solid var(--border);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
+    .skeleton-strip {
+      width: 4px;
       flex-shrink: 0;
+      background: var(--surface-3);
+      border-radius: 0 4px 4px 0;
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .skeleton-body {
+      flex: 1;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .skeleton-line {
+      height: 12px;
+      background: linear-gradient(90deg, var(--surface-2) 25%, var(--surface-3) 50%, var(--surface-2) 75%);
+      background-size: 200% 100%;
+      border-radius: 6px;
+      animation: shimmer 1.5s ease-in-out infinite;
+    }
+
+    .skeleton-line.w60 { width: 60%; }
+    .skeleton-line.w80 { width: 80%; }
+    .skeleton-line.w40 { width: 40%; }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
 
     /* ── FOCUS/A11Y ───────────────────────────────────── */
     :focus-visible {
@@ -586,6 +633,17 @@
     .msg-text.expanded {
       -webkit-line-clamp: unset;
       display: block;
+    }
+
+    /* ── STAGGER ANIMATION ───────────────────────────── */
+    .card-animate {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: cardSlideIn 0.3s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+
+    @keyframes cardSlideIn {
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -603,32 +661,32 @@
   <div id="filter-bar" class="filter-bar"></div>
 
   <div class="tab-area">
-    <section id="tab-feed" class="tab-panel active" role="tabpanel"><div class="loading"><div class="spinner"></div></div></section>
-    <section id="tab-academics" class="tab-panel" role="tabpanel"><div class="loading"><div class="spinner"></div></div></section>
-    <section id="tab-calendar" class="tab-panel" role="tabpanel"><div class="loading"><div class="spinner"></div></div></section>
-    <section id="tab-pinned" class="tab-panel" role="tabpanel"><div class="loading"><div class="spinner"></div></div></section>
+    <section id="tab-feed" class="tab-panel active" role="tabpanel"></section>
+    <section id="tab-academics" class="tab-panel" role="tabpanel"></section>
+    <section id="tab-calendar" class="tab-panel" role="tabpanel"></section>
+    <section id="tab-pinned" class="tab-panel" role="tabpanel"></section>
   </div>
 
-  <nav class="bottom-nav" role="tablist" aria-label="\u05E0\u05D9\u05D5\u05D5\u05D8 \u05E8\u05D0\u05E9\u05D9">
-    <button class="nav-btn active" data-tab="feed" role="tab" aria-selected="true" aria-label="\u05E4\u05D9\u05D3 \u05D4\u05D5\u05D3\u05E2\u05D5\u05EA">
+  <nav class="bottom-nav" role="tablist" aria-label="ניווט ראשי">
+    <button class="nav-btn active" data-tab="feed" role="tab" aria-selected="true" aria-label="פיד הודעות">
       <div class="nav-pip"></div>
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-      <span class="nav-label">\u05E4\u05D9\u05D3</span>
+      <span class="nav-label">פיד</span>
     </button>
-    <button class="nav-btn" data-tab="academics" role="tab" aria-selected="false" aria-label="\u05DC\u05D9\u05DE\u05D5\u05D3\u05D9\u05DD">
+    <button class="nav-btn" data-tab="academics" role="tab" aria-selected="false" aria-label="לימודים">
       <div class="nav-pip"></div>
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
-      <span class="nav-label">\u05DC\u05D9\u05DE\u05D5\u05D3\u05D9\u05DD</span>
+      <span class="nav-label">לימודים</span>
     </button>
-    <button class="nav-btn" data-tab="calendar" role="tab" aria-selected="false" aria-label="\u05DC\u05D5\u05D7 \u05E9\u05E0\u05D4">
+    <button class="nav-btn" data-tab="calendar" role="tab" aria-selected="false" aria-label="לוח שנה">
       <div class="nav-pip"></div>
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-      <span class="nav-label">\u05DC\u05D5\u05D7 \u05E9\u05E0\u05D4</span>
+      <span class="nav-label">לוח שנה</span>
     </button>
-    <button class="nav-btn" data-tab="pinned" role="tab" aria-selected="false" aria-label="\u05E0\u05E2\u05D5\u05E6\u05D9\u05DD">
+    <button class="nav-btn" data-tab="pinned" role="tab" aria-selected="false" aria-label="נעוצים">
       <div class="nav-pip"></div>
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>
-      <span class="nav-label">\u05E0\u05E2\u05D5\u05E6\u05D9\u05DD</span>
+      <span class="nav-label">נעוצים</span>
     </button>
   </nav>
 
@@ -637,22 +695,22 @@
 // ── SVG ICONS ──────────────────────────────────────────────────────────────
 const IC = {
   pin: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>',
-  cal: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>',
-  chat48: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>',
-  book48: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>',
-  cal48: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>',
-  pin48: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>',
-  warn48: '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>',
+  cal: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>',
+  chat56: '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>',
+  book56: '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>',
+  cal56: '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>',
+  pin56: '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>',
+  warn56: '<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>',
 };
 
 // ── CHILDREN ────────────────────────────────────────────────────────────────
 const KIDS = {
-  ran:   { name: '\u05E8\u05DF',    color: '#6366f1' },
-  itai:  { name: '\u05D0\u05D9\u05EA\u05D9', color: '#10b981' },
-  noga:  { name: '\u05E0\u05D5\u05D2\u05D4', color: '#f59e0b' },
-  alon:  { name: '\u05D0\u05DC\u05D5\u05DF', color: '#f43f5e' },
-  rinat: { name: '\u05E8\u05D9\u05E0\u05EA', color: '#ef4444' },
-  all:   { name: '\u05DB\u05D5\u05DC\u05DD', color: '#7878a0' },
+  ran:   { name: 'רן',    color: '#6366f1' },
+  itai:  { name: 'איתי', color: '#10b981' },
+  noga:  { name: 'נוגה', color: '#f59e0b' },
+  alon:  { name: 'אלון', color: '#f43f5e' },
+  rinat: { name: 'רינת', color: '#ef4444' },
+  all:   { name: 'כולם', color: '#7878a0' },
 };
 
 function kid(key) { return KIDS[key] || { name: key, color: '#7878a0' }; }
@@ -681,9 +739,9 @@ function fmtDateLabel(iso) {
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const msgDay = new Date(d.getFullYear(), d.getMonth(), d.getDate());
   const diff = Math.round((msgDay - today) / 864e5);
-  if (diff === 0) return '\u05D4\u05D9\u05D5\u05DD';
-  if (diff === 1) return '\u05DE\u05D7\u05E8';
-  if (diff === -1) return '\u05D0\u05EA\u05DE\u05D5\u05DC';
+  if (diff === 0) return 'היום';
+  if (diff === 1) return 'מחר';
+  if (diff === -1) return 'אתמול';
   return d.toLocaleDateString('he-IL', { weekday:'long', day:'numeric', month:'long' });
 }
 
@@ -731,7 +789,7 @@ function buildFilterBar(data) {
   bar.innerHTML = childKeys.map(key => {
     const k = kid(key);
     return `<button class="filter-chip${key === 'all' ? ' active' : ''}" data-child="${key}"
-      style="--chip-color:${k.color};--chip-bg:${rgba(k.color,0.13)}">
+      style="--chip-color:${k.color};--chip-bg:${rgba(k.color,0.13)};--chip-glow:${rgba(k.color,0.18)}">
       <span class="chip-dot" style="background:${k.color}"></span>${k.name}
     </button>`;
   }).join('');
@@ -745,45 +803,63 @@ function buildFilterBar(data) {
   });
 }
 
+// ── SKELETON ────────────────────────────────────────────────────────────────
+function skeletonCards(n) {
+  let html = '<div class="skeleton-wrap">';
+  for (let i = 0; i < n; i++) {
+    html += `<div class="skeleton-card">
+      <div class="skeleton-strip"></div>
+      <div class="skeleton-body">
+        <div class="skeleton-line w60"></div>
+        <div class="skeleton-line w80"></div>
+        <div class="skeleton-line w40"></div>
+      </div>
+    </div>`;
+  }
+  return html + '</div>';
+}
+
 // ── HTML BUILDERS ───────────────────────────────────────────────────────────
 function divider(text) {
   return `<div class="divider"><span>${esc(text)}</span><div class="divider-line"></div></div>`;
 }
 
 function sourceLabel(msg) {
-  if (msg.source === 'email') return '\u05DE\u05D9\u05D9\u05DC';
-  if (msg.source === 'whatsapp') return 'WhatsApp';
+  if (msg.source === 'email') return 'מייל';
+  if (msg.source === 'whatsapp') return 'WA';
   return '';
 }
 
-function msgCard(msg) {
+function msgCard(msg, idx) {
   const c = kid(msg.child);
   const txt = msg.summary || msg.text || '';
   const bg = rgba(c.color, 0.13);
-  const cls = ['card', !msg.read ? 'is-unread' : ''].filter(Boolean).join(' ');
+  const cls = ['card', 'card-animate', !msg.read ? 'is-unread' : ''].filter(Boolean).join(' ');
   const src = sourceLabel(msg);
+  const delay = Math.min((idx || 0) * 30, 300);
 
-  return `<div class="${cls}" data-id="${msg.id}">
+  return `<div class="${cls}" data-id="${msg.id}" style="animation-delay:${delay}ms">
     <div class="card-strip" style="background:${c.color}"></div>
     <div class="card-body">
       <div class="msg-top">
         <div class="msg-pills">
           <span class="child-pill" style="background:${bg};color:${c.color}">${c.name}</span>
-          ${msg.pinned ? `<span class="pin-tag" style="color:${c.color}">${IC.pin} \u05E0\u05E2\u05D5\u05E5</span>` : ''}
-          ${!msg.read ? `<span class="dot-unread" style="background:${c.color}"></span>` : ''}
+          ${msg.pinned ? `<span class="pin-tag" style="color:${c.color}">${IC.pin} נעוץ</span>` : ''}
+          ${!msg.read ? `<span class="dot-unread" style="background:${c.color};color:${c.color}"></span>` : ''}
         </div>
         <span class="msg-time">${fmtTime(msg.time)}</span>
       </div>
-      <div class="msg-from">${esc(msg.from || msg.group || '')}${src ? ` \u00B7 ${src}` : ''}</div>
+      <div class="msg-from">${esc(msg.from || msg.group || '')}${src ? `<span class="msg-source-badge">${src}</span>` : ''}</div>
       <div class="msg-text" onclick="this.classList.toggle('expanded')">${esc(txt)}</div>
     </div>
   </div>`;
 }
 
-function eventCard(ev) {
+function eventCard(ev, idx) {
   const c = kid(ev.child);
   const bg = rgba(c.color, 0.13);
-  return `<div class="card">
+  const delay = Math.min((idx || 0) * 30, 300);
+  return `<div class="card card-animate" style="animation-delay:${delay}ms">
     <div class="card-strip" style="background:${c.color}"></div>
     <div class="card-body">
       <div class="item-title">${esc(ev.title)}</div>
@@ -796,10 +872,11 @@ function eventCard(ev) {
   </div>`;
 }
 
-function academicCard(it) {
+function academicCard(it, idx) {
   const c = kid(it.child);
   const bg = rgba(c.color, 0.13);
-  return `<div class="card">
+  const delay = Math.min((idx || 0) * 30, 300);
+  return `<div class="card card-animate" style="animation-delay:${delay}ms">
     <div class="card-strip" style="background:${c.color}"></div>
     <div class="card-body">
       <div class="item-title">${esc(it.title)}</div>
@@ -832,18 +909,19 @@ function renderFeed(data) {
   const rinat = msgs.filter(m => m.isRinat);
   const normal = msgs.filter(m => !m.isRinat);
   let html = '';
+  let idx = 0;
 
   if (rinat.length > 0) {
     html += `<div class="rinat-zone">
-      <div class="rinat-header"><div class="rinat-dot"></div>\u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05DE\u05E8\u05D9\u05E0\u05EA</div>
-      ${rinat.map(msgCard).join('')}
+      <div class="rinat-header"><div class="rinat-dot"></div>הודעות מרינת</div>
+      ${rinat.map(m => msgCard(m, idx++)).join('')}
     </div>`;
   }
 
   if (normal.length === 0 && rinat.length === 0) {
-    html += emptyState(IC.chat48, '\u05D0\u05D9\u05DF \u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05E2\u05D3\u05D9\u05D9\u05DF', '\u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05DE\u05E7\u05D1\u05D5\u05E6\u05D5\u05EA \u05D4-WhatsApp \u05D9\u05D5\u05E4\u05D9\u05E2\u05D5 \u05DB\u05D0\u05DF');
+    html += emptyState(IC.chat56, 'אין הודעות עדיין', 'הודעות מקבוצות ה-WhatsApp יופיעו כאן');
   } else {
-    html += normal.map(msgCard).join('');
+    html += normal.map(m => msgCard(m, idx++)).join('');
   }
 
   el.innerHTML = html;
@@ -860,14 +938,15 @@ function renderAcademics(data) {
   const items = data.academics || [];
 
   if (items.length === 0) {
-    el.innerHTML = emptyState(IC.book48, '\u05D0\u05D9\u05DF \u05DE\u05D8\u05DC\u05D5\u05EA \u05E7\u05E8\u05D5\u05D1\u05D5\u05EA', '\u05DE\u05D1\u05D7\u05E0\u05D9\u05DD, \u05D4\u05DB\u05EA\u05D1\u05D5\u05EA \u05D5\u05E9\u05D9\u05E2\u05D5\u05E8\u05D9 \u05D1\u05D9\u05EA \u05D9\u05D5\u05E4\u05D9\u05E2\u05D5 \u05DB\u05D0\u05DF');
+    el.innerHTML = emptyState(IC.book56, 'אין מטלות קרובות', 'מבחנים, הכתבות ושיעורי בית יופיעו כאן');
     return;
   }
 
   const sorted = [...items].sort((a,b) => new Date(a.date) - new Date(b.date));
   let html = '';
+  let idx = 0;
   for (const [, { label, items: g }] of groupByDate(sorted)) {
-    html += divider(label) + g.map(academicCard).join('');
+    html += divider(label) + g.map(it => academicCard(it, idx++)).join('');
   }
   el.innerHTML = html;
 }
@@ -877,14 +956,15 @@ function renderCalendar(data) {
   const events = data.events || [];
 
   if (events.length === 0) {
-    el.innerHTML = emptyState(IC.cal48, '\u05D0\u05D9\u05DF \u05D0\u05D9\u05E8\u05D5\u05E2\u05D9\u05DD \u05E7\u05E8\u05D5\u05D1\u05D9\u05DD', '\u05D0\u05D9\u05E8\u05D5\u05E2\u05D9 \u05DC\u05D5\u05D7 \u05D4\u05E9\u05E0\u05D4 \u05D9\u05D5\u05E4\u05D9\u05E2\u05D5 \u05DB\u05D0\u05DF');
+    el.innerHTML = emptyState(IC.cal56, 'אין אירועים קרובים', 'אירועי לוח השנה יופיעו כאן');
     return;
   }
 
   const sorted = [...events].sort((a,b) => new Date(a.date) - new Date(b.date));
   let html = '';
+  let idx = 0;
   for (const [, { label, items }] of groupByDate(sorted)) {
-    html += divider(label) + items.map(eventCard).join('');
+    html += divider(label) + items.map(ev => eventCard(ev, idx++)).join('');
   }
   el.innerHTML = html;
 }
@@ -898,11 +978,11 @@ function renderPinned(data) {
   if (pinned.length > 0) btn.insertAdjacentHTML('beforeend', `<span class="nav-badge">${pinned.length}</span>`);
 
   if (pinned.length === 0) {
-    el.innerHTML = emptyState(IC.pin48, '\u05D0\u05D9\u05DF \u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05E0\u05E2\u05D5\u05E6\u05D5\u05EA', '\u05D4\u05D5\u05D3\u05E2\u05D5\u05EA \u05D7\u05E9\u05D5\u05D1\u05D5\u05EA \u05E9\u05EA\u05E0\u05E2\u05E5 \u05D9\u05D5\u05E4\u05D9\u05E2\u05D5 \u05DB\u05D0\u05DF');
+    el.innerHTML = emptyState(IC.pin56, 'אין הודעות נעוצות', 'הודעות חשובות שתנעץ יופיעו כאן');
     return;
   }
 
-  el.innerHTML = pinned.map(msgCard).join('');
+  el.innerHTML = pinned.map((m, i) => msgCard(m, i)).join('');
 }
 
 // ── TAB SWITCHING ───────────────────────────────────────────────────────────
@@ -928,6 +1008,9 @@ document.querySelectorAll('.nav-btn').forEach(btn => {
 });
 
 // ── INIT ────────────────────────────────────────────────────────────────────
+// Show skeleton loading immediately
+document.querySelectorAll('.tab-panel').forEach(p => { p.innerHTML = skeletonCards(5); });
+
 async function init() {
   try {
     const res = await fetch('./data.json');
@@ -936,7 +1019,7 @@ async function init() {
     cachedData = data;
 
     document.getElementById('header-meta').textContent =
-      data.updated_at ? ('\u05E2\u05D5\u05D3\u05DB\u05DF ' + fmtTime(data.updated_at)) : '';
+      data.updated_at ? ('עודכן ' + fmtTime(data.updated_at)) : '';
 
     buildFilterBar(data);
     document.getElementById('filter-bar').classList.add('visible');
@@ -947,8 +1030,8 @@ async function init() {
     renderPinned(data);
   } catch (err) {
     console.error(err);
-    document.getElementById('tab-feed').innerHTML = emptyState(IC.warn48, '\u05E9\u05D2\u05D9\u05D0\u05D4 \u05D1\u05D8\u05E2\u05D9\u05E0\u05D4', err.message);
-    document.getElementById('header-meta').textContent = '\u05E9\u05D2\u05D9\u05D0\u05D4';
+    document.getElementById('tab-feed').innerHTML = emptyState(IC.warn56, 'שגיאה בטעינה', err.message);
+    document.getElementById('header-meta').textContent = 'שגיאה';
   }
 }
 
