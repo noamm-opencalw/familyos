@@ -1,1195 +1,823 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FamilyOS — מרכז הבית</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
-<style>
-:root {
-  --bg:          #0a0a0f;
-  --bg-1:        #111118;
-  --surface:     rgba(255,255,255,0.04);
-  --surface-h:   rgba(255,255,255,0.08);
-  --border:      rgba(255,255,255,0.08);
-  --border-h:    rgba(255,255,255,0.15);
-  --accent:      #7c3aed;
-  --accent-lt:   rgba(124,58,237,0.15);
-  --accent-glow: rgba(124,58,237,0.3);
-  --t1: #f1f5f9;
-  --t2: #94a3b8;
-  --t3: #475569;
-  --ran:   #6366f1;
-  --itai:  #10b981;
-  --noga:  #f59e0b;
-  --alon:  #f43f5e;
-  --rinat: #ef4444;
-  --urgent:#ef4444;
-  --high:  #f59e0b;
-  --normal:#10b981;
-  --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-pill: 100px;
-  --shadow: 0 2px 12px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
-  --t: all 0.2s cubic-bezier(0.4,0,0.2,1);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Heebo',sans-serif;
-  background:var(--bg);
-  color:var(--t1);
-  min-height:100vh;
-  direction:rtl;
-}
-body::before{
-  content:'';
-  position:fixed;inset:0;
-  background:
-    radial-gradient(ellipse 70% 40% at 15% 5%, rgba(124,58,237,0.1) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 30% at 85% 85%, rgba(99,102,241,0.06) 0%, transparent 60%);
-  pointer-events:none;z-index:0;
-}
-main{position:relative;z-index:1}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>FamilyOS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-/* ── LAYOUT ────────────────────────── */
-.app{display:flex;min-height:100vh}
+    :root {
+      --bg:           #0f0f13;
+      --surface:      #16161e;
+      --surface-2:    #1e1e2a;
+      --surface-3:    #252532;
+      --border:       rgba(255,255,255,0.07);
+      --border-hi:    rgba(255,255,255,0.13);
+      --text-1:       #f0f0f6;
+      --text-2:       #9090aa;
+      --text-3:       #5a5a72;
+      --accent:       #6366f1;
+      --nav-h:        68px;
+      --header-h:     58px;
+      --safe-b:       env(safe-area-inset-bottom, 0px);
+      --safe-t:       env(safe-area-inset-top, 0px);
+      --ran:   #6366f1;
+      --itai:  #10b981;
+      --noga:  #f59e0b;
+      --alon:  #f43f5e;
+      --rinat: #ef4444;
+      --all:   #7878a0;
+    }
 
-.sidebar{
-  width:240px;flex-shrink:0;
-  background:var(--bg-1);
-  border-left:1px solid var(--border);
-  display:flex;flex-direction:column;
-  padding:20px 0;
-  position:sticky;top:0;height:100vh;overflow-y:auto;
-}
-.content{flex:1;min-width:0;padding:24px}
-.right-panel{
-  width:280px;flex-shrink:0;
-  padding:24px 16px 24px 24px;
-  display:flex;flex-direction:column;gap:16px;
-}
+    html, body { height: 100%; overflow: hidden; }
 
-/* ── SIDEBAR ────────────────────────── */
-.logo{padding:0 20px 20px;border-bottom:1px solid var(--border)}
-.logo-name{font-size:20px;font-weight:800;letter-spacing:-0.5px}
-.logo-sub{font-size:12px;color:var(--t3);margin-top:2px}
-.logo-icon{
-  width:36px;height:36px;
-  background:linear-gradient(135deg,var(--accent),#9f67ff);
-  border-radius:var(--r-sm);
-  display:inline-flex;align-items:center;justify-content:center;
-  font-size:18px;margin-bottom:10px;
-  box-shadow:0 0 16px var(--accent-glow);
-}
+    body {
+      font-family: 'Heebo', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-1);
+      direction: rtl;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-.sidebar-section{padding:16px 20px 8px;font-size:11px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:0.5px}
+    #app {
+      display: flex;
+      flex-direction: column;
+      height: 100dvh;
+      max-width: 680px;
+      margin: 0 auto;
+    }
 
-.child-filters{padding:0 12px;display:flex;flex-direction:column;gap:4px}
-.child-chip{
-  display:flex;align-items:center;gap:10px;
-  padding:8px 10px;border-radius:var(--r-md);
-  cursor:pointer;transition:var(--t);
-  font-size:14px;font-weight:500;
-  color:var(--t2);border:none;background:transparent;
-  width:100%;text-align:right;
-}
-.child-chip:hover{background:var(--surface-h);color:var(--t1)}
-.child-chip.active{background:var(--surface-h);color:var(--t1)}
-.child-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.child-badge{
-  margin-right:auto;
-  font-size:11px;font-weight:700;
-  background:var(--surface);
-  border-radius:var(--r-pill);
-  padding:1px 7px;
-}
+    /* ── HEADER ── */
+    .app-header {
+      height: var(--header-h);
+      padding-top: var(--safe-t);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-inline: 20px;
+      flex-shrink: 0;
+      background: rgba(15,15,19,0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      position: relative;
+      z-index: 20;
+    }
 
-.sidebar-stats{padding:16px 20px;margin-top:auto;border-top:1px solid var(--border)}
-.stat-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:13px}
-.stat-val{font-weight:700;color:var(--t1)}
-.stat-lbl{color:var(--t3)}
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-/* ── HEADER ────────────────────────── */
-.page-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:20px;
-}
-.page-title{font-size:22px;font-weight:800;letter-spacing:-0.5px}
-.page-date{font-size:13px;color:var(--t3)}
+    .header-logo {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      background: linear-gradient(130deg, #a5b4fc 0%, #c4b5fd 45%, #fda4af 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-/* ── TABS ────────────────────────── */
-.tabs{display:flex;gap:4px;margin-bottom:20px;background:var(--surface);border-radius:var(--r-lg);padding:4px}
-.tab{
-  flex:1;padding:8px 12px;border-radius:var(--r-md);
-  background:transparent;border:none;
-  font-family:'Heebo',sans-serif;font-size:14px;font-weight:600;
-  color:var(--t2);cursor:pointer;transition:var(--t);
-  display:flex;align-items:center;justify-content:center;gap:6px;
-}
-.tab:hover{color:var(--t1)}
-.tab.active{background:var(--bg-1);color:var(--t1);box-shadow:var(--shadow)}
-.tab-badge{
-  background:var(--accent);color:#fff;
-  border-radius:var(--r-pill);padding:1px 6px;font-size:10px;font-weight:800;
-}
+    .header-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 7px #10b981;
+      animation: breathe 3s ease-in-out infinite;
+      flex-shrink: 0;
+    }
 
-/* ── FILTER BAR ────────────────────────── */
-.filter-bar{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
-.filter-chip{
-  padding:5px 12px;border-radius:var(--r-pill);
-  background:var(--surface);border:1px solid var(--border);
-  font-family:'Heebo',sans-serif;font-size:12px;font-weight:600;
-  color:var(--t2);cursor:pointer;transition:var(--t);
-}
-.filter-chip:hover{border-color:var(--border-h);color:var(--t1)}
-.filter-chip.active{background:var(--accent-lt);border-color:var(--accent);color:var(--t1)}
+    @keyframes breathe {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.55; transform: scale(0.82); }
+    }
 
-/* ── CARDS ────────────────────────── */
-.card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--r-lg);
-  padding:14px;
-  transition:var(--t);
-  position:relative;
-}
-.card:hover{background:var(--surface-h);border-color:var(--border-h)}
+    .header-meta {
+      font-size: 11px;
+      color: var(--text-3);
+      background: var(--surface-2);
+      padding: 4px 11px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      font-weight: 400;
+    }
 
-/* MESSAGE CARD */
-.msg-card{
-  margin-bottom:10px;
-  border-right:3px solid transparent;
-}
-.msg-card.rinat{
-  border-right-color:var(--rinat);
-  background:rgba(239,68,68,0.05);
-}
-.msg-card.rinat:hover{background:rgba(239,68,68,0.09)}
-.msg-card[data-child="ran"]{border-right-color:var(--ran)}
-.msg-card[data-child="itai"]{border-right-color:var(--itai)}
-.msg-card[data-child="noga"]{border-right-color:var(--noga)}
-.msg-card[data-child="alon"]{border-right-color:var(--alon)}
+    /* ── TAB CONTAINER ── */
+    .tab-container {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
 
-.msg-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-.rinat-badge{
-  display:inline-flex;align-items:center;gap:4px;
-  background:rgba(239,68,68,0.15);color:var(--rinat);
-  border:1px solid rgba(239,68,68,0.3);
-  border-radius:var(--r-pill);padding:2px 8px;
-  font-size:11px;font-weight:800;
-}
-.sender-name{font-size:14px;font-weight:700;color:var(--t1)}
-.group-badge{
-  font-size:11px;color:var(--t3);
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--r-pill);padding:2px 8px;
-}
-.child-badge-inline{
-  font-size:11px;font-weight:700;
-  border-radius:var(--r-pill);padding:2px 8px;
-}
-.time-ago{font-size:11px;color:var(--t3);margin-right:auto}
+    .tab {
+      display: none;
+      height: 100%;
+      overflow-y: auto;
+      padding: 14px 14px calc(14px + var(--safe-b));
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      scrollbar-width: none;
+    }
+    .tab::-webkit-scrollbar { display: none; }
 
-.msg-summary{font-size:14px;color:var(--t2);line-height:1.5;margin-bottom:8px}
-.msg-full{display:none;font-size:13px;color:var(--t3);line-height:1.6;margin-bottom:8px;padding:8px;background:var(--surface);border-radius:var(--r-sm)}
-.msg-full.open{display:block}
-.expand-btn{
-  font-size:12px;color:var(--accent);cursor:pointer;
-  background:none;border:none;font-family:'Heebo',sans-serif;
-  font-weight:600;padding:0;
-}
-.expand-btn:hover{color:#9f67ff}
+    .tab.active {
+      display: block;
+      animation: tabIn 0.22s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
 
-.msg-actions{display:flex;gap:6px;margin-top:8px}
-.icon-btn{
-  width:30px;height:30px;border-radius:var(--r-sm);
-  background:var(--surface);border:1px solid var(--border);
-  cursor:pointer;transition:var(--t);
-  display:inline-flex;align-items:center;justify-content:center;
-  color:var(--t3);
-}
-.icon-btn:hover{background:var(--surface-h);color:var(--t1);border-color:var(--border-h)}
-.icon-btn.pinned{color:#fbbf24;border-color:rgba(251,191,36,0.3);background:rgba(251,191,36,0.08)}
+    @keyframes tabIn {
+      from { opacity: 0; transform: translateY(7px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-/* ACADEMIC CARD */
-.academic-section{margin-bottom:24px}
-.section-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:12px;
-}
-.section-title{font-size:16px;font-weight:800;display:flex;align-items:center;gap:8px}
-.section-count{font-size:12px;color:var(--t3);background:var(--surface);border-radius:var(--r-pill);padding:2px 8px}
+    /* ── BOTTOM NAV ── */
+    .bottom-nav {
+      flex-shrink: 0;
+      height: calc(var(--nav-h) + var(--safe-b));
+      padding-bottom: var(--safe-b);
+      background: rgba(14,14,20,0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-top: 1px solid var(--border);
+      display: flex;
+      z-index: 100;
+    }
 
-.academic-card{
-  display:flex;align-items:center;gap:12px;
-  padding:12px 14px;margin-bottom:8px;
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);
-  transition:var(--t);cursor:default;
-}
-.academic-card:hover{background:var(--surface-h);border-color:var(--border-h)}
-.academic-card.done{opacity:0.45}
-.academic-card.done .ac-subject{text-decoration:line-through}
+    .nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-3);
+      padding: 0;
+      position: relative;
+      transition: color 0.18s ease;
+      -webkit-user-select: none;
+      user-select: none;
+    }
 
-.ac-icon{font-size:22px;flex-shrink:0;width:40px;text-align:center}
-.ac-info{flex:1;min-width:0}
-.ac-subject{font-size:14px;font-weight:700;color:var(--t1)}
-.ac-notes{font-size:12px;color:var(--t3);margin-top:2px}
-.ac-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-.days-badge{
-  font-size:12px;font-weight:800;
-  border-radius:var(--r-pill);padding:3px 9px;
-  white-space:nowrap;
-}
-.days-badge.urgent{background:rgba(239,68,68,0.15);color:var(--urgent)}
-.days-badge.soon{background:rgba(245,158,11,0.15);color:var(--high)}
-.days-badge.ok{background:rgba(16,185,129,0.15);color:var(--normal)}
+    .nav-item.active { color: var(--text-1); }
 
-.done-toggle{
-  width:20px;height:20px;border-radius:4px;
-  border:2px solid var(--border);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  background:transparent;transition:var(--t);flex-shrink:0;
-}
-.done-toggle:hover{border-color:var(--accent)}
-.done-toggle.checked{background:var(--accent);border-color:var(--accent)}
+    .nav-pill {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 30px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 0 0 4px 4px;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
 
-/* ACTION CARD */
-.action-card{
-  display:flex;align-items:center;gap:12px;
-  padding:12px 14px;margin-bottom:8px;
-  background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);
-  transition:var(--t);
-}
-.action-card.done{opacity:0.4}
-.priority-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.action-title{font-size:14px;font-weight:500;flex:1}
-.action-card.done .action-title{text-decoration:line-through;color:var(--t3)}
-.action-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:4px}
-.action-source{font-size:11px;color:var(--t3)}
+    .nav-item.active .nav-pill { transform: translateX(-50%) scaleX(1); }
 
-/* CALENDAR */
-.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.cal-nav-btn{
-  width:32px;height:32px;border-radius:var(--r-sm);
-  background:var(--surface);border:1px solid var(--border);
-  cursor:pointer;color:var(--t2);display:flex;align-items:center;justify-content:center;
-  transition:var(--t);
-}
-.cal-nav-btn:hover{background:var(--surface-h);color:var(--t1)}
-.cal-month{font-size:16px;font-weight:700}
-.cal-child-toggles{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
-.cal-toggle{
-  display:flex;align-items:center;gap:6px;
-  padding:5px 10px;border-radius:var(--r-pill);
-  border:1px solid transparent;cursor:pointer;
-  font-size:12px;font-weight:600;font-family:'Heebo',sans-serif;
-  transition:var(--t);color:var(--t2);background:var(--surface);
-}
-.cal-toggle.active{color:var(--t1)}
-.cal-dot{width:8px;height:8px;border-radius:50%}
+    .nav-emoji {
+      font-size: 21px;
+      line-height: 1;
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    }
 
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-.cal-day-name{text-align:center;font-size:11px;font-weight:700;color:var(--t3);padding:4px 0}
-.cal-day{
-  min-height:56px;padding:4px;border-radius:var(--r-sm);
-  background:var(--surface);border:1px solid var(--border);
-  cursor:pointer;transition:var(--t);
-}
-.cal-day:hover{background:var(--surface-h);border-color:var(--border-h)}
-.cal-day.today{border-color:var(--accent);background:var(--accent-lt)}
-.cal-day.other-month{opacity:0.3}
-.cal-day-num{font-size:12px;font-weight:600;color:var(--t2);margin-bottom:3px}
-.cal-day.today .cal-day-num{color:var(--accent);font-weight:800}
-.cal-dots{display:flex;flex-wrap:wrap;gap:2px}
-.cal-event-dot{width:6px;height:6px;border-radius:50%}
+    .nav-item.active .nav-emoji { transform: scale(1.14) translateY(-1px); }
 
-/* RIGHT PANEL */
-.rp-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--r-lg);padding:14px;
-}
-.rp-title{font-size:13px;font-weight:800;color:var(--t1);margin-bottom:12px;display:flex;align-items:center;gap:6px}
-.digest-item{
-  display:flex;align-items:flex-start;gap:8px;
-  padding:6px 0;border-bottom:1px solid var(--border);
-  font-size:13px;color:var(--t2);
-}
-.digest-item:last-child{border-bottom:none}
-.digest-emoji{font-size:14px;flex-shrink:0;margin-top:1px}
-.digest-text{line-height:1.4}
-.digest-urgent{color:var(--urgent)!important;font-weight:600}
+    .nav-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
 
-.upcoming-item{
-  display:flex;align-items:center;gap:10px;
-  padding:8px 0;border-bottom:1px solid var(--border);
-}
-.upcoming-item:last-child{border-bottom:none}
-.upcoming-date-box{
-  width:36px;text-align:center;flex-shrink:0;
-  background:var(--surface-h);border-radius:var(--r-sm);padding:4px;
-}
-.upcoming-day{font-size:16px;font-weight:800;color:var(--t1);line-height:1}
-.upcoming-month{font-size:10px;color:var(--t3);font-weight:600}
-.upcoming-info{flex:1;min-width:0}
-.upcoming-title{font-size:13px;font-weight:600;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.upcoming-child{font-size:11px;color:var(--t3);margin-top:1px}
+    .nav-badge {
+      position: absolute;
+      top: 6px;
+      left: calc(50% + 6px);
+      background: #ef4444;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      min-width: 17px;
+      height: 17px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+      border: 2px solid var(--bg);
+      line-height: 1;
+      pointer-events: none;
+    }
 
-/* EMPTY STATE */
-.empty-state{text-align:center;padding:48px 24px;color:var(--t3)}
-.empty-icon{font-size:40px;margin-bottom:12px;display:block}
-.empty-text{font-size:14px;line-height:1.6}
+    /* ── CARD BASE ── */
+    .card {
+      background: var(--surface);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      transition: transform 0.13s ease, border-color 0.13s ease;
+    }
 
-/* BADGES */
-.badge{display:inline-flex;align-items:center;border-radius:var(--r-pill);padding:2px 8px;font-size:11px;font-weight:700}
-.badge-ran{background:rgba(99,102,241,0.15);color:var(--ran)}
-.badge-itai{background:rgba(16,185,129,0.15);color:var(--itai)}
-.badge-noga{background:rgba(245,158,11,0.15);color:var(--noga)}
-.badge-alon{background:rgba(244,63,94,0.15);color:var(--alon)}
+    .card:active { transform: scale(0.982); }
 
-/* MOBILE */
-@media(max-width:1100px){.right-panel{display:none}}
-@media(max-width:768px){
-  .sidebar{display:none}
-  .content{padding:16px}
-  .mobile-nav{
-    display:flex!important;position:fixed;bottom:0;right:0;left:0;z-index:100;
-    background:var(--bg-1);border-top:1px solid var(--border);
-    padding:8px;gap:4px;
-  }
-  .mobile-nav-item{
-    flex:1;display:flex;flex-direction:column;align-items:center;
-    padding:8px 4px;border-radius:var(--r-md);
-    background:transparent;border:none;cursor:pointer;
-    font-family:'Heebo',sans-serif;font-size:10px;font-weight:600;color:var(--t3);
-    transition:var(--t);gap:3px;
-  }
-  .mobile-nav-item.active{background:var(--accent-lt);color:var(--accent)}
-  body{padding-bottom:70px}
-}
-.mobile-nav{display:none}
+    .card.unread {
+      background: var(--surface-2);
+      border-color: rgba(255,255,255,0.1);
+    }
 
-/* SCROLLBAR */
-::-webkit-scrollbar{width:4px;height:4px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+    .card.pinned {
+      box-shadow: 0 0 0 1px rgba(99,102,241,0.14),
+                  0 2px 14px rgba(99,102,241,0.07);
+    }
 
-/* RINAT STICKY */
-.rinat-sticky{
-  background:rgba(239,68,68,0.06);
-  border:1px solid rgba(239,68,68,0.2);
-  border-right:3px solid var(--rinat);
-  border-radius:var(--r-lg);padding:12px 14px;
-  margin-bottom:14px;
-  box-shadow:0 0 20px rgba(239,68,68,0.08);
-}
-.rinat-sticky-header{
-  display:flex;align-items:center;gap:8px;margin-bottom:6px;
-  font-size:12px;font-weight:700;color:var(--rinat);
-  text-transform:uppercase;letter-spacing:0.3px;
-}
+    .strip {
+      width: 4px;
+      flex-shrink: 0;
+    }
 
-/* CHART */
-.chart-wrap{height:120px;margin-top:8px}
-</style>
+    .card-body {
+      flex: 1;
+      padding: 13px 13px 13px 12px;
+      min-width: 0;
+    }
+
+    /* ── MESSAGE CARD ── */
+    .msg-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+
+    .msg-chips {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      min-width: 0;
+      flex-wrap: wrap;
+    }
+
+    .child-chip {
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 20px;
+      flex-shrink: 0;
+      letter-spacing: 0.03em;
+    }
+
+    .child-chip-sm {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      flex-shrink: 0;
+    }
+
+    .unread-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .pin-marker {
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .card-time {
+      font-size: 11px;
+      color: var(--text-3);
+      flex-shrink: 0;
+      font-weight: 400;
+    }
+
+    .msg-from {
+      font-size: 12px;
+      color: var(--text-2);
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .msg-text {
+      font-size: 13.5px;
+      color: var(--text-1);
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card.unread .msg-text { font-weight: 500; color: #f5f5ff; }
+
+    /* ── RINAT STICKY SECTION ── */
+    .rinat-section {
+      background: linear-gradient(135deg,
+        rgba(239,68,68,0.1) 0%,
+        rgba(239,68,68,0.04) 100%);
+      border: 1px solid rgba(239,68,68,0.28);
+      border-radius: 18px;
+      padding: 12px;
+      margin-bottom: 14px;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 4px 24px rgba(239,68,68,0.08);
+    }
+
+    .rinat-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #f87171;
+    }
+
+    .rinat-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ef4444;
+      box-shadow: 0 0 0 0 rgba(239,68,68,0.6);
+      animation: ping 1.8s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes ping {
+      0%   { box-shadow: 0 0 0 0 rgba(239,68,68,0.7); }
+      70%  { box-shadow: 0 0 0 8px rgba(239,68,68,0); }
+      100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 18px 0 8px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-3);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .section-label:first-child { margin-top: 0; }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── EVENT / ACADEMIC CARDS ── */
+    .ev-title {
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--text-1);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .ev-meta {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .ev-date { font-size: 12px; color: var(--text-3); }
+
+    .ev-group {
+      font-size: 11px;
+      color: var(--text-3);
+      background: var(--surface-3);
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    .type-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-2);
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    /* ── EMPTY STATE ── */
+    .empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 24px;
+      text-align: center;
+      gap: 10px;
+    }
+
+    .empty-icon { font-size: 52px; margin-bottom: 6px; }
+    .empty-title { font-size: 16px; font-weight: 600; color: var(--text-2); }
+    .empty-sub   { font-size: 13px; color: var(--text-3); line-height: 1.6; }
+
+    /* ── LOADING ── */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 64px 24px;
+      color: var(--text-3);
+      font-size: 14px;
+    }
+
+    .spinner {
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
 </head>
 <body>
+<div id="app">
 
-<div class="app" id="app">
-  <!-- SIDEBAR -->
-  <aside class="sidebar" id="sidebar">
-    <div class="logo">
-      <div class="logo-icon">🏠</div>
-      <div class="logo-name">FamilyOS</div>
-      <div class="logo-sub">מרכז הבית</div>
+  <header class="app-header">
+    <div class="header-brand">
+      <span class="header-logo">FamilyOS</span>
+      <div class="header-dot"></div>
     </div>
+    <div id="header-meta" class="header-meta">טוען...</div>
+  </header>
 
-    <div class="sidebar-section">ילדים</div>
-    <div class="child-filters" id="childFilters">
-      <button class="child-chip active" data-child="all" onclick="setChild('all',this)">
-        <span class="child-dot" style="background:var(--accent)"></span>
-        כולם
-        <span class="child-badge" id="badge-all">0</span>
-      </button>
-      <button class="child-chip" data-child="ran" onclick="setChild('ran',this)">
-        <span class="child-dot" style="background:var(--ran)"></span>
-        רן
-        <span class="child-badge" id="badge-ran">0</span>
-      </button>
-      <button class="child-chip" data-child="itai" onclick="setChild('itai',this)">
-        <span class="child-dot" style="background:var(--itai)"></span>
-        איתי
-        <span class="child-badge" id="badge-itai">0</span>
-      </button>
-      <button class="child-chip" data-child="noga" onclick="setChild('noga',this)">
-        <span class="child-dot" style="background:var(--noga)"></span>
-        נוגה
-        <span class="child-badge" id="badge-noga">0</span>
-      </button>
-      <button class="child-chip" data-child="alon" onclick="setChild('alon',this)">
-        <span class="child-dot" style="background:var(--alon)"></span>
-        אלון
-        <span class="child-badge" id="badge-alon">0</span>
-      </button>
-    </div>
+  <div class="tab-container">
+    <section id="tab-feed"      class="tab active"><div class="loading"><div class="spinner"></div>טוען...</div></section>
+    <section id="tab-academics" class="tab"><div class="loading"><div class="spinner"></div></div></section>
+    <section id="tab-calendar"  class="tab"><div class="loading"><div class="spinner"></div></div></section>
+    <section id="tab-pinned"    class="tab"><div class="loading"><div class="spinner"></div></div></section>
+  </div>
 
-    <div class="sidebar-stats">
-      <div class="stat-row">
-        <span class="stat-lbl">📬 הודעות היום</span>
-        <span class="stat-val" id="stat-msgs">0</span>
-      </div>
-      <div class="stat-row">
-        <span class="stat-lbl">📅 אירועים השבוע</span>
-        <span class="stat-val" id="stat-events">0</span>
-      </div>
-      <div class="stat-row">
-        <span class="stat-lbl">📚 מטלות פתוחות</span>
-        <span class="stat-val" id="stat-tasks">0</span>
-      </div>
-      <div class="stat-row">
-        <span class="stat-lbl">⚠️ דחוף</span>
-        <span class="stat-val" style="color:var(--urgent)" id="stat-urgent">0</span>
-      </div>
-    </div>
-  </aside>
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-tab="feed">
+      <div class="nav-pill"></div>
+      <span class="nav-emoji">💬</span>
+      <span class="nav-label">פיד</span>
+    </button>
+    <button class="nav-item" data-tab="academics">
+      <div class="nav-pill"></div>
+      <span class="nav-emoji">📚</span>
+      <span class="nav-label">לימודים</span>
+    </button>
+    <button class="nav-item" data-tab="calendar">
+      <div class="nav-pill"></div>
+      <span class="nav-emoji">📅</span>
+      <span class="nav-label">לוח שנה</span>
+    </button>
+    <button class="nav-item" data-tab="pinned">
+      <div class="nav-pill"></div>
+      <span class="nav-emoji">📌</span>
+      <span class="nav-label">נעוצים</span>
+    </button>
+  </nav>
 
-  <!-- MAIN CONTENT -->
-  <main class="content">
-    <div class="page-header">
-      <div>
-        <div class="page-title" id="pageTitle">📬 פיד הקבוצות</div>
-        <div class="page-date" id="pageDate"></div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <button class="icon-btn" id="refreshBtn" title="רענן" onclick="refreshData()" style="width:36px;height:36px">
-          <i data-lucide="refresh-cw" style="width:15px;height:15px"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- TABS -->
-    <div class="tabs">
-      <button class="tab active" data-tab="feed" onclick="switchTab('feed',this)">
-        📬 פיד <span class="tab-badge" id="badge-feed">0</span>
-      </button>
-      <button class="tab" data-tab="calendar" onclick="switchTab('calendar',this)">
-        📅 לוח שנה
-      </button>
-      <button class="tab" data-tab="academics" onclick="switchTab('academics',this)">
-        📚 לימודים <span class="tab-badge" id="badge-academics">0</span>
-      </button>
-      <button class="tab" data-tab="actions" onclick="switchTab('actions',this)">
-        ✅ פעולות <span class="tab-badge" id="badge-actions">0</span>
-      </button>
-    </div>
-
-    <!-- TAB: FEED -->
-    <div id="tab-feed">
-      <div class="filter-bar">
-        <button class="filter-chip active" data-filter="all" onclick="setFilter('all',this)">הכל</button>
-        <button class="filter-chip" data-filter="unread" onclick="setFilter('unread',this)">לא נקרא</button>
-        <button class="filter-chip" data-filter="pinned" onclick="setFilter('pinned',this)">📌 נעוצים</button>
-        <button class="filter-chip" data-filter="rinat" onclick="setFilter('rinat',this)">🔴 רינת</button>
-      </div>
-      <div id="rinat-sticky-zone"></div>
-      <div id="feed-list"></div>
-    </div>
-
-    <!-- TAB: CALENDAR -->
-    <div id="tab-calendar" style="display:none">
-      <div class="cal-header">
-        <button class="cal-nav-btn" onclick="changeMonth(-1)">
-          <i data-lucide="chevron-right" style="width:16px;height:16px"></i>
-        </button>
-        <div class="cal-month" id="cal-month-label"></div>
-        <button class="cal-nav-btn" onclick="changeMonth(1)">
-          <i data-lucide="chevron-left" style="width:16px;height:16px"></i>
-        </button>
-      </div>
-      <div class="cal-child-toggles" id="cal-toggles"></div>
-      <div class="cal-grid" id="cal-grid"></div>
-      <div id="cal-events-detail" style="margin-top:16px"></div>
-    </div>
-
-    <!-- TAB: ACADEMICS -->
-    <div id="tab-academics" style="display:none">
-      <div id="academics-content"></div>
-    </div>
-
-    <!-- TAB: ACTIONS -->
-    <div id="tab-actions" style="display:none">
-      <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap" id="action-stats"></div>
-      <div id="actions-list"></div>
-    </div>
-  </main>
-
-  <!-- RIGHT PANEL -->
-  <aside class="right-panel" id="rightPanel">
-    <!-- Daily Digest -->
-    <div class="rp-card">
-      <div class="rp-title">☀️ סיכום יומי</div>
-      <div id="daily-digest"></div>
-    </div>
-    <!-- Upcoming -->
-    <div class="rp-card">
-      <div class="rp-title">⏰ הקרוב ביותר</div>
-      <div id="upcoming-list"></div>
-    </div>
-    <!-- Chart -->
-    <div class="rp-card">
-      <div class="rp-title">📊 פעילות השבוע</div>
-      <div class="chart-wrap"><canvas id="weekChart"></canvas></div>
-    </div>
-  </aside>
 </div>
-
-<!-- MOBILE NAV -->
-<nav class="mobile-nav" id="mobileNav">
-  <button class="mobile-nav-item active" onclick="switchTab('feed',this)" data-tab="feed">
-    <i data-lucide="inbox" style="width:18px;height:18px"></i>פיד
-  </button>
-  <button class="mobile-nav-item" onclick="switchTab('calendar',this)" data-tab="calendar">
-    <i data-lucide="calendar" style="width:18px;height:18px"></i>לוח
-  </button>
-  <button class="mobile-nav-item" onclick="switchTab('academics',this)" data-tab="academics">
-    <i data-lucide="book-open" style="width:18px;height:18px"></i>לימודים
-  </button>
-  <button class="mobile-nav-item" onclick="switchTab('actions',this)" data-tab="actions">
-    <i data-lucide="check-square" style="width:18px;height:18px"></i>פעולות
-  </button>
-</nav>
-
 <script>
-'use strict';
-
-// ── STATE ─────────────────────────────────
-let state = {
-  activeTab: 'feed',
-  activeChild: 'all',
-  feedFilter: 'all',
-  calYear: new Date().getFullYear(),
-  calMonth: new Date().getMonth(),
-  calToggles: { ran:true, itai:true, noga:true, alon:true },
-  expandedMsgs: new Set(),
-  data: null,
-};
-
-// ── CHILD CONFIG ──────────────────────────
+// ── CONSTANTS ──────────────────────────────────────────────────────────────
 const CHILDREN = {
-  ran:  { label:'רן',   color:'#6366f1', bgCls:'badge-ran'  },
-  itai: { label:'איתי', color:'#10b981', bgCls:'badge-itai' },
-  noga: { label:'נוגה', color:'#f59e0b', bgCls:'badge-noga' },
-  alon: { label:'אלון', color:'#f43f5e', bgCls:'badge-alon' },
+  ran:   { name: 'רן',    color: '#6366f1' },
+  itai:  { name: 'איתי', color: '#10b981' },
+  noga:  { name: 'נוגה', color: '#f59e0b' },
+  alon:  { name: 'אלון', color: '#f43f5e' },
+  rinat: { name: 'רינת', color: '#ef4444' },
+  all:   { name: 'כולם', color: '#7878a0' },
 };
 
-const MONTHS_HE = ['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
-const DAYS_HE   = ['א׳','ב׳','ג׳','ד׳','ה׳','ו׳','ש׳'];
-
-// ── SAMPLE DATA ───────────────────────────
-const SAMPLE = {
-  updated_at: new Date().toISOString(),
-  messages: [
-    { id:1, from:'רינת', phone:'0546702373', group:'הורי כיתה יא7', child:'ran',
-      text:'היי נועם, רן שכח את הספר ביולוגיה בבית, אפשר להביא לו לבית הספר עד 10? תודה רבה',
-      summary:'רן שכח ספר ביולוגיה — צריך להביא עד 10:00',
-      time: new Date(Date.now()-25*60000).toISOString(), isRinat:true, pinned:false, read:false },
-    { id:2, from:'מורה שרון', group:'הורי כיתה ט3', child:'itai',
-      text:'שלום הורים יקרים, מחר יש מבחן מתמטיקה פרקים 4-6. חשוב מאוד להגיע עם מחשבון מדעי. מי שלא יביא לא יוכל להשתמש של חבריו.',
-      summary:'מחר: מבחן מתמטיקה פרקים 4-6 — להביא מחשבון מדעי',
-      time: new Date(Date.now()-2*3600000).toISOString(), isRinat:false, pinned:true, read:true },
-    { id:3, from:'ועד הורים', group:'כיתה ו2', child:'noga',
-      text:'הכתבה בעברית ביום רביעי — חזרו על פרק ז׳ בחוברת. שיהיה לכולם בהצלחה!',
-      summary:'הכתבה עברית ביום ד׳ — פרק ז׳ בחוברת',
-      time: new Date(Date.now()-5*3600000).toISOString(), isRinat:false, pinned:false, read:true },
-    { id:4, from:'גב׳ לוי', group:'שכבה ב׳ לביא', child:'alon',
-      text:'מחר יום שישי מקוצר — יציאה ב-12:30. יש להביא כובע לטיול גן הלאומי. שלא תשכחו!',
-      summary:'מחר: יציאה ב-12:30 — להביא כובע לטיול',
-      time: new Date(Date.now()-8*3600000).toISOString(), isRinat:false, pinned:false, read:false },
-    { id:5, from:'רינת', phone:'0546702373', group:'כיתה ו2', child:'noga',
-      text:'נוגה מרגישה לא טוב היום, לקחתי אותה למרפאה. אדכן אחרי הבדיקה.',
-      summary:'נוגה אצל הרופא — עדכון בהמשך',
-      time: new Date(Date.now()-3*3600000).toISOString(), isRinat:true, pinned:false, read:false },
-    { id:6, from:'מנהלת בית הספר', group:'הורי כיתה יא7', child:'ran',
-      text:'שלום הורים, ביום ג׳ הקרוב תתקיים הרצאת הורים בנושא בגרויות. נא לאשר הגעה דרך האפליקציה.',
-      summary:'ביום ג׳: הרצאת הורים על בגרויות — יש לאשר',
-      time: new Date(Date.now()-26*3600000).toISOString(), isRinat:false, pinned:false, read:false },
-  ],
-  academics: [
-    { id:1, type:'exam',      child:'ran',  subject:'ביולוגיה',  icon:'🔬', date: new Date(Date.now()+2*86400000).toISOString(),  notes:'פרקים 8-10', done:false },
-    { id:2, type:'exam',      child:'itai', subject:'מתמטיקה',  icon:'📐', date: new Date(Date.now()+1*86400000).toISOString(),  notes:'פרקים 4-6, מחשבון מדעי', done:false },
-    { id:3, type:'dictation', child:'noga', subject:'עברית',    icon:'📖', date: new Date(Date.now()+3*86400000).toISOString(),  notes:'פרק ז׳ בחוברת', done:false },
-    { id:4, type:'homework',  child:'alon', subject:'קריאה',    icon:'📚', date: new Date(Date.now()+1*86400000).toISOString(),  notes:'עמ׳ 23-24', done:false },
-    { id:5, type:'task',      child:'ran',  subject:'אנגלית',   icon:'🇬🇧', date: new Date(Date.now()+5*86400000).toISOString(),  notes:'רפרט על Shakespeare — עמ׳ 3', done:false },
-    { id:6, type:'exam',      child:'itai', subject:'היסטוריה', icon:'🏛️', date: new Date(Date.now()+8*86400000).toISOString(),  notes:'מלחמת העולם הראשונה', done:false },
-    { id:7, type:'homework',  child:'noga', subject:'מדע',      icon:'⚗️', date: new Date(Date.now()+2*86400000).toISOString(),  notes:'תרגילים 1-5 בדף', done:true },
-  ],
-  events: [
-    { id:1, child:'ran',  title:'טיול שנתי',       date: new Date(Date.now()+10*86400000).toISOString(), group:'הורי יא7' },
-    { id:2, child:'noga', title:'מסיבת סיום',       date: new Date(Date.now()+15*86400000).toISOString(), group:'כיתה ו2' },
-    { id:3, child:'alon', title:'יום ספורט',        date: new Date(Date.now()+4*86400000).toISOString(),  group:'שכבה ב׳' },
-    { id:4, child:'itai', title:'הרצאת הורים',      date: new Date(Date.now()+7*86400000).toISOString(),  group:'הורי ט3' },
-    { id:5, child:'ran',  title:'הרצאת בגרויות',    date: new Date(Date.now()+2*86400000).toISOString(),  group:'הורי יא7' },
-  ],
-  actions: [
-    { id:1, child:'ran',  title:'להביא ספר ביולוגיה לבית ספר', priority:'urgent', dueDate: new Date(Date.now()+0.3*86400000).toISOString(), done:false, source:'רינת' },
-    { id:2, child:'alon', title:'להכין כובע לטיול מחר',         priority:'urgent', dueDate: new Date(Date.now()+0.5*86400000).toISOString(), done:false, source:'גב׳ לוי' },
-    { id:3, child:'itai', title:'לסייע בחזרה למבחן מתמטיקה',    priority:'high',   dueDate: new Date(Date.now()+1*86400000).toISOString(),  done:false, source:'מורה שרון' },
-    { id:4, child:'noga', title:'לחזור על פרק ז׳ להכתבה',       priority:'high',   dueDate: new Date(Date.now()+2*86400000).toISOString(),  done:false, source:'ועד הורים' },
-    { id:5, child:'ran',  title:'לאשר הגעה להרצאת הורים',       priority:'normal', dueDate: new Date(Date.now()+1*86400000).toISOString(),  done:false, source:'מנהלת' },
-  ],
-};
-
-// ── UTILS ─────────────────────────────────
-function timeAgo(iso) {
-  const diff = Math.round((Date.now() - new Date(iso)) / 60000);
-  if (diff < 1)  return 'עכשיו';
-  if (diff < 60) return `לפני ${diff} דק׳`;
-  const h = Math.round(diff / 60);
-  if (h < 24)    return `לפני ${h} שע׳`;
-  return `לפני ${Math.round(h/24)} ימים`;
+function child(key) {
+  return CHILDREN[key] || { name: key, color: '#7878a0' };
 }
 
-function daysUntil(iso) {
-  return Math.ceil((new Date(iso) - Date.now()) / 86400000);
+// ── UTILS ──────────────────────────────────────────────────────────────────
+function esc(str) {
+  return String(str ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
-function fmtDate(iso) {
+function rgba(hex, a) {
+  const r = parseInt(hex.slice(1,3),16);
+  const g = parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+
+// ── TIME / DATE ────────────────────────────────────────────────────────────
+function fmtTime(iso) {
+  const d = new Date(iso), now = new Date();
+  const diffH = (now - d) / 36e5;
+  if (diffH < 24)  return d.toLocaleTimeString('he-IL', { hour:'2-digit', minute:'2-digit' });
+  if (diffH < 168) return d.toLocaleDateString('he-IL', { weekday:'short' });
+  return d.toLocaleDateString('he-IL', { day:'numeric', month:'numeric' });
+}
+
+function fmtDateLabel(iso) {
+  const d = new Date(iso), now = new Date();
+  const today  = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const msgDay = new Date(d.getFullYear(),   d.getMonth(),   d.getDate());
+  const diff   = Math.round((msgDay - today) / 864e5);
+  if (diff === 0)  return 'היום';
+  if (diff === 1)  return 'מחר';
+  if (diff === -1) return 'אתמול';
+  return d.toLocaleDateString('he-IL', { weekday:'long', day:'numeric', month:'long' });
+}
+
+function dateKey(iso) {
   const d = new Date(iso);
-  return `${d.getDate()} ב${MONTHS_HE[d.getMonth()]}`;
+  return `${d.getFullYear()}-${String(d.getMonth()).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
-function childColor(child) { return CHILDREN[child]?.color || '#7c3aed'; }
-function childLabel(child) { return CHILDREN[child]?.label || child; }
-function childBadge(child) {
-  const c = CHILDREN[child];
-  if (!c) return '';
-  return `<span class="badge ${c.bgCls}">${c.label}</span>`;
+function groupByDate(items) {
+  const map = new Map();
+  for (const item of items) {
+    const k = dateKey(item.date);
+    if (!map.has(k)) map.set(k, { label: fmtDateLabel(item.date), items: [] });
+    map.get(k).items.push(item);
+  }
+  return [...map.entries()].sort(([a],[b]) => a.localeCompare(b));
 }
 
-function daysBadge(days) {
-  if (days < 0)  return `<span class="days-badge urgent">הסתיים</span>`;
-  if (days === 0) return `<span class="days-badge urgent">היום!</span>`;
-  if (days === 1) return `<span class="days-badge urgent">מחר</span>`;
-  if (days <= 3)  return `<span class="days-badge urgent">${days} ימים</span>`;
-  if (days <= 7)  return `<span class="days-badge soon">${days} ימים</span>`;
-  return `<span class="days-badge ok">${days} ימים</span>`;
+// ── MESSAGE FILTERS ────────────────────────────────────────────────────────
+function isEmojiOnly(text) {
+  const stripped = text
+    .replace(/[\u{1F000}-\u{1FFFF}]/gu, '')
+    .replace(/[\u{2600}-\u{27BF}]/gu,   '')
+    .replace(/[\u{FE00}-\u{FEFF}]/gu,   '')
+    .replace(/[\u{1F900}-\u{1FAFF}]/gu, '')
+    .replace(/\uFE0F/g, '')
+    .replace(/[!\s.,;:'"()\-_*#@\u200f\u200e]/g, '');
+  return stripped.length === 0;
 }
 
-// ── FILTER HELPERS ────────────────────────
-function visibleMessages() {
-  const d = state.data;
-  if (!d) return [];
-  let msgs = d.messages.filter(m => {
-    if (state.activeChild !== 'all' && m.child !== state.activeChild) return false;
-    if (state.feedFilter === 'unread' && m.read) return false;
-    if (state.feedFilter === 'pinned' && !m.pinned) return false;
-    if (state.feedFilter === 'rinat' && !m.isRinat) return false;
-    return true;
-  });
-  // Sort: Rinat first, then by time
-  return msgs.sort((a,b) => {
-    if (a.isRinat && !b.isRinat) return -1;
-    if (!a.isRinat && b.isRinat) return 1;
-    return new Date(b.time) - new Date(a.time);
-  });
+function wordCount(text) {
+  return text.trim().split(/\s+/).filter(Boolean).length;
 }
 
-function visibleAcademics() {
-  if (!state.data) return [];
-  return state.data.academics.filter(a =>
-    state.activeChild === 'all' || a.child === state.activeChild
-  );
+function shouldShow(msg) {
+  if (msg.isRinat) return true;
+  const t = (msg.summary || msg.text || '').trim();
+  if (!t) return false;
+  if (isEmojiOnly(t)) return false;
+  if (wordCount(t) < 3) return false;
+  return true;
 }
 
-function visibleActions() {
-  if (!state.data) return [];
-  return state.data.actions.filter(a =>
-    state.activeChild === 'all' || a.child === state.activeChild
-  );
+// ── HTML BUILDERS ──────────────────────────────────────────────────────────
+function sectionLabel(text) {
+  return `<div class="section-label"><span>${esc(text)}</span><div class="section-line"></div></div>`;
 }
 
-// ── RENDER: FEED ──────────────────────────
-function renderFeed() {
-  const msgs = visibleMessages();
-  const rinatMsgs = msgs.filter(m => m.isRinat);
-  const otherMsgs = msgs.filter(m => !m.isRinat || state.feedFilter === 'rinat');
+function msgCard(msg) {
+  const c   = child(msg.child);
+  const txt = msg.summary || msg.text || '';
+  const bg  = rgba(c.color, 0.14);
+  const classes = ['card',
+    !msg.read  ? 'unread' : '',
+    msg.pinned ? 'pinned' : '',
+  ].filter(Boolean).join(' ');
 
-  // Rinat sticky zone
-  const stickyZone = document.getElementById('rinat-sticky-zone');
-  if (rinatMsgs.length && state.feedFilter !== 'rinat') {
-    stickyZone.innerHTML = rinatMsgs.map(m => `
-      <div class="rinat-sticky">
-        <div class="rinat-sticky-header">🔴 הודעה מרינת · ${timeAgo(m.time)}</div>
-        <div style="font-size:14px;color:var(--t2)">${m.summary}</div>
-        <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-          ${childBadge(m.child)}
-          <span class="badge" style="background:var(--surface);color:var(--t3)">${m.group}</span>
-          ${!m.read ? '<span class="badge" style="background:rgba(124,58,237,0.15);color:var(--accent)">חדש</span>' : ''}
+  return `
+    <div class="${classes}" data-id="${msg.id}">
+      <div class="strip" style="background:${c.color}"></div>
+      <div class="card-body">
+        <div class="msg-top">
+          <div class="msg-chips">
+            <span class="child-chip" style="background:${bg};color:${c.color}">${c.name}</span>
+            ${msg.pinned  ? '<span class="pin-marker">📌 נעוץ</span>' : ''}
+            ${!msg.read   ? '<span class="unread-dot"></span>' : ''}
+          </div>
+          <span class="card-time">${fmtTime(msg.time)}</span>
         </div>
-      </div>`).join('');
-  } else {
-    stickyZone.innerHTML = '';
+        <div class="msg-from">${esc(msg.from || msg.group || '')}</div>
+        <div class="msg-text">${esc(txt)}</div>
+      </div>
+    </div>`;
+}
+
+function eventCard(ev) {
+  const c  = child(ev.child);
+  const bg = rgba(c.color, 0.14);
+  return `
+    <div class="card">
+      <div class="strip" style="background:${c.color}"></div>
+      <div class="card-body">
+        <div class="ev-title">${esc(ev.title)}</div>
+        <div class="ev-meta">
+          <span class="child-chip-sm" style="background:${bg};color:${c.color}">${c.name}</span>
+          <span class="ev-date">${fmtDateLabel(ev.date)}</span>
+          ${ev.group ? `<span class="ev-group">${esc(ev.group)}</span>` : ''}
+        </div>
+      </div>
+    </div>`;
+}
+
+function academicCard(item) {
+  const c  = child(item.child);
+  const bg = rgba(c.color, 0.14);
+  return `
+    <div class="card">
+      <div class="strip" style="background:${c.color}"></div>
+      <div class="card-body">
+        <div class="ev-title">${esc(item.title)}</div>
+        <div class="ev-meta">
+          <span class="child-chip-sm" style="background:${bg};color:${c.color}">${c.name}</span>
+          ${item.type ? `<span class="type-badge">${esc(item.type)}</span>` : ''}
+          <span class="ev-date">${fmtDateLabel(item.date)}</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── RENDER ─────────────────────────────────────────────────────────────────
+function renderFeed(data) {
+  const tab  = document.getElementById('tab-feed');
+  const msgs = (data.messages || []).filter(shouldShow);
+  const rinat  = msgs.filter(m => m.isRinat);
+  const normal = msgs.filter(m => !m.isRinat);
+
+  let html = '';
+
+  if (rinat.length > 0) {
+    html += `<div class="rinat-section">
+      <div class="rinat-header"><div class="rinat-pulse"></div>הודעות מרינת</div>
+      ${rinat.map(msgCard).join('')}
+    </div>`;
   }
 
-  const feedList = document.getElementById('feed-list');
-  const displayMsgs = state.feedFilter === 'rinat' ? msgs : otherMsgs;
+  if (normal.length === 0 && rinat.length === 0) {
+    html += `<div class="empty">
+      <div class="empty-icon">💬</div>
+      <div class="empty-title">אין הודעות עדיין</div>
+      <div class="empty-sub">הודעות מקבוצות ה-WhatsApp יופיעו כאן</div>
+    </div>`;
+  } else {
+    html += normal.map(msgCard).join('');
+  }
 
-  if (!displayMsgs.length) {
-    feedList.innerHTML = `<div class="empty-state"><span class="empty-icon">📭</span><div class="empty-text">אין הודעות להצגה<br>בסינון הנוכחי</div></div>`;
+  tab.innerHTML = html;
+
+  const unread = msgs.filter(m => !m.read).length;
+  const btn = document.querySelector('[data-tab="feed"]');
+  btn.querySelector('.nav-badge')?.remove();
+  if (unread > 0) btn.insertAdjacentHTML('beforeend', `<span class="nav-badge">${unread}</span>`);
+}
+
+function renderAcademics(data) {
+  const tab   = document.getElementById('tab-academics');
+  const items = data.academics || [];
+
+  if (items.length === 0) {
+    tab.innerHTML = `<div class="empty">
+      <div class="empty-icon">📚</div>
+      <div class="empty-title">אין מטלות קרובות</div>
+      <div class="empty-sub">מבחנים, הכתבות ושיעורי בית יופיעו כאן</div>
+    </div>`;
     return;
   }
 
-  feedList.innerHTML = displayMsgs.map(m => `
-    <div class="card msg-card ${m.isRinat?'rinat':''}" data-child="${m.child}" data-id="${m.id}">
-      <div class="msg-header">
-        ${m.isRinat ? '<span class="rinat-badge">🔴 רינת</span>' : ''}
-        <span class="sender-name">${!m.isRinat ? m.from : ''}</span>
-        <span class="group-badge">${m.group}</span>
-        ${childBadge(m.child)}
-        ${!m.read ? '<span class="badge" style="background:rgba(124,58,237,0.15);color:var(--accent);font-size:10px">חדש</span>' : ''}
-        <span class="time-ago">${timeAgo(m.time)}</span>
-      </div>
-      <div class="msg-summary">${m.summary}</div>
-      <div class="msg-full" id="full-${m.id}">${m.text}</div>
-      <button class="expand-btn" onclick="toggleExpand(${m.id},this)" id="expand-${m.id}">קרא עוד ›</button>
-      <div class="msg-actions">
-        <button class="icon-btn ${m.pinned?'pinned':''}" title="${m.pinned?'הסר נעיצה':'נעץ'}" onclick="togglePin(${m.id},this)">
-          📌
-        </button>
-        <button class="icon-btn" title="הוסף ליומן" onclick="addToCalendar(${m.id})">
-          📅
-        </button>
-        <button class="icon-btn" title="סמן כבוצע" onclick="markDone(${m.id})">
-          ✅
-        </button>
-      </div>
-    </div>`).join('');
-}
-
-function toggleExpand(id, btn) {
-  const el = document.getElementById(`full-${id}`);
-  const isOpen = el.classList.toggle('open');
-  btn.textContent = isOpen ? 'הסתר ‹' : 'קרא עוד ›';
-  if (state.data) {
-    const msg = state.data.messages.find(m => m.id === id);
-    if (msg && !msg.read) { msg.read = true; renderBadges(); }
+  const sorted = [...items].sort((a,b) => new Date(a.date) - new Date(b.date));
+  let html = '';
+  for (const [, { label, items: grp }] of groupByDate(sorted)) {
+    html += sectionLabel(label) + grp.map(academicCard).join('');
   }
+  tab.innerHTML = html;
 }
 
-function togglePin(id, btn) {
-  const msg = state.data.messages.find(m => m.id === id);
-  if (msg) { msg.pinned = !msg.pinned; btn.classList.toggle('pinned'); }
-}
+function renderCalendar(data) {
+  const tab    = document.getElementById('tab-calendar');
+  const events = data.events || [];
 
-function markDone(id) {
-  const msg = state.data.messages.find(m => m.id === id);
-  if (msg) { msg.read = true; renderFeed(); renderBadges(); }
-}
-
-function addToCalendar(id) {
-  // Placeholder
-  const msg = state.data.messages.find(m => m.id === id);
-  if (msg) alert(`📅 הוסף ל-לוח שנה:\n${msg.summary}`);
-}
-
-// ── RENDER: ACADEMICS ─────────────────────
-function renderAcademics() {
-  const items = visibleAcademics();
-  const sections = [
-    { type:'exam',      label:'📝 מבחנים קרובים',    filter: a => a.type==='exam' },
-    { type:'dictation', label:'📖 הכתבות',            filter: a => a.type==='dictation' },
-    { type:'homework',  label:'🏠 שיעורי בית',        filter: a => a.type==='homework' },
-    { type:'task',      label:'📋 מטלות להגשה',       filter: a => a.type==='task' },
-  ];
-
-  const el = document.getElementById('academics-content');
-  el.innerHTML = sections.map(sec => {
-    const secItems = items.filter(sec.filter).sort((a,b) => new Date(a.date)-new Date(b.date));
-    if (!secItems.length) return '';
-    return `
-    <div class="academic-section">
-      <div class="section-header">
-        <div class="section-title">${sec.label}</div>
-        <span class="section-count">${secItems.filter(a=>!a.done).length} פתוח</span>
-      </div>
-      ${secItems.map(a => {
-        const days = daysUntil(a.date);
-        return `
-        <div class="academic-card ${a.done?'done':''}">
-          <button class="done-toggle ${a.done?'checked':''}" onclick="toggleAcademic(${a.id})" title="סמן כבוצע">
-            ${a.done ? '✓' : ''}
-          </button>
-          <div class="ac-icon">${a.icon}</div>
-          <div class="ac-info">
-            <div class="ac-subject">${a.subject}</div>
-            <div class="ac-notes">${a.notes}</div>
-            <div style="margin-top:4px">${childBadge(a.child)}</div>
-          </div>
-          <div class="ac-right">
-            ${!a.done ? daysBadge(days) : '<span class="badge" style="background:rgba(16,185,129,0.15);color:#10b981">✓ בוצע</span>'}
-            <span style="font-size:11px;color:var(--t3)">${fmtDate(a.date)}</span>
-          </div>
-        </div>`;
-      }).join('')}
+  if (events.length === 0) {
+    tab.innerHTML = `<div class="empty">
+      <div class="empty-icon">📅</div>
+      <div class="empty-title">אין אירועים קרובים</div>
+      <div class="empty-sub">אירועי לוח השנה יופיעו כאן</div>
     </div>`;
-  }).join('') || `<div class="empty-state"><span class="empty-icon">🎉</span><div class="empty-text">אין מטלות פתוחות!<br>כל הכבוד לילדים</div></div>`;
-}
-
-function toggleAcademic(id) {
-  const item = state.data.academics.find(a => a.id === id);
-  if (item) { item.done = !item.done; renderAcademics(); renderBadges(); renderDigest(); }
-}
-
-// ── RENDER: ACTIONS ───────────────────────
-function renderActions() {
-  const actions = visibleActions().sort((a,b) => {
-    const pr = { urgent:0, high:1, normal:2 };
-    return (pr[a.priority]||2) - (pr[b.priority]||2);
-  });
-
-  const done   = actions.filter(a=>a.done).length;
-  const pending = actions.filter(a=>!a.done).length;
-  const urgent  = actions.filter(a=>!a.done && a.priority==='urgent').length;
-
-  document.getElementById('action-stats').innerHTML = `
-    <div class="card" style="padding:10px 16px;display:flex;align-items:center;gap:10px;min-width:0">
-      <span style="font-size:22px;font-weight:800;color:var(--urgent)">${urgent}</span>
-      <span style="font-size:13px;color:var(--t3)">דחוף</span>
-    </div>
-    <div class="card" style="padding:10px 16px;display:flex;align-items:center;gap:10px">
-      <span style="font-size:22px;font-weight:800;color:var(--high)">${pending}</span>
-      <span style="font-size:13px;color:var(--t3)">ממתין</span>
-    </div>
-    <div class="card" style="padding:10px 16px;display:flex;align-items:center;gap:10px">
-      <span style="font-size:22px;font-weight:800;color:var(--normal)">${done}</span>
-      <span style="font-size:13px;color:var(--t3)">בוצע</span>
-    </div>`;
-
-  const list = document.getElementById('actions-list');
-  if (!actions.length) {
-    list.innerHTML = `<div class="empty-state"><span class="empty-icon">✅</span><div class="empty-text">אין פעולות ממתינות</div></div>`;
     return;
   }
-  const prColors = { urgent:'var(--urgent)', high:'var(--high)', normal:'var(--normal)' };
-  const prLabels = { urgent:'🔴 דחוף', high:'🟡 חשוב', normal:'🟢 רגיל' };
 
-  list.innerHTML = actions.map(a => `
-    <div class="action-card ${a.done?'done':''}">
-      <button class="done-toggle ${a.done?'checked':''}" onclick="toggleAction(${a.id})">
-        ${a.done ? '✓' : ''}
-      </button>
-      <span class="priority-dot" style="background:${prColors[a.priority]}"></span>
-      <div style="flex:1;min-width:0">
-        <div class="action-title">${a.title}</div>
-        <div class="action-meta">
-          ${childBadge(a.child)}
-          <span class="badge" style="background:var(--surface);color:var(--t3);font-size:10px">${prLabels[a.priority]}</span>
-          <span class="action-source">מקור: ${a.source}</span>
-          <span style="font-size:11px;color:var(--t3)">⏰ ${fmtDate(a.dueDate)}</span>
-        </div>
-      </div>
-    </div>`).join('');
+  const sorted = [...events].sort((a,b) => new Date(a.date) - new Date(b.date));
+  let html = '';
+  for (const [, { label, items }] of groupByDate(sorted)) {
+    html += sectionLabel(label) + items.map(eventCard).join('');
+  }
+  tab.innerHTML = html;
 }
 
-function toggleAction(id) {
-  const item = state.data.actions.find(a => a.id === id);
-  if (item) { item.done = !item.done; renderActions(); renderBadges(); }
-}
+function renderPinned(data) {
+  const tab    = document.getElementById('tab-pinned');
+  const pinned = (data.messages || []).filter(m => m.pinned);
 
-// ── RENDER: CALENDAR ─────────────────────
-function renderCalendar() {
-  const { calYear:yr, calMonth:mo } = state;
-  document.getElementById('cal-month-label').textContent = `${MONTHS_HE[mo]} ${yr}`;
+  const btn = document.querySelector('[data-tab="pinned"]');
+  btn.querySelector('.nav-badge')?.remove();
+  if (pinned.length > 0) btn.insertAdjacentHTML('beforeend', `<span class="nav-badge">${pinned.length}</span>`);
 
-  // Child toggles
-  const togglesEl = document.getElementById('cal-toggles');
-  togglesEl.innerHTML = Object.entries(CHILDREN).map(([k,c]) => `
-    <button class="cal-toggle ${state.calToggles[k]?'active':''}"
-      onclick="toggleCalChild('${k}',this)" style="${state.calToggles[k]?`border-color:${c.color};color:${c.color}`:''}">
-      <span class="cal-dot" style="background:${state.calToggles[k]?c.color:'var(--t3)'}"></span>
-      ${c.label}
-    </button>`).join('');
-
-  const firstDay = new Date(yr, mo, 1).getDay();
-  const daysInMonth = new Date(yr, mo+1, 0).getDate();
-  const today = new Date();
-  const todayStr = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
-
-  const events = (state.data?.events||[]).concat(
-    (state.data?.academics||[]).filter(a => !a.done).map(a => ({
-      id:'ac-'+a.id, child:a.child, title:`${a.icon} ${a.subject}`, date:a.date
-    }))
-  ).filter(e => state.calToggles[e.child] &&
-    (state.activeChild === 'all' || e.child === state.activeChild));
-
-  // Build grid
-  let gridHTML = DAYS_HE.map(d => `<div class="cal-day-name">${d}</div>`).join('');
-
-  // Padding before first day (Sun=0)
-  // Israeli calendar: Sunday is first
-  for (let i=0; i<firstDay; i++) gridHTML += `<div class="cal-day other-month"></div>`;
-
-  for (let d=1; d<=daysInMonth; d++) {
-    const dateStr = `${yr}-${mo}-${d}`;
-    const isToday = yr===today.getFullYear() && mo===today.getMonth() && d===today.getDate();
-    const dayEvents = events.filter(e => {
-      const ed = new Date(e.date);
-      return ed.getFullYear()===yr && ed.getMonth()===mo && ed.getDate()===d;
-    });
-    gridHTML += `
-    <div class="cal-day ${isToday?'today':''}" onclick="showCalDay(${yr},${mo},${d})">
-      <div class="cal-day-num">${d}</div>
-      <div class="cal-dots">
-        ${dayEvents.map(e => `<span class="cal-event-dot" style="background:${childColor(e.child)}" title="${e.title}"></span>`).join('')}
-      </div>
+  if (pinned.length === 0) {
+    tab.innerHTML = `<div class="empty">
+      <div class="empty-icon">📌</div>
+      <div class="empty-title">אין הודעות נעוצות</div>
+      <div class="empty-sub">הודעות חשובות שתנעץ יופיעו כאן</div>
     </div>`;
+    return;
   }
 
-  document.getElementById('cal-grid').innerHTML = gridHTML;
-  document.getElementById('cal-events-detail').innerHTML = '';
+  tab.innerHTML = pinned.map(msgCard).join('');
 }
 
-function toggleCalChild(child, btn) {
-  state.calToggles[child] = !state.calToggles[child];
-  renderCalendar();
-}
+// ── TAB SWITCHING ──────────────────────────────────────────────────────────
+let activeTab = 'feed';
 
-function changeMonth(dir) {
-  state.calMonth += dir;
-  if (state.calMonth > 11) { state.calMonth=0; state.calYear++; }
-  if (state.calMonth < 0)  { state.calMonth=11; state.calYear--; }
-  renderCalendar();
-}
-
-function showCalDay(yr, mo, d) {
-  const date = new Date(yr, mo, d);
-  const events = (state.data?.events||[]).concat(
-    (state.data?.academics||[]).map(a => ({
-      id:'ac-'+a.id, child:a.child, title:`${a.icon} ${a.subject}`, date:a.date,
-      notes: a.notes, type: a.type
-    }))
-  ).filter(e => {
-    const ed = new Date(e.date);
-    return ed.getFullYear()===yr && ed.getMonth()===mo && ed.getDate()===d &&
-      (state.activeChild==='all' || e.child===state.activeChild);
+function switchTab(id) {
+  if (id === activeTab) return;
+  document.querySelector('.tab.active')?.classList.remove('active');
+  document.getElementById('tab-' + id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === id);
   });
-
-  const el = document.getElementById('cal-events-detail');
-  if (!events.length) { el.innerHTML=''; return; }
-  el.innerHTML = `
-    <div class="section-title" style="margin-bottom:12px">📅 ${d} ב${MONTHS_HE[mo]}</div>
-    ${events.map(e => `
-      <div class="card" style="margin-bottom:8px;border-right:3px solid ${childColor(e.child)}">
-        <div style="display:flex;align-items:center;gap:8px">
-          <span style="font-size:16px">${e.title}</span>
-          ${childBadge(e.child)}
-          ${e.group ? `<span class="badge" style="background:var(--surface);color:var(--t3)">${e.group}</span>` : ''}
-        </div>
-        ${e.notes ? `<div style="font-size:12px;color:var(--t3);margin-top:6px">${e.notes}</div>` : ''}
-      </div>`).join('')}`;
+  activeTab = id;
 }
 
-// ── RENDER: RIGHT PANEL ───────────────────
-function renderDigest() {
-  if (!state.data) return;
-  const today = new Date();
+document.querySelectorAll('.nav-item').forEach(btn => {
+  btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+});
 
-  // Upcoming academics (next 3 days, not done)
-  const urgent = state.data.academics
-    .filter(a => !a.done && daysUntil(a.date) <= 3)
-    .sort((a,b) => new Date(a.date)-new Date(b.date));
+// ── INIT ───────────────────────────────────────────────────────────────────
+async function init() {
+  try {
+    const res  = await fetch('./data.json');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
 
-  // Rinat messages today
-  const rinatToday = state.data.messages.filter(m =>
-    m.isRinat && (Date.now()-new Date(m.time))<86400000
-  );
+    const meta = document.getElementById('header-meta');
+    meta.textContent = data.updated_at ? ('עודכן ' + fmtTime(data.updated_at)) : '';
 
-  const items = [];
-  rinatToday.forEach(m => items.push({ emoji:'🔴', text:m.summary, cls:'digest-urgent' }));
-  urgent.forEach(a => {
-    const days = daysUntil(a.date);
-    const when = days===0?'היום':days===1?'מחר':`בעוד ${days} ימים`;
-    items.push({ emoji:a.icon, text:`${a.subject} ל${childLabel(a.child)} — ${when}`, cls: days<=1?'digest-urgent':'' });
-  });
-
-  const el = document.getElementById('daily-digest');
-  el.innerHTML = items.length
-    ? items.map(i => `<div class="digest-item"><span class="digest-emoji">${i.emoji}</span><span class="digest-text ${i.cls}">${i.text}</span></div>`).join('')
-    : `<div style="font-size:13px;color:var(--t3);text-align:center;padding:12px">😊 הכל שקט היום</div>`;
-
-  // Upcoming events
-  const upcomingEl = document.getElementById('upcoming-list');
-  const upcoming = [...(state.data.events||[]), ...state.data.academics.filter(a=>!a.done)]
-    .filter(e => daysUntil(e.date) >= 0 && daysUntil(e.date) <= 14)
-    .sort((a,b) => new Date(a.date)-new Date(b.date))
-    .slice(0,4);
-
-  upcomingEl.innerHTML = upcoming.map(e => {
-    const d = new Date(e.date);
-    return `<div class="upcoming-item">
-      <div class="upcoming-date-box">
-        <div class="upcoming-day">${d.getDate()}</div>
-        <div class="upcoming-month">${MONTHS_HE[d.getMonth()].slice(0,3)}</div>
-      </div>
-      <div class="upcoming-info">
-        <div class="upcoming-title">${e.icon||'📅'} ${e.title||e.subject}</div>
-        <div class="upcoming-child" style="color:${childColor(e.child)}">${childLabel(e.child)}</div>
-      </div>
-      <span class="days-badge ${daysUntil(e.date)<=2?'urgent':daysUntil(e.date)<=5?'soon':'ok'}">${daysUntil(e.date)===0?'היום':daysUntil(e.date)===1?'מחר':daysUntil(e.date)+' י׳'}</span>
+    renderFeed(data);
+    renderAcademics(data);
+    renderCalendar(data);
+    renderPinned(data);
+  } catch (err) {
+    console.error(err);
+    document.getElementById('tab-feed').innerHTML = `<div class="empty">
+      <div class="empty-icon">⚠️</div>
+      <div class="empty-title">שגיאה בטעינה</div>
+      <div class="empty-sub">${esc(err.message)}</div>
     </div>`;
-  }).join('') || `<div style="font-size:13px;color:var(--t3);text-align:center;padding:12px">אין אירועים קרובים</div>`;
-}
-
-function renderWeekChart() {
-  const ctx = document.getElementById('weekChart');
-  if (!ctx || !state.data) return;
-  const counts = { ran:0, itai:0, noga:0, alon:0 };
-  state.data.messages.forEach(m => { if (counts[m.child]!==undefined) counts[m.child]++; });
-
-  if (window._weekChart) window._weekChart.destroy();
-  window._weekChart = new Chart(ctx, {
-    type:'doughnut',
-    data: {
-      labels: ['רן','איתי','נוגה','אלון'],
-      datasets:[{ data: Object.values(counts), backgroundColor:['#6366f1','#10b981','#f59e0b','#f43f5e'], borderWidth:0 }]
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      plugins:{
-        legend:{ position:'right', labels:{ color:'#94a3b8', font:{size:11,family:'Heebo'}, boxWidth:10, padding:8 } },
-        tooltip:{ callbacks:{ label: ctx => ` ${ctx.label}: ${ctx.parsed} הודעות` } }
-      },
-      cutout:'65%'
-    }
-  });
-}
-
-// ── RENDER: BADGES ────────────────────────
-function renderBadges() {
-  if (!state.data) return;
-  const msgs = state.data.messages;
-  const unread = (child) => msgs.filter(m => !m.read && (child==='all'||m.child===child)).length;
-  document.getElementById('badge-all').textContent  = unread('all');
-  document.getElementById('badge-ran').textContent  = unread('ran');
-  document.getElementById('badge-itai').textContent = unread('itai');
-  document.getElementById('badge-noga').textContent = unread('noga');
-  document.getElementById('badge-alon').textContent = unread('alon');
-  document.getElementById('badge-feed').textContent = unread('all');
-
-  const openAcademics = state.data.academics.filter(a=>!a.done&&
-    (state.activeChild==='all'||a.child===state.activeChild)).length;
-  const openActions = state.data.actions.filter(a=>!a.done&&
-    (state.activeChild==='all'||a.child===state.activeChild)).length;
-  document.getElementById('badge-academics').textContent = openAcademics;
-  document.getElementById('badge-actions').textContent   = openActions;
-
-  document.getElementById('stat-msgs').textContent   = msgs.filter(m=>(Date.now()-new Date(m.time))<86400000).length;
-  document.getElementById('stat-events').textContent = (state.data.events||[]).filter(e=>daysUntil(e.date)<=7&&daysUntil(e.date)>=0).length;
-  document.getElementById('stat-tasks').textContent  = state.data.academics.filter(a=>!a.done).length;
-  document.getElementById('stat-urgent').textContent = state.data.actions.filter(a=>!a.done&&a.priority==='urgent').length;
-}
-
-// ── NAV ───────────────────────────────────
-const TAB_TITLES = { feed:'📬 פיד הקבוצות', calendar:'📅 לוח שנה', academics:'📚 לימודים', actions:'✅ פעולות' };
-
-function switchTab(tab, btn) {
-  state.activeTab = tab;
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('[data-tab="'+tab+'"]').forEach(t => t.classList.add('active'));
-  document.querySelectorAll('[id^="tab-"]').forEach(t => t.style.display='none');
-  document.getElementById('tab-'+tab).style.display='block';
-  document.getElementById('pageTitle').textContent = TAB_TITLES[tab];
-  renderCurrentTab();
-}
-
-function setChild(child, btn) {
-  state.activeChild = child;
-  document.querySelectorAll('.child-chip').forEach(c => c.classList.remove('active'));
-  btn.classList.add('active');
-  renderCurrentTab();
-  renderBadges();
-}
-
-function setFilter(filter, btn) {
-  state.feedFilter = filter;
-  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-  btn.classList.add('active');
-  renderFeed();
-}
-
-function renderCurrentTab() {
-  switch(state.activeTab) {
-    case 'feed':      renderFeed(); break;
-    case 'calendar':  renderCalendar(); break;
-    case 'academics': renderAcademics(); break;
-    case 'actions':   renderActions(); break;
+    document.getElementById('header-meta').textContent = 'שגיאה';
   }
 }
 
-function refreshData() {
-  const btn = document.getElementById('refreshBtn');
-  btn.style.opacity = '0.5';
-  // In production: fetch('./data.json?v='+Date.now()).then(r=>r.json()).then(loadData)
-  setTimeout(() => { btn.style.opacity='1'; }, 800);
-}
-
-
-// ── CUSTODY BANNER ────────────────────────
-function renderCustodyBanner(custody) {
-  if (!custody) return;
-  let el = document.getElementById('custody-banner');
-  if (!el) {
-    el = document.createElement('div');
-    el.id = 'custody-banner';
-    el.style.cssText = 'background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.3);border-radius:10px;padding:10px 16px;margin:0 16px 12px;font-size:13px;color:#c4b5fd;display:flex;align-items:center;gap:8px;';
-    const header = document.querySelector('.header');
-    if (header && header.nextSibling) header.parentNode.insertBefore(el, header.nextSibling);
-  }
-  if (custody.today) {
-    el.innerHTML = '👨‍👧‍👦 <strong>הילדים אצלך היום</strong>';
-  } else if (custody.next) {
-    const d = new Date(custody.next.start);
-    const days = Math.ceil((d - Date.now())/86400000);
-    const str = d.toLocaleDateString("he-IL",{weekday:"long",day:"numeric",month:"long"});
-    el.innerHTML = `📅 <strong>הילדים מגיעים בעוד  ימים</strong> — `;
-  } else {
-    el.innerHTML = '📅 הילדים אצל ההורה השני';
-  }
-}
-
-// ── INIT ──────────────────────────────────
-function loadData(data) {
-  state.data = data;
-  renderBadges();
-  renderCurrentTab();
-  renderDigest();
-  renderWeekChart();
-}
-
-function init() {
-  // Date
-  const today = new Date();
-  const days = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
-  document.getElementById('pageDate').textContent =
-    `יום ${days[today.getDay()]}, ${today.getDate()} ב${MONTHS_HE[today.getMonth()]} ${today.getFullYear()}`;
-
-  // Init lucide icons
-  lucide.createIcons();
-
-  // Load real data
-  fetch('./data.json?v='+Date.now())
-    .then(r=>r.json())
-    .then(data => {
-      // merge custody into state
-      if (data.custody) state.custody = data.custody;
-      loadData(data);
-      renderCustodyBanner(data.custody);
-    })
-    .catch(()=>{ console.warn('data.json not found, using sample'); loadData(SAMPLE); });
-}
-
-document.addEventListener('DOMContentLoaded', init);
+init();
 </script>
 </body>
 </html>
