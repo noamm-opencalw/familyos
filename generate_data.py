@@ -4,7 +4,7 @@ FamilyOS — generate_data.py
 שולף נתונים אמיתיים מ-Gmail + Google Calendar ומייצר data.json
 """
 
-import json, subprocess, re, sys
+import json, subprocess, re, sys, os
 from datetime import datetime, timezone, timedelta
 
 ACCOUNT = "noammeir@gmail.com"
@@ -185,9 +185,28 @@ def custody_today(periods):
     return False, None
 
 # ── Main ──────────────────────────────────────────────────────────────────────
+def fetch_whatsapp():
+    """קורא wa_messages.json ומחזיר את ההודעות"""
+    wa_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "wa_messages.json")
+    if not os.path.exists(wa_file):
+        return []
+    try:
+        with open(wa_file, encoding="utf-8") as f:
+            msgs = json.load(f)
+        print(f"💬 Loaded {len(msgs)} WhatsApp messages")
+        return msgs
+    except Exception as e:
+        print(f"  ⚠️  wa_messages.json error: {e}", file=sys.stderr)
+        return []
+
 def main():
     messages  = fetch_messages()
+    wa_msgs   = fetch_whatsapp()
     events, custody_periods, cal_actions = fetch_calendar()
+
+    # מיזוג + מיון לפי זמן (חדש ראשון)
+    all_messages = messages + wa_msgs
+    all_messages.sort(key=lambda m: m.get("time","") or "", reverse=True)
 
     is_custody, current_period = custody_today(custody_periods)
 
@@ -211,7 +230,7 @@ def main():
             "next": next_custody,
             "periods": custody_periods[:8]
         },
-        "messages": messages,
+        "messages": all_messages,
         "academics": [],   # יתווסף בהמשך מ-WhatsApp
         "events": events,
         "actions": cal_actions,
@@ -220,7 +239,7 @@ def main():
     with open(OUTPUT, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ data.json נוצר — {len(messages)} הודעות, {len(events)} אירועים")
+    print(f"✅ data.json נוצר — {len(all_messages)} הודעות ({len(messages)} מייל + {len(wa_msgs)} WA), {len(events)} אירועים")
     return data
 
 if __name__ == "__main__":
