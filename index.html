@@ -1,1560 +1,882 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>Family Hub</title>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>FamilyOS</title>
+<style>
+:root {
+  --ran:   #6366f1;
+  --itai:  #10b981;
+  --noga:  #f59e0b;
+  --alon:  #f43f5e;
+  --all:   #6b7280;
+  --bg:    #0f172a;
+  --card:  #1e293b;
+  --card2: #263347;
+  --border:#334155;
+  --text:  #f1f5f9;
+  --muted: #94a3b8;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  max-width: 430px;
+  margin: 0 auto;
+  overscroll-behavior: none;
+}
+/* ── Header ── */
+.header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(15,23,42,0.95);
+  backdrop-filter: blur(16px);
+  padding: 12px 16px 8px;
+  border-bottom: 1px solid var(--border);
+}
+.header-top {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 8px;
+}
+.app-title { font-size: 20px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
+.app-title span { color: #818cf8; }
+.updated-info { font-size: 11px; color: var(--muted); text-align: center; }
+.refresh-btn {
+  background: none; border: 1px solid var(--border); border-radius: 20px;
+  color: var(--muted); padding: 4px 10px; font-size: 12px; cursor: pointer;
+  display: flex; align-items: center; gap: 4px; transition: all 0.2s;
+}
+.refresh-btn:hover { border-color: #818cf8; color: #818cf8; }
+.refresh-btn.spinning .icon { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
 
-    :root {
-      --bg: #f8f9fa;
-      --card: #ffffff;
-      --accent: #1a73e8;
-      --text: #202124;
-      --text-sec: #5f6368;
-      --text-light: #9aa0a6;
-      --border: #e8eaed;
-      --shadow: 0 1px 3px rgba(0,0,0,0.1);
-      --shadow-md: 0 2px 8px rgba(0,0,0,0.14);
-      --radius: 8px;
-      --radius-chip: 20px;
-      --wa: #25D366;
-      --email: #ea4335;
-      --ran: #6366f1;
-      --itai: #10b981;
-      --noga: #f59e0b;
-      --alon: #f43f5e;
-      --nav-h: 64px;
-      --header-h: 56px;
-    }
+/* ── Filter chips ── */
+.filter-row {
+  display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px;
+  scrollbar-width: none;
+}
+.filter-row::-webkit-scrollbar { display: none; }
+.chip {
+  flex-shrink: 0; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;
+  cursor: pointer; border: 2px solid transparent; transition: all 0.2s;
+  background: var(--card); color: var(--muted);
+}
+.chip.active { color: #fff; }
+.chip[data-child="all"].active  { background: #374151; border-color: #6b7280; }
+.chip[data-child="ran"].active  { background: #4338ca; border-color: var(--ran); }
+.chip[data-child="itai"].active { background: #065f46; border-color: var(--itai); }
+.chip[data-child="noga"].active { background: #92400e; border-color: var(--noga); }
+.chip[data-child="alon"].active { background: #9f1239; border-color: var(--alon); }
 
-    html, body {
-      height: 100%;
-      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow: hidden;
-    }
+/* ── Bottom nav ── */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 430px; z-index: 50;
+  background: rgba(15,23,42,0.97);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  display: flex;
+  padding-bottom: var(--safe-bottom);
+}
+.nav-btn {
+  flex: 1; padding: 10px 0; background: none; border: none; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  color: var(--muted); transition: color 0.2s; font-size: 10px;
+}
+.nav-btn .nav-icon { font-size: 20px; }
+.nav-btn.active { color: #818cf8; }
+.nav-btn:hover { color: var(--text); }
 
-    /* ─── App Shell ─── */
-    #app {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      max-width: 390px;
-      margin: 0 auto;
-      position: relative;
-      background: var(--bg);
-      overflow: hidden;
-    }
+/* ── Screens ── */
+.screen { display: none; padding: 12px 12px 88px; }
+.screen.active { display: block; }
 
-    /* ─── Screens ─── */
-    .screen {
-      display: none;
-      flex: 1;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding-bottom: calc(var(--nav-h) + 8px);
-    }
-    .screen.active { display: block; }
+/* ── Custody banner ── */
+.custody-banner {
+  border-radius: 14px; padding: 14px 16px; margin-bottom: 14px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.custody-banner.today { background: linear-gradient(135deg, #1e3a5f 0%, #1e4060 100%); border: 1px solid #3b82f6; }
+.custody-banner.next  { background: var(--card); border: 1px solid var(--border); }
+.custody-text h3 { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+.custody-text p  { font-size: 13px; color: var(--muted); }
+.custody-icon { font-size: 32px; }
 
-    /* ─── Headers ─── */
-    .app-header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
-      height: var(--header-h);
-      display: flex;
-      align-items: center;
-      padding: 0 16px;
-      gap: 10px;
-    }
-    .app-header .header-title {
-      flex: 1;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .app-header .header-icon {
-      font-size: 22px;
-      color: var(--text-sec);
-      cursor: pointer;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: background .15s;
-    }
-    .app-header .header-icon:hover { background: var(--bg); }
-    .app-header .badge-dot {
-      position: relative;
-    }
-    .app-header .badge-dot::after {
-      content: '';
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      width: 8px;
-      height: 8px;
-      background: var(--email);
-      border-radius: 50%;
-      border: 2px solid var(--card);
-    }
+/* ── Section titles ── */
+.section-title {
+  font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.5px; margin: 16px 0 8px;
+}
 
-    /* ─── Bottom Nav ─── */
-    #bottom-nav {
-      position: sticky;
-      bottom: 0;
-      z-index: 20;
-      background: var(--card);
-      border-top: 1px solid var(--border);
-      height: var(--nav-h);
-      display: flex;
-      align-items: stretch;
-    }
-    .nav-item {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2px;
-      cursor: pointer;
-      color: var(--text-sec);
-      font-size: 11px;
-      transition: color .15s;
-      -webkit-tap-highlight-color: transparent;
-      border: none;
-      background: none;
-    }
-    .nav-item span.material-symbols-outlined { font-size: 22px; }
-    .nav-item.active { color: var(--accent); }
-    .nav-item.active span.material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+/* ── Message cards ── */
+.msg-card {
+  background: var(--card); border-radius: 14px; margin-bottom: 10px;
+  border: 1px solid var(--border); overflow: hidden;
+  transition: border-color 0.2s;
+}
+.msg-card.read { opacity: 0.6; }
+.msg-card-header {
+  padding: 12px 14px;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.child-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 5px;
+}
+.msg-main { flex: 1; min-width: 0; }
+.msg-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.msg-from { font-size: 12px; color: var(--muted); font-weight: 600; }
+.msg-time { font-size: 11px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+.msg-subject { font-size: 14px; font-weight: 600; margin: 3px 0; line-height: 1.3; }
+.msg-preview { font-size: 12px; color: var(--muted); line-height: 1.4; overflow: hidden;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.msg-actions { display: flex; gap: 8px; align-items: center; padding: 0 14px 10px; }
+.badge {
+  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px;
+  text-transform: uppercase; letter-spacing: 0.3px;
+}
+.badge.urgent { background: #7f1d1d; color: #fca5a5; }
+.badge.high   { background: #78350f; color: #fcd34d; }
+.badge.normal { background: #1e293b; color: #94a3b8; }
+.btn-expand {
+  background: var(--card2); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--muted); padding: 4px 10px; font-size: 12px; cursor: pointer;
+  display: flex; align-items: center; gap: 4px; transition: all 0.2s;
+}
+.btn-expand:hover { color: var(--text); border-color: #818cf8; }
+.btn-read {
+  margin-right: auto; background: none; border: none; color: var(--muted);
+  font-size: 12px; cursor: pointer; padding: 4px 0;
+}
+.msg-body {
+  display: none; padding: 0 14px 14px;
+  font-size: 13px; color: #cbd5e1; line-height: 1.7;
+  white-space: pre-wrap; word-break: break-word;
+  border-top: 1px solid var(--border); padding-top: 12px; margin-top: 0;
+  max-height: 400px; overflow-y: auto;
+}
+.msg-body.open { display: block; }
+.msg-body.has-html { white-space: normal; }
 
-    /* ─── Section ─── */
-    .section { padding: 16px; }
-    .section-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-sec);
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      margin-bottom: 10px;
-    }
+/* ── Event cards ── */
+.event-card {
+  background: var(--card); border-radius: 12px; margin-bottom: 8px;
+  border: 1px solid var(--border); overflow: hidden;
+}
+.event-header {
+  padding: 10px 14px; display: flex; gap: 10px; align-items: flex-start;
+}
+.event-date-badge {
+  background: var(--card2); border-radius: 8px;
+  min-width: 44px; text-align: center; padding: 4px 6px;
+  flex-shrink: 0;
+}
+.event-date-badge .day  { font-size: 18px; font-weight: 800; line-height: 1; }
+.event-date-badge .mon  { font-size: 10px; color: var(--muted); font-weight: 600; }
+.event-info { flex: 1; min-width: 0; }
+.event-title { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.event-time  { font-size: 12px; color: var(--muted); margin-bottom: 2px; }
+.event-loc   { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 4px; }
+.event-actions { padding: 0 14px 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+.event-desc {
+  display: none; padding: 8px 14px 12px;
+  font-size: 12px; color: var(--muted); line-height: 1.6;
+  border-top: 1px solid var(--border);
+}
+.event-desc.open { display: block; }
+.btn-cal {
+  background: #1d4ed8; color: #fff; border: none; border-radius: 8px;
+  padding: 6px 12px; font-size: 12px; font-weight: 600; cursor: pointer;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+  transition: background 0.2s;
+}
+.btn-cal:hover { background: #2563eb; }
+.btn-remove {
+  background: #7f1d1d; color: #fca5a5; border: none; border-radius: 8px;
+  padding: 6px 12px; font-size: 12px; cursor: pointer; transition: background 0.2s;
+}
+.btn-remove:hover { background: #991b1b; }
+.btn-sm {
+  background: var(--card2); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--muted); padding: 4px 10px; font-size: 12px; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-sm:hover { color: var(--text); }
 
-    /* ─── Card ─── */
-    .card {
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
+/* ── Calendar grid ── */
+.cal-grid-wrap { background: var(--card); border-radius: 14px; padding: 12px; margin-bottom: 14px; }
+.cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.cal-nav-btn { background: none; border: 1px solid var(--border); border-radius: 8px;
+  color: var(--muted); padding: 4px 10px; cursor: pointer; font-size: 16px; }
+.cal-month-title { font-size: 16px; font-weight: 700; }
+.cal-days-header { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center;
+  font-size: 11px; color: var(--muted); font-weight: 600; margin-bottom: 6px; }
+.cal-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.cal-day {
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; font-size: 12px; cursor: pointer; position: relative;
+}
+.cal-day.other-month { color: #374151; }
+.cal-day.today { background: #1d4ed8; color: #fff; font-weight: 700; }
+.cal-day.has-event::after {
+  content: ''; position: absolute; bottom: 2px;
+  width: 4px; height: 4px; border-radius: 50%; background: var(--noga);
+}
+.cal-day.selected { outline: 2px solid #818cf8; border-radius: 50%; }
+.cal-day:hover:not(.today) { background: var(--card2); }
 
-    /* ─── Chips ─── */
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px 12px;
-      border-radius: var(--radius-chip);
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      border: 1.5px solid var(--border);
-      background: var(--card);
-      color: var(--text-sec);
-      white-space: nowrap;
-      transition: all .15s;
-    }
-    .chip.active {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: #e8f0fe;
-    }
-    .chip .chip-badge {
-      background: var(--accent);
-      color: #fff;
-      border-radius: 10px;
-      font-size: 10px;
-      padding: 0 5px;
-      height: 16px;
-      line-height: 16px;
-    }
+/* ── Tasks ── */
+.task-card {
+  background: var(--card); border-radius: 12px; margin-bottom: 8px;
+  border: 1px solid var(--border); padding: 12px 14px;
+  display: flex; align-items: flex-start; gap: 12px; transition: opacity 0.3s;
+}
+.task-card.done { opacity: 0.45; }
+.task-check {
+  width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--border);
+  cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; background: none;
+}
+.task-check.checked { background: var(--itai); border-color: var(--itai); color: #fff; }
+.task-info { flex: 1; }
+.task-title { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+.task-meta  { font-size: 12px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; }
+.child-label {
+  font-size: 11px; font-weight: 700; padding: 1px 8px; border-radius: 8px;
+}
+.child-label.ran  { background: #1e1b4b; color: var(--ran); }
+.child-label.itai { background: #022c22; color: var(--itai); }
+.child-label.noga { background: #451a03; color: var(--noga); }
+.child-label.alon { background: #4c0519; color: var(--alon); }
+.child-label.all  { background: #111827; color: var(--muted); }
 
-    /* ─── Avatar ─── */
-    .avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
-      flex-shrink: 0;
-    }
-    .avatar.sm { width: 28px; height: 28px; font-size: 11px; }
-    .avatar.lg { width: 40px; height: 40px; font-size: 16px; }
+/* ── Messages screen group header ── */
+.group-header {
+  font-size: 13px; font-weight: 700; padding: 10px 4px 6px;
+  display: flex; align-items: center; gap: 8px;
+}
+.group-dot { width: 8px; height: 8px; border-radius: 50%; }
 
-    /* ─── Badge ─── */
-    .badge {
-      display: inline-block;
-      padding: 2px 7px;
-      border-radius: 10px;
-      font-size: 10px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .3px;
-    }
+/* ── Footer ── */
+.data-footer {
+  text-align: center; font-size: 11px; color: #475569; padding: 8px 16px;
+  border-top: 1px solid var(--border); margin-top: 8px;
+}
 
-    /* ─── FAB ─── */
-    .fab {
-      position: fixed;
-      bottom: calc(var(--nav-h) + 16px);
-      left: calc(50% - 195px + 16px);
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(26,115,232,.4);
-      cursor: pointer;
-      z-index: 15;
-      border: none;
-      transition: transform .15s, box-shadow .15s;
-    }
-    .fab:hover { transform: scale(1.05); box-shadow: 0 6px 16px rgba(26,115,232,.5); }
-    .fab span { font-size: 24px; }
-    /* RTL: FAB on left side = visually bottom-left in RTL */
-    @media (max-width: 390px) {
-      .fab { left: 16px; }
-    }
+/* ── Empty state ── */
+.empty { text-align: center; padding: 40px 20px; color: var(--muted); }
+.empty .icon { font-size: 40px; margin-bottom: 12px; }
+.empty p { font-size: 14px; }
 
-    /* ════════════════════════════════
-       SCREEN 1: DASHBOARD (בית)
-    ════════════════════════════════ */
+/* ── Animations ── */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.screen.active > * { animation: fadeIn 0.2s ease-out; }
 
-    /* Daily Brief */
-    .daily-brief {
-      background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
-      padding: 16px;
-      color: #fff;
-    }
-    .daily-brief .brief-date {
-      font-size: 13px;
-      opacity: .85;
-      margin-bottom: 4px;
-    }
-    .daily-brief .brief-greeting {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .brief-stats {
-      display: flex;
-      gap: 10px;
-    }
-    .brief-stat {
-      background: rgba(255,255,255,.2);
-      border-radius: var(--radius);
-      padding: 8px 12px;
-      text-align: center;
-      flex: 1;
-    }
-    .brief-stat .num {
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 1;
-    }
-    .brief-stat .lbl {
-      font-size: 11px;
-      opacity: .85;
-      margin-top: 2px;
-    }
-
-    /* School updates list */
-    .msg-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
-      cursor: pointer;
-      transition: background .1s;
-    }
-    .msg-item:last-child { border-bottom: none; }
-    .msg-item:hover { background: var(--bg); }
-    .msg-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 18px;
-      color: #fff;
-    }
-    .msg-icon.wa { background: var(--wa); }
-    .msg-icon.email { background: var(--email); }
-    .msg-content { flex: 1; min-width: 0; }
-    .msg-top {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 2px;
-    }
-    .msg-sender {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      flex: 1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .msg-time {
-      font-size: 11px;
-      color: var(--text-light);
-      flex-shrink: 0;
-    }
-    .msg-preview {
-      font-size: 13px;
-      color: var(--text-sec);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .msg-unread .msg-sender { color: var(--accent); }
-    .msg-unread-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
-    /* Upcoming events */
-    .event-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
-    }
-    .event-item:last-child { border-bottom: none; }
-    .event-color-bar {
-      width: 4px;
-      height: 40px;
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
-    .event-info { flex: 1; }
-    .event-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-    }
-    .event-meta {
-      font-size: 12px;
-      color: var(--text-sec);
-      margin-top: 2px;
-    }
-    .event-time {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-sec);
-    }
-
-    /* Quick tasks */
-    .quick-tasks {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 12px 16px;
-    }
-    .member-chip {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 12px 6px 8px;
-      background: var(--card);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-chip);
-      cursor: pointer;
-      transition: all .15s;
-    }
-    .member-chip:hover { border-color: var(--accent); }
-    .member-chip .member-name {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text);
-    }
-    .member-chip .task-count {
-      background: var(--accent);
-      color: #fff;
-      border-radius: 10px;
-      font-size: 10px;
-      padding: 0 5px;
-      min-width: 18px;
-      height: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .add-chip {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      padding: 6px 12px;
-      background: var(--accent);
-      color: #fff;
-      border-radius: var(--radius-chip);
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      border: none;
-    }
-
-    /* ════════════════════════════════
-       SCREEN 2: COMMUNICATIONS (תקשורת)
-    ════════════════════════════════ */
-
-    .filter-tabs {
-      display: flex;
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
-      padding: 0 16px;
-    }
-    .filter-tab {
-      flex: 1;
-      padding: 12px 0;
-      text-align: center;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-sec);
-      cursor: pointer;
-      border-bottom: 2.5px solid transparent;
-      transition: all .15s;
-    }
-    .filter-tab.active {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
-
-    .sub-filters {
-      display: flex;
-      gap: 8px;
-      padding: 10px 16px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      background: var(--bg);
-    }
-    .sub-filters::-webkit-scrollbar { display: none; }
-
-    .pinned-section {
-      padding: 0 16px 8px;
-    }
-    .pinned-label {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-sec);
-      text-transform: uppercase;
-      letter-spacing: .5px;
-      padding: 8px 0 6px;
-    }
-    .pinned-label span { font-size: 14px; }
-
-    .msg-full-item {
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 12px;
-      margin-bottom: 10px;
-    }
-    .msg-full-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-    .msg-full-body .msg-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-    .msg-full-body .msg-text {
-      font-size: 13px;
-      color: var(--text-sec);
-      line-height: 1.5;
-    }
-    .msg-full-footer {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    /* Category badges */
-    .badge-newsletter { background: #e8f0fe; color: #1a73e8; }
-    .badge-homework { background: #fce8e6; color: #ea4335; }
-    .badge-action { background: #fce8e6; color: #ea4335; }
-    .badge-sports { background: #e6f4ea; color: #137333; }
-    .badge-event { background: #fef7e0; color: #b06000; }
-    .badge-routine { background: #f1f3f4; color: #5f6368; }
-    .badge-high { background: #fce8e6; color: #ea4335; }
-    .badge-done { background: #e6f4ea; color: #137333; }
-
-    /* ════════════════════════════════
-       SCREEN 3: CALENDAR (יומן)
-    ════════════════════════════════ */
-
-    .cal-nav {
-      display: flex;
-      align-items: center;
-      padding: 10px 16px;
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
-    }
-    .cal-month {
-      flex: 1;
-      font-size: 16px;
-      font-weight: 600;
-      text-align: center;
-      color: var(--text);
-    }
-    .cal-nav-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: none;
-      background: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-sec);
-      font-size: 18px;
-      transition: background .15s;
-    }
-    .cal-nav-btn:hover { background: var(--bg); }
-
-    .cal-grid {
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
-    }
-    .cal-day-headers {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      padding: 8px 12px 4px;
-    }
-    .cal-day-header {
-      text-align: center;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-sec);
-    }
-    .cal-days {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      padding: 4px 12px 12px;
-      gap: 2px;
-    }
-    .cal-day {
-      aspect-ratio: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      color: var(--text);
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background .1s;
-      position: relative;
-    }
-    .cal-day:hover { background: var(--bg); }
-    .cal-day.today {
-      background: var(--accent);
-      color: #fff;
-      font-weight: 700;
-    }
-    .cal-day.other-month { color: var(--text-light); }
-    .cal-day .event-dot {
-      position: absolute;
-      bottom: 2px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-    .cal-day.today .event-dot { background: #fff; }
-
-    /* Agenda */
-    .agenda-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
-    }
-    .agenda-item:last-child { border-bottom: none; }
-    .agenda-time {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-sec);
-      min-width: 44px;
-      text-align: center;
-      flex-shrink: 0;
-    }
-    .agenda-line {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-      flex-shrink: 0;
-    }
-    .agenda-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .agenda-info { flex: 1; }
-    .agenda-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-    }
-    .agenda-sub {
-      font-size: 12px;
-      color: var(--text-sec);
-      margin-top: 2px;
-    }
-    .agenda-member-badges {
-      display: flex;
-      gap: 4px;
-      flex-shrink: 0;
-    }
-
-    /* ════════════════════════════════
-       SCREEN 4: TASKS (משימות)
-    ════════════════════════════════ */
-
-    .member-filter-row {
-      display: flex;
-      gap: 8px;
-      padding: 10px 16px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
-    }
-    .member-filter-row::-webkit-scrollbar { display: none; }
-    .member-avatar-chip {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .member-avatar-chip .chip-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 2.5px solid transparent;
-      transition: border-color .15s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      font-weight: 700;
-      color: #fff;
-    }
-    .member-avatar-chip.active .chip-avatar { border-color: var(--accent); }
-    .member-avatar-chip .chip-name {
-      font-size: 11px;
-      color: var(--text-sec);
-    }
-    .member-avatar-chip.active .chip-name { color: var(--accent); font-weight: 600; }
-
-    .task-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 12px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      cursor: pointer;
-      transition: box-shadow .15s;
-    }
-    .task-card:hover { box-shadow: var(--shadow-md); }
-    .task-checkbox {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      border: 2px solid var(--border);
-      flex-shrink: 0;
-      margin-top: 1px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all .15s;
-    }
-    .task-checkbox.done {
-      background: #137333;
-      border-color: #137333;
-      color: #fff;
-    }
-    .task-checkbox.done span { font-size: 14px; }
-    .task-info { flex: 1; }
-    .task-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-    .task-title.done { text-decoration: line-through; color: var(--text-light); }
-    .task-meta {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .task-due {
-      font-size: 12px;
-      color: var(--text-sec);
-      display: flex;
-      align-items: center;
-      gap: 3px;
-    }
-    .task-due span { font-size: 13px; }
-
-    /* Upcoming event card */
-    .upcoming-event {
-      background: var(--card);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .date-bubble {
-      width: 46px;
-      height: 46px;
-      border-radius: var(--radius);
-      background: #e8f0fe;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .date-bubble .date-day {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-    }
-    .date-bubble .date-mon {
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--accent);
-      text-transform: uppercase;
-    }
-    .upcoming-info { flex: 1; }
-    .upcoming-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 3px;
-    }
-    .upcoming-loc {
-      font-size: 12px;
-      color: var(--text-sec);
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      margin-bottom: 6px;
-    }
-    .upcoming-loc span { font-size: 14px; }
-    .attendee-avatars {
-      display: flex;
-      gap: -4px;
-    }
-    .attendee-avatars .avatar {
-      border: 2px solid var(--card);
-      margin-left: -6px;
-    }
-    .attendee-avatars .avatar:first-child { margin-left: 0; }
-
-    /* ─── Scrollbar ─── */
-    .screen::-webkit-scrollbar { width: 3px; }
-    .screen::-webkit-scrollbar-track { background: transparent; }
-    .screen::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-    /* ─── Transitions ─── */
-    .screen {
-      animation: fadeIn .2s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ─── Utility ─── */
-    .flex-row { display: flex; align-items: center; }
-    .gap-8 { gap: 8px; }
-    .mt-8 { margin-top: 8px; }
-    .mb-0 { margin-bottom: 0; }
-  </style>
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+</style>
 </head>
 <body>
-<div id="app">
 
-  <!-- ════════════════════════════════
-       SCREEN 1: DASHBOARD (בית)
-  ════════════════════════════════ -->
-  <div id="screen-home" class="screen active">
-    <div class="app-header">
-      <span class="material-symbols-outlined" style="color:var(--accent);font-size:26px;font-variation-settings:'FILL' 1">home_app_logo</span>
-      <span class="header-title">Family Hub</span>
-      <span class="material-symbols-outlined header-icon badge-dot">notifications</span>
-    </div>
-
-    <!-- Daily Brief -->
-    <div class="daily-brief">
-      <div class="brief-date" id="hebrew-date">טוען תאריך...</div>
-      <div class="brief-greeting">שלום, משפחת נועם 👋</div>
-      <div class="brief-stats">
-        <div class="brief-stat">
-          <div class="num">3</div>
-          <div class="lbl">הודעות חדשות</div>
-        </div>
-        <div class="brief-stat">
-          <div class="num">2</div>
-          <div class="lbl">אירועים היום</div>
-        </div>
-        <div class="brief-stat">
-          <div class="num">4</div>
-          <div class="lbl">משימות פתוחות</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- School Updates -->
-    <div class="section" style="padding-bottom:0">
-      <div class="section-title">עדכוני בית ספר</div>
-    </div>
-    <div class="card" style="margin:0 16px 16px">
-      <div class="msg-item msg-unread">
-        <div class="msg-icon wa">
-          <span class="material-symbols-outlined" style="font-size:18px">chat</span>
-        </div>
-        <div class="msg-content">
-          <div class="msg-top">
-            <span class="msg-sender">הורי כיתה יא7</span>
-            <span class="msg-time">10:32</span>
-            <div class="msg-unread-dot"></div>
-          </div>
-          <div class="msg-preview">תזכורת: הגשת טופס הסכמה לטיול עד מחר בצהריים</div>
-        </div>
-        <span class="badge" style="background:#e6f9ee;color:#137333;font-size:9px;padding:2px 5px;align-self:center">WhatsApp</span>
-      </div>
-      <div class="msg-item msg-unread">
-        <div class="msg-icon email">
-          <span class="material-symbols-outlined" style="font-size:18px">mail</span>
-        </div>
-        <div class="msg-content">
-          <div class="msg-top">
-            <span class="msg-sender">עירוני ד – אורט</span>
-            <span class="msg-time">09:15</span>
-            <div class="msg-unread-dot"></div>
-          </div>
-          <div class="msg-preview">ניוזלטר שבועי: מבחן מתמטיקה ביום ד׳, שינוי לוח שעות ט3</div>
-        </div>
-        <span class="badge" style="background:#fce8e6;color:#ea4335;font-size:9px;padding:2px 5px;align-self:center">Email</span>
-      </div>
-      <div class="msg-item">
-        <div class="msg-icon wa">
-          <span class="material-symbols-outlined" style="font-size:18px">chat</span>
-        </div>
-        <div class="msg-content">
-          <div class="msg-top">
-            <span class="msg-sender">כיתה ו׳2 – לביא</span>
-            <span class="msg-time">08:50</span>
-          </div>
-          <div class="msg-preview">יום ספורט שנתי ביום שישי – להביא בקבוק מים וכובע</div>
-        </div>
-        <span class="badge" style="background:#e6f9ee;color:#137333;font-size:9px;padding:2px 5px;align-self:center">WhatsApp</span>
-      </div>
-    </div>
-
-    <!-- Upcoming Events -->
-    <div class="section" style="padding-bottom:0">
-      <div class="section-title">הבא בתור</div>
-    </div>
-    <div class="card" style="margin:0 16px 16px">
-      <div class="event-item">
-        <div class="event-color-bar" style="background:var(--itai)"></div>
-        <div class="event-info">
-          <div class="event-title">איסוף מאימון כדורגל – איתי</div>
-          <div class="event-meta">מגרש הספורט, מודיעין</div>
-        </div>
-        <div class="event-time">17:30</div>
-      </div>
-      <div class="event-item">
-        <div class="event-color-bar" style="background:var(--noga)"></div>
-        <div class="event-info">
-          <div class="event-title">חוג ציור – נוגה</div>
-          <div class="event-meta">מרכז קהילתי</div>
-        </div>
-        <div class="event-time">18:30</div>
-      </div>
-    </div>
-
-    <!-- Quick Tasks -->
-    <div class="section" style="padding-bottom:0">
-      <div class="section-title">משימות מהירות</div>
-    </div>
-    <div class="quick-tasks">
-      <div class="member-chip" onclick="switchTab('tasks')">
-        <div class="avatar sm" style="background:var(--ran)">ר</div>
-        <span class="member-name">רן</span>
-        <span class="task-count">2</span>
-      </div>
-      <div class="member-chip" onclick="switchTab('tasks')">
-        <div class="avatar sm" style="background:var(--itai)">א</div>
-        <span class="member-name">איתי</span>
-        <span class="task-count">1</span>
-      </div>
-      <div class="member-chip" onclick="switchTab('tasks')">
-        <div class="avatar sm" style="background:var(--noga)">נ</div>
-        <span class="member-name">נוגה</span>
-        <span class="task-count">1</span>
-      </div>
-      <div class="member-chip" onclick="switchTab('tasks')">
-        <div class="avatar sm" style="background:var(--alon)">א</div>
-        <span class="member-name">אלון</span>
-        <span class="task-count">2</span>
-      </div>
-      <button class="add-chip" onclick="switchTab('tasks')">
-        <span class="material-symbols-outlined" style="font-size:16px">add</span>
-        הוסף
+<!-- Header -->
+<div class="header">
+  <div class="header-top">
+    <div class="app-title">Family<span>OS</span></div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <div class="updated-info" id="updatedInfo">טוען...</div>
+      <button class="refresh-btn" id="refreshBtn" onclick="refreshData()">
+        <span class="icon">🔄</span> רענן
       </button>
     </div>
-    <div style="height:16px"></div>
   </div>
-
-  <!-- ════════════════════════════════
-       SCREEN 2: COMMUNICATIONS (תקשורת)
-  ════════════════════════════════ -->
-  <div id="screen-comm" class="screen">
-    <div class="app-header">
-      <span class="header-title">תקשורת בית ספר</span>
-      <span class="material-symbols-outlined header-icon">search</span>
+  <div class="filter-row" id="filterRow">
+    <div class="chip active" data-child="all" onclick="setFilter('all')">הכל</div>
+    <div class="chip" data-child="ran" onclick="setFilter('ran')" style="--c:var(--ran)">
+      <span style="color:var(--ran)">●</span> רן
     </div>
-
-    <!-- Filter Tabs -->
-    <div class="filter-tabs">
-      <div class="filter-tab active" onclick="setCommFilter(this, 'all')">הכל</div>
-      <div class="filter-tab" onclick="setCommFilter(this, 'wa')">WhatsApp</div>
-      <div class="filter-tab" onclick="setCommFilter(this, 'email')">אימייל</div>
+    <div class="chip" data-child="itai" onclick="setFilter('itai')">
+      <span style="color:var(--itai)">●</span> איתי
     </div>
-
-    <!-- Sub-filter chips -->
-    <div class="sub-filters">
-      <div class="chip active">לא נקרא <span class="chip-badge">3</span></div>
-      <div class="chip" onclick="toggleChip(this)">
-        <span class="material-symbols-outlined" style="font-size:14px">push_pin</span>מוצמד
-      </div>
-      <div class="chip" onclick="toggleChip(this)">דחוף</div>
-      <div class="chip" onclick="toggleChip(this)">אירועים</div>
+    <div class="chip" data-child="noga" onclick="setFilter('noga')">
+      <span style="color:var(--noga)">●</span> נוגה
     </div>
-
-    <!-- Pinned -->
-    <div class="pinned-section">
-      <div class="pinned-label">
-        <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-sec)">push_pin</span>
-        מוצמד
-      </div>
-      <div class="msg-full-item" style="border-right:3px solid var(--wa)">
-        <div class="msg-full-header">
-          <div class="msg-icon wa" style="width:32px;height:32px;font-size:16px">
-            <span class="material-symbols-outlined" style="font-size:16px">chat</span>
-          </div>
-          <div style="flex:1">
-            <div style="font-size:13px;font-weight:600;color:var(--text)">שכבה ב׳ הורים – לביא תשפ״ו</div>
-            <div style="font-size:11px;color:var(--text-light)">אתמול 16:20</div>
-          </div>
-          <span class="material-symbols-outlined" style="font-size:16px;color:var(--text-sec)">push_pin</span>
-        </div>
-        <div class="msg-full-body">
-          <div class="msg-title">⚠️ תזכורת: אסיפת הורים</div>
-          <div class="msg-text">אסיפת ההורים של כיתה ב׳ תתקיים ביום ד׳ הקרוב ב-19:00. נוכחות חובה.</div>
-        </div>
-        <div class="msg-full-footer">
-          <span class="badge badge-event">אירוע</span>
-          <span style="font-size:12px;color:var(--text-sec);margin-right:auto">ד׳ 12.3</span>
-        </div>
-      </div>
+    <div class="chip" data-child="alon" onclick="setFilter('alon')">
+      <span style="color:var(--alon)">●</span> אלון
     </div>
-
-    <!-- Recent messages -->
-    <div style="padding:0 16px">
-      <div class="section-title" style="margin-bottom:10px">הודעות אחרונות</div>
-
-      <div class="msg-full-item msg-unread" style="border-right:3px solid var(--email)">
-        <div class="msg-full-header">
-          <div class="msg-icon email" style="width:32px;height:32px;font-size:16px">
-            <span class="material-symbols-outlined" style="font-size:16px">mail</span>
-          </div>
-          <div style="flex:1">
-            <div style="font-size:13px;font-weight:600;color:var(--accent)">עירוני ד – אורט מודיעין</div>
-            <div style="font-size:11px;color:var(--text-light)">היום 09:15</div>
-          </div>
-          <div class="msg-unread-dot"></div>
-        </div>
-        <div class="msg-full-body">
-          <div class="msg-title">ניוזלטר שבועי – כיתה ט3</div>
-          <div class="msg-text">שינוי לוח שעות: שיעורי ספורט מועברים לימי שלישי. מבחן מתמטיקה ביום רביעי, פרקים 3-5.</div>
-        </div>
-        <div class="msg-full-footer">
-          <span class="badge badge-newsletter">Newsletter</span>
-        </div>
-      </div>
-
-      <div class="msg-full-item msg-unread" style="border-right:3px solid var(--ran)">
-        <div class="msg-full-header">
-          <div class="avatar" style="background:var(--ran);width:32px;height:32px;font-size:13px">ר</div>
-          <div style="flex:1">
-            <div style="font-size:13px;font-weight:600;color:var(--accent)">הורי כיתה יא7</div>
-            <div style="font-size:11px;color:var(--text-light)">היום 10:32</div>
-          </div>
-          <div class="msg-unread-dot"></div>
-        </div>
-        <div class="msg-full-body">
-          <div class="msg-title">⚡ טופס הסכמה לטיול – נדרשת פעולה</div>
-          <div class="msg-text">יש להחזיר טופס חתום עד מחר 12:00. הטיול יוצא ביום א׳ הקרוב לגליל.</div>
-        </div>
-        <div class="msg-full-footer">
-          <span class="badge badge-action">Action Required</span>
-        </div>
-      </div>
-
-      <div class="msg-full-item">
-        <div class="msg-full-header">
-          <div class="msg-icon wa" style="width:32px;height:32px;font-size:16px">
-            <span class="material-symbols-outlined" style="font-size:16px">chat</span>
-          </div>
-          <div style="flex:1">
-            <div style="font-size:13px;font-weight:600;color:var(--text)">כיתה ו׳2 – לביא</div>
-            <div style="font-size:11px;color:var(--text-light)">היום 08:50</div>
-          </div>
-        </div>
-        <div class="msg-full-body">
-          <div class="msg-title">יום ספורט שנתי – יום שישי</div>
-          <div class="msg-text">להביא: בקבוק מים, כובע, בגדי ספורט נוחים. ארוחת צהריים סופקת ע״י ביה״ס.</div>
-        </div>
-        <div class="msg-full-footer">
-          <span class="badge badge-sports">Sports</span>
-        </div>
-      </div>
-
-      <div class="msg-full-item">
-        <div class="msg-full-header">
-          <div class="msg-icon wa" style="width:32px;height:32px;font-size:16px">
-            <span class="material-symbols-outlined" style="font-size:16px">chat</span>
-          </div>
-          <div style="flex:1">
-            <div style="font-size:13px;font-weight:600;color:var(--text)">הורי כיתה ט3</div>
-            <div style="font-size:11px;color:var(--text-light)">אתמול 14:05</div>
-          </div>
-        </div>
-        <div class="msg-full-body">
-          <div class="msg-title">שיעורי בית – מתמטיקה</div>
-          <div class="msg-text">תרגילים 12-20 עמוד 74 לשיעורי בית לפני המבחן. המורה ממליצה לחזור על פרק 4.</div>
-        </div>
-        <div class="msg-full-footer">
-          <span class="badge badge-homework">Homework</span>
-        </div>
-      </div>
-    </div>
-
-    <button class="fab" onclick="alert('הוסף הודעה')" style="right:auto">
-      <span class="material-symbols-outlined">edit</span>
-    </button>
-    <div style="height:16px"></div>
   </div>
-
-  <!-- ════════════════════════════════
-       SCREEN 3: CALENDAR (יומן)
-  ════════════════════════════════ -->
-  <div id="screen-cal" class="screen">
-    <div class="app-header">
-      <span class="material-symbols-outlined header-icon">menu</span>
-      <span class="header-title">לוח שנה משפחתי</span>
-      <span class="material-symbols-outlined header-icon">search</span>
-    </div>
-
-    <!-- Month nav -->
-    <div class="cal-nav">
-      <button class="cal-nav-btn" onclick="changeMonth(-1)">
-        <span class="material-symbols-outlined">chevron_right</span>
-      </button>
-      <div class="cal-month" id="cal-month-label">מרץ 2026</div>
-      <button class="cal-nav-btn" onclick="changeMonth(1)">
-        <span class="material-symbols-outlined">chevron_left</span>
-      </button>
-    </div>
-
-    <!-- Calendar grid -->
-    <div class="cal-grid">
-      <div class="cal-day-headers">
-        <div class="cal-day-header">א׳</div>
-        <div class="cal-day-header">ב׳</div>
-        <div class="cal-day-header">ג׳</div>
-        <div class="cal-day-header">ד׳</div>
-        <div class="cal-day-header">ה׳</div>
-        <div class="cal-day-header">ו׳</div>
-        <div class="cal-day-header" style="color:var(--email)">ש׳</div>
-      </div>
-      <div class="cal-days" id="cal-days"></div>
-    </div>
-
-    <!-- Legend -->
-    <div style="display:flex;gap:12px;padding:10px 16px;background:var(--card);border-bottom:1px solid var(--border)">
-      <div style="display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text-sec)">
-        <div style="width:8px;height:8px;border-radius:50%;background:var(--ran)"></div>רן
-      </div>
-      <div style="display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text-sec)">
-        <div style="width:8px;height:8px;border-radius:50%;background:var(--itai)"></div>איתי
-      </div>
-      <div style="display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text-sec)">
-        <div style="width:8px;height:8px;border-radius:50%;background:var(--noga)"></div>נוגה
-      </div>
-      <div style="display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text-sec)">
-        <div style="width:8px;height:8px;border-radius:50%;background:var(--alon)"></div>אלון
-      </div>
-    </div>
-
-    <!-- Today's agenda -->
-    <div class="section" style="padding-bottom:0">
-      <div class="section-title">לוח היום</div>
-    </div>
-    <div class="card" style="margin:0 16px 16px">
-      <div class="agenda-item">
-        <div class="agenda-time">08:00</div>
-        <div style="display:flex;flex-direction:column;align-items:center;margin:0 4px">
-          <div class="agenda-dot" style="background:var(--alon)"></div>
-          <div style="width:1px;flex:1;background:var(--border);margin-top:4px"></div>
-        </div>
-        <div class="agenda-info">
-          <div class="agenda-title">הסעת בוקר לבית ספר</div>
-          <div class="agenda-sub">לביא נעלה</div>
-        </div>
-        <div class="agenda-member-badges">
-          <div class="avatar sm" style="background:var(--alon)">א</div>
-          <div class="avatar sm" style="background:var(--noga)">נ</div>
-        </div>
-      </div>
-      <div class="agenda-item">
-        <div class="agenda-time">12:30</div>
-        <div style="display:flex;flex-direction:column;align-items:center;margin:0 4px">
-          <div class="agenda-dot" style="background:var(--accent)"></div>
-          <div style="width:1px;flex:1;background:var(--border);margin-top:4px"></div>
-        </div>
-        <div class="agenda-info">
-          <div class="agenda-title">תור לרופא ילדים</div>
-          <div class="agenda-sub">מרפאת מכבי, מודיעין</div>
-        </div>
-        <div class="agenda-member-badges">
-          <div class="avatar sm" style="background:var(--noga)">נ</div>
-        </div>
-      </div>
-      <div class="agenda-item">
-        <div class="agenda-time">17:30</div>
-        <div style="display:flex;flex-direction:column;align-items:center;margin:0 4px">
-          <div class="agenda-dot" style="background:var(--itai)"></div>
-          <div style="width:1px;flex:1;background:var(--border);margin-top:4px"></div>
-        </div>
-        <div class="agenda-info">
-          <div class="agenda-title">איסוף מאימון כדורגל</div>
-          <div class="agenda-sub">מגרש הספורט, שכ׳ ד׳</div>
-        </div>
-        <div class="agenda-member-badges">
-          <div class="avatar sm" style="background:var(--itai)">א</div>
-        </div>
-      </div>
-      <div class="agenda-item">
-        <div class="agenda-time">18:00</div>
-        <div style="display:flex;flex-direction:column;align-items:center;margin:0 4px">
-          <div class="agenda-dot" style="background:var(--noga)"></div>
-        </div>
-        <div class="agenda-info">
-          <div class="agenda-title">קניות שבועיות</div>
-          <div class="agenda-sub">סופר, קניון מודיעין</div>
-        </div>
-        <div class="agenda-member-badges">
-          <div class="avatar sm" style="background:#78909c">נ</div>
-        </div>
-      </div>
-    </div>
-
-    <button class="fab" onclick="alert('הוסף אירוע')">
-      <span class="material-symbols-outlined">add</span>
-    </button>
-    <div style="height:16px"></div>
-  </div>
-
-  <!-- ════════════════════════════════
-       SCREEN 4: TASKS (משימות)
-  ════════════════════════════════ -->
-  <div id="screen-tasks" class="screen">
-    <div class="app-header">
-      <span class="material-symbols-outlined" style="color:var(--accent);font-size:22px">calendar_today</span>
-      <span class="header-title">משימות ותזכורות</span>
-      <span class="material-symbols-outlined header-icon">add_circle</span>
-    </div>
-
-    <!-- Member filter -->
-    <div class="member-filter-row">
-      <div class="member-avatar-chip active" onclick="setMemberFilter(this,'all')">
-        <div class="chip-avatar" style="background:#78909c;border-color:var(--accent)">כל</div>
-        <span class="chip-name">הכל</span>
-      </div>
-      <div class="member-avatar-chip" onclick="setMemberFilter(this,'ran')">
-        <div class="chip-avatar" style="background:var(--ran)">ר</div>
-        <span class="chip-name">רן</span>
-      </div>
-      <div class="member-avatar-chip" onclick="setMemberFilter(this,'itai')">
-        <div class="chip-avatar" style="background:var(--itai)">א</div>
-        <span class="chip-name">איתי</span>
-      </div>
-      <div class="member-avatar-chip" onclick="setMemberFilter(this,'noga')">
-        <div class="chip-avatar" style="background:var(--noga)">נ</div>
-        <span class="chip-name">נוגה</span>
-      </div>
-      <div class="member-avatar-chip" onclick="setMemberFilter(this,'alon')">
-        <div class="chip-avatar" style="background:var(--alon)">א</div>
-        <span class="chip-name">אלון</span>
-      </div>
-    </div>
-
-    <!-- Today's tasks -->
-    <div class="section" style="padding-bottom:0">
-      <div class="section-title">משימות היום</div>
-    </div>
-    <div style="padding:0 16px;margin-bottom:8px">
-
-      <!-- Task 1 -->
-      <div class="task-card" onclick="toggleTask(this)">
-        <div class="task-checkbox">
-          <span class="material-symbols-outlined" style="font-size:14px;display:none">check</span>
-        </div>
-        <div class="task-info">
-          <div class="task-title">לחתום על טופס טיול</div>
-          <div class="task-meta">
-            <span class="badge badge-high">⚡ עדיפות גבוהה</span>
-            <div class="avatar sm" style="background:var(--ran)">ר</div>
-            <span style="font-size:12px;color:var(--text-sec)">רן</span>
-          </div>
-        </div>
-        <div class="task-due" style="flex-direction:column;align-items:flex-end;gap:2px">
-          <span style="font-size:10px;color:var(--email);font-weight:600">היום</span>
-          <span style="font-size:12px;color:var(--text-sec)">16:00</span>
-        </div>
-      </div>
-
-      <!-- Task 2 -->
-      <div class="task-card" onclick="toggleTask(this)">
-        <div class="task-checkbox">
-          <span class="material-symbols-outlined" style="font-size:14px;display:none">check</span>
-        </div>
-        <div class="task-info">
-          <div class="task-title">איסוף מאימון כדורגל</div>
-          <div class="task-meta">
-            <span class="badge badge-routine">שגרה</span>
-            <div class="avatar sm" style="background:#78909c">נ</div>
-            <span style="font-size:12px;color:var(--text-sec)">נועם</span>
-          </div>
-        </div>
-        <div class="task-due" style="flex-direction:column;align-items:flex-end;gap:2px">
-          <span style="font-size:10px;color:var(--text-sec);font-weight:600">היום</span>
-          <span style="font-size:12px;color:var(--text-sec)">17:30</span>
-        </div>
-      </div>
-
-      <!-- Task 3 – completed -->
-      <div class="task-card" onclick="toggleTask(this)" style="opacity:.75">
-        <div class="task-checkbox done">
-          <span class="material-symbols-outlined" style="font-size:14px">check</span>
-        </div>
-        <div class="task-info">
-          <div class="task-title done">לארוז חטיפים בריאים</div>
-          <div class="task-meta">
-            <span class="badge badge-done">✓ הושלם</span>
-            <div class="avatar sm" style="background:#e91e8c">א</div>
-            <span style="font-size:12px;color:var(--text-sec)">אמא</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Task 4 -->
-      <div class="task-card" onclick="toggleTask(this)">
-        <div class="task-checkbox">
-          <span class="material-symbols-outlined" style="font-size:14px;display:none">check</span>
-        </div>
-        <div class="task-info">
-          <div class="task-title">לקנות ספר לימוד לאלון</div>
-          <div class="task-meta">
-            <span class="badge badge-high">⚡ עדיפות גבוהה</span>
-            <div class="avatar sm" style="background:var(--alon)">א</div>
-            <span style="font-size:12px;color:var(--text-sec)">אלון</span>
-          </div>
-        </div>
-        <div class="task-due" style="flex-direction:column;align-items:flex-end;gap:2px">
-          <span style="font-size:10px;color:var(--text-sec);font-weight:600">היום</span>
-          <span style="font-size:12px;color:var(--text-sec)">18:00</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Upcoming School Events -->
-    <div class="section" style="padding-bottom:0">
-      <div class="section-title">אירועי בית ספר קרובים</div>
-    </div>
-    <div style="padding:0 16px;margin-bottom:8px">
-
-      <div class="upcoming-event" style="margin-bottom:10px">
-        <div class="date-bubble">
-          <div class="date-day">12</div>
-          <div class="date-mon">מרץ</div>
-        </div>
-        <div class="upcoming-info">
-          <div class="upcoming-title">אסיפת הורים – כיתה ב׳</div>
-          <div class="upcoming-loc">
-            <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-light)">location_on</span>
-            ביה״ס לביא נעלה, חדר 12
-          </div>
-          <div class="attendee-avatars">
-            <div class="avatar sm" style="background:var(--alon)">א</div>
-            <div class="avatar sm" style="background:#78909c">נ</div>
-          </div>
-        </div>
-        <span style="font-size:12px;color:var(--text-sec);flex-shrink:0">19:00</span>
-      </div>
-
-      <div class="upcoming-event" style="margin-bottom:10px">
-        <div class="date-bubble">
-          <div class="date-day">14</div>
-          <div class="date-mon">מרץ</div>
-        </div>
-        <div class="upcoming-info">
-          <div class="upcoming-title">יום ספורט שנתי – ו׳2</div>
-          <div class="upcoming-loc">
-            <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-light)">location_on</span>
-            מגרש ביה״ס לביא
-          </div>
-          <div class="attendee-avatars">
-            <div class="avatar sm" style="background:var(--noga)">נ</div>
-          </div>
-        </div>
-        <span style="font-size:12px;color:var(--text-sec);flex-shrink:0">08:30</span>
-      </div>
-
-      <div class="upcoming-event" style="margin-bottom:10px">
-        <div class="date-bubble">
-          <div class="date-day">18</div>
-          <div class="date-mon">מרץ</div>
-        </div>
-        <div class="upcoming-info">
-          <div class="upcoming-title">טיול שנתי – כיתה יא7</div>
-          <div class="upcoming-loc">
-            <span class="material-symbols-outlined" style="font-size:14px;color:var(--text-light)">location_on</span>
-            הגליל העליון
-          </div>
-          <div class="attendee-avatars">
-            <div class="avatar sm" style="background:var(--ran)">ר</div>
-          </div>
-        </div>
-        <span style="font-size:12px;color:var(--text-sec);flex-shrink:0">06:00</span>
-      </div>
-    </div>
-
-    <div style="height:16px"></div>
-  </div>
-
-  <!-- ════════════════════════════════
-       BOTTOM NAVIGATION
-  ════════════════════════════════ -->
-  <nav id="bottom-nav">
-    <button class="nav-item active" onclick="switchTab('home')" id="nav-home">
-      <span class="material-symbols-outlined">home</span>
-      <span>בית</span>
-    </button>
-    <button class="nav-item" onclick="switchTab('cal')" id="nav-cal">
-      <span class="material-symbols-outlined">calendar_today</span>
-      <span>יומן</span>
-    </button>
-    <button class="nav-item" onclick="switchTab('tasks')" id="nav-tasks">
-      <span class="material-symbols-outlined">checklist</span>
-      <span>משימות</span>
-    </button>
-    <button class="nav-item" onclick="switchTab('comm')" id="nav-comm">
-      <span class="material-symbols-outlined">forum</span>
-      <span>צ׳אט</span>
-    </button>
-  </nav>
 </div>
 
+<!-- Screens -->
+<div id="screen-home" class="screen active">
+  <div id="custodyBanner"></div>
+  <div class="section-title">הודעות דחופות</div>
+  <div id="homeMessages"></div>
+  <div class="section-title">אירועים קרובים (7 ימים)</div>
+  <div id="homeEvents"></div>
+</div>
+
+<div id="screen-calendar" class="screen">
+  <div class="cal-grid-wrap">
+    <div class="cal-nav">
+      <button class="cal-nav-btn" onclick="calPrev()">›</button>
+      <div class="cal-month-title" id="calMonthTitle"></div>
+      <button class="cal-nav-btn" onclick="calNext()">‹</button>
+    </div>
+    <div class="cal-days-header">
+      <div>א׳</div><div>ב׳</div><div>ג׳</div><div>ד׳</div><div>ה׳</div><div>ו׳</div><div>ש׳</div>
+    </div>
+    <div class="cal-days" id="calDays"></div>
+  </div>
+  <div class="section-title" id="calEventTitle">כל האירועים</div>
+  <div id="calEvents"></div>
+</div>
+
+<div id="screen-tasks" class="screen">
+  <div class="section-title">משימות ופעולות נדרשות</div>
+  <div id="tasksList"></div>
+</div>
+
+<div id="screen-messages" class="screen">
+  <div id="messagesList"></div>
+</div>
+
+<!-- Bottom nav -->
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-screen="home" onclick="switchScreen('home',this)">
+    <span class="nav-icon">🏠</span>בית
+  </button>
+  <button class="nav-btn" data-screen="calendar" onclick="switchScreen('calendar',this)">
+    <span class="nav-icon">📅</span>לוח שנה
+  </button>
+  <button class="nav-btn" data-screen="tasks" onclick="switchScreen('tasks',this)">
+    <span class="nav-icon">✅</span>משימות
+  </button>
+  <button class="nav-btn" data-screen="messages" onclick="switchScreen('messages',this)">
+    <span class="nav-icon">💬</span>הודעות
+  </button>
+</nav>
+
 <script>
-  /* ─── Tab switching ─── */
-  const screens = { home: 'screen-home', cal: 'screen-cal', tasks: 'screen-tasks', comm: 'screen-comm' };
-  const navIds  = { home: 'nav-home', cal: 'nav-cal', tasks: 'nav-tasks', comm: 'nav-comm' };
+// ── State ─────────────────────────────────────────────────────────────────────
+let appData = null;
+let activeFilter = 'all';
+let calViewDate = new Date();
+let calSelectedDay = null;
 
-  function switchTab(tab) {
-    Object.keys(screens).forEach(k => {
-      document.getElementById(screens[k]).classList.toggle('active', k === tab);
-      document.getElementById(navIds[k]).classList.toggle('active', k === tab);
-    });
-    // hide FAB of inactive screens: handled by screen display:none
+const CHILD_COLORS = { ran:'#6366f1', itai:'#10b981', noga:'#f59e0b', alon:'#f43f5e', all:'#6b7280' };
+const CHILD_NAMES  = { ran:'רן', itai:'איתי', noga:'נוגה', alon:'אלון', all:'הכל' };
+
+const HE_MONTHS = ['ינואר','פברואר','מרץ','אפריל','מאי','יוני',
+                   'יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
+const HE_DAYS   = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+const HE_SHORT  = ['א','ב','ג','ד','ה','ו','ש'];
+
+// ── localStorage helpers ──────────────────────────────────────────────────────
+function lsGet(key) { try { return JSON.parse(localStorage.getItem(key)) || {}; } catch { return {}; } }
+function lsSet(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch {} }
+
+function isRead(id) { return !!lsGet('familyos_read')[id]; }
+function markRead(id, v=true) { const r = lsGet('familyos_read'); r[id]=v; lsSet('familyos_read',r); }
+function isTaskDone(id) { return !!lsGet('familyos_tasks')[id]; }
+function setTaskDone(id, v) { const t = lsGet('familyos_tasks'); t[id]=v; lsSet('familyos_tasks',t); }
+function getAddedEvents() { return lsGet('familyos_cal_added'); }
+function trackAddedEvent(id, link) { const e = getAddedEvents(); e[id]=link||true; lsSet('familyos_cal_added',e); }
+function removeTrackedEvent(id) { const e = getAddedEvents(); delete e[id]; lsSet('familyos_cal_added',e); }
+
+// ── Date formatting ───────────────────────────────────────────────────────────
+function fmtDate(iso) {
+  if (!iso) return '';
+  try {
+    const d = new Date(iso);
+    if (isNaN(d)) return iso;
+    const day = HE_DAYS[d.getDay()];
+    const dd = d.getDate();
+    const mon = HE_MONTHS[d.getMonth()];
+    const yr = d.getFullYear();
+    const hh = String(d.getHours()).padStart(2,'0');
+    const mm = String(d.getMinutes()).padStart(2,'0');
+    if (d.getHours() === 0 && d.getMinutes() === 0) return `יום ${day}, ${dd} ב${mon} ${yr}`;
+    return `יום ${day}, ${dd} ב${mon} ${yr}, ${hh}:${mm}`;
+  } catch { return iso; }
+}
+
+function fmtShort(iso) {
+  if (!iso) return '';
+  try {
+    const d = new Date(iso);
+    if (isNaN(d)) return '';
+    const hh = String(d.getHours()).padStart(2,'0');
+    const mm = String(d.getMinutes()).padStart(2,'0');
+    const allDay = d.getHours() === 0 && d.getMinutes() === 0;
+    const day = HE_DAYS[d.getDay()];
+    const dd = d.getDate();
+    const mon = HE_MONTHS[d.getMonth()];
+    if (allDay) return `${dd} ב${mon}`;
+    return `${dd} ב${mon}, ${hh}:${mm}`;
+  } catch { return ''; }
+}
+
+function fmtDay(iso) {
+  try { const d = new Date(iso); return d.getDate(); } catch { return ''; }
+}
+function fmtMon(iso) {
+  try { const d = new Date(iso); return HE_MONTHS[d.getMonth()].slice(0,3); } catch { return ''; }
+}
+function fmtTime(iso) {
+  try {
+    const d = new Date(iso);
+    if (d.getHours() === 0 && d.getMinutes() === 0) return 'כל היום';
+    return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+  } catch { return ''; }
+}
+function relativeDate(iso) {
+  try {
+    const d = new Date(iso);
+    const today = new Date(); today.setHours(0,0,0,0);
+    const diff = Math.round((new Date(d.getFullYear(),d.getMonth(),d.getDate()) - today) / 86400000);
+    if (diff === 0) return 'היום';
+    if (diff === 1) return 'מחר';
+    if (diff < 7) return `בעוד ${diff} ימים`;
+    return fmtShort(iso);
+  } catch { return ''; }
+}
+
+// ── Body cleanup ──────────────────────────────────────────────────────────────
+function cleanBody(body) {
+  if (!body) return '';
+  // detect HTML
+  if (/<[a-z][\s\S]*>/i.test(body)) {
+    const div = document.createElement('div');
+    div.innerHTML = body;
+    return div.textContent || div.innerText || '';
   }
+  return body;
+}
 
-  /* ─── Hebrew date ─── */
-  (function() {
-    const d = new Date();
-    const months = ['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
-    const days   = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
-    document.getElementById('hebrew-date').textContent =
-      `יום ${days[d.getDay()]}, ${d.getDate()} ב${months[d.getMonth()]} ${d.getFullYear()}`;
-  })();
+// ── Filter ────────────────────────────────────────────────────────────────────
+function matchFilter(child) {
+  if (activeFilter === 'all') return true;
+  return child === activeFilter || child === 'all';
+}
+function setFilter(f) {
+  activeFilter = f;
+  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.child === f));
+  renderAll();
+}
 
-  /* ─── Calendar ─── */
-  let calYear = 2026, calMonth = 2; // 0-indexed: March = 2
+// ── Screens ───────────────────────────────────────────────────────────────────
+function switchScreen(name, btn) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('screen-' + name).classList.add('active');
+  btn.classList.add('active');
+  if (name === 'calendar') renderCalendar();
+}
 
-  const hebrewMonthNames = [
-    'ינואר','פברואר','מרץ','אפריל','מאי','יוני',
-    'יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'
-  ];
+// ── Custody banner ────────────────────────────────────────────────────────────
+function renderCustody() {
+  const el = document.getElementById('custodyBanner');
+  if (!appData) return;
+  const c = appData.custody;
+  if (c.today && c.current) {
+    const end = c.current.end ? fmtShort(c.current.end) : '';
+    el.innerHTML = `
+      <div class="custody-banner today">
+        <div class="custody-text">
+          <h3>ילדים אצלך היום 🏠</h3>
+          <p>עד ${end}</p>
+        </div>
+        <div class="custody-icon">👨‍👧‍👦</div>
+      </div>`;
+  } else if (c.next) {
+    const next = relativeDate(c.next.start);
+    el.innerHTML = `
+      <div class="custody-banner next">
+        <div class="custody-text">
+          <h3>הילדים מגיעים ${next}</h3>
+          <p>${fmtDate(c.next.start)}</p>
+        </div>
+        <div class="custody-icon">🗓️</div>
+      </div>`;
+  } else {
+    el.innerHTML = '';
+  }
+}
 
-  // Days with mock events [day: color]
-  const eventDays = { 5: '#6366f1', 7: '#10b981', 12: '#f43f5e', 14: '#f59e0b', 18: '#6366f1', 22: '#10b981', 25: '#f43f5e' };
+// ── Message card HTML ─────────────────────────────────────────────────────────
+function msgCardHTML(msg, compact=false) {
+  const color = CHILD_COLORS[msg.child] || '#6b7280';
+  const body  = cleanBody(msg.body);
+  const preview = body.length > 80 ? body.slice(0,80) + '…' : body;
+  const readClass = isRead(msg.id) ? 'read' : '';
+  const badgeClass = msg.priority === 'urgent' ? 'urgent' : msg.priority === 'high' ? 'high' : 'normal';
+  const badgeText  = msg.priority === 'urgent' ? 'דחוף' : msg.priority === 'high' ? 'חשוב' : '';
 
-  function renderCalendar() {
-    document.getElementById('cal-month-label').textContent =
-      `${hebrewMonthNames[calMonth]} ${calYear}`;
+  return `
+<div class="msg-card ${readClass}" id="msgcard-${msg.id}">
+  <div class="msg-card-header">
+    <div class="child-dot" style="background:${color}"></div>
+    <div class="msg-main">
+      <div class="msg-top">
+        <span class="msg-from">${esc(msg.from)}</span>
+        <span class="msg-time">${fmtShort(msg.time)}</span>
+      </div>
+      <div class="msg-subject">${esc(msg.text)}</div>
+      ${preview ? `<div class="msg-preview">${esc(preview)}</div>` : ''}
+    </div>
+  </div>
+  <div class="msg-actions">
+    ${badgeText ? `<span class="badge ${badgeClass}">${badgeText}</span>` : ''}
+    ${body.length > 10 ? `<button class="btn-expand" onclick="toggleBody('${msg.id}', this)">
+      <span>📖</span> <span class="expand-label">הרחב</span>
+    </button>` : ''}
+    <button class="btn-read" onclick="toggleRead('${msg.id}', this)">
+      ${isRead(msg.id) ? '○ לא נקרא' : '✓ נקרא'}
+    </button>
+  </div>
+  <div class="msg-body" id="msgbody-${msg.id}">${esc(body)}</div>
+</div>`;
+}
 
-    const firstDay = new Date(calYear, calMonth, 1).getDay(); // 0=Sun
-    // Convert to Sunday-first grid but display Sun=א first
-    const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
-    const today = new Date();
-    const isCurrentMonth = today.getFullYear() === calYear && today.getMonth() === calMonth;
+function toggleBody(id, btn) {
+  const bodyEl = document.getElementById('msgbody-' + id);
+  const open = bodyEl.classList.toggle('open');
+  btn.querySelector('.expand-label').textContent = open ? 'סגור' : 'הרחב';
+}
 
-    const container = document.getElementById('cal-days');
-    container.innerHTML = '';
+function toggleRead(id, btn) {
+  const isNowRead = !isRead(id);
+  markRead(id, isNowRead);
+  const card = document.getElementById('msgcard-' + id);
+  if (card) card.classList.toggle('read', isNowRead);
+  btn.textContent = isNowRead ? '○ לא נקרא' : '✓ נקרא';
+}
 
-    // Leading empty cells
-    for (let i = 0; i < firstDay; i++) {
-      const prev = new Date(calYear, calMonth, -firstDay + i + 1);
-      const el = document.createElement('div');
-      el.className = 'cal-day other-month';
-      el.textContent = prev.getDate();
-      container.appendChild(el);
-    }
+// ── Event card HTML ───────────────────────────────────────────────────────────
+function eventCardHTML(ev) {
+  const color = CHILD_COLORS[ev.child] || '#6b7280';
+  const added = getAddedEvents()[ev.id];
+  const hasDesc = ev.description && ev.description.trim().length > 0;
 
-    for (let d = 1; d <= daysInMonth; d++) {
-      const el = document.createElement('div');
-      el.className = 'cal-day';
-      el.textContent = d;
-      if (isCurrentMonth && d === today.getDate()) el.classList.add('today');
-      if (eventDays[d]) {
-        const dot = document.createElement('div');
-        dot.className = 'event-dot';
-        dot.style.background = eventDays[d];
-        el.appendChild(dot);
+  // Build Google Calendar deeplink
+  const startDt = ev.date ? new Date(ev.date) : null;
+  const endDt   = ev.endDate ? new Date(ev.endDate) : startDt;
+  let calLink = '#';
+  if (startDt && !isNaN(startDt)) {
+    const fmt = d => {
+      if (!d || isNaN(d)) return '';
+      // all-day if time is midnight and it's a date-only event
+      const isAllDay = d.getHours()===0 && d.getMinutes()===0 && ev.date && !ev.date.includes('T');
+      if (isAllDay) {
+        return `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}`;
       }
-      el.onclick = () => {
-        document.querySelectorAll('.cal-day').forEach(x => x.style.background = '');
-        if (!el.classList.contains('today')) el.style.background = '#e8f0fe';
-      };
-      container.appendChild(el);
-    }
+      return `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+    };
+    const s = fmt(startDt);
+    const e = endDt && !isNaN(endDt) ? fmt(endDt) : s;
+    const params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: ev.title,
+      dates: s + '/' + e,
+    });
+    if (ev.description) params.set('details', ev.description);
+    if (ev.location) params.set('location', ev.location);
+    calLink = 'https://calendar.google.com/calendar/render?' + params.toString();
   }
 
-  function changeMonth(dir) {
-    calMonth += dir;
-    if (calMonth > 11) { calMonth = 0; calYear++; }
-    if (calMonth < 0)  { calMonth = 11; calYear--; }
-    renderCalendar();
+  return `
+<div class="event-card">
+  <div class="event-header">
+    <div class="event-date-badge" style="border-left:3px solid ${color}">
+      <div class="day">${fmtDay(ev.date)}</div>
+      <div class="mon">${fmtMon(ev.date)}</div>
+    </div>
+    <div class="event-info">
+      <div class="event-title">${esc(ev.title)}</div>
+      <div class="event-time">${fmtTime(ev.date)}</div>
+      ${ev.location ? `<div class="event-loc">📍 ${esc(ev.location)}</div>` : ''}
+    </div>
+  </div>
+  <div class="event-actions">
+    <a class="btn-cal" href="${calLink}" target="_blank" 
+       onclick="trackAddedEvent('${ev.id}', '${(ev.htmlLink||'').replace(/'/g,"\\'")}'); setTimeout(()=>renderAll(),500)">
+      📅 הוסף ללוח שנה
+    </a>
+    ${added ? `<button class="btn-remove" onclick="removeEvent('${ev.id}', '${(ev.htmlLink||'').replace(/'/g,"\\'")}')">🗑️ הסר</button>` : ''}
+    ${hasDesc ? `<button class="btn-sm" onclick="toggleDesc('${ev.id}', this)">📄 פרטים</button>` : ''}
+  </div>
+  ${hasDesc ? `<div class="event-desc" id="evdesc-${ev.id}">${esc(ev.description)}</div>` : ''}
+</div>`;
+}
+
+function toggleDesc(id, btn) {
+  const el = document.getElementById('evdesc-' + id);
+  if (el) {
+    const open = el.classList.toggle('open');
+    btn.textContent = open ? '🔼 סגור' : '📄 פרטים';
+  }
+}
+
+function removeEvent(id, link) {
+  if (!confirm('להסיר אירוע זה מהמעקב?')) return;
+  removeTrackedEvent(id);
+  if (link) window.open(link, '_blank');
+  renderAll();
+}
+
+// ── Home screen ───────────────────────────────────────────────────────────────
+function renderHome() {
+  renderCustody();
+
+  const msgs = (appData.messages || [])
+    .filter(m => matchFilter(m.child))
+    .filter(m => m.pinned || m.priority === 'urgent' || m.priority === 'high');
+
+  const msgEl = document.getElementById('homeMessages');
+  if (msgs.length === 0) {
+    msgEl.innerHTML = '<div class="empty"><div class="icon">📭</div><p>אין הודעות דחופות</p></div>';
+  } else {
+    msgEl.innerHTML = msgs.slice(0,5).map(m => msgCardHTML(m)).join('');
   }
 
+  const now = new Date();
+  const in7 = new Date(now.getTime() + 7*24*3600*1000);
+  const evts = (appData.events || [])
+    .filter(e => matchFilter(e.child))
+    .filter(e => {
+      try {
+        const d = new Date(e.date);
+        return d >= now && d <= in7;
+      } catch { return false; }
+    })
+    .sort((a,b) => new Date(a.date) - new Date(b.date));
+
+  const evEl = document.getElementById('homeEvents');
+  if (evts.length === 0) {
+    evEl.innerHTML = '<div class="empty"><div class="icon">📅</div><p>אין אירועים בשבוע הקרוב</p></div>';
+  } else {
+    evEl.innerHTML = evts.map(e => eventCardHTML(e)).join('');
+  }
+}
+
+// ── Calendar ──────────────────────────────────────────────────────────────────
+function renderCalendar() {
+  const yr = calViewDate.getFullYear();
+  const mo = calViewDate.getMonth();
+  document.getElementById('calMonthTitle').textContent = HE_MONTHS[mo] + ' ' + yr;
+
+  // build grid
+  const firstDay = new Date(yr, mo, 1).getDay(); // 0=Sun
+  const daysInMonth = new Date(yr, mo+1, 0).getDate();
+  const daysInPrev = new Date(yr, mo, 0).getDate();
+  const today = new Date();
+
+  // get event dates for this month
+  const eventDates = new Set();
+  if (appData) {
+    (appData.events || []).filter(e => matchFilter(e.child)).forEach(e => {
+      try {
+        const d = new Date(e.date);
+        if (d.getFullYear() === yr && d.getMonth() === mo) {
+          eventDates.add(d.getDate());
+        }
+      } catch {}
+    });
+  }
+
+  let html = '';
+  const total = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+  for (let i = 0; i < total; i++) {
+    let d, isOther = false;
+    if (i < firstDay) { d = daysInPrev - firstDay + i + 1; isOther = true; }
+    else if (i >= firstDay + daysInMonth) { d = i - firstDay - daysInMonth + 1; isOther = true; }
+    else { d = i - firstDay + 1; }
+
+    const isToday = !isOther && yr === today.getFullYear() && mo === today.getMonth() && d === today.getDate();
+    const hasEv = !isOther && eventDates.has(d);
+    const isSelected = calSelectedDay && !isOther && yr === calSelectedDay.yr && mo === calSelectedDay.mo && d === calSelectedDay.d;
+    const classes = ['cal-day', isOther?'other-month':'', isToday?'today':'', hasEv?'has-event':'', isSelected?'selected':''].filter(Boolean).join(' ');
+    const click = isOther ? '' : `onclick="calSelectDay(${yr},${mo},${d})"`;
+    html += `<div class="${classes}" ${click}>${d}</div>`;
+  }
+  document.getElementById('calDays').innerHTML = html;
+
+  // render events
+  renderCalEvents();
+}
+
+function calSelectDay(yr, mo, d) {
+  calSelectedDay = { yr, mo, d };
   renderCalendar();
+}
 
-  /* ─── Task toggle ─── */
-  function toggleTask(card) {
-    const cb = card.querySelector('.task-checkbox');
-    const title = card.querySelector('.task-title');
-    const checkIcon = cb.querySelector('span');
-    const isDone = cb.classList.contains('done');
-    if (isDone) {
-      cb.classList.remove('done');
-      title.classList.remove('done');
-      checkIcon.style.display = 'none';
-      card.style.opacity = '1';
-    } else {
-      cb.classList.add('done');
-      title.classList.add('done');
-      checkIcon.style.display = '';
-      card.style.opacity = '.75';
-      // Replace badge
-      const existingBadge = card.querySelector('.badge');
-      if (existingBadge && !existingBadge.classList.contains('badge-done')) {
-        existingBadge.className = 'badge badge-done';
-        existingBadge.textContent = '✓ הושלם';
-      }
-    }
-  }
+function calPrev() { calViewDate.setMonth(calViewDate.getMonth()-1); renderCalendar(); }
+function calNext() { calViewDate.setMonth(calViewDate.getMonth()+1); renderCalendar(); }
 
-  /* ─── Comm filter tabs ─── */
-  function setCommFilter(el, type) {
-    document.querySelectorAll('#screen-comm .filter-tab').forEach(t => t.classList.remove('active'));
-    el.classList.add('active');
-  }
+function renderCalEvents() {
+  if (!appData) return;
+  let evts = (appData.events || []).filter(e => matchFilter(e.child));
 
-  function toggleChip(el) {
-    el.classList.toggle('active');
-  }
-
-  /* ─── Member filter (tasks) ─── */
-  function setMemberFilter(el, member) {
-    document.querySelectorAll('#screen-tasks .member-avatar-chip').forEach(c => {
-      c.classList.remove('active');
-      c.querySelector('.chip-avatar').style.borderColor = 'transparent';
+  const title = document.getElementById('calEventTitle');
+  if (calSelectedDay) {
+    const {yr,mo,d} = calSelectedDay;
+    evts = evts.filter(e => {
+      try {
+        const dt = new Date(e.date);
+        return dt.getFullYear()===yr && dt.getMonth()===mo && dt.getDate()===d;
+      } catch { return false; }
     });
-    el.classList.add('active');
-    el.querySelector('.chip-avatar').style.borderColor = 'var(--accent)';
+    title.textContent = `אירועים ל-${d} ב${HE_MONTHS[mo]}`;
+  } else {
+    evts = evts.sort((a,b) => new Date(a.date)-new Date(b.date));
+    title.textContent = 'כל האירועים';
   }
+
+  const el = document.getElementById('calEvents');
+  if (evts.length === 0) {
+    el.innerHTML = '<div class="empty"><div class="icon">📅</div><p>אין אירועים</p></div>';
+  } else {
+    el.innerHTML = evts.map(e => eventCardHTML(e)).join('');
+  }
+}
+
+// ── Tasks ─────────────────────────────────────────────────────────────────────
+function renderTasks() {
+  const tasks = (appData.actions || []).filter(t => matchFilter(t.child));
+  const el = document.getElementById('tasksList');
+  if (tasks.length === 0) {
+    el.innerHTML = '<div class="empty"><div class="icon">✅</div><p>אין משימות פתוחות</p></div>';
+    return;
+  }
+  el.innerHTML = tasks.map(t => {
+    const done = isTaskDone(t.id);
+    const color = CHILD_COLORS[t.child] || '#6b7280';
+    const child = t.child || 'all';
+    return `
+<div class="task-card ${done?'done':''}" id="task-${t.id}">
+  <button class="task-check ${done?'checked':''}" onclick="toggleTask('${t.id}', this)">
+    ${done ? '✓' : ''}
+  </button>
+  <div class="task-info">
+    <div class="task-title">${esc(t.title)}</div>
+    <div class="task-meta">
+      <span class="child-label ${child}">${CHILD_NAMES[child]||child}</span>
+      ${t.dueDate ? `<span>📅 ${fmtShort(t.dueDate)}</span>` : ''}
+      ${t.source ? `<span>📌 ${esc(t.source)}</span>` : ''}
+    </div>
+  </div>
+</div>`;
+  }).join('');
+}
+
+function toggleTask(id, btn) {
+  const done = !isTaskDone(id);
+  setTaskDone(id, done);
+  const card = document.getElementById('task-' + id);
+  if (card) card.classList.toggle('done', done);
+  btn.classList.toggle('checked', done);
+  btn.textContent = done ? '✓' : '';
+}
+
+// ── Messages screen ───────────────────────────────────────────────────────────
+function renderMessages() {
+  const msgs = (appData.messages || []).filter(m => matchFilter(m.child));
+  const el = document.getElementById('messagesList');
+  if (msgs.length === 0) {
+    el.innerHTML = '<div class="empty"><div class="icon">📭</div><p>אין הודעות</p></div>';
+    return;
+  }
+
+  // group by child
+  const groups = {};
+  msgs.forEach(m => {
+    const k = m.child || 'all';
+    if (!groups[k]) groups[k] = [];
+    groups[k].push(m);
+  });
+
+  const order = ['ran','itai','noga','alon','all'];
+  let html = '';
+  for (const child of order) {
+    if (!groups[child]) continue;
+    const color = CHILD_COLORS[child];
+    const name = CHILD_NAMES[child];
+    html += `<div class="group-header">
+      <div class="group-dot" style="background:${color}"></div>
+      ${name}
+    </div>`;
+    html += groups[child].map(m => msgCardHTML(m)).join('');
+  }
+  el.innerHTML = html;
+}
+
+// ── Footer ────────────────────────────────────────────────────────────────────
+function renderFooter() {
+  if (!appData) return;
+  const d = new Date(appData.updated_at);
+  const dd = String(d.getDate()).padStart(2,'0');
+  const mm = String(d.getMonth()+1).padStart(2,'0');
+  const yy = d.getFullYear();
+  const hh = String(d.getHours()).padStart(2,'0');
+  const mi = String(d.getMinutes()).padStart(2,'0');
+  document.getElementById('updatedInfo').textContent =
+    `עודכן: ${dd}/${mm}/${yy} ${hh}:${mi} | ${appData.messages.length} הודעות | ${appData.events.length} אירועים`;
+}
+
+// ── Main render ───────────────────────────────────────────────────────────────
+function renderAll() {
+  if (!appData) return;
+  renderHome();
+  renderTasks();
+  renderMessages();
+  renderCalendar();
+}
+
+// ── Data loading ──────────────────────────────────────────────────────────────
+async function loadData() {
+  try {
+    const ts = Date.now();
+    const res = await fetch(`./data.json?t=${ts}`);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    appData = await res.json();
+    renderFooter();
+    renderAll();
+  } catch(e) {
+    console.error('Failed to load data.json:', e);
+    document.getElementById('updatedInfo').textContent = 'שגיאה בטעינה';
+  }
+}
+
+async function refreshData() {
+  const btn = document.getElementById('refreshBtn');
+  btn.classList.add('spinning');
+  btn.disabled = true;
+  await loadData();
+  btn.classList.remove('spinning');
+  btn.disabled = false;
+}
+
+// ── Utilities ─────────────────────────────────────────────────────────────────
+function esc(s) {
+  if (!s) return '';
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#039;');
+}
+function pad(n) { return String(n).padStart(2,'0'); }
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+loadData();
 </script>
 </body>
 </html>
