@@ -4,7 +4,7 @@ FamilyOS — generate_data.py
 שולף נתונים אמיתיים מ-Gmail + Google Calendar ומייצר data.json
 """
 
-import json, subprocess, re, sys
+import json, subprocess, re, sys, os
 from datetime import datetime, timezone, timedelta
 
 ACCOUNT = "noammeir@gmail.com"
@@ -300,6 +300,26 @@ def main():
     messages = fetch_messages()
     events, custody_periods, cal_actions = fetch_calendar()
 
+    # ── WhatsApp messages ──────────────────────────────────────────────────────
+    wa_messages = []
+    wa_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "wa_messages.json")
+    if os.path.exists(wa_file):
+        try:
+            with open(wa_file) as f:
+                wa_messages = json.load(f)
+            print(f"💬 Loaded {len(wa_messages)} WhatsApp messages from wa_messages.json")
+        except Exception as e:
+            print(f"  ⚠️  Failed to load wa_messages.json: {e}", file=sys.stderr)
+
+    all_messages = messages + wa_messages
+    # sort by time descending
+    def sort_key(m):
+        try:
+            return m.get("time","") or ""
+        except:
+            return ""
+    all_messages.sort(key=sort_key, reverse=True)
+
     email_actions = extract_actions_from_messages(messages)
     all_actions = email_actions + cal_actions
 
@@ -321,7 +341,7 @@ def main():
             "next": next_custody,
             "periods": custody_periods[:10]
         },
-        "messages": messages,
+        "messages": all_messages,
         "events": events,
         "actions": deduped_actions,
     }

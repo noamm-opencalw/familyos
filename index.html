@@ -221,9 +221,16 @@
       max-width: 100%;
     }
     .msg-source-badge {
-      font-size: 9.5px; font-weight: 600; color: var(--text-3);
+      font-size: 9.5px; font-weight: 700; color: var(--text-3);
       background: var(--surface-2); border: 1px solid var(--border);
-      padding: 1px 6px; border-radius: 8px; flex-shrink: 0;
+      padding: 2px 7px; border-radius: 8px; flex-shrink: 0;
+      display: inline-flex; align-items: center; gap: 3px;
+    }
+    .msg-source-badge.wa {
+      background: #E8F5E9; color: #2E7D32; border-color: #A5D6A7;
+    }
+    .msg-source-badge.email {
+      background: #E3F2FD; color: #1565C0; border-color: #90CAF9;
     }
     /* ── STEP 3: Text truncation — max 2 lines for uniform card height ── */
     .msg-text {
@@ -618,7 +625,10 @@ function msgCard(msg, idx) {
   const body=cleanBody(msg.body);
   const hasBody=body.length>20;
   const cls=['card','card-animate',!isRead(msg.id)?'is-unread':''].filter(Boolean).join(' ');
-  const src=msg.source==='email'?'מייל':msg.source==='whatsapp'?'WA':'';
+  const isWA = msg.source==='whatsapp';
+  const isEmail = msg.source==='email';
+  const srcLabel = isWA ? '📱 WA' : isEmail ? '✉️ מייל' : '';
+  const srcClass = isWA ? 'wa' : isEmail ? 'email' : '';
   const delay=Math.min((idx||0)*30,300);
   const prio=msg.priority==='urgent'?'<span class="priority-badge urgent">דחוף</span>':msg.priority==='high'?'<span class="priority-badge high">חשוב</span>':'';
 
@@ -633,7 +643,7 @@ function msgCard(msg, idx) {
       </div>
       <span class="msg-time">${fmtTime(msg.time)}</span>
     </div>
-    <div class="msg-from">${esc(msg.from||msg.group||'')}${src?`<span class="msg-source-badge">${src}</span>`:''}</div>
+    <div class="msg-from">${esc(msg.from||msg.group||'')}${srcLabel?`<span class="msg-source-badge ${srcClass}">${srcLabel}</span>`:''}</div>
     <div class="msg-text" onclick="this.classList.toggle('expanded')">${esc(txt)}</div>
     ${hasBody?`<div class="msg-body-full" id="mb-${msg.id}">${esc(body)}</div>`:''}
     <div class="msg-actions">
@@ -858,13 +868,23 @@ function updateBadge() {
 // ─── TAB SWITCHING ────────────────────────────────────────────────────────────
 let activeTab='feed';
 function switchTab(id) {
-  if (id===activeTab) return;
+  const alreadyActive = (id === activeTab);
   document.querySelector('.tab-panel.active')?.classList.remove('active');
   document.getElementById('tab-'+id).classList.add('active');
   document.querySelectorAll('.nav-btn').forEach(b=>{ const on=b.dataset.tab===id; b.classList.toggle('active',on); b.setAttribute('aria-selected',on); });
   activeTab=id;
   const bar=document.getElementById('filter-bar');
   bar.classList.toggle('visible',id==='feed'||id==='calendar'||id==='tasks');
+
+  // לחיצה על הטאב הפעיל → חזרה ל"הכל"
+  if (alreadyActive && id==='feed') {
+    activeFilter='all';
+    bar.querySelectorAll('.filter-chip').forEach(b=>b.classList.toggle('active',b.dataset.child==='all'));
+    renderFeed(); renderCalendar(); renderTasks();
+    document.getElementById('tab-feed').scrollTo({top:0,behavior:'smooth'});
+    return;
+  }
+
   if (id==='calendar') renderCalendar();
 }
 document.querySelectorAll('.nav-btn').forEach(btn=>btn.addEventListener('click',()=>switchTab(btn.dataset.tab)));
