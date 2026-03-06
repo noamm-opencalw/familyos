@@ -1,520 +1,254 @@
 {
-  "updated_at": "2026-03-06T06:21:05.204338+00:00",
+  "updated_at": "2026-03-04T06:30:05.090831+00:00",
   "custody": {
     "today": false,
     "current": null,
-    "next": {
-      "start": "2026-03-08T00:00:00+00:00",
-      "end": "2026-03-10T00:00:00+00:00"
-    },
+    "next": null,
     "periods": [
       {
-        "start": "2026-03-08T00:00:00+00:00",
-        "end": "2026-03-10T00:00:00+00:00"
+        "start": "2026-03-04T06:30:05.089632+00:00",
+        "end": "2026-03-04T06:30:05.089658+00:00"
       },
       {
-        "start": "2026-03-12T00:00:00+00:00",
-        "end": "2026-03-15T00:00:00+00:00"
+        "start": "2026-03-04T06:30:05.089687+00:00",
+        "end": "2026-03-04T06:30:05.089709+00:00"
       },
       {
-        "start": "2026-03-17T08:00:00+02:00",
-        "end": "2026-03-18T09:45:00+02:00"
+        "start": "2026-03-04T06:30:05.090049+00:00",
+        "end": "2026-03-04T06:30:05.090073+00:00"
       },
       {
-        "start": "2026-03-22T00:00:00+00:00",
-        "end": "2026-03-24T00:00:00+00:00"
+        "start": "2026-03-04T06:30:05.090461+00:00",
+        "end": "2026-03-04T06:30:05.090483+00:00"
       },
       {
-        "start": "2026-03-26T00:00:00+00:00",
-        "end": "2026-03-29T00:00:00+00:00"
+        "start": "2026-03-04T06:30:05.090545+00:00",
+        "end": "2026-03-04T06:30:05.090566+00:00"
       },
       {
-        "start": "2026-03-31T08:00:00+03:00",
-        "end": "2026-04-01T09:45:00+03:00"
+        "start": "2026-03-04T06:30:05.090590+00:00",
+        "end": "2026-03-04T06:30:05.090611+00:00"
       },
       {
-        "start": "2026-04-05T00:00:00+00:00",
-        "end": "2026-04-07T00:00:00+00:00"
-      },
-      {
-        "start": "2026-04-09T00:00:00+00:00",
-        "end": "2026-04-12T00:00:00+00:00"
-      },
-      {
-        "start": "2026-04-14T08:00:00+03:00",
-        "end": "2026-04-15T09:45:00+03:00"
-      },
-      {
-        "start": "2026-04-19T00:00:00+00:00",
-        "end": "2026-04-21T00:00:00+00:00"
+        "start": "2026-03-04T06:30:05.090681+00:00",
+        "end": "2026-03-04T06:30:05.090705+00:00"
       }
     ]
   },
   "messages": [
     {
-      "id": "wa_120363151256867420@g.us_1772778035006",
-      "source": "whatsapp",
-      "child": "itai",
-      "group": "הורי כיתה ט׳3",
-      "from": "מזכירות בית הספר",
-      "text": "תזכורת: הגשת טופס אישור הורים לטיול ט׳3 עד יום ראשון.",
-      "body": "תזכורת: הגשת טופס אישור הורים לטיול ט׳3 עד יום ראשון.",
-      "time": "2026-03-06T06:20:35.006506+00:00",
-      "pinned": false,
-      "read": false,
-      "priority": "high"
-    },
-    {
-      "id": "wa_972528618633-1597665940@g.us_1772778035006",
-      "source": "whatsapp",
-      "child": "noga",
-      "group": "כיתה ו׳2",
-      "from": "ועד הורים ו2",
-      "text": "ילדים יקרים, השבוע נלמד על פורים. נשמח אם כל ילד יביא תחפושת ביום חמישי.",
-      "body": "ילדים יקרים, השבוע נלמד על פורים. נשמח אם כל ילד יביא תחפושת ביום חמישי.",
-      "time": "2026-03-06T06:20:35.006336+00:00",
-      "pinned": false,
-      "read": false,
-      "priority": "normal"
-    },
-    {
-      "id": "wa_120363280306116883@g.us_1772778035006",
-      "source": "whatsapp",
-      "child": "alon",
-      "group": "כיתה ב׳ תשפ״ו",
-      "from": "מחנכת ב׳",
-      "text": "חוזר דחוף: מחר יש יום ספורט לכיתה ב׳. יש להביא בגדי ספורט ונעליים מתאימות.",
-      "body": "חוזר דחוף: מחר יש יום ספורט לכיתה ב׳. יש להביא בגדי ספורט ונעליים מתאימות.",
-      "time": "2026-03-06T06:20:35.006117+00:00",
-      "pinned": false,
-      "read": false,
-      "priority": "urgent"
-    },
-    {
-      "id": "wa_120363307180171348@g.us_1772778035005",
-      "source": "whatsapp",
-      "child": "ran",
-      "group": "הורי כיתה יא׳7",
-      "from": "מחנכת יא7",
-      "text": "שלום הורים, בשבוע הבא יתקיים מפגש הורים ומורים ביום שלישי בשעה 19:00. נא לאשר הגעה.",
-      "body": "שלום הורים, בשבוע הבא יתקיים מפגש הורים ומורים ביום שלישי בשעה 19:00. נא לאשר הגעה.",
-      "time": "2026-03-06T06:20:35.005598+00:00",
-      "pinned": false,
-      "read": false,
-      "priority": "high"
-    },
-    {
-      "id": "19c951a12dcadc37",
+      "id": 2,
       "from": "בית ספר לביא",
       "group": "מייל — בית ספר לביא",
       "child": "noga",
       "text": "חוזר להורים לקראת פורים + הנחיות בטיחות",
-      "body": "הורים יקרים,\r\n\r\n\r\n\r\n,מצורף חוזר לפורים וכן הנחיות חשובות לקראת ימי הפורים\r\n\r\n\r\nאנא עברו על הוראות הבטיחות עם ילדיכם, מחנכות יעשו זאת גם בכיתות.\r\n\r\n\r\n בברכת חג פורים שמח",
-      "time": "2026-02-25T15:59:00+00:00",
+      "summary": "חוזר להורים לקראת פורים + הנחיות בטיחות",
+      "time": "2026-03-04T06:30:04.113355+00:00",
+      "isRinat": false,
       "pinned": false,
       "read": false,
       "priority": "normal",
       "source": "email"
     },
     {
-      "id": "19c89d233c190d64",
+      "id": 3,
       "from": "מורים/הירשמן כהן  אורי",
       "group": "מייל — מורים/הירשמן כהן  אורי",
       "child": "ran",
       "text": "מורים/הירשמן כהן  אורי (תיכון - עירוני ה ע\"ש יצחק נבון מודיעין): אישור הורים לפעילות חדש פורסם: \"עינות צוקים כימיה פיסיקה יא \"",
-      "body": "<div dir=\"rtl\">\nשלום רב.<br>נדרש אישור הורים לפעילות: \"עינות צוקים כימיה פיסיקה יא \" מאת הירשמן כהן  אורי.<br>למילוי האישור יש להיכנס לתפריט \"אישורי הורים לפעילות\".\n<br><hr><br>\n<font color=\"gray\">\n<h2>\n<a href=\"https://web.mashov.info/teachers\" target=\"_blank\">\nלמשו\"ב מורים \n</a> \n</h2>\n <h2>\n<a href=\"https://web.mashov.info/students\" target=\"_blank\">\nלמשו\"ב תלמידים \n</a> \n</h2>\n<br>\nההודעה נשלחה לבקשת השולח דרך מערכת משו\"ב על-ידי <strong>מורים/הירשמן כהן  אורי</strong> מ<strong>תיכון - עירוני ה ע\"ש יצחק נבון מודיעין</strong> ב-23.2.2026 11:15:49.<br>\nאם ברצונך להפסיק לקבל הודעות מסוג זה לדואר האלקטרוני \n<a href=\"http://msv.im/e/1f28ade3-74d8-c03f-9210-63c05697d6de\">לחץ כאן</a><br>\n<strong>על-מנת להגיב להודעה יש להתחבר למערכת משו\"ב.</strong>\n</font>\n</div>",
-      "time": "2026-02-23T11:26:00+00:00",
+      "summary": "מורים/הירשמן כהן  אורי (תיכון - עירוני ה ע\"ש יצחק נבון מודיעין): אישור הורים לפעילות חדש פורסם: \"עינות צוקים כימיה פיסיקה יא \"",
+      "time": "2026-03-04T06:30:04.114054+00:00",
+      "isRinat": false,
       "pinned": true,
       "read": false,
       "priority": "urgent",
       "source": "email"
     },
     {
-      "id": "19c8998b2a738d10",
+      "id": 4,
       "from": "בית ספר לביא",
       "group": "מייל — בית ספר לביא",
       "child": "alon",
       "text": "חיסונים לשכבה ב'",
-      "body": "להורי תלמידי כיתות ב' שלום,\r\n\r\nעל פי תוכנית החיסונים הנהוגה בישראל, מועמדים תלמידי כיתה ב' השנה לחיסון\r\nשגרה :\r\n\r\nמנת דחף של dTap ipv -חיסון מומת נגד דיפטריה טטנוס שעלת ופוליו.\r\n\r\nמועד החיסונים: 15/3\r\n\r\nנא לשלוח פנקס חיסונים לבית הספר כבר ממחר ועד ליום 11/3.\r\n\r\nמצ\"ב קישור לדף הסבר על החיסון\r\nנא לקרוא בעיון .\r\n\r\nמידע אודות חיסון נגד dTap ipv\r\n\r\nhttps://www.gov.il/BlobFolder/reports/school-nurse-forms/he/subjects_children-adolescents_TdapIPV-pre.pdf",
-      "time": "2026-02-23T10:22:00+00:00",
-      "pinned": true,
-      "read": false,
-      "priority": "urgent",
-      "source": "email"
-    },
-    {
-      "id": "19c6681576fc0363",
-      "from": "info@payschool.co.il",
-      "group": "מייל — info@payschool.co.il",
-      "child": "alon",
-      "text": "יתרות חוב/זכות לתלמידים מבית ספר לביא",
-      "body": "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" id=\"background-table\" style=\"table-layout: fixed; direction: rtl; text-align: right;\" align=\"center\">\r\n        <tbody>\r\n            <tr>\r\n                <td align=\"center\" bgcolor=\"#c7c7c7\">\r\n                    <table style=\"margin: 0 10px;\" width=\"80%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\r\n                        <tbody>\r\n\r\n                            <tr>\r\n                                <td width=\"100%\" height=\"20\"></td>\r\n                            </tr>\r\n\r\n                            <tr>\r\n                                <td id=\"header\" width=\"100%\" align=\"center\" bgcolor=\"#2196f3\">\r\n\r\n                                    <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\r\n                                        <tbody>\r\n                                            <tr>\r\n                                                <td width=\"7%\"></td>\r\n                                                <td width=\"86%\">\r\n                                                    <div align=\"center\" id=\"headline\">\r\n                                                        <p style=\"color: #FFFFFF; font-family: HelveticaNeue, sans-serif;  font-size: 32px; font-weight: bold; text-align: center;  margin-top: 0px;  margin-bottom: 7%px;  margin-top: 20px;\">\r\n                                                                  יתרות חוב/זכות לתלמידים מבית ספר לביא   </p>\r\n                                                    </div>\r\n                                                </td>\r\n                                                <td width=\"7%\"></td>\r\n                                            </tr>\r\n                                        </tbody>\r\n                                    </table>\r\n\r\n                                </td>\r\n                            </tr>\r\n\r\n                            <tr bgcolor=\"#ffffff\">\r\n                                <td width=\"100%\" height=\"30\"></td>\r\n                            </tr>\r\n\r\n                            <tr id=\"simple-content-row\" bgcolor=\"#ffffff\">\r\n                                <td width=\"100%\">\r\n                                    <table align=\"right\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\r\n                                        <tbody>\r\n                                            <tr>\r\n                                                <td width=\"7%\"></td>\r\n                                                <td width=\"86%\">\r\n\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tbody>\r\n\r\n                                                            <tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td width=\"100%\" class=\"article-title\" style=\"text-align: right; font-size: 18px;  line-height: 24px;  color: #231f20;  margin-top: 0px;  padding-bottom: 18px; font-family: HelveticaNeue, sans-serif;\">\r\n                                                                    <p style=\"white-space:pre-wrap;\">מצורף מכתב המפרט את יתרות חוב/זכות למוסד חינוכי לביא\r\nלפתיחת הקובץ המצורף נדרש להזין את תעודת הזהות שלך.\r\nבברכה צוות מוסד חינוכי לביא.\r\n\r\nלחיצה על פתיחת הקובץ מהווה את הסכמתך לקבל מסמך בדואר אלקטרוני.\r\nההודעה נשלחה באמצעות מערכת PaySchool  מבית ONE City</p>\r\n\r\n                                                                              <p style=\"font-size: 16px;\"> לפתיחת הקובץ <a href=\"https://general-api.payschool.co.il/api/v1/external/report/0?id�95&municipalityExternalIdRf7f496-569c-42f0-a4ad-a99b862955bb&externalReportType=2\" style=\"color: #1155CC\">לחץ/י כאן</a></p>\r\n\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td></tr>\r\n                                                            <tr><td width=\"100%\" height=\"10\"></td></tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tbody>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\r\n\r\n                                                </td>\r\n                                                <td width=\"7%\"></td>\r\n                                            </tr>\r\n                                        </tbody>\r\n                                    </table>\r\n                                </td>\r\n                            </tr>\r\n\r\n                            <tr bgcolor=\"#ffffff\">\r\n                                <td width=\"100%\" height=\"15\"></td>\r\n                            </tr>\r\n\t\t\t\t\t\t\t<tr>\r\n                                <td width=\"100%\" height=\"19\"></td>\r\n                            </tr>\r\n\r\n                            <tr>\r\n                                <td width=\"100%\" height=\"13\"></td>\r\n                            </tr>\r\n\r\n\r\n                        </tbody>\r\n                    </table>\r\n                </td>\r\n            </tr>\r\n        </tbody>\r\n    </table><img src=\"https://mandrillapp.com/track/open.php?u1081645&id\fc91462274541a7873e013ddc760ac3\" height=\"1\" width=\"1\" alt=\"\">",
-      "time": "2026-02-16T14:51:00+00:00",
+      "summary": "חיסונים לשכבה ב'",
+      "time": "2026-03-04T06:30:04.114099+00:00",
+      "isRinat": false,
       "pinned": false,
       "read": false,
-      "priority": "high",
-      "source": "email"
-    },
-    {
-      "id": "19c423e29ff045d0",
-      "from": "עידית לוי (מזכירת חטיבת הביניים)",
-      "group": "מייל — עידית לוי",
-      "child": "itai",
-      "text": "Re: הנחיות למבחן כיתה מדעית",
-      "body": "צריך לבדוק עם  מינהל חינוך בעירייה\r\n\r\n‪On Mon, Feb 9, 2026 at 1:50 PM ‫נועם מאיר‬‎ <noammeir@gmail.com> wrote:‬\r\n\r\n> משוייכים לכפר אורנים\r\n>\r\n> נועם מאיר\r\n>\r\n>\r\n> בתאריך יום ב׳, 9 בפבר׳ 2026 ב-13:46 מאת עידית לוי (מזכירת חטיבת הביניים) <\r\n> ikadmon1@modiin.ort.org.il>:\r\n>\r\n>> זה תלוי לאן נרשמתם ולאיזה בית ספר אתם משויכים, צריך לבדוק עם מנהל חינוך.\r\n>>\r\n>> ‪On Mon, Feb 9, 2026 at 1:35 PM ‫נועם מאיר‬‎ <noammeir@gmail.com> wrote:‬\r\n>>\r\n>>> הי עידית\r\n>>> אני רוצה לברר במידה ונוגה לא תתקבל למדעית.\r\n>>> האם היא רשומה לבית ספר בכל מקרה?\r\n>>>\r\n>>> נועם מאיר\r\n>>>\r\n>>>\r\n>>> בתאריך יום א׳, 1 בפבר׳ 2026 ב-8:24 מאת עידית לוי (מזכירת חטיבת הביניים) <\r\n>>> ikadmon1@modiin.ort.org.il>:\r\n>>>\r\n>>>> בוקר טוב,\r\n>>>> קיבלנו תודה רבה ובהצלחה!\r\n>>>>\r\n>>>> ‪On Sat, Jan 31, 2026 at 10:58 PM ‫נועם מאיר‬‎ <noammeir@gmail.com>\r\n>>>> wrote:‬\r\n>>>>\r\n>>>>> נוגה מאיר\r\n>>>>> בית ספר לביא, נעלה\r\n>>>>>\r\n>>>>>\r\n>>>>>\r\n>>>>> נועם מאיר\r\n>>>>>\r\n>>>>>\r\n>>>>> בתאריך יום ה׳, 8 בינו׳ 2026 ב-15:14 מאת עידית לוי (מזכירת חטיבת\r\n>>>>> הביניים) <ikadmon1@modiin.ort.org.il>:\r\n>>>>>\r\n>>>>>> שלום לכולם,\r\n>>>>>> אנו מודים לכם על הרישום למבחן לכיתה המדעית הנדסית בשנת הלימודים תשפ\"ז.\r\n>>>>>> מצורף בזאת דף הנחיות לקראת המבחן שיתקיים ביום חמישי התאריך 15/1/26.\r\n>>>>>> לתשומת לבכם, תלמידים ששם המשפחה שלהם מתחיל באותיות א'-כ', מוזמנים\r\n>>>>>> להגיע בשעה 12:30 לעמדת הרישום. תלמידים ששם המשפחה שלהם מתחיל באותיות ל'-ת'\r\n>>>>>> מוזמנים להגיע בשעה 13:00.\r\n>>>>>> *שימו לב, אי הבאת כל המסמכים הנדרשים ביום הבחינה עלול לעכב את תהליך\r\n>>>>>> הקבלה של ילדיכם.*\r\n>>>>>> בברכה,\r\n>>>>>> עידית, מזכירת חטיבת הביניים.\r\n>>>>>>\r\n>>>>>",
-      "time": "2026-02-09T13:51:00+00:00",
-      "pinned": false,
-      "read": false,
-      "priority": "high",
-      "source": "email"
-    },
-    {
-      "id": "19c42397ffce86c3",
-      "from": "עידית לוי (מזכירת חטיבת הביניים)",
-      "group": "מייל — עידית לוי",
-      "child": "itai",
-      "text": "Re: הנחיות למבחן כיתה מדעית",
-      "body": "זה תלוי לאן נרשמתם ולאיזה בית ספר אתם משויכים, צריך לבדוק עם מנהל חינוך.\r\n\r\n‪On Mon, Feb 9, 2026 at 1:35 PM ‫נועם מאיר‬‎ <noammeir@gmail.com> wrote:‬\r\n\r\n> הי עידית\r\n> אני רוצה לברר במידה ונוגה לא תתקבל למדעית.\r\n> האם היא רשומה לבית ספר בכל מקרה?\r\n>\r\n> נועם מאיר\r\n>\r\n>\r\n> בתאריך יום א׳, 1 בפבר׳ 2026 ב-8:24 מאת עידית לוי (מזכירת חטיבת הביניים) <\r\n> ikadmon1@modiin.ort.org.il>:\r\n>\r\n>> בוקר טוב,\r\n>> קיבלנו תודה רבה ובהצלחה!\r\n>>\r\n>> ‪On Sat, Jan 31, 2026 at 10:58 PM ‫נועם מאיר‬‎ <noammeir@gmail.com>\r\n>> wrote:‬\r\n>>\r\n>>> נוגה מאיר\r\n>>> בית ספר לביא, נעלה\r\n>>>\r\n>>>\r\n>>>\r\n>>> נועם מאיר\r\n>>>\r\n>>>\r\n>>> בתאריך יום ה׳, 8 בינו׳ 2026 ב-15:14 מאת עידית לוי (מזכירת חטיבת הביניים)\r\n>>> <ikadmon1@modiin.ort.org.il>:\r\n>>>\r\n>>>> שלום לכולם,\r\n>>>> אנו מודים לכם על הרישום למבחן לכיתה המדעית הנדסית בשנת הלימודים תשפ\"ז.\r\n>>>> מצורף בזאת דף הנחיות לקראת המבחן שיתקיים ביום חמישי התאריך 15/1/26.\r\n>>>> לתשומת לבכם, תלמידים ששם המשפחה שלהם מתחיל באותיות א'-כ', מוזמנים להגיע\r\n>>>> בשעה 12:30 לעמדת הרישום. תלמידים ששם המשפחה שלהם מתחיל באותיות ל'-ת'\r\n>>>> מוזמנים להגיע בשעה 13:00.\r\n>>>> *שימו לב, אי הבאת כל המסמכים הנדרשים ביום הבחינה עלול לעכב את תהליך\r\n>>>> הקבלה של ילדיכם.*\r\n>>>> בברכה,\r\n>>>> עידית, מזכירת חטיבת הביניים.\r\n>>>>\r\n>>>",
-      "time": "2026-02-09T13:46:00+00:00",
-      "pinned": false,
-      "read": false,
-      "priority": "high",
-      "source": "email"
-    },
-    {
-      "id": "19c2ca8aeb5bcbf7",
-      "from": "info@payschool.co.il",
-      "group": "מייל — info@payschool.co.il",
-      "child": "alon",
-      "text": "יתרות חוב/זכות לתלמידים מבית ספר לביא",
-      "body": "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" id=\"background-table\" style=\"table-layout: fixed; direction: rtl; text-align: right;\" align=\"center\">\r\n        <tbody>\r\n            <tr>\r\n                <td align=\"center\" bgcolor=\"#c7c7c7\">\r\n                    <table style=\"margin: 0 10px;\" width=\"80%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\r\n                        <tbody>\r\n\r\n                            <tr>\r\n                                <td width=\"100%\" height=\"20\"></td>\r\n                            </tr>\r\n\r\n                            <tr>\r\n                                <td id=\"header\" width=\"100%\" align=\"center\" bgcolor=\"#2196f3\">\r\n\r\n                                    <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\r\n                                        <tbody>\r\n                                            <tr>\r\n                                                <td width=\"7%\"></td>\r\n                                                <td width=\"86%\">\r\n                                                    <div align=\"center\" id=\"headline\">\r\n                                                        <p style=\"color: #FFFFFF; font-family: HelveticaNeue, sans-serif;  font-size: 32px; font-weight: bold; text-align: center;  margin-top: 0px;  margin-bottom: 7%px;  margin-top: 20px;\">\r\n                                                                  יתרות חוב/זכות לתלמידים מבית ספר לביא   </p>\r\n                                                    </div>\r\n                                                </td>\r\n                                                <td width=\"7%\"></td>\r\n                                            </tr>\r\n                                        </tbody>\r\n                                    </table>\r\n\r\n                                </td>\r\n                            </tr>\r\n\r\n                            <tr bgcolor=\"#ffffff\">\r\n                                <td width=\"100%\" height=\"30\"></td>\r\n                            </tr>\r\n\r\n                            <tr id=\"simple-content-row\" bgcolor=\"#ffffff\">\r\n                                <td width=\"100%\">\r\n                                    <table align=\"right\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\r\n                                        <tbody>\r\n                                            <tr>\r\n                                                <td width=\"7%\"></td>\r\n                                                <td width=\"86%\">\r\n\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tbody>\r\n\r\n                                                            <tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td width=\"100%\" class=\"article-title\" style=\"text-align: right; font-size: 18px;  line-height: 24px;  color: #231f20;  margin-top: 0px;  padding-bottom: 18px; font-family: HelveticaNeue, sans-serif;\">\r\n                                                                    <p style=\"white-space:pre-wrap;\">מצורף מכתב המפרט את יתרות חוב/זכות למוסד חינוכי לביא\r\nלפתיחת הקובץ המצורף נדרש להזין את תעודת הזהות שלך.\r\nבברכה צוות מוסד חינוכי לביא.\r\n\r\nלחיצה על פתיחת הקובץ מהווה את הסכמתך לקבל מסמך בדואר אלקטרוני.\r\nההודעה נשלחה באמצעות מערכת PaySchool  מבית ONE City</p>\r\n\r\n                                                                              <p style=\"font-size: 16px;\"> לפתיחת הקובץ <a href=\"https://general-api.payschool.co.il/api/v1/external/report/0?id�95&municipalityExternalIdRf7f496-569c-42f0-a4ad-a99b862955bb&externalReportType=2\" style=\"color: #1155CC\">לחץ/י כאן</a></p>\r\n\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td></tr>\r\n                                                            <tr><td width=\"100%\" height=\"10\"></td></tr>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tbody>\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t</table>\r\n\r\n                                                </td>\r\n                                                <td width=\"7%\"></td>\r\n                                            </tr>\r\n                                        </tbody>\r\n                                    </table>\r\n                                </td>\r\n                            </tr>\r\n\r\n                            <tr bgcolor=\"#ffffff\">\r\n                                <td width=\"100%\" height=\"15\"></td>\r\n                            </tr>\r\n\t\t\t\t\t\t\t<tr>\r\n                                <td width=\"100%\" height=\"19\"></td>\r\n                            </tr>\r\n\r\n                            <tr>\r\n                                <td width=\"100%\" height=\"13\"></td>\r\n                            </tr>\r\n\r\n\r\n                        </tbody>\r\n                    </table>\r\n                </td>\r\n            </tr>\r\n        </tbody>\r\n    </table><img src=\"https://mandrillapp.com/track/open.php?u1081645&id;f390b986b548759b46241d60f4d481\" height=\"1\" width=\"1\" alt=\"\">",
-      "time": "2026-02-05T09:16:00+00:00",
-      "pinned": false,
-      "read": false,
-      "priority": "high",
+      "priority": "normal",
       "source": "email"
     }
   ],
+  "academics": [],
   "events": [
     {
-      "id": "0nuuujan7fdu7r8n62umcd4dgk",
-      "calendarEventId": "0nuuujan7fdu7r8n62umcd4dgk",
+      "id": 2,
+      "child": "all",
+      "title": "חופש פורים מהעבודה",
+      "date": "2026-03-04T06:30:05.089506+00:00",
+      "group": "לוח שנה"
+    },
+    {
+      "id": 5,
       "child": "all",
       "title": "⚠️ לבדוק סטטוס טיסה EY596 (אתיחאד)",
-      "date": "2026-03-09T11:00:00+02:00",
-      "endDate": "2026-03-09T11:30:00+02:00",
-      "description": "הטיסה הושעתה ב-1/3 ושוחררה ב-4/3. לבדוק שוב לפני הטיסה!",
-      "location": "",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MG51dXVqYW43ZmR1N3I4bjYydW1jZDRkZ2sgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.089791+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "c2snjhllc199mt6ep5ekep5ko0",
-      "calendarEventId": "c2snjhllc199mt6ep5ekep5ko0",
+      "id": 6,
       "child": "all",
       "title": "✈️ EY596 | TLV → AUH | Etihad",
-      "date": "2026-03-10T07:40:00+02:00",
-      "endDate": "2026-03-10T09:55:00+02:00",
-      "description": "Etihad EY596 | TLV 07:40 → AUH 11:55 | PNR: DWPL8M | נועם + נוגה | טרמינל 3 | להגיע 04:30!",
-      "location": "Ben Gurion Airport, Terminal 3",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=YzJzbmpobGxjMTk5bXQ2ZXA1ZWtlcDVrbzAgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.089827+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "sh82eii7uhj908s2h38acifue0",
-      "calendarEventId": "sh82eii7uhj908s2h38acifue0",
+      "id": 7,
       "child": "all",
       "title": "✈️ דובאי — הגעה | Rove Downtown Dubai",
-      "date": "2026-03-10T18:00:00+02:00",
-      "endDate": "2026-03-10T20:00:00+02:00",
-      "description": "Rove Downtown Dubai | Confirmation: 1039125689 | 4 לילות, 2 מבוגרים | Check-in: 16:00",
-      "location": "Rove Downtown Dubai, Dubai, UAE",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=c2g4MmVpaTd1aGo5MDhzMmgzOGFjaWZ1ZTAgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.089865+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "fbqntrnhguot3qpn4vul2rfp3s",
-      "calendarEventId": "fbqntrnhguot3qpn4vul2rfp3s",
+      "id": 8,
       "child": "all",
       "title": "🏛️ Museum of the Future — דובאי",
-      "date": "2026-03-11T09:00:00+02:00",
-      "endDate": "2026-03-11T12:00:00+02:00",
-      "description": "כרטיסים נרכשו | הפוטוגני ביותר!",
-      "location": "Museum of the Future, Dubai",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=ZmJxbnRybmhndW90M3FwbjR2dWwycmZwM3Mgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.089900+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "mn7pl67r2lv24md8kcjonoroho",
-      "calendarEventId": "mn7pl67r2lv24md8kcjonoroho",
+      "id": 9,
       "child": "all",
       "title": "🖼️ Dubai Frame + מגלשה",
-      "date": "2026-03-11T14:30:00+02:00",
-      "endDate": "2026-03-11T16:30:00+02:00",
-      "description": "כרטיסים נרכשו",
-      "location": "Dubai Frame, Dubai",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=bW43cGw2N3IybHYyNG1kOGtjam9ub3JvaG8gbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.089932+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "_6cp36oj2c4r3gphlchh68db268o68chi70s3ao9o6co3cdb464o0",
-      "calendarEventId": "_6cp36oj2c4r3gphlchh68db268o68chi70s3ao9o6co3cdb464o0",
+      "id": 10,
       "child": "all",
       "title": "La Perle by Dragone at Al Habtoor City",
-      "date": "2026-03-11T16:30:00+02:00",
-      "endDate": "2026-03-11T18:00:00+02:00",
-      "description": "More details: https://laperle.platinumlist.net/event/tickets",
-      "location": "United Arab Emirates, Dubai, Al Habtoor City - Sheikh Zayed Rd - Dubai - United Arab Emirates",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=XzZjcDM2b2oyYzRyM2dwaGxjaGg2OGRiMjY4bzY4Y2hpNzBzM2FvOW82Y28zY2RiNDY0bzAgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.089960+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "199146p1h7p8h16ppqqli9c3ro",
-      "calendarEventId": "199146p1h7p8h16ppqqli9c3ro",
+      "id": 11,
       "child": "all",
       "title": "🎭 La Perle by Dragone — דובאי",
-      "date": "2026-03-11T18:30:00+02:00",
-      "endDate": "2026-03-11T20:30:00+02:00",
-      "description": "La Perle — #1 show in Dubai | Al Habtoor City | הכניסה לקופה בתיאטרון",
-      "location": "Al Habtoor City, Dubai",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MTk5MTQ2cDFoN3A4aDE2cHBxcWxpOWMzcm8gbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.089996+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "nlgma6ifcb0qpa7vu4ghog8t3o",
-      "calendarEventId": "nlgma6ifcb0qpa7vu4ghog8t3o",
+      "id": 12,
       "child": "all",
       "title": "La Perle Show",
-      "date": "2026-03-11T18:30:00+02:00",
-      "endDate": "2026-03-11T20:00:00+02:00",
-      "description": "",
-      "location": "Al Habtoor City, Dubai",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=bmxnbWE2aWZjYjBxcGE3dnU0Z2hvZzh0M28gbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.090024+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "l5vsa1lual61h5ijmr7vbir5uc",
-      "calendarEventId": "l5vsa1lual61h5ijmr7vbir5uc",
+      "id": 14,
       "child": "all",
       "title": "Aquaventure World Ticket in Atlantis Dubai",
-      "date": "2026-03-12T08:00:00+02:00",
-      "endDate": "2026-03-12T09:00:00+02:00",
-      "description": "‏כדי לראות מידע מפורט לגבי אירועים שנוצרו באופן אוטומטי, כמו האירוע הזה, השתמש באפליקציה הרשמית של יומן Google. https://g.co/calendar\n\n‏האירוע הזה נוצר מאימייל שקיבלת ב-Gmail. https://mail.google.com/mail?extsrc=cal&plid=ACUX6DOXxuHjie74Erj9QRzqtBNbCZ1n6qmr188\n",
-      "location": "Aquaventure World Ticket in Atlantis, Please refer to the Aquaventure Waterpark for assistance",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=bDV2c2ExbHVhbDYxaDVpam1yN3ZiaXI1dWMgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.090100+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "l614e11ljp7g6t0fh571r2u8qc",
-      "calendarEventId": "l614e11ljp7g6t0fh571r2u8qc",
+      "id": 15,
       "child": "all",
       "title": "🌊 Atlantis Aquaventure — Palm Jumeirah",
-      "date": "2026-03-12T10:00:00+02:00",
-      "endDate": "2026-03-12T18:00:00+02:00",
-      "description": "כרטיסים נרכשו | להגיע בפתיחה! אין להכניס אוכל",
-      "location": "Atlantis, The Palm, Dubai",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=bDYxNGUxMWxqcDdnNnQwZmg1NzFyMnU4cWMgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.090129+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "68uemk984vjvu0840tcrvfbfag",
-      "calendarEventId": "68uemk984vjvu0840tcrvfbfag",
+      "id": 16,
       "child": "all",
       "title": "Ain Dubai Ticket",
-      "date": "2026-03-12T22:00:00+02:00",
-      "endDate": "2026-03-12T23:00:00+02:00",
-      "description": "‏כדי לראות מידע מפורט לגבי אירועים שנוצרו באופן אוטומטי, כמו האירוע הזה, השתמש באפליקציה הרשמית של יומן Google. https://g.co/calendar",
-      "location": "Ain Dubai",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=Njh1ZW1rOTg0dmp2dTA4NDB0Y3J2ZmJmYWcgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.090153+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "r67ttradnmn6i88gskdvcrbo6s",
-      "calendarEventId": "r67ttradnmn6i88gskdvcrbo6s",
+      "id": 17,
       "child": "all",
       "title": "🌆 Sky Views Observatory + מגלשה",
-      "date": "2026-03-13T09:30:00+02:00",
-      "endDate": "2026-03-13T12:00:00+02:00",
-      "description": "כרטיסים נרכשו (Klook)",
-      "location": "Sky Views Observatory, Address Sky View, Dubai",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=cjY3dHRyYWRubW42aTg4Z3NrZHZjcmJvNnMgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.090181+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "p4cfjanu9s5b9s7329tcnaagr0",
-      "calendarEventId": "p4cfjanu9s5b9s7329tcnaagr0",
+      "id": 18,
       "child": "all",
       "title": "🎡 Ain Dubai — גלגל הענק (קוד: ABUDHABI)",
-      "date": "2026-03-13T14:00:00+02:00",
-      "endDate": "2026-03-13T17:00:00+02:00",
-      "description": "כרטיסים נרכשו (Klook QSH716977) | קוד הנחה ABUDHABI | Bluewaters Island",
-      "location": "Ain Dubai, Bluewaters Island, Dubai",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=cDRjZmphbnU5czViOXM3MzI5dGNuYWFncjAgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.090207+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "t9rjvtpap6dlcnki5ucbc5rfc4",
-      "calendarEventId": "t9rjvtpap6dlcnki5ucbc5rfc4",
+      "id": 19,
       "child": "all",
       "title": "🏨 Rove Downtown — Check-out מוקדם",
-      "date": "2026-03-14T08:30:00+02:00",
-      "endDate": "2026-03-14T10:00:00+02:00",
-      "description": "Check-out מוקדם 8:30 | Rove Downtown Dubai | Confirmation: 1039125689 | ואז נסיעה לאבו דאבי ~1.5 שעה",
-      "location": "Rove Downtown Dubai, Dubai, UAE",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=dDlyanZ0cGFwNmRsY25raTV1Y2JjNXJmYzQgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.090241+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "0hd4cb8obb8jkuqn7kevl0okk4",
-      "calendarEventId": "0hd4cb8obb8jkuqn7kevl0okk4",
+      "id": 20,
       "child": "all",
       "title": "🏨 Hilton Yas Island — Check-in + Warner Bros World",
-      "date": "2026-03-14T12:00:00+02:00",
-      "endDate": "2026-03-14T22:00:00+02:00",
-      "description": "הגעה לאבו דאבי ~10:00 | Check-in מוקדם Hilton Yas Island (#3398599715) | הליכה ל-Warner Bros World באותו יום!",
-      "location": "Hilton Yas Island, Abu Dhabi",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MGhkNGNiOG9iYjhqa3VxbjdrZXZsMG9razQgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.090289+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "2brcjv2qb8c434g008um5qdq68",
-      "calendarEventId": "2brcjv2qb8c434g008um5qdq68",
+      "id": 21,
       "child": "all",
       "title": "🌊 Yas Waterworld / חוף המלון — יום מים",
-      "date": "2026-03-15T10:00:00+02:00",
-      "endDate": "2026-03-15T18:00:00+02:00",
-      "description": "Yas Waterworld (כרטיס משולב) או חוף/בריכת המלון | Yas Island | לבחור בבוקר לפי מצב רוח",
-      "location": "Yas Island, Abu Dhabi",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MmJyY2p2MnFiOGM0MzRnMDA4dW01cWRxNjggbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.090319+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "fkt9erkj973sj5oee9o1nnd898",
-      "calendarEventId": "fkt9erkj973sj5oee9o1nnd898",
+      "id": 22,
       "child": "all",
       "title": "נועם <> יונתן - פגישת היכרות",
-      "date": "2026-03-15T10:30:00+02:00",
-      "endDate": "2026-03-15T11:30:00+02:00",
-      "description": "Google Meet: https://meet.google.com/ojy-osqd-xab\nקוד אימות: 4224037336795\nטלפון (IL): +972 73-359-9899\n\nמארגן: Yonatan Daon (yonatan@abatahun.com)",
-      "location": "https://meet.google.com/ojy-osqd-xab",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=Zmt0OWVya2o5NzNzajVvZWU5bzFubmQ4OTggbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.090352+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "130dtc3sl6bsbjjdv3cee5m5ig",
-      "calendarEventId": "130dtc3sl6bsbjjdv3cee5m5ig",
+      "id": 23,
       "child": "all",
       "title": "🎨 Louvre Abu Dhabi",
-      "date": "2026-03-16T09:00:00+02:00",
-      "endDate": "2026-03-16T12:00:00+02:00",
-      "description": "כרטיסים נרכשו | check-out מהילטון 12:00 | נסיעה לשדה 12:15 (15 דק')",
-      "location": "Louvre Abu Dhabi",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=MTMwZHRjM3NsNmJzYmpqZHYzY2VlNW01aWcgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.090379+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "kapv3l17m7o9ib08tu3qf1od48_20260316T070000Z",
-      "calendarEventId": "kapv3l17m7o9ib08tu3qf1od48_20260316T070000Z",
+      "id": 24,
       "child": "all",
       "title": "🧹 ניקיון — אחת לשבועיים",
-      "date": "2026-03-16T09:00:00+02:00",
-      "endDate": "2026-03-16T11:00:00+02:00",
-      "description": "",
-      "location": "",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=a2FwdjNsMTdtN285aWIwOHR1M3FmMW9kNDhfMjAyNjAzMTZUMDcwMDAwWiBub2FtbWVpckBt"
+      "date": "2026-03-04T06:30:05.090408+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "8cpv5ibr4veg1is07vn95n3n9s",
-      "calendarEventId": "8cpv5ibr4veg1is07vn95n3n9s",
+      "id": 25,
       "child": "all",
       "title": "✈️ EY597 | AUH → TLV | Etihad",
-      "date": "2026-03-16T12:25:00+02:00",
-      "endDate": "2026-03-16T14:00:00+02:00",
-      "description": "Etihad EY597 | AUH 14:25 → TLV ~16:00 | PNR: DWPL8M | Gate A1, Terminal A | להגיע 12:30!",
-      "location": "Abu Dhabi Airport, Terminal A",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=OGNwdjVpYnI0dmVnMWlzMDd2bjk1bjNuOXMgbm9hbW1laXJAbQ"
+      "date": "2026-03-04T06:30:05.090436+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "nt9pua02f5li6it494o3s989jg_20260317T161500Z",
-      "calendarEventId": "nt9pua02f5li6it494o3s989jg_20260317T161500Z",
+      "id": 27,
       "child": "alon",
-      "title": "סוסים כפר רות",
-      "date": "2026-03-17T18:15:00+02:00",
-      "endDate": "2026-03-17T18:45:00+02:00",
-      "description": "",
-      "location": "",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=bnQ5cHVhMDJmNWxpNml0NDk0bzNzOTg5amdfMjAyNjAzMTdUMTYxNTAwWiBub2FtbWVpckBt"
+      "title": "🐴 רכיבת סוסים — כפר רות",
+      "date": "2026-03-04T06:30:05.090517+00:00",
+      "group": "חוג"
     },
     {
-      "id": "kapv3l17m7o9ib08tu3qf1od48_20260330T070000Z",
-      "calendarEventId": "kapv3l17m7o9ib08tu3qf1od48_20260330T070000Z",
+      "id": 30,
       "child": "all",
       "title": "🧹 ניקיון — אחת לשבועיים",
-      "date": "2026-03-30T10:00:00+03:00",
-      "endDate": "2026-03-30T12:00:00+03:00",
-      "description": "",
-      "location": "",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=a2FwdjNsMTdtN285aWIwOHR1M3FmMW9kNDhfMjAyNjAzMzBUMDcwMDAwWiBub2FtbWVpckBt"
+      "date": "2026-03-04T06:30:05.090648+00:00",
+      "group": "לוח שנה"
     },
     {
-      "id": "nt9pua02f5li6it494o3s989jg_20260331T151500Z",
-      "calendarEventId": "nt9pua02f5li6it494o3s989jg_20260331T151500Z",
+      "id": 32,
       "child": "alon",
-      "title": "סוסים כפר רות",
-      "date": "2026-03-31T18:15:00+03:00",
-      "endDate": "2026-03-31T18:45:00+03:00",
-      "description": "",
-      "location": "",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=bnQ5cHVhMDJmNWxpNml0NDk0bzNzOTg5amdfMjAyNjAzMzFUMTUxNTAwWiBub2FtbWVpckBt"
-    },
-    {
-      "id": "kapv3l17m7o9ib08tu3qf1od48_20260413T070000Z",
-      "calendarEventId": "kapv3l17m7o9ib08tu3qf1od48_20260413T070000Z",
-      "child": "all",
-      "title": "🧹 ניקיון — אחת לשבועיים",
-      "date": "2026-04-13T10:00:00+03:00",
-      "endDate": "2026-04-13T12:00:00+03:00",
-      "description": "",
-      "location": "",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=a2FwdjNsMTdtN285aWIwOHR1M3FmMW9kNDhfMjAyNjA0MTNUMDcwMDAwWiBub2FtbWVpckBt"
-    },
-    {
-      "id": "nt9pua02f5li6it494o3s989jg_20260414T151500Z",
-      "calendarEventId": "nt9pua02f5li6it494o3s989jg_20260414T151500Z",
-      "child": "alon",
-      "title": "סוסים כפר רות",
-      "date": "2026-04-14T18:15:00+03:00",
-      "endDate": "2026-04-14T18:45:00+03:00",
-      "description": "",
-      "location": "",
-      "group": "לוח שנה",
-      "htmlLink": "https://www.google.com/calendar/event?eid=bnQ5cHVhMDJmNWxpNml0NDk0bzNzOTg5amdfMjAyNjA0MTRUMTUxNTAwWiBub2FtbWVpckBt"
+      "title": "🐴 רכיבת סוסים — כפר רות",
+      "date": "2026-03-04T06:30:05.090731+00:00",
+      "group": "חוג"
     }
   ],
-  "actions": [
-    {
-      "id": "19c89d233c190d64_action",
-      "child": "ran",
-      "title": "אישור הורים: מורים/הירשמן כהן  אורי (תיכון - עירוני ה ע\"ש יצחק נבון מודיע",
-      "priority": "urgent",
-      "dueDate": "2026-02-23T11:26:00+00:00",
-      "done": false,
-      "source": "מורים/הירשמן כהן  אורי"
-    },
-    {
-      "id": "19c6681576fc0363_pay",
-      "child": "alon",
-      "title": "תשלום: יתרות חוב/זכות לתלמידים מבית ספר לביא",
-      "priority": "high",
-      "dueDate": "2026-02-16T14:51:00+00:00",
-      "done": false,
-      "source": "info@payschool.co.il"
-    }
-  ]
+  "actions": []
 }
