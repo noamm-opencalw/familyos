@@ -110,12 +110,17 @@
     .btn-refresh.spinning svg { animation: spin 1s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── STEP 2: Filter Bar ── */
+    /* ── STEP 3: Filter Bar — smooth horizontal scroll ── */
     .filter-bar {
       display: none; flex-shrink: 0;
       padding: 10px 16px; gap: 8px;
       overflow-x: auto; scrollbar-width: none;
       background: var(--surface); border-bottom: 1px solid var(--border);
+      /* smooth momentum scroll on iOS */
+      -webkit-overflow-scrolling: touch;
+      /* fade edges to hint scroll */
+      mask-image: linear-gradient(to left, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+      -webkit-mask-image: linear-gradient(to left, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
     }
     .filter-bar::-webkit-scrollbar { display: none; }
     .filter-bar.visible { display: flex; }
@@ -138,11 +143,11 @@
     }
     .filter-chip.active .chip-dot { transform: scale(1.2); }
 
-    /* ── STEP 2: Tab Area ── */
+    /* ── STEP 2+3: Tab Area + whitespace ── */
     .tab-area { flex: 1; overflow: hidden; position: relative; background: var(--bg); }
     .tab-panel {
       display: none; height: 100%; overflow-y: auto;
-      padding: 16px 14px calc(16px + var(--nav-h) + var(--safe-b));
+      padding: 20px 14px calc(20px + var(--nav-h) + var(--safe-b));
       -webkit-overflow-scrolling: touch; overscroll-behavior: contain; scrollbar-width: none;
     }
     .tab-panel::-webkit-scrollbar { display: none; }
@@ -189,10 +194,10 @@
       pointer-events: none; box-shadow: 0 2px 6px rgba(239,68,68,.3);
     }
 
-    /* ── STEP 2: Cards (Stitch Light) ── */
+    /* ── STEP 3: Cards — ample whitespace ── */
     .card {
       background: var(--surface); border-radius: var(--radius-card);
-      border: 1px solid var(--border); margin-bottom: 10px;
+      border: 1px solid var(--border); margin-bottom: 12px;
       display: flex; align-items: stretch; overflow: hidden;
       transition: transform .15s cubic-bezier(.22,1,.36,1), box-shadow .15s ease;
       box-shadow: var(--shadow-card);
@@ -200,7 +205,7 @@
     .card:active { transform: scale(0.985); box-shadow: var(--shadow-card-hi); }
     .card.is-unread { background: #F0F5FF; border-color: rgba(74,144,226,0.18); box-shadow: var(--shadow-card-hi); }
     .card-strip { width: 4px; flex-shrink: 0; border-radius: 0 4px 4px 0; }
-    .card-body { flex: 1; padding: 14px 14px; min-width: 0; }
+    .card-body { flex: 1; padding: 14px 16px; min-width: 0; }
 
     /* ── MESSAGE CARD ── */
     .msg-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 5px; }
@@ -210,18 +215,20 @@
     .dot-unread { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 6px currentColor; }
     .msg-time { font-size: 11px; color: var(--text-3); flex-shrink: 0; font-weight: 400; font-variant-numeric: tabular-nums; }
     .msg-from {
-      font-size: 12.5px; color: var(--text-2); margin-bottom: 4px;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      font-size: 12px; color: var(--text-2); margin-bottom: 5px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
       display: flex; align-items: center; gap: 6px;
+      max-width: 100%;
     }
     .msg-source-badge {
       font-size: 9.5px; font-weight: 600; color: var(--text-3);
       background: var(--surface-2); border: 1px solid var(--border);
       padding: 1px 6px; border-radius: 8px; flex-shrink: 0;
     }
+    /* ── STEP 3: Text truncation — max 2 lines for uniform card height ── */
     .msg-text {
-      font-size: 14.5px; color: var(--text-1); line-height: 1.6;
-      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+      font-size: 14px; color: var(--text-1); line-height: 1.55;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     }
     .card.is-unread .msg-text { font-weight: 600; color: var(--text-1); }
     .msg-text.expanded { -webkit-line-clamp: unset; display: block; }
@@ -272,13 +279,17 @@
     .rinat-zone .card { margin-bottom: 6px; background: #fff; border-color: #FCA5A5; }
     .rinat-zone .card:last-child { margin-bottom: 0; }
 
-    /* ── DIVIDER ── */
-    .divider { display: flex; align-items: center; gap: 10px; margin: 20px 0 10px; font-size: 11.5px; font-weight: 700; color: var(--text-3); letter-spacing: .06em; text-transform: uppercase; }
-    .divider:first-child { margin-top: 4px; }
+    /* ── STEP 3: Divider — generous whitespace ── */
+    .divider { display: flex; align-items: center; gap: 10px; margin: 24px 0 12px; font-size: 11px; font-weight: 700; color: var(--text-3); letter-spacing: .08em; text-transform: uppercase; }
+    .divider:first-child { margin-top: 0; }
     .divider-line { flex: 1; height: 1px; background: var(--border); }
 
     /* ── EVENT CARD ── */
-    .item-title { font-size: 14.5px; font-weight: 500; color: var(--text-1); margin-bottom: 7px; line-height: 1.5; }
+    /* ── STEP 3: Event/academic item — 2-line clamp ── */
+    .item-title {
+      font-size: 14px; font-weight: 600; color: var(--text-1); margin-bottom: 7px; line-height: 1.5;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
     .item-meta  { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .child-pill-sm { font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: var(--radius-pill); flex-shrink: 0; }
     .meta-date  { font-size: 11.5px; color: var(--text-3); display: flex; align-items: center; gap: 4px; }
@@ -313,30 +324,31 @@
     .btn-cal-remove svg { width: 13px; height: 13px; }
     .btn-cal-remove:hover { background: #FCA5A5; }
 
-    /* ── TASKS ── */
+    /* ── STEP 3: Tasks — whitespace ── */
     .task-card {
       background: var(--surface); border-radius: var(--radius-card);
-      border: 1px solid var(--border); margin-bottom: 10px;
+      border: 1px solid var(--border); margin-bottom: 12px;
       display: flex; align-items: flex-start; overflow: hidden;
       box-shadow: var(--shadow-card); transition: opacity .3s;
     }
     .task-card.done { opacity: .4; }
     .task-strip { width: 4px; flex-shrink: 0; border-radius: 0 4px 4px 0; align-self: stretch; }
-    .task-inner { flex: 1; padding: 12px 14px; display: flex; gap: 12px; align-items: flex-start; }
+    .task-inner { flex: 1; padding: 14px 16px; display: flex; gap: 14px; align-items: flex-start; }
     .task-check {
-      width: 24px; height: 24px; border-radius: 50%;
-      border: 2px solid var(--border); background: none; cursor: pointer; flex-shrink: 0;
+      width: 26px; height: 26px; border-radius: 50%;
+      border: 2px solid var(--border-hi); background: none; cursor: pointer; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center; transition: all .2s;
+      margin-top: 1px;
     }
-    .task-check svg { width: 12px; height: 12px; display: none; }
+    .task-check svg { width: 13px; height: 13px; display: none; }
     .task-check.checked { background: var(--itai); border-color: var(--itai); color: #fff; }
     .task-check.checked svg { display: block; }
     .task-info { flex: 1; }
-    .task-title { font-size: 14px; font-weight: 600; margin-bottom: 5px; line-height: 1.4; }
+    .task-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; line-height: 1.4; color: var(--text-1); }
     .task-meta  { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
     .task-due   { font-size: 11.5px; color: var(--text-3); display: flex; align-items: center; gap: 4px; }
     .task-due svg { width: 12px; height: 12px; opacity: .5; }
-    .task-src   { font-size: 10.5px; color: var(--text-3); background: var(--surface-3); padding: 2px 8px; border-radius: var(--radius-pill); }
+    .task-src   { font-size: 10.5px; color: var(--text-3); background: var(--surface-2); border: 1px solid var(--border); padding: 2px 8px; border-radius: var(--radius-pill); }
 
     /* ── CALENDAR GRID ── */
     .cal-grid-wrap { background: var(--surface); border-radius: var(--radius-card); padding: 14px; margin-bottom: 16px; border: 1px solid var(--border); box-shadow: var(--shadow-card); }
@@ -359,11 +371,17 @@
     .cal-day.selected:not(.today) { outline: 2px solid var(--accent); outline-offset: -1px; background: var(--accent-dim); }
     .cal-day:not(.today):not(.other-month):hover { background: var(--surface-2); }
 
-    /* ── EMPTY STATE ── */
-    .empty { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 28px; text-align: center; gap: 8px; }
-    .empty-icon { width: 56px; height: 56px; color: var(--text-3); margin-bottom: 10px; opacity: .3; }
-    .empty-title { font-size: 17px; font-weight: 600; color: var(--text-2); }
-    .empty-sub   { font-size: 13.5px; color: var(--text-3); line-height: 1.65; }
+    /* ── STEP 3: Empty States — clean, informative ── */
+    .empty {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 64px 28px; text-align: center; gap: 10px;
+      background: var(--surface); border-radius: var(--radius-card);
+      border: 1.5px dashed var(--border-hi);
+      margin-top: 8px;
+    }
+    .empty-icon { width: 52px; height: 52px; color: var(--accent); margin-bottom: 6px; opacity: .35; }
+    .empty-title { font-size: 16px; font-weight: 700; color: var(--text-1); }
+    .empty-sub   { font-size: 13px; color: var(--text-3); line-height: 1.65; max-width: 240px; }
 
     /* ── SKELETON ── */
     .skeleton-card { background: var(--surface); border-radius: var(--radius-card); border: 1px solid var(--border); margin-bottom: 10px; display: flex; align-items: stretch; overflow: hidden; height: 88px; box-shadow: var(--shadow-card); }
@@ -377,9 +395,9 @@
     .card-animate { opacity:0; transform:translateY(10px); animation: cardSlideIn .3s cubic-bezier(.22,1,.36,1) forwards; }
     @keyframes cardSlideIn { to { opacity:1; transform:translateY(0); } }
 
-    /* ── CUSTODY BANNER ── */
+    /* ── STEP 3: Custody Banner — whitespace ── */
     .custody-banner {
-      border-radius: var(--radius-card); padding: 14px 16px; margin-bottom: 14px;
+      border-radius: var(--radius-card); padding: 16px 18px; margin-bottom: 20px;
       display: flex; align-items: center; justify-content: space-between;
       border: 1px solid var(--border); box-shadow: var(--shadow-card);
     }
