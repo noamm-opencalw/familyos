@@ -4,12 +4,14 @@ FamilyOS — generate_data.py
 שולף נתונים אמיתיים מ-Gmail + Google Calendar ומייצר data.json
 """
 
-import json, subprocess, re, sys, os
+import json, subprocess, re, sys
 from datetime import datetime, timezone, timedelta
+from pathlib import Path
 
 ACCOUNT = "noammeir@gmail.com"
 TELEGRAM_CHAT_ID = "671957209"
 OUTPUT = "data.json"
+WA_MESSAGES_FILE = Path(__file__).parent / "wa_messages.json"
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
@@ -184,29 +186,22 @@ def custody_today(periods):
             pass
     return False, None
 
-# ── Main ──────────────────────────────────────────────────────────────────────
-def fetch_whatsapp():
-    """קורא wa_messages.json ומחזיר את ההודעות"""
-    wa_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "wa_messages.json")
-    if not os.path.exists(wa_file):
+# ── Fetch WhatsApp messages ────────────────────────────────────────────────────
+def fetch_wa_messages():
+    if not WA_MESSAGES_FILE.exists():
         return []
     try:
-        with open(wa_file, encoding="utf-8") as f:
-            msgs = json.load(f)
-        print(f"💬 Loaded {len(msgs)} WhatsApp messages")
+        msgs = json.loads(WA_MESSAGES_FILE.read_text(encoding="utf-8"))
+        print(f"📱 WA: {len(msgs)} הודעות שמורות")
         return msgs
-    except Exception as e:
-        print(f"  ⚠️  wa_messages.json error: {e}", file=sys.stderr)
+    except:
         return []
 
+# ── Main ──────────────────────────────────────────────────────────────────────
 def main():
     messages  = fetch_messages()
-    wa_msgs   = fetch_whatsapp()
+    wa_messages = fetch_wa_messages()
     events, custody_periods, cal_actions = fetch_calendar()
-
-    # מיזוג + מיון לפי זמן (חדש ראשון)
-    all_messages = messages + wa_msgs
-    all_messages.sort(key=lambda m: m.get("time","") or "", reverse=True)
 
     is_custody, current_period = custody_today(custody_periods)
 
@@ -222,6 +217,10 @@ def main():
         except:
             pass
 
+    # merge email + WA, sort by time (newest first)
+    all_messages = messages + wa_messages
+    all_messages.sort(key=lambda m: m.get("time",""), reverse=True)
+
     data = {
         "updated_at": now_iso(),
         "custody": {
@@ -231,7 +230,7 @@ def main():
             "periods": custody_periods[:8]
         },
         "messages": all_messages,
-        "academics": [],   # יתווסף בהמשך מ-WhatsApp
+        "academics": [],
         "events": events,
         "actions": cal_actions,
     }
@@ -239,7 +238,7 @@ def main():
     with open(OUTPUT, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ data.json נוצר — {len(all_messages)} הודעות ({len(messages)} מייל + {len(wa_msgs)} WA), {len(events)} אירועים")
+    print(f"✅ data.json נוצר — {len(messages)} מייל + {len(wa_messages)} WA = {len(all_messages)} הודעות, {len(events)} אירועים")
     return data
 
 if __name__ == "__main__":
