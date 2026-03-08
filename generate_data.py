@@ -217,9 +217,9 @@ def main():
         except:
             pass
 
-    # merge email + WA, sort by time (newest first)
+    # merge email + WA, sort by time (oldest first — newest at bottom)
     all_messages = messages + wa_messages
-    all_messages.sort(key=lambda m: m.get("time",""), reverse=True)
+    all_messages.sort(key=lambda m: m.get("time",""), reverse=False)
 
     data = {
         "updated_at": now_iso(),

@@ -425,6 +425,64 @@
     .custody-emoji   { font-size: 2rem; }
 
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* ── MSG CARD EXPAND ── */
+    .msg-preview {
+      font-size: 1rem; color: var(--text-1); line-height: 1.65;
+      word-wrap: break-word; overflow-wrap: break-word;
+      white-space: pre-wrap;
+    }
+    .msg-preview.hidden { display: none; }
+
+    .msg-full {
+      display: none; margin-top: 0.7rem;
+      border-top: 1px solid var(--border); padding-top: 0.7rem;
+    }
+    .msg-full.open { display: block; }
+    .msg-full-text {
+      font-size: 1rem; color: var(--text-1); line-height: 1.75;
+      white-space: pre-wrap; word-break: break-word; overflow-wrap: break-word;
+    }
+
+    /* attachment chip */
+    .msg-attach {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 0.6rem; padding: 0.4rem 0.8rem;
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 10px; font-size: 0.82rem; color: var(--text-2);
+      font-weight: 600; max-width: 100%; overflow: hidden; text-overflow: ellipsis;
+    }
+    .attach-icon { font-size: 1rem; flex-shrink: 0; }
+    .attach-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    /* card clickable cursor */
+    .msg-card-expand { cursor: pointer; }
+    .msg-card-expand.expanded { box-shadow: var(--shadow-card-hi); }
+
+    /* ── OLDER MESSAGES SECTION ── */
+    .older-section {
+      margin-bottom: 1rem; border-radius: var(--radius-card);
+      border: 1px solid var(--border); overflow: hidden;
+      background: var(--surface);
+    }
+    .older-toggle {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.85rem 1rem; cursor: pointer;
+      font-size: 0.88rem; font-weight: 600; color: var(--text-2);
+      background: var(--surface-2); user-select: none;
+      transition: background .15s;
+    }
+    .older-toggle:hover { background: var(--surface-3); }
+    .older-arrow { transition: transform .25s; flex-shrink: 0; color: var(--text-3); }
+    .older-section.open .older-arrow { transform: rotate(180deg); }
+    .older-body { display: none; padding: 0.75rem; }
+    .older-section.open .older-body { display: block; }
+
+    /* empty recent */
+    .empty-recent {
+      text-align: center; padding: 1.5rem; font-size: 0.88rem;
+      color: var(--text-3); font-weight: 500;
+    }
   </style>
 </head>
 <body>
@@ -649,11 +707,12 @@ function cleanBody(body) {
 
 // ─── MESSAGE CARD ─────────────────────────────────────────────────────────────
 function msgCard(msg, idx) {
-  const c=kid(msg.child), txt=msg.summary||msg.text||'';
+  const c=kid(msg.child);
   const bg=rgba(c.color,.13);
-  const body=cleanBody(msg.body);
-  const hasBody=body.length>20;
-  const cls=['card','card-animate',!isRead(msg.id)?'is-unread':''].filter(Boolean).join(' ');
+  // preview = summary or first 120 chars of text
+  const fullText = msg.text || msg.body || '';
+  const preview  = msg.summary || fullText.slice(0,120) + (fullText.length>120?'…':'');
+  const cls=['card','card-animate','msg-card-expand',!isRead(msg.id)?'is-unread':''].filter(Boolean).join(' ');
   const isWA = msg.source==='whatsapp';
   const isEmail = msg.source==='email';
   const srcLabel = isWA ? '📱 WA' : isEmail ? '✉️ מייל' : '';
@@ -661,7 +720,12 @@ function msgCard(msg, idx) {
   const delay=Math.min((idx||0)*30,300);
   const prio=msg.priority==='urgent'?'<span class="priority-badge urgent">דחוף</span>':msg.priority==='high'?'<span class="priority-badge high">חשוב</span>':'';
 
-  return `<div class="${cls}" data-id="${msg.id}" style="animation-delay:${delay}ms" id="mc-${msg.id}">
+  // קובץ מצורף
+  const attach=msg.hasAttachment&&msg.attachmentName
+    ? `<div class="msg-attach"><span class="attach-icon">📎</span><span class="attach-name">${esc(msg.attachmentName)}</span></div>`
+    : '';
+
+  return `<div class="${cls}" data-id="${msg.id}" style="animation-delay:${delay}ms" id="mc-${msg.id}" onclick="toggleCard('${msg.id}',this)">
   <div class="card-strip" style="background:${c.color}"></div>
   <div class="card-body">
     <div class="msg-top">
@@ -674,22 +738,37 @@ function msgCard(msg, idx) {
     </div>
     <div class="msg-from">${esc(msg.from||msg.group||'')}${srcLabel?`<span class="msg-source-badge ${srcClass}">${srcLabel}</span>`:''}</div>
     <div class="msg-datetime">📅 ${fmtMsgDateTime(msg.time)}</div>
-    <div class="msg-text" onclick="this.classList.toggle('expanded')">${esc(txt)}</div>
-    ${hasBody?`<div class="msg-body-full" id="mb-${msg.id}">${esc(body)}</div>`:''}
-    <div class="msg-actions">
+
+    <!-- preview (collapsed) -->
+    <div class="msg-preview">${esc(preview)}${attach}</div>
+
+    <!-- full content (expanded) -->
+    <div class="msg-full" id="mf-${msg.id}">
+      <div class="msg-full-text">${esc(fullText)}</div>
+      ${attach}
+    </div>
+
+    <div class="msg-actions" onclick="event.stopPropagation()">
       ${prio}
-      ${hasBody?`<button class="btn-ghost" onclick="toggleBody('${msg.id}',this)">${IC.book}<span class="lbl">הרחב</span></button>`:''}
+      <button class="btn-ghost expand-btn" id="ebtn-${msg.id}">${IC.book}<span class="lbl">הרחב</span></button>
       <button class="btn-ghost" style="margin-right:auto" onclick="toggleRead('${msg.id}',this)">${IC.chk}<span class="lbl">${isRead(msg.id)?'לא נקרא':'סמן נקרא'}</span></button>
     </div>
   </div>
 </div>`;
 }
 
-function toggleBody(id,btn) {
-  const el=document.getElementById('mb-'+id);
-  if (!el) return;
-  const open=el.classList.toggle('open');
-  btn.querySelector('.lbl').textContent=open?'הסתר':'הרחב';
+function toggleCard(id, cardEl) {
+  const full=document.getElementById('mf-'+id);
+  const preview=cardEl.querySelector('.msg-preview');
+  const btn=document.getElementById('ebtn-'+id);
+  if (!full) return;
+  const open=cardEl.classList.toggle('expanded');
+  full.classList.toggle('open', open);
+  preview.classList.toggle('hidden', open);
+  if (btn) btn.querySelector('.lbl').textContent=open?'הסתר':'הרחב';
+  if (open) { markRead(id,true); cardEl.classList.remove('is-unread'); updateBadge(); }
+  // smooth scroll into view
+  if (open) setTimeout(()=>cardEl.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
 }
 function toggleRead(id,btn) {
   const now=!isRead(id); markRead(id,now);
@@ -791,16 +870,45 @@ function custodyBanner() {
 // ─── RENDER FEED ──────────────────────────────────────────────────────────────
 function renderFeed() {
   const el=document.getElementById('tab-feed');
+  const now=new Date();
+  const cutoff24h=new Date(now-24*60*60*1000);
+
   let msgs=(DATA.messages||[]).filter(shouldShow);
   if (activeFilter!=='all') msgs=msgs.filter(m=>m.child===activeFilter);
-  const rinat=msgs.filter(m=>m.isRinat), normal=msgs.filter(m=>!m.isRinat);
+
+  // מיון: ישן → חדש (הכי חדש בתחתית)
+  msgs=[...msgs].sort((a,b)=>new Date(a.time)-new Date(b.time));
+
+  // סינון 24 שעות
+  const recent=msgs.filter(m=>new Date(m.time)>=cutoff24h);
+  const older =msgs.filter(m=>new Date(m.time)<cutoff24h);
+
+  const rinat=recent.filter(m=>m.isRinat), normal=recent.filter(m=>!m.isRinat);
 
   let html=custodyBanner();
   let idx=0;
+
+  // הודעות ישנות (מעל 24 שעות) — מקופלות
+  if (older.length) {
+    const olderRinat=older.filter(m=>m.isRinat), olderNormal=older.filter(m=>!m.isRinat);
+    html+=`<div class="older-section">
+      <div class="older-toggle" onclick="this.parentElement.classList.toggle('open')" role="button" aria-expanded="false">
+        <span>📂 הודעות ישנות (${older.length})</span>
+        <svg class="older-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="older-body">
+        ${olderRinat.length?`<div class="rinat-zone">${olderRinat.map(m=>msgCard(m,idx++)).join('')}</div>`:''}
+        ${olderNormal.map(m=>msgCard(m,idx++)).join('')}
+      </div>
+    </div>`;
+  }
+
+  // הודעות 24 שעות אחרונות
   if (rinat.length) {
     html+=`<div class="rinat-zone"><div class="rinat-header"><div class="rinat-dot"></div>הודעות מרינת</div>${rinat.map(m=>msgCard(m,idx++)).join('')}</div>`;
   }
-  if (!normal.length&&!rinat.length) html+=empty(IC.chat56,'אין הודעות עדיין','הודעות מבתי הספר יופיעו כאן');
+  if (!recent.length&&!older.length) html+=empty(IC.chat56,'אין הודעות עדיין','הודעות מבתי הספר יופיעו כאן');
+  else if (!recent.length) html+=`<div class="empty-recent">אין הודעות חדשות ב-24 השעות האחרונות</div>`;
   else html+=normal.map(m=>msgCard(m,idx++)).join('');
   el.innerHTML=html;
   updateBadge();

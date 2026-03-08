@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-08T20:30:07.793099+00:00",
+  "updated_at": "2026-03-08T21:06:51.643167+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -37,230 +37,32 @@
   },
   "messages": [
     {
-      "from": "Avital",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "בוקר טוב\nיש לי תקלה בזום. כבר פותרת ומעדכנת אתכם",
-      "summary": "בוקר טוב\nיש לי תקלה בזום. כבר פותרת ומעדכנת אתכם",
-      "time": "2026-03-08T09:31:14.299000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 1
-    },
-    {
-      "from": "Avital",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "https://meet.google.com/sws-xhyn-zew?authuser=1\nכנסו לקישור הזה",
-      "summary": "https://meet.google.com/sws-xhyn-zew?authuser=1\nכנסו לקישור הזה",
-      "time": "2026-03-08T09:33:36.422000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 2
-    },
-    {
-      "from": "ויקי ח🌀קי הוראה מותאמת",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "Replied message (untrusted, for context):\n\nמבקש כניסה עם מייל... מה לרשום?",
-      "summary": "Replied message (untrusted, for context):\n\nמבקש כניסה עם מייל... מה לרשום?",
-      "time": "2026-03-08T09:37:08.316000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 3
-    },
-    {
-      "from": "ויקי ח🌀קי הוראה מותאמת",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "אוקיי",
-      "summary": "אוקיי",
-      "time": "2026-03-08T09:38:46.005000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 4
-    },
-    {
-      "from": "ויקי ח🌀קי הוראה מותאמת",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "עדיין לא נותן זה עדיין על אימל",
-      "summary": "עדיין לא נותן זה עדיין על אימל",
-      "time": "2026-03-08T09:41:11.903000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 5
-    },
-    {
-      "from": "מעיין נוריאל",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "גם ליונתן לא נותן להכנס",
-      "summary": "גם ליונתן לא נותן להכנס",
-      "time": "2026-03-08T09:42:29.215000+00:00",
+      "from": "Adi Shalev",
+      "group": "הורי ט׳3",
+      "child": "itai",
+      "text": "בוקר טוב 🫶🏻🌈 מי מתחיל הלוז של הילדים היום ?",
+      "summary": "בוקר טוב 🫶🏻🌈 מי מתחיל הלוז של הילדים היום ?",
+      "time": "2026-03-08T07:45:38.857000+00:00",
       "isRinat": false,
       "pinned": true,
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 6
+      "id": 1059
     },
     {
-      "from": "Avital",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "שניהם איתי",
-      "summary": "שניהם איתי",
-      "time": "2026-03-08T09:52:56.332000+00:00",
+      "from": "Liri",
+      "group": "הורי ט׳3",
+      "child": "itai",
+      "text": "הזום הראשון בשעה 10:00",
+      "summary": "הזום הראשון בשעה 10:00",
+      "time": "2026-03-08T07:46:46.325000+00:00",
       "isRinat": false,
       "pinned": false,
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 7
-    },
-    {
-      "from": "Avital",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "https://wordwall.net/he/resource/7705286/%D7%A4%D7%A2%D7%9C%D7%99%D7%9D-%D7%91%D7%A2%D7%AA%D7%99%D7%93",
-      "summary": "https://wordwall.net/he/resource/7705286/%D7%A4%D7%A2%D7%9C%D7%99%D7%9D-%D7%91%D7%A2%D7%AA%D7%99%D7%93",
-      "time": "2026-03-08T09:54:41.339000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 8
-    },
-    {
-      "from": "Avital",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "Replied message (untrusted, for context):\n\nחידון לילדים. אנחנו עושים אותו ביחד בזום...",
-      "summary": "Replied message (untrusted, for context):\n\nחידון לילדים. אנחנו עושים אותו ביחד בזום...",
-      "time": "2026-03-08T09:55:07.084000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 9
-    },
-    {
-      "from": "Orly Shem Tov Kaplan",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "אביטל אפשר לקבל ךינק ל",
-      "summary": "אביטל אפשר לקבל ךינק ל",
-      "time": "2026-03-08T11:43:33.178000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 10
-    },
-    {
-      "from": "Orly Shem Tov Kaplan",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "ש21ק11ק1קק ¹",
-      "summary": "ש21ק11ק1קק ¹",
-      "time": "2026-03-08T11:43:57.788000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 11
-    },
-    {
-      "from": "Orly Shem Tov Kaplan",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "[Queued messages while agent was busy]\n\n---\nQueued #1",
-      "summary": "[Queued messages while agent was busy]\n\n---\nQueued #1",
-      "time": "2026-03-08T11:43:59.860000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 12
-    },
-    {
-      "from": "Avital",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "https://meet.google.com/aih-hgkh-wjc",
-      "summary": "https://meet.google.com/aih-hgkh-wjc",
-      "time": "2026-03-08T11:44:41.369000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 13
-    },
-    {
-      "from": "Avital",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "📎 תכנון_ליום_שני_9.3.26\n\n• 09:00 — זום עם שולמית\n• 11:00–11:30 — זום עם שולמית\n• 11:30 — זום עם שולמית\n• 12:00–12:30 — זום עם אביטל\n• 12:30 — זום עם אביטל\n• 13:30–14:00 — מפגש זום\n• 14:00 — מפגש זום",
-      "summary": "• 09:00 — זום עם שולמית\n• 11:00–11:30 — זום עם שולמית\n• 11:30 — זום עם שולמית\n• 12:00–12:30 — זום עם אביטל\n• 12:30 — זום",
-      "time": "2026-03-08T19:18:29.154000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "high",
-      "source": "whatsapp",
-      "hasAttachment": true,
-      "attachmentName": "תכנון_ליום_שני_9.3.26",
-      "id": 14
-    },
-    {
-      "from": "Avital",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "הורים יקרים\nמצרפת תכנון למחר. בתכנון מופיעים קישורים לכל המשימות ולכל המפגשים.\nלילה טוב ושקט",
-      "summary": "הורים יקרים\nמצרפת תכנון למחר. בתכנון מופיעים קישורים לכל המשימות ולכל המפגשים.\nלילה טוב ושקט",
-      "time": "2026-03-08T19:19:16.243000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "high",
-      "source": "whatsapp",
-      "id": 15
-    },
-    {
-      "from": "נופר אברהם-ששון",
-      "group": "הורי יא׳7",
-      "child": "ran",
-      "text": "Replied message (untrusted, for context):\n\nהורים יקרים ערב טוב,\nהיום עברנו יום למידה מרחוק רשמי ומלא לפי מערכת. רוב התלמידים נכנסו והשתתפו (מי שלא- יצרתי קשר באופן אישי) \n\nמזכירה למלא את השאלון הנ''ל וכאן לכל צורך שעולה.🙏🏻 שיהיה שבוע שקט ולילה רגוע...",
-      "summary": "Replied message (untrusted, for context):\n\nהורים יקרים ערב טוב,\nהיום עברנו יום למידה מרחוק רשמי ומלא לפי מערכת. רוב התלמ",
-      "time": "2026-03-08T18:02:51.651000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "high",
-      "source": "whatsapp",
-      "id": 16
+      "id": 1060
     },
     {
       "from": "קרן",
@@ -274,7 +76,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 17
+      "id": 1016
     },
     {
       "from": "קרן",
@@ -288,7 +90,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 18
+      "id": 1017
     },
     {
       "from": "שירן אלגבה",
@@ -302,7 +104,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 19
+      "id": 1018
     },
     {
       "from": "Moshe Harshish",
@@ -316,7 +118,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 20
+      "id": 1019
     },
     {
       "from": "Dana",
@@ -330,7 +132,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 21
+      "id": 1020
     },
     {
       "from": "קרן",
@@ -344,7 +146,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 22
+      "id": 1021
     },
     {
       "from": "שירן אלגבה",
@@ -358,7 +160,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 23
+      "id": 1022
     },
     {
       "from": "Dana",
@@ -372,7 +174,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 24
+      "id": 1023
     },
     {
       "from": "Dana",
@@ -386,7 +188,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 25
+      "id": 1024
     },
     {
       "from": "Keren Revivo Hazan",
@@ -400,7 +202,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 26
+      "id": 1025
     },
     {
       "from": "סיי טימיאנקר Better Brand",
@@ -414,7 +216,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 27
+      "id": 1026
     },
     {
       "from": "קרן",
@@ -428,7 +230,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 28
+      "id": 1027
     },
     {
       "from": "שירה רוזנמן",
@@ -442,7 +244,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 29
+      "id": 1028
     },
     {
       "from": "Nitzan Maymon Barokas 🏝",
@@ -456,7 +258,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 30
+      "id": 1029
     },
     {
       "from": "שירה רוזנמן",
@@ -470,7 +272,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 31
+      "id": 1030
     },
     {
       "from": "שירה רוזנמן",
@@ -484,7 +286,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 32
+      "id": 1031
     },
     {
       "from": "קרן",
@@ -498,7 +300,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 33
+      "id": 1032
     },
     {
       "from": "Ira",
@@ -512,7 +314,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 34
+      "id": 1033
     },
     {
       "from": "שירן אלגבה",
@@ -526,7 +328,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 35
+      "id": 1034
     },
     {
       "from": "שירה רוזנמן",
@@ -540,7 +342,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 36
+      "id": 1035
     },
     {
       "from": "שירן אלגבה",
@@ -554,7 +356,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 37
+      "id": 1036
     },
     {
       "from": "מלכה מנשורי",
@@ -568,7 +370,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 38
+      "id": 1037
     },
     {
       "from": "Ira",
@@ -582,7 +384,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 39
+      "id": 1038
     },
     {
       "from": "מלכה מנשורי",
@@ -596,7 +398,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 40
+      "id": 1039
     },
     {
       "from": "Ira",
@@ -610,7 +412,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 41
+      "id": 1040
     },
     {
       "from": "מלכה מנשורי",
@@ -624,7 +426,203 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 42
+      "id": 1041
+    },
+    {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "בוקר טוב\nיש לי תקלה בזום. כבר פותרת ומעדכנת אתכם",
+      "summary": "בוקר טוב\nיש לי תקלה בזום. כבר פותרת ומעדכנת אתכם",
+      "time": "2026-03-08T09:31:14.299000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1000
+    },
+    {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "https://meet.google.com/sws-xhyn-zew?authuser=1\nכנסו לקישור הזה",
+      "summary": "https://meet.google.com/sws-xhyn-zew?authuser=1\nכנסו לקישור הזה",
+      "time": "2026-03-08T09:33:36.422000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1001
+    },
+    {
+      "from": "ויקי ח🌀קי הוראה מותאמת",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "Replied message (untrusted, for context):\n\nמבקש כניסה עם מייל... מה לרשום?",
+      "summary": "Replied message (untrusted, for context):\n\nמבקש כניסה עם מייל... מה לרשום?",
+      "time": "2026-03-08T09:37:08.316000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1002
+    },
+    {
+      "from": "ויקי ח🌀קי הוראה מותאמת",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "אוקיי",
+      "summary": "אוקיי",
+      "time": "2026-03-08T09:38:46.005000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1003
+    },
+    {
+      "from": "ויקי ח🌀קי הוראה מותאמת",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "עדיין לא נותן זה עדיין על אימל",
+      "summary": "עדיין לא נותן זה עדיין על אימל",
+      "time": "2026-03-08T09:41:11.903000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1004
+    },
+    {
+      "from": "מעיין נוריאל",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "גם ליונתן לא נותן להכנס",
+      "summary": "גם ליונתן לא נותן להכנס",
+      "time": "2026-03-08T09:42:29.215000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1005
+    },
+    {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "שניהם איתי",
+      "summary": "שניהם איתי",
+      "time": "2026-03-08T09:52:56.332000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1006
+    },
+    {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "https://wordwall.net/he/resource/7705286/%D7%A4%D7%A2%D7%9C%D7%99%D7%9D-%D7%91%D7%A2%D7%AA%D7%99%D7%93",
+      "summary": "https://wordwall.net/he/resource/7705286/%D7%A4%D7%A2%D7%9C%D7%99%D7%9D-%D7%91%D7%A2%D7%AA%D7%99%D7%93",
+      "time": "2026-03-08T09:54:41.339000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1007
+    },
+    {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "Replied message (untrusted, for context):\n\nחידון לילדים. אנחנו עושים אותו ביחד בזום...",
+      "summary": "Replied message (untrusted, for context):\n\nחידון לילדים. אנחנו עושים אותו ביחד בזום...",
+      "time": "2026-03-08T09:55:07.084000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1008
+    },
+    {
+      "from": "Orly Shem Tov Kaplan",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "אביטל אפשר לקבל ךינק ל",
+      "summary": "אביטל אפשר לקבל ךינק ל",
+      "time": "2026-03-08T11:43:33.178000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1009
+    },
+    {
+      "from": "Orly Shem Tov Kaplan",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "ש21ק11ק1קק ¹",
+      "summary": "ש21ק11ק1קק ¹",
+      "time": "2026-03-08T11:43:57.788000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1010
+    },
+    {
+      "from": "Orly Shem Tov Kaplan",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "[Queued messages while agent was busy]\n\n---\nQueued #1",
+      "summary": "[Queued messages while agent was busy]\n\n---\nQueued #1",
+      "time": "2026-03-08T11:43:59.860000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1011
+    },
+    {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "https://meet.google.com/aih-hgkh-wjc",
+      "summary": "https://meet.google.com/aih-hgkh-wjc",
+      "time": "2026-03-08T11:44:41.369000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1012
+    },
+    {
+      "from": "זולי חיים",
+      "group": "הורי ט׳3",
+      "child": "itai",
+      "text": "תלמידות, תלמידים והורים יקרים\nשלום רב,\n\nמחר, יום שני, 9/3/26, אנו נמשיך במתכונת של למידה מרחוק.\n\nחטב- שכבות ז-ט\nיום הלימודים יתחיל ב 10:00 ויתנהל לפי מערכת השעות \n\nחטע- שכבות י-יב\nיום הלימודים יתחיל ב 9:00 ויתנהל לפי מערכת השעות \n\nנמשיך להתנהל כמו בימים האחרונים, כל שיעור יתחיל בשעה עגולה ויערך 40 דק.\n\nבכל תחילת שיעור תתבצע בדיקת נוכחות.\n\nמאחלים לכולם ימים רגועים ושקטים ככל שניתן🙏🏻🇮🇱🙏🏻\nבברכה,\nהנהלת בית הספר אורט עירוני ד׳",
+      "summary": "תלמידות, תלמידים והורים יקרים\nשלום רב,\n\nמחר, יום שני, 9/3/26, אנו נמשיך במתכונת של למידה מרחוק.\n\nחטב- שכבות ז-ט\nיום הלימ",
+      "time": "2026-03-08T12:05:37.489000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1058
     },
     {
       "from": "Korin Geva",
@@ -638,7 +636,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 43
+      "id": 1042
     },
     {
       "from": "יונית נהוראי 🌺",
@@ -652,7 +650,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 44
+      "id": 1043
     },
     {
       "from": "מלכה מנשורי",
@@ -666,7 +664,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 45
+      "id": 1044
     },
     {
       "from": "Moshe Harshish",
@@ -680,7 +678,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 46
+      "id": 1045
     },
     {
       "from": "מלכה מנשורי",
@@ -694,7 +692,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 47
+      "id": 1046
     },
     {
       "from": "Moshe Harshish",
@@ -708,7 +706,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 48
+      "id": 1047
     },
     {
       "from": "כרמית שרמן",
@@ -722,7 +720,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 49
+      "id": 1048
     },
     {
       "from": "כרמית שרמן",
@@ -736,7 +734,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 50
+      "id": 1049
     },
     {
       "from": "שרית",
@@ -750,7 +748,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 51
+      "id": 1050
     },
     {
       "from": "שרית",
@@ -764,7 +762,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 52
+      "id": 1051
     },
     {
       "from": "Moshe Harshish",
@@ -778,7 +776,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 53
+      "id": 1052
     },
     {
       "from": "שרית",
@@ -792,7 +790,21 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 54
+      "id": 1053
+    },
+    {
+      "from": "נופר אברהם-ששון",
+      "group": "הורי יא׳7",
+      "child": "ran",
+      "text": "Replied message (untrusted, for context):\n\nהורים יקרים ערב טוב,\nהיום עברנו יום למידה מרחוק רשמי ומלא לפי מערכת. רוב התלמידים נכנסו והשתתפו (מי שלא- יצרתי קשר באופן אישי) \n\nמזכירה למלא את השאלון הנ''ל וכאן לכל צורך שעולה.🙏🏻 שיהיה שבוע שקט ולילה רגוע...",
+      "summary": "Replied message (untrusted, for context):\n\nהורים יקרים ערב טוב,\nהיום עברנו יום למידה מרחוק רשמי ומלא לפי מערכת. רוב התלמ",
+      "time": "2026-03-08T18:02:51.651000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1015
     },
     {
       "from": "פינוקי",
@@ -806,7 +818,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 55
+      "id": 1054
     },
     {
       "from": "מלכה מנשורי",
@@ -822,7 +834,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "יום_שני",
-      "id": 56
+      "id": 1055
     },
     {
       "from": "מלכה מנשורי",
@@ -836,7 +848,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 57
+      "id": 1056
     },
     {
       "from": "מלכה מנשורי",
@@ -850,58 +862,46 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 58
+      "id": 1057
     },
     {
-      "from": "זולי חיים",
-      "group": "הורי ט׳3",
-      "child": "itai",
-      "text": "תלמידות, תלמידים והורים יקרים\nשלום רב,\n\nמחר, יום שני, 9/3/26, אנו נמשיך במתכונת של למידה מרחוק.\n\nחטב- שכבות ז-ט\nיום הלימודים יתחיל ב 10:00 ויתנהל לפי מערכת השעות \n\nחטע- שכבות י-יב\nיום הלימודים יתחיל ב 9:00 ויתנהל לפי מערכת השעות \n\nנמשיך להתנהל כמו בימים האחרונים, כל שיעור יתחיל בשעה עגולה ויערך 40 דק.\n\nבכל תחילת שיעור תתבצע בדיקת נוכחות.\n\nמאחלים לכולם ימים רגועים ושקטים ככל שניתן🙏🏻🇮🇱🙏🏻\nבברכה,\nהנהלת בית הספר אורט עירוני ד׳",
-      "summary": "תלמידות, תלמידים והורים יקרים\nשלום רב,\n\nמחר, יום שני, 9/3/26, אנו נמשיך במתכונת של למידה מרחוק.\n\nחטב- שכבות ז-ט\nיום הלימ",
-      "time": "2026-03-08T12:05:37.489000+00:00",
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "📎 תכנון_ליום_שני_9.3.26\n\n• 09:00 — זום עם שולמית\n• 11:00–11:30 — זום עם שולמית\n• 11:30 — זום עם שולמית\n• 12:00–12:30 — זום עם אביטל\n• 12:30 — זום עם אביטל\n• 13:30–14:00 — מפגש זום\n• 14:00 — מפגש זום",
+      "summary": "• 09:00 — זום עם שולמית\n• 11:00–11:30 — זום עם שולמית\n• 11:30 — זום עם שולמית\n• 12:00–12:30 — זום עם אביטל\n• 12:30 — זום",
+      "time": "2026-03-08T19:18:29.154000+00:00",
       "isRinat": false,
       "pinned": true,
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 59
+      "hasAttachment": true,
+      "attachmentName": "תכנון_ליום_שני_9.3.26",
+      "id": 1013
     },
     {
-      "from": "Adi Shalev",
-      "group": "הורי ט׳3",
-      "child": "itai",
-      "text": "בוקר טוב 🫶🏻🌈 מי מתחיל הלוז של הילדים היום ?",
-      "summary": "בוקר טוב 🫶🏻🌈 מי מתחיל הלוז של הילדים היום ?",
-      "time": "2026-03-08T07:45:38.857000+00:00",
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "הורים יקרים\nמצרפת תכנון למחר. בתכנון מופיעים קישורים לכל המשימות ולכל המפגשים.\nלילה טוב ושקט",
+      "summary": "הורים יקרים\nמצרפת תכנון למחר. בתכנון מופיעים קישורים לכל המשימות ולכל המפגשים.\nלילה טוב ושקט",
+      "time": "2026-03-08T19:19:16.243000+00:00",
       "isRinat": false,
       "pinned": true,
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 60
+      "id": 1014
     },
     {
-      "from": "Liri",
-      "group": "הורי ט׳3",
-      "child": "itai",
-      "text": "הזום הראשון בשעה 10:00",
-      "summary": "הזום הראשון בשעה 10:00",
-      "time": "2026-03-08T07:46:46.325000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 61
-    },
-    {
-      "id": 62,
+      "id": 64,
       "from": "בית ספר לביא",
       "group": "מייל — בית ספר לביא",
-      "child": "alon",
-      "text": "חיסונים לשכבה ב'",
-      "summary": "חיסונים לשכבה ב'",
-      "time": "2026-03-08T20:30:06.551873+00:00",
+      "child": "noga",
+      "text": "חוזר להורים לקראת פורים + הנחיות בטיחות",
+      "summary": "חוזר להורים לקראת פורים + הנחיות בטיחות",
+      "time": "2026-03-08T20:30:06.551125+00:00",
       "isRinat": false,
       "pinned": false,
       "read": false,
@@ -923,13 +923,13 @@
       "source": "email"
     },
     {
-      "id": 64,
+      "id": 62,
       "from": "בית ספר לביא",
       "group": "מייל — בית ספר לביא",
-      "child": "noga",
-      "text": "חוזר להורים לקראת פורים + הנחיות בטיחות",
-      "summary": "חוזר להורים לקראת פורים + הנחיות בטיחות",
-      "time": "2026-03-08T20:30:06.551125+00:00",
+      "child": "alon",
+      "text": "חיסונים לשכבה ב'",
+      "summary": "חיסונים לשכבה ב'",
+      "time": "2026-03-08T20:30:06.551873+00:00",
       "isRinat": false,
       "pinned": false,
       "read": false,
@@ -939,6 +939,62 @@
   ],
   "academics": [],
   "events": [
+    {
+      "id": 500,
+      "child": "noga",
+      "title": "📚 [נוגה] זום עם שולמית",
+      "date": "2026-03-09T09:00:00+02:00",
+      "group": "לוח שנה",
+      "source": "whatsapp-pdf"
+    },
+    {
+      "id": 501,
+      "child": "noga",
+      "title": "📚 [נוגה] זום עם שולמית",
+      "date": "2026-03-09T11:00:00+02:00",
+      "group": "לוח שנה",
+      "source": "whatsapp-pdf"
+    },
+    {
+      "id": 502,
+      "child": "noga",
+      "title": "📚 [נוגה] זום עם שולמית",
+      "date": "2026-03-09T11:30:00+02:00",
+      "group": "לוח שנה",
+      "source": "whatsapp-pdf"
+    },
+    {
+      "id": 503,
+      "child": "noga",
+      "title": "📚 [נוגה] זום עם אביטל",
+      "date": "2026-03-09T12:00:00+02:00",
+      "group": "לוח שנה",
+      "source": "whatsapp-pdf"
+    },
+    {
+      "id": 504,
+      "child": "noga",
+      "title": "📚 [נוגה] זום עם אביטל",
+      "date": "2026-03-09T12:30:00+02:00",
+      "group": "לוח שנה",
+      "source": "whatsapp-pdf"
+    },
+    {
+      "id": 505,
+      "child": "noga",
+      "title": "📚 [נוגה] מפגש זום",
+      "date": "2026-03-09T13:30:00+02:00",
+      "group": "לוח שנה",
+      "source": "whatsapp-pdf"
+    },
+    {
+      "id": 506,
+      "child": "noga",
+      "title": "📚 [נוגה] מפגש זום",
+      "date": "2026-03-09T14:00:00+02:00",
+      "group": "לוח שנה",
+      "source": "whatsapp-pdf"
+    },
     {
       "id": 3,
       "child": "noga",

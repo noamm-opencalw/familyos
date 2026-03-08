@@ -406,7 +406,9 @@ def main():
     for i, m in enumerate(all_messages):
         m["id"] = 1000 + i
 
-    data["messages"] = all_messages + existing_msgs
+    combined = all_messages + existing_msgs
+    combined.sort(key=lambda m: m.get("time", ""), reverse=False)  # ישן → חדש
+    data["messages"] = combined
     data["events"]   = all_events + existing_events
     data["actions"]  = all_actions + existing_actions
     data["updated_at"] = datetime.now(timezone.utc).isoformat()
