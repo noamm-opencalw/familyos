@@ -106,19 +106,21 @@ def parse_session(session_file, group_jid, cutoff_ts):
                     pdf_name = Path(pdf_path).stem.split('---')[0]
                     has_pdf = True
 
-                # נקה את ה-system prompt מהטקסט
-                # הוצא רק את ה-sender message (לפני/אחרי metadata)
-                # חפש sender name מה-metadata
+                # חלץ sender name מה-metadata JSON
                 sender_match = re.search(r'"sender":\s*"([^"]+)"', full_text)
                 sender = sender_match.group(1) if sender_match else "לא ידוע"
                 sender_phone_match = re.search(r'"e164":\s*"([^"]+)"', full_text)
                 sender_phone = sender_phone_match.group(1) if sender_phone_match else ""
 
-                # הוצא את גוף ההודעה (אחרי ה-metadata blocks)
-                body = re.sub(r'```json.*?```', '', full_text, flags=re.DOTALL)
-                body = re.sub(r'\[media attached:.*?\]', '', body)
-                body = re.sub(r'To send an image.*', '', body, flags=re.DOTALL)
-                body = body.strip()
+                # חלץ את גוף ההודעה — הטקסט שמגיע אחרי ה-metadata blocks
+                # Strategy: remove all ```json...``` blocks and [media...] then trim
+                body = re.sub(r'```json[\s\S]*?```', '', full_text)
+                body = re.sub(r'\[media attached:[^\]]+\]', '', body)
+                body = re.sub(r'To send an image back[\s\S]*', '', body)
+                body = re.sub(r'Conversation info \(untrusted metadata\):', '', body)
+                body = re.sub(r'Sender \(untrusted metadata\):', '', body)
+                # נקה שורות ריקות מרובות
+                body = re.sub(r'\n{3,}', '\n\n', body).strip()
 
                 if not body and not has_pdf:
                     continue

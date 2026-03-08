@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-08T05:19:05.769709+00:00",
+  "updated_at": "2026-03-08T05:19:47.334216+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -50,49 +50,49 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "תכנון_ליום_ראשון_8.3.26",
-      "id": 1
+      "id": 1000
     },
     {
       "from": "Avital",
       "group": "כיתה ו׳2",
       "child": "noga",
-      "text": "Conversation info (untrusted metadata):\n\n\nSender (untrusted metadata):\n\n\nשבוע טוב \nמצורפת מערכת למידה מרחוק למחר",
-      "summary": "Conversation info (untrusted metadata):\n\n\nSender (untrusted metadata):\n\n\nשבוע טוב \nמצורפת מערכת למיד",
+      "text": "שבוע טוב \nמצורפת מערכת למידה מרחוק למחר",
+      "summary": "שבוע טוב \nמצורפת מערכת למידה מרחוק למחר",
       "time": "2026-03-07T16:21:43.047000+00:00",
       "isRinat": false,
       "pinned": true,
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 1001
     },
     {
       "from": "נופר אברהם-ששון",
       "group": "הורי יא׳7",
       "child": "ran",
-      "text": "Conversation info (untrusted metadata):\n\n\nSender (untrusted metadata):\n\n\nשבוע טוב ושקט\nנמשיך בלמידה מרחוק גם מחר החל מ9:00 לפי מערכת. שנתבשר בשורות טובות 🙏🏻🙌🏻",
-      "summary": "Conversation info (untrusted metadata):\n\n\nSender (untrusted metadata):\n\n\nשבוע טוב ושקט\nנמשיך בלמידה ",
+      "text": "שבוע טוב ושקט\nנמשיך בלמידה מרחוק גם מחר החל מ9:00 לפי מערכת. שנתבשר בשורות טובות 🙏🏻🙌🏻",
+      "summary": "שבוע טוב ושקט\nנמשיך בלמידה מרחוק גם מחר החל מ9:00 לפי מערכת. שנתבשר בשורות טובות 🙏🏻🙌🏻",
       "time": "2026-03-07T18:00:35.882000+00:00",
       "isRinat": false,
       "pinned": true,
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 3
+      "id": 1002
     },
     {
       "from": "מלכה מנשורי",
       "group": "כיתה ב׳ לביא",
       "child": "alon",
-      "text": "Conversation info (untrusted metadata):\n\n\nSender (untrusted metadata):\n\n\nשבוע טוב ומבורך🙏🙏\nבהמשך הערב אשלח תכנון למידה מפורט למחר הכולל מפגש רגשי, לימודי ו-2 משימות מתוקשבות .",
-      "summary": "Conversation info (untrusted metadata):\n\n\nSender (untrusted metadata):\n\n\nשבוע טוב ומבורך🙏🙏\nבהמשך הער",
+      "text": "שבוע טוב ומבורך🙏🙏\nבהמשך הערב אשלח תכנון למידה מפורט למחר הכולל מפגש רגשי, לימודי ו-2 משימות מתוקשבות .",
+      "summary": "שבוע טוב ומבורך🙏🙏\nבהמשך הערב אשלח תכנון למידה מפורט למחר הכולל מפגש רגשי, לימודי ו-2 משימות מתוקשבות",
       "time": "2026-03-07T16:51:31.454000+00:00",
       "isRinat": false,
       "pinned": true,
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 4
+      "id": 1003
     },
     {
       "from": "מלכה מנשורי",
@@ -108,7 +108,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "יום_ראשון",
-      "id": 5
+      "id": 1004
     },
     {
       "id": 6,
