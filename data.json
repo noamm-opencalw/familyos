@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-08T05:30:16.301288+00:00",
+  "updated_at": "2026-03-08T05:40:30.637546+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -40,17 +40,17 @@
       "from": "Avital",
       "group": "כיתה ו׳2",
       "child": "noga",
-      "text": "📎 תכנון_ליום_ראשון_8.3.26",
-      "summary": "קובץ: תכנון_ליום_ראשון_8.3.26",
+      "text": "📎 תכנון_ליום_ראשון_8.3.26\n\n• 09:00 — זום עם אביטל\n• 11:30 — זום עם אביטל\n• 13:30 — זום עם זיסי",
+      "summary": "• 09:00 — זום עם אביטל\n• 11:30 — זום עם אביטל\n• 13:30 — זום עם זיסי",
       "time": "2026-03-07T16:21:33.497000+00:00",
       "isRinat": false,
-      "pinned": false,
+      "pinned": true,
       "read": false,
-      "priority": "normal",
+      "priority": "high",
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "תכנון_ליום_ראשון_8.3.26",
-      "id": 1
+      "id": 1000
     },
     {
       "from": "Avital",
@@ -64,7 +64,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 1001
     },
     {
       "from": "נופר אברהם-ששון",
@@ -78,37 +78,37 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 3
+      "id": 1002
     },
     {
       "from": "מלכה מנשורי",
       "group": "כיתה ב׳ לביא",
       "child": "alon",
       "text": "שבוע טוב ומבורך🙏🙏\nבהמשך הערב אשלח תכנון למידה מפורט למחר הכולל מפגש רגשי, לימודי ו-2 משימות מתוקשבות .",
-      "summary": "שבוע טוב ומבורך🙏🙏\nבהמשך הערב אשלח תכנון למידה מפורט למחר הכולל מפגש רגשי, לימודי ו-2 משימות מתוקשבות",
+      "summary": "שבוע טוב ומבורך🙏🙏\nבהמשך הערב אשלח תכנון למידה מפורט למחר הכולל מפגש רגשי, לימודי ו-2 משימות מתוקשבות .",
       "time": "2026-03-07T16:51:31.454000+00:00",
       "isRinat": false,
       "pinned": true,
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 4
+      "id": 1003
     },
     {
       "from": "מלכה מנשורי",
       "group": "כיתה ב׳ לביא",
       "child": "alon",
-      "text": "📎 יום_ראשון",
-      "summary": "קובץ: יום_ראשון",
+      "text": "📎 יום_ראשון\n\n• 12:00 — זום לימודי\n⚠️ להכין מחברת עברית‪,‬קלמר‪",
+      "summary": "• 12:00 — זום לימודי\n⚠️ להכין מחברת עברית‪,‬קלמר‪",
       "time": "2026-03-07T18:51:40.294000+00:00",
       "isRinat": false,
-      "pinned": false,
+      "pinned": true,
       "read": false,
-      "priority": "normal",
+      "priority": "high",
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "יום_ראשון",
-      "id": 5
+      "id": 1004
     },
     {
       "id": 6,
@@ -156,6 +156,38 @@
   "academics": [],
   "events": [
     {
+      "id": 500,
+      "child": "noga",
+      "title": "📚 [נוגה] זום עם אביטל",
+      "date": "2026-03-08T09:00:00+02:00",
+      "group": "לוח שנה",
+      "source": "whatsapp-pdf"
+    },
+    {
+      "id": 501,
+      "child": "noga",
+      "title": "📚 [נוגה] זום עם אביטל",
+      "date": "2026-03-08T11:30:00+02:00",
+      "group": "לוח שנה",
+      "source": "whatsapp-pdf"
+    },
+    {
+      "id": 502,
+      "child": "noga",
+      "title": "📚 [נוגה] זום עם זיסי",
+      "date": "2026-03-08T13:30:00+02:00",
+      "group": "לוח שנה",
+      "source": "whatsapp-pdf"
+    },
+    {
+      "id": 500,
+      "child": "alon",
+      "title": "📚 [אלון] זום לימודי",
+      "date": "2026-03-08T12:00:00+02:00",
+      "group": "לוח שנה",
+      "source": "whatsapp-pdf"
+    },
+    {
       "id": 3,
       "child": "all",
       "title": "⚠️ לבדוק סטטוס טיסה EY596 (אתיחאד)",
@@ -198,5 +230,15 @@
       "group": "חוג"
     }
   ],
-  "actions": []
+  "actions": [
+    {
+      "id": 200,
+      "child": "alon",
+      "title": "⚠️ אלון: להכין מחברת עברית‪,‬קלמר‪",
+      "priority": "high",
+      "dueDate": "2026-03-08T07:00:00+02:00",
+      "done": false,
+      "source": "whatsapp-pdf"
+    }
+  ]
 }

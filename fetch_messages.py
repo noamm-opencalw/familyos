@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
 """
-FamilyOS — fetch_messages.py
-שולף הודעות WhatsApp מ-sessions של OpenClaw ומוסיף ל-data.json
-
-מופעל מ-cron או ידנית:
-  cd /tmp/familyos && python3 fetch_messages.py
+FamilyOS — fetch_messages.py v2
+שולף הודעות WhatsApp מ-sessions של OpenClaw.
+כשיש PDF מצורף — קורא אותו, מסכם, ומזין אירועים ללוח שנה.
 """
 
-import json, os, glob, re
+import json, os, re, subprocess, sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 # ── Config ────────────────────────────────────────────────────────────────────
-SESSIONS_DIR = Path.home() / ".openclaw/agents/main/sessions"
-DATA_JSON    = Path("/tmp/familyos/data.json")
-HOURS_BACK   = 48  # כמה שעות אחורה לסרוק
+SESSIONS_DIR  = Path.home() / ".openclaw/agents/main/sessions"
+MEDIA_DIR     = Path.home() / ".openclaw/media/inbound"
+DATA_JSON     = Path("/tmp/familyos/data.json")
+HOURS_BACK    = 72   # כמה שעות אחורה לסרוק
 
 # ── Group → child/name mapping ────────────────────────────────────────────────
 GROUP_CHILD = {
@@ -34,135 +33,333 @@ GROUP_NAME = {
     "120363166861908196@g.us": "הורי ט׳3",
 }
 
+# ילד → שם קצר לאירועים
+CHILD_LABEL = {"alon": "אלון", "noga": "נוגה", "ran": "רן", "itai": "איתי"}
+
 RINAT_PHONE = "0546702373"
+
+# ── PDF extraction ─────────────────────────────────────────────────────────────
+def extract_pdf_text(pdf_path: str) -> str:
+    """חלץ טקסט מ-PDF באמצעות pdftotext"""
+    try:
+        result = subprocess.run(
+            ["pdftotext", "-layout", pdf_path, "-"],
+            capture_output=True, text=True, timeout=10
+        )
+        if result.returncode == 0:
+            return result.stdout.strip()
+    except FileNotFoundError:
+        pass
+    # fallback: strings
+    try:
+        result = subprocess.run(["strings", pdf_path], capture_output=True, text=True, timeout=5)
+        return result.stdout.strip()
+    except:
+        pass
+    return ""
+
+
+def parse_schedule_from_text(text: str, child: str, msg_date: datetime) -> dict:
+    """
+    מנתח טקסט של מערכת שעות → מחזיר:
+      summary: str         — סיכום הוdash
+      events:  list[dict]  — אירועים ללוח שנה
+      actions: list[dict]  — פעולות נדרשות
+    """
+    lines = [l.strip() for l in text.splitlines() if l.strip()]
+    summary_parts = []
+    events = []
+    actions = []
+
+    # זיהוי תאריך — חפש תאריך מפורש ב-PDF
+    date_match = re.search(r'(\d{1,2})[./](\d{1,2})[./](\d{2,4})', text)
+    event_date = msg_date
+    if date_match:
+        d_val = int(date_match.group(1))
+        m_val = int(date_match.group(2))
+        y_val = int(date_match.group(3))
+        if y_val < 100: y_val += 2000
+        try:
+            event_date = datetime(y_val, m_val, d_val, tzinfo=timezone.utc)
+        except:
+            pass
+    else:
+        # אם אין תאריך מפורש — ה-PDF הוא כנראה ל"מחר" ביחס לשליחת ההודעה
+        event_date = msg_date + timedelta(days=1)
+        # אם msg_date הוא שבת (5) → קדמה ביום (יום ראשון)
+        if event_date.weekday() == 6:  # Sunday
+            pass  # טוב
+        elif event_date.weekday() == 5:  # Saturday
+            event_date = msg_date + timedelta(days=2)
+
+    date_str = event_date.strftime("%Y-%m-%d")
+    child_label = CHILD_LABEL.get(child, child)
+
+    # ── זיהוי שעות ופעילויות (גישה לפי blocks) ──
+    # הגדרת activity patterns ידועים
+    ACTIVITY_MAP = [
+        (r'זום\s+רגשי\s*1',           "זום רגשי — קבוצה 1"),
+        (r'זום\s+רגשי\s*2',           "זום רגשי — קבוצה 2"),
+        (r'זום\s+רגשי',               "זום רגשי"),
+        (r'זום\s+לימוד',              "זום לימודי"),
+        (r'זום\s+עם\s+(\w+)',         None),   # "זום עם אביטל" -> dynamic
+        (r'זום',                       "מפגש זום"),
+        (r'סקר\s+בוקר',              "סקר בוקר טוב"),
+        (r'שיעור\s+(\w+)',             None),   # "שיעור עברית" -> dynamic
+        (r'משימה\s+מתוקשבת',         "משימה מתוקשבת"),
+        (r'משימה\s+ב(\w+)',            None),   # "משימה בעברית" -> dynamic
+    ]
+
+    time_range_re = re.compile(r'(\d{1,2}:\d{2})\s*[-–]\s*(\d{1,2}:\d{2})')
+    time_any_re   = re.compile(r'\b(\d{1,2}:\d{2})\b')
+
+    # מצא כל הזכרת שעה
+    time_matches = list(time_any_re.finditer(text))
+    seen_times = set()
+
+    for tm in time_matches:
+        start_time = tm.group(1)
+        if start_time in seen_times:
+            continue
+
+        # בדוק טווח
+        range_m = time_range_re.search(text[max(0, tm.start()-1):tm.end()+8])
+        end_time = range_m.group(2) if range_m else ""
+
+        # חפש פעילות ב-window של ±150 תווים
+        w_start = max(0, tm.start() - 150)
+        w_end   = min(len(text), tm.end() + 150)
+        window  = text[w_start:w_end]
+
+        desc = ""
+        for pattern, label in ACTIVITY_MAP:
+            m = re.search(pattern, window, re.IGNORECASE)
+            if m:
+                if label is None:
+                    # dynamic — חלץ את הקבוצה הראשונה
+                    desc = m.group(0).strip()
+                    # נקה את הפורמט
+                    desc = re.sub(r'\s+', ' ', desc).strip()
+                else:
+                    desc = label
+                break
+
+        if not desc:
+            continue
+
+        seen_times.add(start_time)
+        time_label = f"{start_time}–{end_time}" if end_time else start_time
+        summary_parts.append(f"• {time_label} — {desc}")
+        events.append({
+            "id": len(events) + 500,
+            "child": child,
+            "title": f"📚 [{child_label}] {desc[:40]}",
+            "date": f"{date_str}T{start_time}:00+02:00",
+            "group": "לוח שנה",
+            "source": "whatsapp-pdf"
+        })
+
+    # זיהוי "להביא" / ציוד
+    needs = re.findall(r'(?:יש להביא|להכין|נדרש)[^\n.]+', text)
+    for n in needs:
+        n = n.strip()
+        if len(n) > 5:
+            actions.append({
+                "id": len(actions) + 200,
+                "child": child,
+                "title": f"⚠️ {child_label}: {n[:60]}",
+                "priority": "high",
+                "dueDate": f"{date_str}T07:00:00+02:00",
+                "done": False,
+                "source": "whatsapp-pdf"
+            })
+            summary_parts.append(f"⚠️ {n[:60]}")
+
+    # סיכום
+    if not summary_parts:
+        # fallback — שלוש שורות ראשונות עם תוכן
+        content_lines = [l for l in lines if len(l) > 8][:4]
+        summary_parts = content_lines
+
+    summary = "\n".join(summary_parts[:8])
+    return {"summary": summary, "events": events, "actions": actions}
+
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 def is_junk(text):
-    """סינון הודעות סתמיות"""
     if not text: return True
     text = text.strip()
     if len(text) <= 3: return True
-    if re.match(r'^[\U00010000-\U0010ffff\u2600-\u27BF\s]+$', text): return True  # emoji only
-    words = text.split()
-    if len(words) <= 2 and text.lower() in ["תודה","בסדר","אוקיי","כן","לא","אכן","ממש","חן","👍","❤️","💪"]:
-        return True
+    if re.match(r'^[\U00010000-\U0010ffff\u2600-\u27BF\s]+$', text): return True
     return False
 
+
 def classify_priority(text, sender_phone=""):
-    if sender_phone and RINAT_PHONE in sender_phone:
+    if sender_phone and RINAT_PHONE.lstrip('0') in sender_phone:
         return "urgent", True
-    text_low = text.lower()
-    if any(w in text for w in ["מחר","היום","דחוף","חשוב","⚠️","❗","מבחן","שיעורי בית","להביא","הכנ"]):
+    if any(w in text for w in ["מחר","היום","דחוף","חשוב","⚠️","❗","מבחן","להביא","הכנ"]):
         return "high", True
     if any(w in text for w in ["תכנון","לימוד","זום","מפגש","הגשה","תזכורת"]):
         return "normal", False
     return "normal", False
 
+
+def find_pdf_path(stem_name: str) -> str | None:
+    """מחפש PDF לפי stem name ב-media/inbound"""
+    pattern = f"{MEDIA_DIR}/{stem_name}---*.pdf"
+    matches = list(Path(MEDIA_DIR).glob(f"{stem_name}---*.pdf"))
+    if not matches:
+        # נסה חיפוש חלקי
+        for f in MEDIA_DIR.glob("*.pdf"):
+            if stem_name.replace("_", " ") in f.stem or stem_name in f.stem:
+                return str(f)
+    return str(matches[0]) if matches else None
+
+
+# ── Session parser ─────────────────────────────────────────────────────────────
 def parse_session(session_file, group_jid, cutoff_ts):
-    """קורא session JSONL ומחלץ הודעות WhatsApp"""
+    """קורא session JSONL → (messages, events, actions)"""
     messages = []
+    all_events = []
+    all_actions = []
+
     try:
+        entries = []
         with open(session_file, encoding='utf-8') as f:
             for line in f:
                 line = line.strip()
                 if not line: continue
                 try:
-                    d = json.loads(line)
-                except: continue
-
-                if d.get('type') != 'message': continue
-                msg = d.get('message', {})
-                if msg.get('role') != 'user': continue
-
-                ts_str = d.get('timestamp', '')
-                try:
-                    ts = datetime.fromisoformat(ts_str.replace('Z', '+00:00'))
+                    entries.append(json.loads(line))
                 except:
-                    continue
+                    pass
 
-                if ts < cutoff_ts: continue
+        # עבור על entries — זיהוי הודעות ו-PDF
+        i = 0
+        while i < len(entries):
+            d = entries[i]
+            i += 1
 
-                # חלץ תוכן
-                content = msg.get('content', '')
-                text_parts = []
-                has_pdf = False
-                pdf_name = ""
+            if d.get('type') != 'message': continue
+            msg = d.get('message', {})
+            if msg.get('role') != 'user': continue
 
-                if isinstance(content, list):
-                    for c in content:
-                        if isinstance(c, dict):
-                            t = c.get('text', '')
-                            if t:
-                                text_parts.append(t)
-                elif isinstance(content, str):
-                    text_parts.append(content)
+            ts_str = d.get('timestamp', '')
+            try:
+                ts = datetime.fromisoformat(ts_str.replace('Z', '+00:00'))
+            except:
+                continue
 
-                full_text = '\n'.join(text_parts)
+            if ts < cutoff_ts: continue
 
-                # זיהוי PDF/media
-                media_match = re.search(r'\[media attached: (.+?)\s*\(application/pdf\)\]', full_text)
-                if media_match:
-                    pdf_path = media_match.group(1)
-                    pdf_name = Path(pdf_path).stem.split('---')[0]
-                    has_pdf = True
+            # חלץ תוכן
+            content = msg.get('content', '')
+            text_parts = []
+            has_pdf = False
+            pdf_stem = ""
+            pdf_full_path = None
 
-                # חלץ sender name מה-metadata JSON
-                sender_match = re.search(r'"sender":\s*"([^"]+)"', full_text)
-                sender = sender_match.group(1) if sender_match else "לא ידוע"
-                sender_phone_match = re.search(r'"e164":\s*"([^"]+)"', full_text)
-                sender_phone = sender_phone_match.group(1) if sender_phone_match else ""
+            if isinstance(content, list):
+                for c in content:
+                    if isinstance(c, dict):
+                        text_parts.append(c.get('text', ''))
+            elif isinstance(content, str):
+                text_parts.append(content)
 
-                # חלץ את גוף ההודעה — הטקסט שמגיע אחרי ה-metadata blocks
-                # Strategy: remove all ```json...``` blocks and [media...] then trim
-                body = re.sub(r'```json[\s\S]*?```', '', full_text)
-                body = re.sub(r'\[media attached:[^\]]+\]', '', body)
-                body = re.sub(r'To send an image back[\s\S]*', '', body)
-                body = re.sub(r'Conversation info \(untrusted metadata\):', '', body)
-                body = re.sub(r'Sender \(untrusted metadata\):', '', body)
-                # נקה שורות ריקות מרובות
-                body = re.sub(r'\n{3,}', '\n\n', body).strip()
+            full_text = '\n'.join(text_parts)
 
-                if not body and not has_pdf:
-                    continue
+            # זיהוי PDF
+            media_match = re.search(r'\[media attached: (.+?)\s*\(application/pdf\)\]', full_text)
+            if media_match:
+                pdf_full_path = media_match.group(1).strip()
+                pdf_stem = Path(pdf_full_path).stem.split('---')[0]
+                has_pdf = True
 
-                if is_junk(body) and not has_pdf:
-                    continue
+            # חלץ sender
+            sender_match = re.search(r'"sender":\s*"([^"]+)"', full_text)
+            sender = sender_match.group(1) if sender_match else "לא ידוע"
+            sender_phone_match = re.search(r'"e164":\s*"([^"]+)"', full_text)
+            sender_phone = sender_phone_match.group(1) if sender_phone_match else ""
 
-                priority, pinned = classify_priority(body, sender_phone)
-                is_rinat = RINAT_PHONE.lstrip('0') in sender_phone
+            # נקה body
+            body = re.sub(r'```json[\s\S]*?```', '', full_text)
+            body = re.sub(r'\[media attached:[^\]]+\]', '', body)
+            body = re.sub(r'To send an image back[\s\S]*', '', body)
+            body = re.sub(r'Conversation info \(untrusted metadata\):', '', body)
+            body = re.sub(r'Sender \(untrusted metadata\):', '', body)
+            body = re.sub(r'\n{3,}', '\n\n', body).strip()
 
-                msg_obj = {
-                    "from": sender,
-                    "group": GROUP_NAME.get(group_jid, group_jid),
-                    "child": GROUP_CHILD.get(group_jid, "all"),
-                    "text": body if body else f"📎 {pdf_name}" if pdf_name else "[media]",
-                    "summary": body[:100] if body else f"קובץ: {pdf_name}",
-                    "time": ts.isoformat(),
-                    "isRinat": is_rinat,
-                    "pinned": pinned or is_rinat,
-                    "read": False,
-                    "priority": "urgent" if is_rinat else priority,
-                    "source": "whatsapp",
-                }
-                if has_pdf:
-                    msg_obj["hasAttachment"] = True
-                    msg_obj["attachmentName"] = pdf_name
+            if not body and not has_pdf:
+                continue
+            if is_junk(body) and not has_pdf:
+                continue
 
-                messages.append(msg_obj)
+            child = GROUP_CHILD.get(group_jid, "all")
+            priority, pinned = classify_priority(body, sender_phone)
+            is_rinat = RINAT_PHONE.lstrip('0') in sender_phone
+
+            # ── PDF processing ──
+            pdf_summary = ""
+            pdf_events = []
+            pdf_actions = []
+
+            if has_pdf:
+                # נסה למצוא את הקובץ
+                actual_path = pdf_full_path if os.path.exists(pdf_full_path) else find_pdf_path(pdf_stem)
+                if actual_path and os.path.exists(actual_path):
+                    pdf_text = extract_pdf_text(actual_path)
+                    if pdf_text:
+                        parsed = parse_schedule_from_text(pdf_text, child, ts)
+                        pdf_summary = parsed["summary"]
+                        pdf_events = parsed["events"]
+                        pdf_actions = parsed["actions"]
+                        all_events.extend(pdf_events)
+                        all_actions.extend(pdf_actions)
+                        print(f"    📄 {pdf_stem}: {len(pdf_events)} אירועים, {len(pdf_actions)} פעולות")
+
+            # בנה text מלא להצגה
+            if body and pdf_summary:
+                display_text = f"{body}\n\n📋 מהמסמך:\n{pdf_summary}"
+            elif pdf_summary:
+                display_text = f"📎 {pdf_stem}\n\n{pdf_summary}"
+            elif body:
+                display_text = body
+            else:
+                display_text = f"📎 {pdf_stem}"
+
+            msg_obj = {
+                "from": sender,
+                "group": GROUP_NAME.get(group_jid, group_jid),
+                "child": child,
+                "text": display_text,
+                "summary": (pdf_summary[:120] if pdf_summary else body[:120]) or f"קובץ: {pdf_stem}",
+                "time": ts.isoformat(),
+                "isRinat": is_rinat,
+                "pinned": pinned or is_rinat or bool(pdf_events),
+                "read": False,
+                "priority": "urgent" if is_rinat else ("high" if pdf_events else priority),
+                "source": "whatsapp",
+            }
+            if has_pdf:
+                msg_obj["hasAttachment"] = True
+                msg_obj["attachmentName"] = pdf_stem
+
+            messages.append(msg_obj)
 
     except Exception as e:
         print(f"  שגיאה ב-{session_file}: {e}")
+        import traceback; traceback.print_exc()
 
-    return messages
+    return messages, all_events, all_actions
+
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 def main():
-    print("📱 FamilyOS — שליפת הודעות WhatsApp")
+    print("📱 FamilyOS — שליפת הודעות WhatsApp + PDFs")
 
     cutoff = datetime.now(timezone.utc) - timedelta(hours=HOURS_BACK)
     sessions_map = {}
 
-    # קרא sessions.json
     sessions_json = SESSIONS_DIR / "sessions.json"
     if sessions_json.exists():
         with open(sessions_json) as f:
@@ -177,21 +374,22 @@ def main():
 
     print(f"  מצאתי {len(sessions_map)} קבוצות מוניטור")
 
-    all_new_messages = []
+    all_messages = []
+    all_events = []
+    all_actions = []
+
     for jid, sid in sessions_map.items():
         session_file = SESSIONS_DIR / f"{sid}.jsonl"
         if not session_file.exists():
             continue
-        msgs = parse_session(session_file, jid, cutoff)
+        msgs, evts, acts = parse_session(session_file, jid, cutoff)
         if msgs:
             print(f"  ✅ {GROUP_NAME.get(jid, jid)}: {len(msgs)} הודעות")
-            all_new_messages.extend(msgs)
+            all_messages.extend(msgs)
         else:
-            print(f"  ⚪ {GROUP_NAME.get(jid, jid)}: אין הודעות חדשות")
-
-    if not all_new_messages:
-        print("  אין הודעות חדשות לאחרונות 48 שעות")
-        return
+            print(f"  ⚪ {GROUP_NAME.get(jid, jid)}: אין הודעות")
+        all_events.extend(evts)
+        all_actions.extend(acts)
 
     # קרא data.json קיים
     if DATA_JSON.exists():
@@ -200,19 +398,23 @@ def main():
     else:
         data = {"messages": [], "academics": [], "events": [], "actions": [], "custody": {"today": False}}
 
-    # הסר הודעות WhatsApp ישנות (מה-48 שעות האחרונות) כדי לא לכפול
-    existing = [m for m in data.get("messages", []) if m.get("source") != "whatsapp"]
-    # הוסף timestamps כ-IDs
-    for i, m in enumerate(all_new_messages):
+    # הסר WhatsApp ישן
+    existing_msgs    = [m for m in data.get("messages", []) if m.get("source") != "whatsapp"]
+    existing_events  = [e for e in data.get("events", []) if e.get("source") != "whatsapp-pdf"]
+    existing_actions = [a for a in data.get("actions", []) if a.get("source") != "whatsapp-pdf"]
+
+    for i, m in enumerate(all_messages):
         m["id"] = 1000 + i
 
-    data["messages"] = all_new_messages + existing
+    data["messages"] = all_messages + existing_msgs
+    data["events"]   = all_events + existing_events
+    data["actions"]  = all_actions + existing_actions
     data["updated_at"] = datetime.now(timezone.utc).isoformat()
 
     with open(DATA_JSON, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ data.json עודכן — {len(all_new_messages)} הודעות WhatsApp + {len(existing)} אחרות")
+    print(f"✅ data.json עודכן — {len(all_messages)} הודעות | {len(all_events)} אירועים חדשים | {len(all_actions)} פעולות")
 
 if __name__ == "__main__":
     main()
