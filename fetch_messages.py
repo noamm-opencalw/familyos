@@ -13,7 +13,7 @@ from pathlib import Path
 SESSIONS_DIR  = Path.home() / ".openclaw/agents/main/sessions"
 MEDIA_DIR     = Path.home() / ".openclaw/media/inbound"
 DATA_JSON     = Path("/tmp/familyos/data.json")
-HOURS_BACK    = 72   # כמה שעות אחורה לסרוק
+HOURS_BACK    = 168  # 7 ימים אחורה לסרוק
 
 # ── Group → child/name mapping ────────────────────────────────────────────────
 GROUP_CHILD = {
