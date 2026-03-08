@@ -939,6 +939,18 @@ async function loadData() {
 async function doRefresh() {
   const btn=document.getElementById('refreshBtn');
   btn.classList.add('spinning'); btn.disabled=true;
+  const meta=document.getElementById('header-meta');
+  const origMeta=meta.textContent;
+  meta.textContent='מרענן נתונים...';
+  try {
+    // trigger push script via local refresh server
+    const ctrl=new AbortController();
+    const timer=setTimeout(()=>ctrl.abort(),3000);
+    await fetch('http://192.168.68.60:19876/refresh',{method:'POST',signal:ctrl.signal}).catch(()=>{});
+    clearTimeout(timer);
+    // wait for push to complete (~12s), then reload data
+    await new Promise(r=>setTimeout(r,12000));
+  } catch(e){}
   await loadData();
   btn.classList.remove('spinning'); btn.disabled=false;
 }
