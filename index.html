@@ -876,8 +876,8 @@ function renderFeed() {
   let msgs=(DATA.messages||[]).filter(shouldShow);
   if (activeFilter!=='all') msgs=msgs.filter(m=>m.child===activeFilter);
 
-  // מיון: ישן → חדש (הכי חדש בתחתית)
-  msgs=[...msgs].sort((a,b)=>new Date(a.time)-new Date(b.time));
+  // מיון: חדש → ישן (הכי חדש בראש)
+  msgs=[...msgs].sort((a,b)=>new Date(b.time)-new Date(a.time));
 
   // סינון 24 שעות
   const recent=msgs.filter(m=>new Date(m.time)>=cutoff24h);

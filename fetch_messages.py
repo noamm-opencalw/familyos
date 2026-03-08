@@ -185,20 +185,114 @@ def parse_schedule_from_text(text: str, child: str, msg_date: datetime) -> dict:
     return {"summary": summary, "events": events, "actions": actions}
 
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
+# ── Classifier ────────────────────────────────────────────────────────────────
+
+# הודעות שמגיעות ממורה/ניהול — תמיד להציג (מסנן לפי שם שולח)
+TEACHER_PATTERNS = re.compile(
+    r'מלכה|אביטל|זולי|נופר|שולמית|מנהל|מנהלת|ניהול|בית\s*ספר|הנהלה|מחנכ|גננת|מזכיר|מורה',
+    re.IGNORECASE
+)
+
+# מילות מפתח: הודעה משמעותית (תמיד להציג)
+SIGNIFICANT_KW = [
+    # לוגיסטיקה בית ספרית
+    "תכנון", "מערכת שעות", "לוח זמנים", "מחר", "יום ראשון", "יום שני", "יום שלישי",
+    "יום רביעי", "יום חמישי", "לימוד מרחוק", "זום", "meet.google", "edu-il.zoom",
+    # אירועים ודרישות
+    "מבחן", "בחינה", "הגשה", "להביא", "להכין", "ציוד", "תחפושת", "פורים", "פסח",
+    "חנוכה", "ראש השנה", "יום עצמאות", "טיול", "יום ספורט", "מסיבה", "אירוע",
+    # כסף ורכישות
+    "תשלום", "לשלם", "כסף", "₪", "שקל", "גביית", "איסוף כספים", "רכישה", "הזמנה",
+    "ביטוח", "הסעה", "צהרון",
+    # ימי היעדרות / שינויים
+    "חופש", "פגרה", "אין לימודים", "ביטול", "שינוי", "דחייה", "הודעה חשובה",
+    "חשוב", "דחוף", "⚠️", "❗", "שימו לב",
+    # ימי הולדת / חברתי (כשמגיע ממורה)
+    "יום הולדת", "מזל טוב", "ברכות",
+    # ניהול / מסמכים
+    "חוזר", "אישור הורים", "טופס", "חתימה", "הסכמה", "אישור",
+    # בריאות ובטיחות
+    "חיסון", "בטיחות", "נוהל", "הנחיות",
+]
+
+# מילות מפתח: הודעה שיגרתית / צ'אט — לסנן
+NOISE_KW = [
+    "Replied message", "untrusted", "[Queued",
+]
+
+# סימנים שההודעה היא שיחת צ'אט הורים — לסנן
+CHAT_PATTERNS = re.compile(
+    r'^(בוקר טוב|ערב טוב|לילה טוב|תודה|תודה רבה|בסדר|אוקיי|ok\b|👍|❤️|🙏|אמן|כן\b|לא\b|ממש|חן חן'
+    r'|אצלנו|גם אנחנו|גם אני|גם אצל|אצלי\b|אני לא|לי לא|לנו לא|ניסיתי|לא הצלח|לא עבד|לא נותן|לא יכול'
+    r'|אפשר קישור|יש קישור|איפה הקישור|מה השעה|מי יכול|מי מתחיל'
+    r'|הזום הראש|הראשון בשעה'        # "הזום הראשון בשעה 10"
+    r'|לא הצלחנו|לא הצלח|לא מצליח'  # תלונות על טכניקה
+    r'|Replied|@\d)',
+    re.IGNORECASE
+)
+
+# URL בלבד — לא הודעה (קישור בלבד ללא הקשר)
+URL_ONLY = re.compile(r'^https?://\S+\s*$')
+
+
 def is_junk(text):
+    """סינון הודעות ריקות / emoji בלבד"""
     if not text: return True
-    text = text.strip()
-    if len(text) <= 3: return True
-    if re.match(r'^[\U00010000-\U0010ffff\u2600-\u27BF\s]+$', text): return True
+    t = text.strip()
+    if len(t) <= 3: return True
+    if re.match(r'^[\U00010000-\U0010ffff\u2600-\u27BF\s]+$', t): return True
+    if any(kw in t for kw in NOISE_KW): return True
     return False
 
 
-def classify_priority(text, sender_phone=""):
+def is_significant(text: str, sender: str, has_pdf: bool, sender_phone: str = "", is_teacher: bool = False) -> tuple[bool, str]:
+    """
+    מחזיר (significant: bool, reason: str)
+    significant=True → להציג
+    """
+    # PDF תמיד משמעותי
+    if has_pdf:
+        return True, "pdf"
+
+    # Rinat תמיד משמעותי
+    if sender_phone and RINAT_PHONE.lstrip('0') in sender_phone:
+        return True, "rinat"
+
+    t = text.strip() if text else ""
+
+    # URL בלבד — לא מעניין לבד
+    if URL_ONLY.match(t):
+        return False, "url-only"
+
+    # שיחת צ'אט הורים — לסנן
+    if CHAT_PATTERNS.match(t):
+        return False, "chat"
+
+    # מורה? → תמיד להציג
+    if TEACHER_PATTERNS.search(sender):
+        return True, "teacher"
+
+    # מכיל מילת מפתח משמעותית? — רק אם השולח הוא מורה/ניהול או keyword בולט
+    # הורה רגיל עם "זום" / "קישור" — לא מספיק
+    PARENT_NOISE = re.compile(r'לא הצלח|לא עבד|לא נותן|לא נפתח|לא יכול|לא איפשר|לא נקלט|אפשר קישור|יש קישור|כנסו לקישור|הכנס', re.IGNORECASE)
+
+    for kw in SIGNIFICANT_KW:
+        if kw in t:
+            # אם הורה (לא מורה) — בדוק שזו לא תלונה טכנית
+            if not is_teacher and PARENT_NOISE.search(t):
+                continue
+            return True, f"kw:{kw}"
+
+    return False, "noise"
+
+
+def classify_priority(text, sender_phone="", is_teacher=False):
     if sender_phone and RINAT_PHONE.lstrip('0') in sender_phone:
         return "urgent", True
-    if any(w in text for w in ["מחר","היום","דחוף","חשוב","⚠️","❗","מבחן","להביא","הכנ"]):
+    if any(w in text for w in ["מחר","היום","דחוף","חשוב","⚠️","❗","מבחן","להביא","הכנ","חשוב","שימו לב"]):
         return "high", True
+    if is_teacher:
+        return "normal", True   # הודעות מורים תמיד מוצמדות
     if any(w in text for w in ["תכנון","לימוד","זום","מפגש","הגשה","תזכורת"]):
         return "normal", False
     return "normal", False
@@ -295,8 +389,15 @@ def parse_session(session_file, group_jid, cutoff_ts):
                 continue
 
             child = GROUP_CHILD.get(group_jid, "all")
-            priority, pinned = classify_priority(body, sender_phone)
-            is_rinat = RINAT_PHONE.lstrip('0') in sender_phone
+            is_teacher = bool(TEACHER_PATTERNS.search(sender))
+            is_rinat   = RINAT_PHONE.lstrip('0') in sender_phone
+
+            # סינון — רק הודעות משמעותיות
+            sig, reason = is_significant(body, sender, has_pdf, sender_phone, is_teacher)
+            if not sig:
+                continue
+
+            priority, pinned = classify_priority(body, sender_phone, is_teacher)
 
             # ── PDF processing ──
             pdf_summary = ""
