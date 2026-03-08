@@ -1,37 +1,37 @@
 {
-  "updated_at": "2026-03-08T09:30:08.310433+00:00",
+  "updated_at": "2026-03-08T10:00:09.438358+00:00",
   "custody": {
     "today": false,
     "current": null,
     "next": null,
     "periods": [
       {
-        "start": "2026-03-08T09:30:08.258901+00:00",
-        "end": "2026-03-08T09:30:08.259027+00:00"
+        "start": "2026-03-08T10:00:09.390620+00:00",
+        "end": "2026-03-08T10:00:09.390722+00:00"
       },
       {
-        "start": "2026-03-08T09:30:08.259281+00:00",
-        "end": "2026-03-08T09:30:08.259311+00:00"
+        "start": "2026-03-08T10:00:09.390881+00:00",
+        "end": "2026-03-08T10:00:09.390899+00:00"
       },
       {
-        "start": "2026-03-08T09:30:08.259419+00:00",
-        "end": "2026-03-08T09:30:08.259450+00:00"
+        "start": "2026-03-08T10:00:09.390966+00:00",
+        "end": "2026-03-08T10:00:09.390983+00:00"
       },
       {
-        "start": "2026-03-08T09:30:08.259525+00:00",
-        "end": "2026-03-08T09:30:08.259556+00:00"
+        "start": "2026-03-08T10:00:09.391101+00:00",
+        "end": "2026-03-08T10:00:09.391128+00:00"
       },
       {
-        "start": "2026-03-08T09:30:08.259588+00:00",
-        "end": "2026-03-08T09:30:08.259618+00:00"
+        "start": "2026-03-08T10:00:09.391151+00:00",
+        "end": "2026-03-08T10:00:09.391169+00:00"
       },
       {
-        "start": "2026-03-08T09:30:08.259685+00:00",
-        "end": "2026-03-08T09:30:08.259714+00:00"
+        "start": "2026-03-08T10:00:09.391214+00:00",
+        "end": "2026-03-08T10:00:09.391232+00:00"
       },
       {
-        "start": "2026-03-08T09:30:08.259780+00:00",
-        "end": "2026-03-08T09:30:08.259817+00:00"
+        "start": "2026-03-08T10:00:09.391272+00:00",
+        "end": "2026-03-08T10:00:09.391300+00:00"
       }
     ]
   },
@@ -40,31 +40,127 @@
       "from": "Avital",
       "group": "כיתה ו׳2",
       "child": "noga",
-      "text": "📎 תכנון_ליום_ראשון_8.3.26\n\n• 09:00 — זום עם אביטל\n• 11:30 — זום עם אביטל\n• 13:30 — זום עם זיסי",
-      "summary": "• 09:00 — זום עם אביטל\n• 11:30 — זום עם אביטל\n• 13:30 — זום עם זיסי",
-      "time": "2026-03-07T16:21:33.497000+00:00",
+      "text": "בוקר טוב\nיש לי תקלה בזום. כבר פותרת ומעדכנת אתכם",
+      "summary": "בוקר טוב\nיש לי תקלה בזום. כבר פותרת ומעדכנת אתכם",
+      "time": "2026-03-08T09:31:14.299000+00:00",
       "isRinat": false,
-      "pinned": true,
+      "pinned": false,
       "read": false,
-      "priority": "high",
+      "priority": "normal",
       "source": "whatsapp",
-      "hasAttachment": true,
-      "attachmentName": "תכנון_ליום_ראשון_8.3.26",
       "id": 1
     },
     {
       "from": "Avital",
       "group": "כיתה ו׳2",
       "child": "noga",
-      "text": "שבוע טוב \nמצורפת מערכת למידה מרחוק למחר",
-      "summary": "שבוע טוב \nמצורפת מערכת למידה מרחוק למחר",
-      "time": "2026-03-07T16:21:43.047000+00:00",
+      "text": "https://meet.google.com/sws-xhyn-zew?authuser=1\nכנסו לקישור הזה",
+      "summary": "https://meet.google.com/sws-xhyn-zew?authuser=1\nכנסו לקישור הזה",
+      "time": "2026-03-08T09:33:36.422000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 2
+    },
+    {
+      "from": "ויקי ח🌀קי הוראה מותאמת",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "Replied message (untrusted, for context):\n\nמבקש כניסה עם מייל... מה לרשום?",
+      "summary": "Replied message (untrusted, for context):\n\nמבקש כניסה עם מייל... מה לרשום?",
+      "time": "2026-03-08T09:37:08.316000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 3
+    },
+    {
+      "from": "ויקי ח🌀קי הוראה מותאמת",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "אוקיי",
+      "summary": "אוקיי",
+      "time": "2026-03-08T09:38:46.005000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 4
+    },
+    {
+      "from": "ויקי ח🌀קי הוראה מותאמת",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "עדיין לא נותן זה עדיין על אימל",
+      "summary": "עדיין לא נותן זה עדיין על אימל",
+      "time": "2026-03-08T09:41:11.903000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 5
+    },
+    {
+      "from": "מעיין נוריאל",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "גם ליונתן לא נותן להכנס",
+      "summary": "גם ליונתן לא נותן להכנס",
+      "time": "2026-03-08T09:42:29.215000+00:00",
       "isRinat": false,
       "pinned": true,
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 6
+    },
+    {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "שניהם איתי",
+      "summary": "שניהם איתי",
+      "time": "2026-03-08T09:52:56.332000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 7
+    },
+    {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "https://wordwall.net/he/resource/7705286/%D7%A4%D7%A2%D7%9C%D7%99%D7%9D-%D7%91%D7%A2%D7%AA%D7%99%D7%93",
+      "summary": "https://wordwall.net/he/resource/7705286/%D7%A4%D7%A2%D7%9C%D7%99%D7%9D-%D7%91%D7%A2%D7%AA%D7%99%D7%93",
+      "time": "2026-03-08T09:54:41.339000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 8
+    },
+    {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "Replied message (untrusted, for context):\n\nחידון לילדים. אנחנו עושים אותו ביחד בזום...",
+      "summary": "Replied message (untrusted, for context):\n\nחידון לילדים. אנחנו עושים אותו ביחד בזום...",
+      "time": "2026-03-08T09:55:07.084000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 9
     },
     {
       "from": "נופר אברהם-ששון",
@@ -78,7 +174,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 3
+      "id": 10
     },
     {
       "from": "קרן",
@@ -92,7 +188,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 4
+      "id": 11
     },
     {
       "from": "קרן",
@@ -106,7 +202,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 5
+      "id": 12
     },
     {
       "from": "שירן אלגבה",
@@ -120,7 +216,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 6
+      "id": 13
     },
     {
       "from": "Moshe Harshish",
@@ -134,7 +230,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 7
+      "id": 14
     },
     {
       "from": "Dana",
@@ -148,7 +244,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 8
+      "id": 15
     },
     {
       "from": "קרן",
@@ -162,7 +258,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 9
+      "id": 16
     },
     {
       "from": "שירן אלגבה",
@@ -176,7 +272,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 10
+      "id": 17
     },
     {
       "from": "Dana",
@@ -190,7 +286,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 11
+      "id": 18
     },
     {
       "from": "Dana",
@@ -204,7 +300,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 12
+      "id": 19
     },
     {
       "from": "Keren Revivo Hazan",
@@ -218,7 +314,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 13
+      "id": 20
     },
     {
       "from": "סיי טימיאנקר Better Brand",
@@ -232,7 +328,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 14
+      "id": 21
     },
     {
       "from": "קרן",
@@ -246,7 +342,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 15
+      "id": 22
     },
     {
       "from": "שירה רוזנמן",
@@ -260,7 +356,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 16
+      "id": 23
     },
     {
       "from": "Nitzan Maymon Barokas 🏝",
@@ -274,7 +370,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 17
+      "id": 24
     },
     {
       "from": "שירה רוזנמן",
@@ -288,7 +384,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 18
+      "id": 25
     },
     {
       "from": "שירה רוזנמן",
@@ -302,7 +398,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 19
+      "id": 26
     },
     {
       "from": "קרן",
@@ -316,7 +412,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 20
+      "id": 27
     },
     {
       "from": "Ira",
@@ -330,7 +426,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 21
+      "id": 28
     },
     {
       "from": "שירן אלגבה",
@@ -344,7 +440,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 22
+      "id": 29
     },
     {
       "from": "שירה רוזנמן",
@@ -358,7 +454,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 23
+      "id": 30
     },
     {
       "from": "שירן אלגבה",
@@ -372,7 +468,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 24
+      "id": 31
     },
     {
       "from": "מלכה מנשורי",
@@ -386,7 +482,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 25
+      "id": 32
     },
     {
       "from": "Ira",
@@ -400,7 +496,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 26
+      "id": 33
     },
     {
       "from": "מלכה מנשורי",
@@ -414,7 +510,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 27
+      "id": 34
     },
     {
       "from": "Ira",
@@ -428,7 +524,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 28
+      "id": 35
     },
     {
       "from": "מלכה מנשורי",
@@ -442,7 +538,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 29
+      "id": 36
     },
     {
       "from": "Adi Shalev",
@@ -456,7 +552,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 30
+      "id": 37
     },
     {
       "from": "Liri",
@@ -470,16 +566,16 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 31
+      "id": 38
     },
     {
-      "id": 32,
+      "id": 39,
       "from": "בית ספר לביא",
       "group": "מייל — בית ספר לביא",
       "child": "alon",
       "text": "חיסונים לשכבה ב'",
       "summary": "חיסונים לשכבה ב'",
-      "time": "2026-03-08T09:30:07.388174+00:00",
+      "time": "2026-03-08T10:00:08.536226+00:00",
       "isRinat": false,
       "pinned": false,
       "read": false,
@@ -487,13 +583,13 @@
       "source": "email"
     },
     {
-      "id": 33,
+      "id": 40,
       "from": "מורים/הירשמן כהן  אורי",
       "group": "מייל — מורים/הירשמן כהן  אורי",
       "child": "ran",
       "text": "מורים/הירשמן כהן  אורי (תיכון - עירוני ה ע\"ש יצחק נבון מודיעין): אישור הורים לפעילות חדש פורסם: \"עינות צוקים כימיה פיסיקה יא \"",
       "summary": "מורים/הירשמן כהן  אורי (תיכון - עירוני ה ע\"ש יצחק נבון מודיעין): אישור הורים לפעילות חדש פורסם: \"עינות צוקים כימיה פיסיקה יא \"",
-      "time": "2026-03-08T09:30:07.388139+00:00",
+      "time": "2026-03-08T10:00:08.536177+00:00",
       "isRinat": false,
       "pinned": true,
       "read": false,
@@ -501,13 +597,13 @@
       "source": "email"
     },
     {
-      "id": 34,
+      "id": 41,
       "from": "בית ספר לביא",
       "group": "מייל — בית ספר לביא",
       "child": "noga",
       "text": "חוזר להורים לקראת פורים + הנחיות בטיחות",
       "summary": "חוזר להורים לקראת פורים + הנחיות בטיחות",
-      "time": "2026-03-08T09:30:07.387523+00:00",
+      "time": "2026-03-08T10:00:08.535543+00:00",
       "isRinat": false,
       "pinned": false,
       "read": false,
@@ -521,70 +617,70 @@
       "id": 3,
       "child": "noga",
       "title": "📚 [נוגה] סקר בוקר טוב — כיתה ו'2",
-      "date": "2026-03-08T09:30:08.259087+00:00",
+      "date": "2026-03-08T10:00:09.390765+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 4,
       "child": "alon",
       "title": "📚 [אלון] זום רגשי — קבוצה 1",
-      "date": "2026-03-08T09:30:08.259131+00:00",
+      "date": "2026-03-08T10:00:09.390792+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 5,
       "child": "alon",
       "title": "📚 [אלון] זום רגשי — קבוצה 2",
-      "date": "2026-03-08T09:30:08.259170+00:00",
+      "date": "2026-03-08T10:00:09.390816+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 6,
       "child": "noga",
       "title": "📚 [נוגה] זום עם אביטל — עברית",
-      "date": "2026-03-08T09:30:08.259207+00:00",
+      "date": "2026-03-08T10:00:09.390838+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 7,
       "child": "alon",
       "title": "📚 [אלון] זום לימודי — עברית ״מיה והאופניים״",
-      "date": "2026-03-08T09:30:08.259245+00:00",
+      "date": "2026-03-08T10:00:09.390861+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 9,
       "child": "all",
       "title": "נועם <> יונתן - פגישת היכרות",
-      "date": "2026-03-08T09:30:08.259348+00:00",
+      "date": "2026-03-08T10:00:09.390922+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 10,
       "child": "all",
       "title": "🧹 ניקיון — אחת לשבועיים",
-      "date": "2026-03-08T09:30:08.259385+00:00",
+      "date": "2026-03-08T10:00:09.390946+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 12,
       "child": "alon",
       "title": "🐴 רכיבת סוסים — כפר רות",
-      "date": "2026-03-08T09:30:08.259491+00:00",
+      "date": "2026-03-08T10:00:09.391016+00:00",
       "group": "חוג"
     },
     {
       "id": 15,
       "child": "all",
       "title": "🧹 ניקיון — אחת לשבועיים",
-      "date": "2026-03-08T09:30:08.259652+00:00",
+      "date": "2026-03-08T10:00:09.391193+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 17,
       "child": "alon",
       "title": "🐴 רכיבת סוסים — כפר רות",
-      "date": "2026-03-08T09:30:08.259748+00:00",
+      "date": "2026-03-08T10:00:09.391252+00:00",
       "group": "חוג"
     }
   ],
