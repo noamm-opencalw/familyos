@@ -1,37 +1,37 @@
 {
-  "updated_at": "2026-03-08T19:00:09.489604+00:00",
+  "updated_at": "2026-03-08T19:30:07.605297+00:00",
   "custody": {
     "today": false,
     "current": null,
     "next": null,
     "periods": [
       {
-        "start": "2026-03-08T19:00:09.440703+00:00",
-        "end": "2026-03-08T19:00:09.440808+00:00"
+        "start": "2026-03-08T19:30:07.558854+00:00",
+        "end": "2026-03-08T19:30:07.558944+00:00"
       },
       {
-        "start": "2026-03-08T19:00:09.440998+00:00",
-        "end": "2026-03-08T19:00:09.441020+00:00"
+        "start": "2026-03-08T19:30:07.559102+00:00",
+        "end": "2026-03-08T19:30:07.559120+00:00"
       },
       {
-        "start": "2026-03-08T19:00:09.441098+00:00",
-        "end": "2026-03-08T19:00:09.441120+00:00"
+        "start": "2026-03-08T19:30:07.559183+00:00",
+        "end": "2026-03-08T19:30:07.559201+00:00"
       },
       {
-        "start": "2026-03-08T19:00:09.441177+00:00",
-        "end": "2026-03-08T19:00:09.441199+00:00"
+        "start": "2026-03-08T19:30:07.559249+00:00",
+        "end": "2026-03-08T19:30:07.559267+00:00"
       },
       {
-        "start": "2026-03-08T19:00:09.441223+00:00",
-        "end": "2026-03-08T19:00:09.441246+00:00"
+        "start": "2026-03-08T19:30:07.559288+00:00",
+        "end": "2026-03-08T19:30:07.559305+00:00"
       },
       {
-        "start": "2026-03-08T19:00:09.441304+00:00",
-        "end": "2026-03-08T19:00:09.441327+00:00"
+        "start": "2026-03-08T19:30:07.559351+00:00",
+        "end": "2026-03-08T19:30:07.559369+00:00"
       },
       {
-        "start": "2026-03-08T19:00:09.441374+00:00",
-        "end": "2026-03-08T19:00:09.441395+00:00"
+        "start": "2026-03-08T19:30:07.559407+00:00",
+        "end": "2026-03-08T19:30:07.559425+00:00"
       }
     ]
   },
@@ -219,6 +219,36 @@
       "id": 13
     },
     {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "📎 תכנון_ליום_שני_9.3.26\n\n• 09:00 — זום עם שולמית\n• 11:00–11:30 — זום עם שולמית\n• 11:30 — זום עם שולמית\n• 12:00–12:30 — זום עם אביטל\n• 12:30 — זום עם אביטל\n• 13:30–14:00 — מפגש זום\n• 14:00 — מפגש זום",
+      "summary": "• 09:00 — זום עם שולמית\n• 11:00–11:30 — זום עם שולמית\n• 11:30 — זום עם שולמית\n• 12:00–12:30 — זום עם אביטל\n• 12:30 — זום",
+      "time": "2026-03-08T19:18:29.154000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "hasAttachment": true,
+      "attachmentName": "תכנון_ליום_שני_9.3.26",
+      "id": 14
+    },
+    {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "הורים יקרים\nמצרפת תכנון למחר. בתכנון מופיעים קישורים לכל המשימות ולכל המפגשים.\nלילה טוב ושקט",
+      "summary": "הורים יקרים\nמצרפת תכנון למחר. בתכנון מופיעים קישורים לכל המשימות ולכל המפגשים.\nלילה טוב ושקט",
+      "time": "2026-03-08T19:19:16.243000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 15
+    },
+    {
       "from": "נופר אברהם-ששון",
       "group": "הורי יא׳7",
       "child": "ran",
@@ -230,7 +260,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 14
+      "id": 16
     },
     {
       "from": "קרן",
@@ -244,7 +274,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 15
+      "id": 17
     },
     {
       "from": "קרן",
@@ -258,7 +288,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 16
+      "id": 18
     },
     {
       "from": "שירן אלגבה",
@@ -272,7 +302,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 17
+      "id": 19
     },
     {
       "from": "Moshe Harshish",
@@ -286,7 +316,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 18
+      "id": 20
     },
     {
       "from": "Dana",
@@ -300,7 +330,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 19
+      "id": 21
     },
     {
       "from": "קרן",
@@ -314,7 +344,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 20
+      "id": 22
     },
     {
       "from": "שירן אלגבה",
@@ -328,7 +358,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 21
+      "id": 23
     },
     {
       "from": "Dana",
@@ -342,7 +372,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 22
+      "id": 24
     },
     {
       "from": "Dana",
@@ -356,7 +386,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 23
+      "id": 25
     },
     {
       "from": "Keren Revivo Hazan",
@@ -370,7 +400,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 24
+      "id": 26
     },
     {
       "from": "סיי טימיאנקר Better Brand",
@@ -384,7 +414,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 25
+      "id": 27
     },
     {
       "from": "קרן",
@@ -398,7 +428,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 26
+      "id": 28
     },
     {
       "from": "שירה רוזנמן",
@@ -412,7 +442,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 27
+      "id": 29
     },
     {
       "from": "Nitzan Maymon Barokas 🏝",
@@ -426,7 +456,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 28
+      "id": 30
     },
     {
       "from": "שירה רוזנמן",
@@ -440,7 +470,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 29
+      "id": 31
     },
     {
       "from": "שירה רוזנמן",
@@ -454,7 +484,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 30
+      "id": 32
     },
     {
       "from": "קרן",
@@ -468,7 +498,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 31
+      "id": 33
     },
     {
       "from": "Ira",
@@ -482,7 +512,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 32
+      "id": 34
     },
     {
       "from": "שירן אלגבה",
@@ -496,7 +526,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 33
+      "id": 35
     },
     {
       "from": "שירה רוזנמן",
@@ -510,7 +540,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 34
+      "id": 36
     },
     {
       "from": "שירן אלגבה",
@@ -524,7 +554,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 35
+      "id": 37
     },
     {
       "from": "מלכה מנשורי",
@@ -538,7 +568,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 36
+      "id": 38
     },
     {
       "from": "Ira",
@@ -552,7 +582,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 37
+      "id": 39
     },
     {
       "from": "מלכה מנשורי",
@@ -566,7 +596,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 38
+      "id": 40
     },
     {
       "from": "Ira",
@@ -580,7 +610,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 39
+      "id": 41
     },
     {
       "from": "מלכה מנשורי",
@@ -594,7 +624,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 40
+      "id": 42
     },
     {
       "from": "Korin Geva",
@@ -608,7 +638,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 41
+      "id": 43
     },
     {
       "from": "יונית נהוראי 🌺",
@@ -622,7 +652,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 42
+      "id": 44
     },
     {
       "from": "מלכה מנשורי",
@@ -636,7 +666,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 43
+      "id": 45
     },
     {
       "from": "Moshe Harshish",
@@ -650,7 +680,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 44
+      "id": 46
     },
     {
       "from": "מלכה מנשורי",
@@ -664,7 +694,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 45
+      "id": 47
     },
     {
       "from": "Moshe Harshish",
@@ -678,7 +708,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 46
+      "id": 48
     },
     {
       "from": "כרמית שרמן",
@@ -692,7 +722,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 47
+      "id": 49
     },
     {
       "from": "כרמית שרמן",
@@ -706,7 +736,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 48
+      "id": 50
     },
     {
       "from": "שרית",
@@ -720,7 +750,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 49
+      "id": 51
     },
     {
       "from": "שרית",
@@ -734,7 +764,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 50
+      "id": 52
     },
     {
       "from": "Moshe Harshish",
@@ -748,7 +778,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 51
+      "id": 53
     },
     {
       "from": "שרית",
@@ -762,7 +792,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 52
+      "id": 54
     },
     {
       "from": "פינוקי",
@@ -776,7 +806,51 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 53
+      "id": 55
+    },
+    {
+      "from": "מלכה מנשורי",
+      "group": "כיתה ב׳ לביא",
+      "child": "alon",
+      "text": "📎 יום_שני\n\n‫\"שאגת הארי\" תכנון למידה יומי‬\n‫תכנון‬                         ‫שמות הילדים‬           ‫יום שני‬\n‫קישור קבוע למיט‬\n‫כלל הכיתה‬",
+      "summary": "‫\"שאגת הארי\" תכנון למידה יומי‬\n‫תכנון‬                         ‫שמות הילדים‬           ‫יום שני‬\n‫קישור קבוע למיט‬\n‫כלל ",
+      "time": "2026-03-08T19:03:56.439000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "hasAttachment": true,
+      "attachmentName": "יום_שני",
+      "id": 56
+    },
+    {
+      "from": "מלכה מנשורי",
+      "group": "כיתה ב׳ לביא",
+      "child": "alon",
+      "text": "https://edu-il.zoom.us/j/89772393799?pwd=mlYqWpCTj3eXyzeZMtId6jxn7o2zzs.1",
+      "summary": "https://edu-il.zoom.us/j/89772393799?pwd=mlYqWpCTj3eXyzeZMtId6jxn7o2zzs.1",
+      "time": "2026-03-08T19:04:37.132000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 57
+    },
+    {
+      "from": "מלכה מנשורי",
+      "group": "כיתה ב׳ לביא",
+      "child": "alon",
+      "text": "אלה קישור נמצא גם בתוך הקובץ",
+      "summary": "אלה קישור נמצא גם בתוך הקובץ",
+      "time": "2026-03-08T19:04:47.053000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 58
     },
     {
       "from": "זולי חיים",
@@ -790,7 +864,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 54
+      "id": 59
     },
     {
       "from": "Adi Shalev",
@@ -804,7 +878,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 55
+      "id": 60
     },
     {
       "from": "Liri",
@@ -818,16 +892,16 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 56
+      "id": 61
     },
     {
-      "id": 57,
+      "id": 62,
       "from": "בית ספר לביא",
       "group": "מייל — בית ספר לביא",
       "child": "alon",
       "text": "חיסונים לשכבה ב'",
       "summary": "חיסונים לשכבה ב'",
-      "time": "2026-03-08T19:00:08.502827+00:00",
+      "time": "2026-03-08T19:30:06.664330+00:00",
       "isRinat": false,
       "pinned": false,
       "read": false,
@@ -835,13 +909,13 @@
       "source": "email"
     },
     {
-      "id": 58,
+      "id": 63,
       "from": "מורים/הירשמן כהן  אורי",
       "group": "מייל — מורים/הירשמן כהן  אורי",
       "child": "ran",
       "text": "מורים/הירשמן כהן  אורי (תיכון - עירוני ה ע\"ש יצחק נבון מודיעין): אישור הורים לפעילות חדש פורסם: \"עינות צוקים כימיה פיסיקה יא \"",
       "summary": "מורים/הירשמן כהן  אורי (תיכון - עירוני ה ע\"ש יצחק נבון מודיעין): אישור הורים לפעילות חדש פורסם: \"עינות צוקים כימיה פיסיקה יא \"",
-      "time": "2026-03-08T19:00:08.502793+00:00",
+      "time": "2026-03-08T19:30:06.664261+00:00",
       "isRinat": false,
       "pinned": true,
       "read": false,
@@ -849,13 +923,13 @@
       "source": "email"
     },
     {
-      "id": 59,
+      "id": 64,
       "from": "בית ספר לביא",
       "group": "מייל — בית ספר לביא",
       "child": "noga",
       "text": "חוזר להורים לקראת פורים + הנחיות בטיחות",
       "summary": "חוזר להורים לקראת פורים + הנחיות בטיחות",
-      "time": "2026-03-08T19:00:08.502213+00:00",
+      "time": "2026-03-08T19:30:06.663305+00:00",
       "isRinat": false,
       "pinned": false,
       "read": false,
@@ -869,70 +943,70 @@
       "id": 3,
       "child": "noga",
       "title": "📚 [נוגה] סקר בוקר טוב — כיתה ו'2",
-      "date": "2026-03-08T19:00:09.440856+00:00",
+      "date": "2026-03-08T19:30:07.558985+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 4,
       "child": "alon",
       "title": "📚 [אלון] זום רגשי — קבוצה 1",
-      "date": "2026-03-08T19:00:09.440889+00:00",
+      "date": "2026-03-08T19:30:07.559012+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 5,
       "child": "alon",
       "title": "📚 [אלון] זום רגשי — קבוצה 2",
-      "date": "2026-03-08T19:00:09.440917+00:00",
+      "date": "2026-03-08T19:30:07.559034+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 6,
       "child": "noga",
       "title": "📚 [נוגה] זום עם אביטל — עברית",
-      "date": "2026-03-08T19:00:09.440945+00:00",
+      "date": "2026-03-08T19:30:07.559058+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 7,
       "child": "alon",
       "title": "📚 [אלון] זום לימודי — עברית ״מיה והאופניים״",
-      "date": "2026-03-08T19:00:09.440973+00:00",
+      "date": "2026-03-08T19:30:07.559081+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 9,
       "child": "all",
       "title": "נועם <> יונתן - פגישת היכרות",
-      "date": "2026-03-08T19:00:09.441046+00:00",
+      "date": "2026-03-08T19:30:07.559141+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 10,
       "child": "all",
       "title": "🧹 ניקיון — אחת לשבועיים",
-      "date": "2026-03-08T19:00:09.441073+00:00",
+      "date": "2026-03-08T19:30:07.559163+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 12,
       "child": "alon",
       "title": "🐴 רכיבת סוסים — כפר רות",
-      "date": "2026-03-08T19:00:09.441151+00:00",
+      "date": "2026-03-08T19:30:07.559229+00:00",
       "group": "חוג"
     },
     {
       "id": 15,
       "child": "all",
       "title": "🧹 ניקיון — אחת לשבועיים",
-      "date": "2026-03-08T19:00:09.441273+00:00",
+      "date": "2026-03-08T19:30:07.559326+00:00",
       "group": "לוח שנה"
     },
     {
       "id": 17,
       "child": "alon",
       "title": "🐴 רכיבת סוסים — כפר רות",
-      "date": "2026-03-08T19:00:09.441351+00:00",
+      "date": "2026-03-08T19:30:07.559389+00:00",
       "group": "חוג"
     }
   ],
