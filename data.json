@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-09T07:06:55.796715+00:00",
+  "updated_at": "2026-03-09T07:30:22.323513+00:00",
   "custody": {
     "today": true,
     "current": {
@@ -43,6 +43,20 @@
   },
   "messages": [
     {
+      "from": "Anna BOG",
+      "group": "כיתה ב׳ לביא",
+      "child": "alon",
+      "text": "איפה קישור לזום ב09:30?",
+      "summary": "איפה קישור לזום ב09:30?",
+      "time": "2026-03-09T07:27:59.110000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
       "from": "מלכה מנשורי",
       "group": "כיתה ב׳ לביא",
       "child": "alon",
@@ -54,7 +68,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "Avital",
@@ -68,7 +82,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "Avital",
@@ -84,7 +98,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "תכנון_ליום_שני_9.3.26",
-      "id": 3
+      "id": 4
     },
     {
       "from": "זולי חיים",
@@ -98,10 +112,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
-      "id": 5,
+      "id": 6,
       "from": "בית ספר לביא",
       "group": "מייל — בית ספר לביא",
       "child": "noga",
@@ -115,7 +129,7 @@
       "source": "email"
     },
     {
-      "id": 6,
+      "id": 7,
       "from": "מורים/הירשמן כהן  אורי",
       "group": "מייל — מורים/הירשמן כהן  אורי",
       "child": "ran",
@@ -129,7 +143,7 @@
       "source": "email"
     },
     {
-      "id": 7,
+      "id": 8,
       "from": "בית ספר לביא",
       "group": "מייל — בית ספר לביא",
       "child": "alon",
