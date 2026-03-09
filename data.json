@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-09T08:00:08.063090+00:00",
+  "updated_at": "2026-03-09T09:30:07.505751+00:00",
   "custody": {
     "today": true,
     "current": {
@@ -43,6 +43,48 @@
   },
   "messages": [
     {
+      "from": "Orly Shem Tov Kaplan",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "הזום עם שלומית נעצר או שממשיכים?",
+      "summary": "הזום עם שלומית נעצר או שממשיכים?",
+      "time": "2026-03-09T09:27:02.712000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
+      "from": "מלכה מנשורי",
+      "group": "כיתה ב׳ לביא",
+      "child": "alon",
+      "text": "הודעה מהמורה אלה",
+      "summary": "הודעה מהמורה אלה",
+      "time": "2026-03-09T08:07:38.122000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 2
+    },
+    {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "השער הקדמי וגם השער האחורי יהיו פתוחים לצורך איסוף הספרים והציוד הלימודי.",
+      "summary": "השער הקדמי וגם השער האחורי יהיו פתוחים לצורך איסוף הספרים והציוד הלימודי.",
+      "time": "2026-03-09T08:03:00.739000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 3
+    },
+    {
       "from": "Avital",
       "group": "כיתה ו׳2",
       "child": "noga",
@@ -54,7 +96,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 1
+      "id": 4
     },
     {
       "from": "Avital",
@@ -68,7 +110,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 5
     },
     {
       "from": "Nitzan Maymon Barokas 🏝",
@@ -82,7 +124,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 3
+      "id": 6
     },
     {
       "from": "Anna BOG",
@@ -96,7 +138,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 4
+      "id": 7
     },
     {
       "from": "מלכה מנשורי",
@@ -110,7 +152,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 5
+      "id": 8
     },
     {
       "from": "זולי חיים",
@@ -124,44 +166,16 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 6
+      "id": 9
     },
     {
-      "id": 7,
+      "id": 10,
       "from": "בית ספר לביא",
       "group": "מייל — בית ספר לביא",
       "child": "noga",
       "text": "חוזר להורים לקראת פורים + הנחיות בטיחות",
       "summary": "חוזר להורים לקראת פורים + הנחיות בטיחות",
       "time": "2026-02-25T15:59:00+02:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "email"
-    },
-    {
-      "id": 8,
-      "from": "מורים/הירשמן כהן  אורי",
-      "group": "מייל — מורים/הירשמן כהן  אורי",
-      "child": "ran",
-      "text": "מורים/הירשמן כהן  אורי (תיכון - עירוני ה ע\"ש יצחק נבון מודיעין): אישור הורים לפעילות חדש פורסם: \"עינות צוקים כימיה פיסיקה יא \"",
-      "summary": "מורים/הירשמן כהן  אורי (תיכון - עירוני ה ע\"ש יצחק נבון מודיעין): אישור הורים לפעילות חדש פורסם: \"עינות צוקים כימיה פיסיקה יא \"",
-      "time": "2026-02-23T11:26:00+02:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "urgent",
-      "source": "email"
-    },
-    {
-      "id": 9,
-      "from": "בית ספר לביא",
-      "group": "מייל — בית ספר לביא",
-      "child": "alon",
-      "text": "חיסונים לשכבה ב'",
-      "summary": "חיסונים לשכבה ב'",
-      "time": "2026-02-23T10:22:00+02:00",
       "isRinat": false,
       "pinned": false,
       "read": false,
