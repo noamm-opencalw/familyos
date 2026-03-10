@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-10T07:30:07.875466+00:00",
+  "updated_at": "2026-03-10T08:00:09.414405+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -36,6 +36,20 @@
   },
   "messages": [
     {
+      "from": "מלכה מנשורי",
+      "group": "כיתה ב׳ לביא",
+      "child": "alon",
+      "text": "נכון...נמתין עם הזום.\nאעדכן מתי ניתן.",
+      "summary": "נכון...נמתין עם הזום.\nאעדכן מתי ניתן.",
+      "time": "2026-03-10T07:54:26.279000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
       "from": "Avital",
       "group": "כיתה ו׳2",
       "child": "noga",
@@ -49,22 +63,6 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "תכנון_ליום_שלישי_10.3.26",
-      "id": 1
-    },
-    {
-      "from": "מלכה מנשורי",
-      "group": "כיתה ב׳ לביא",
-      "child": "alon",
-      "text": "📎 יום_שלישי\n\n• 10:00 — משימה במדעים",
-      "summary": "• 10:00 — משימה במדעים",
-      "time": "2026-03-09T17:22:14.582000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "high",
-      "source": "whatsapp",
-      "hasAttachment": true,
-      "attachmentName": "יום_שלישי",
       "id": 2
     },
     {
@@ -182,20 +180,6 @@
       "id": 10
     },
     {
-      "from": "מלכה מנשורי",
-      "group": "כיתה ב׳ לביא",
-      "child": "alon",
-      "text": "הודעה מהמורה אלה",
-      "summary": "הודעה מהמורה אלה",
-      "time": "2026-03-09T08:07:38.122000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 11
-    },
-    {
       "from": "Avital",
       "group": "כיתה ו׳2",
       "child": "noga",
@@ -207,7 +191,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 12
+      "id": 11
     },
     {
       "from": "Avital",
@@ -221,7 +205,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 13
+      "id": 12
     },
     {
       "from": "Avital",
@@ -235,49 +219,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 14
-    },
-    {
-      "from": "Nitzan Maymon Barokas 🏝",
-      "group": "כיתה ב׳ לביא",
-      "child": "alon",
-      "text": "ארבל מחכה לאישור",
-      "summary": "ארבל מחכה לאישור",
-      "time": "2026-03-09T07:39:37.770000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 15
-    },
-    {
-      "from": "Anna BOG",
-      "group": "כיתה ב׳ לביא",
-      "child": "alon",
-      "text": "איפה קישור לזום ב09:30?",
-      "summary": "איפה קישור לזום ב09:30?",
-      "time": "2026-03-09T07:27:59.110000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 16
-    },
-    {
-      "from": "מלכה מנשורי",
-      "group": "כיתה ב׳ לביא",
-      "child": "alon",
-      "text": "בוקר אור,בית הספר יהיה פתוח היום לאיסוף ציוד מהמגירות.\n\nאשמח שתביאו את המקצועות הבאים:\n\nעברית חוברת 1,2.\nמדעים.\nתנך 2 חוברות וחומש.\nחשבון.",
-      "summary": "בוקר אור,בית הספר יהיה פתוח היום לאיסוף ציוד מהמגירות.\n\nאשמח שתביאו את המקצועות הבאים:\n\nעברית חוברת 1,2.\nמדעים.\nתנך 2 חו",
-      "time": "2026-03-09T06:45:20.076000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "high",
-      "source": "whatsapp",
-      "id": 17
+      "id": 13
     },
     {
       "from": "זולי חיים",
@@ -291,10 +233,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 18
+      "id": 14
     },
     {
-      "id": 19,
+      "id": 15,
       "from": "בית ספר לביא",
       "group": "מייל — בית ספר לביא",
       "child": "noga",
@@ -443,14 +385,6 @@
       "child": "noga",
       "title": "📚 [נוגה] מפגש זום",
       "date": "2026-03-10T16:00:00+02:00",
-      "group": "לוח שנה",
-      "source": "whatsapp-pdf"
-    },
-    {
-      "id": 500,
-      "child": "alon",
-      "title": "📚 [אלון] משימה במדעים",
-      "date": "2026-03-10T10:00:00+02:00",
       "group": "לוח שנה",
       "source": "whatsapp-pdf"
     },
