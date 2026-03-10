@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-10T19:00:08.146040+00:00",
+  "updated_at": "2026-03-10T19:30:07.310151+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -36,6 +36,34 @@
   },
   "messages": [
     {
+      "from": "Ortal Mor",
+      "group": "כיתה ב׳ לביא",
+      "child": "alon",
+      "text": "מחר בית הספר יהיה פתוח בין השעות 8:30–10:30 לאיסוף ציוד לימודי.\nתודה על שיתוף הפעולה ובשורות טובות. 🙏",
+      "summary": "מחר בית הספר יהיה פתוח בין השעות 8:30–10:30 לאיסוף ציוד לימודי.\nתודה על שיתוף הפעולה ובשורות טובות. 🙏",
+      "time": "2026-03-10T19:06:56.297000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "מחר בית הספר יהיה פתוח בין השעות 8:30–10:30 לאיסוף ציוד לימודי.\nתודה על שיתוף הפעולה ובשורות טובות. 🙏",
+      "summary": "מחר בית הספר יהיה פתוח בין השעות 8:30–10:30 לאיסוף ציוד לימודי.\nתודה על שיתוף הפעולה ובשורות טובות. 🙏",
+      "time": "2026-03-10T19:06:07.433000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 2
+    },
+    {
       "from": "Avital",
       "group": "כיתה ו׳2",
       "child": "noga",
@@ -49,7 +77,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "תכנון_ליום_רביעי_11.3.26",
-      "id": 1
+      "id": 3
     },
     {
       "from": "מלכה מנשורי",
@@ -65,7 +93,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "יום_רביעי",
-      "id": 2
+      "id": 4
     },
     {
       "from": "זולי חיים",
@@ -79,7 +107,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 3
+      "id": 5
     },
     {
       "from": "Avital",
@@ -93,7 +121,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 4
+      "id": 6
     },
     {
       "from": "מלכה מנשורי",
@@ -107,7 +135,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 5
+      "id": 7
     },
     {
       "from": "מלכה מנשורי",
@@ -121,10 +149,10 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 6
+      "id": 8
     },
     {
-      "id": 7,
+      "id": 9,
       "from": "בית ספר לביא",
       "group": "מייל — בית ספר לביא",
       "child": "noga",
