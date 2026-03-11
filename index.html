@@ -8,6 +8,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#F8F9FA" />
   <title>FamilyOS</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -245,6 +247,7 @@
       font-size: 1rem; color: var(--text-1); line-height: 1.65;
       display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
       word-wrap: break-word; overflow-wrap: break-word;
+      transition: max-height 0.3s ease;
     }
     .card.is-unread .msg-text { font-weight: 600; color: var(--text-1); }
     .msg-text.expanded { -webkit-line-clamp: unset; display: block; }
@@ -258,6 +261,37 @@
       padding: 0.7rem 0.85rem; max-height: 380px; overflow-y: auto;
     }
     .msg-body-full.open { display: block; }
+
+    /* ── EXPAND BUTTON ── */
+    .expand-btn {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-top: 6px; padding: 4px 10px; border-radius: 8px;
+      font-family: inherit; font-size: 0.78rem; font-weight: 700;
+      color: var(--accent); background: var(--accent-dim);
+      border: none; cursor: pointer; transition: all .15s;
+      line-height: 1;
+    }
+    .expand-btn:hover { background: rgba(74,144,226,0.18); }
+    .expand-btn .expand-arrow {
+      display: inline-block; transition: transform .25s cubic-bezier(.34,1.56,.64,1);
+      font-size: 0.7rem;
+    }
+    .expand-btn.open .expand-arrow { transform: rotate(180deg); }
+
+    /* ── CATEGORY BADGE ── */
+    .cat-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.72rem; font-weight: 700;
+      padding: 0.2rem 0.55rem; border-radius: 8px;
+      background: var(--surface-2); border: 1px solid var(--border);
+      color: var(--text-2); flex-shrink: 0;
+    }
+    .cat-badge.school  { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
+    .cat-badge.payment { background: #F0FDF4; color: #15803D; border-color: #BBF7D0; }
+    .cat-badge.medical { background: #FFF1F2; color: #BE123C; border-color: #FECDD3; }
+    .cat-badge.sport   { background: #FFF7ED; color: #C2410C; border-color: #FED7AA; }
+    .cat-badge.trip    { background: #F5F3FF; color: #6D28D9; border-color: #DDD6FE; }
+    .cat-badge.other   { background: var(--surface-2); color: var(--text-3); border-color: var(--border); }
 
     /* action row — 48px touch targets */
     .msg-actions {
@@ -941,69 +975,100 @@ function cleanBody(body) {
 }
 
 // ─── MESSAGE CARD ─────────────────────────────────────────────────────────────
+// ── Category label map ──
+const CAT_LABELS = {
+  school:'לימודים', payment:'תשלום', medical:'רפואה',
+  sport:'ספורט', trip:'טיול', other:'כללי'
+};
+
 function msgCard(msg, idx) {
-  const c=kid(msg.child);
-  const bg=rgba(c.color,.13);
-  // preview = summary or first 120 chars of text
+  const c   = kid(msg.child);
+  const bg  = rgba(c.color, .13);
+
   const fullText = msg.text || msg.body || '';
-  const preview  = msg.summary || fullText.slice(0,120) + (fullText.length>120?'…':'');
-  const cls=['card','card-animate','msg-card-expand',!isRead(msg.id)?'is-unread':''].filter(Boolean).join(' ');
-  const isWA = msg.source==='whatsapp';
+  const preview  = msg.summary || fullText;
+  // האם יש תוכן מעבר ל-preview?
+  const hasMore  = fullText && fullText !== preview && fullText.length > (msg.summary||'').length + 20;
+
+  const cls = ['card','card-animate',!isRead(msg.id)?'is-unread':''].filter(Boolean).join(' ');
+  const isWA    = msg.source==='whatsapp';
   const isEmail = msg.source==='email';
   const srcLabel = isWA ? '📱 WA' : isEmail ? '✉️ מייל' : '';
-  const srcClass = isWA ? 'wa' : isEmail ? 'email' : '';
-  const delay=Math.min((idx||0)*30,300);
-  const prio=msg.priority==='urgent'?'<span class="priority-badge urgent">דחוף</span>':msg.priority==='high'?'<span class="priority-badge high">חשוב</span>':'';
+  const srcClass = isWA ? 'wa'    : isEmail ? 'email'   : '';
+  const delay = Math.min((idx||0)*30, 300);
+  const prio  = msg.priority==='urgent' ? '<span class="priority-badge urgent">דחוף</span>'
+              : msg.priority==='high'   ? '<span class="priority-badge high">חשוב</span>' : '';
+
+  // Category badge
+  const cat = msg.category || 'other';
+  const catIcon = msg.categoryIcon || '📌';
+  const catLabel = CAT_LABELS[cat] || 'כללי';
+  const catBadge = `<span class="cat-badge ${cat}">${catIcon} ${catLabel}</span>`;
 
   // קובץ מצורף
-  const attach=msg.hasAttachment&&msg.attachmentName
-    ? `<div class="msg-attach"><span class="attach-icon">📎</span><span class="attach-name">${esc(msg.attachmentName)}</span></div>`
-    : '';
+  const attach = msg.hasAttachment && msg.attachmentName
+    ? `<div class="msg-attach"><span class="attach-icon">📎</span><span class="attach-name">${esc(msg.attachmentName)}</span></div>` : '';
 
-  return `<div class="${cls}" data-id="${msg.id}" style="animation-delay:${delay}ms" id="mc-${msg.id}" onclick="toggleCard('${msg.id}',this)">
+  // כפתור expand — מוצג רק אם יש טקסט ארוך
+  const expandBtn = hasMore
+    ? `<button class="expand-btn" id="ebtn-${msg.id}" onclick="toggleCard('${msg.id}',event)">
+        קרא עוד <span class="expand-arrow">▾</span>
+       </button>` : '';
+
+  return `<div class="${cls}" data-id="${msg.id}" style="animation-delay:${delay}ms" id="mc-${msg.id}">
   <div class="card-strip" style="background:${c.color}"></div>
   <div class="card-body">
     <div class="msg-top">
       <div class="msg-pills">
         <span class="child-pill" style="background:${bg};color:${c.color}">${c.name}</span>
-        ${msg.pinned?`<span class="pin-tag" style="color:${c.color}">${IC.pin} נעוץ</span>`:''}
-        ${!isRead(msg.id)?`<span class="dot-unread" style="background:${c.color};color:${c.color}"></span>`:''}
+        ${catBadge}
+        ${msg.pinned ? `<span class="pin-tag" style="color:${c.color}">${IC.pin} נעוץ</span>` : ''}
+        ${!isRead(msg.id) ? `<span class="dot-unread" style="background:${c.color};color:${c.color}"></span>` : ''}
       </div>
       <span class="msg-time">${fmtTime(msg.time)}</span>
     </div>
     <div class="msg-from">${esc(msg.from||msg.group||'')}${srcLabel?`<span class="msg-source-badge ${srcClass}">${srcLabel}</span>`:''}</div>
     <div class="msg-datetime">📅 ${fmtMsgDateTime(msg.time)}</div>
 
-    <!-- preview (collapsed) -->
-    <div class="msg-preview">${esc(preview)}${attach}</div>
+    <!-- preview: 3-line clamp -->
+    <div class="msg-text" id="mt-${msg.id}">${esc(preview)}</div>
 
-    <!-- full content (expanded) -->
-    <div class="msg-full" id="mf-${msg.id}">
-      <div class="msg-full-text">${esc(fullText)}</div>
-      ${attach}
-    </div>
+    <!-- full text (נסתר בהתחלה) -->
+    ${hasMore ? `<div class="msg-body-full" id="mf-${msg.id}"><div class="msg-full-text">${esc(fullText)}</div>${attach}</div>` : attach}
 
-    <div class="msg-actions" onclick="event.stopPropagation()">
+    ${expandBtn}
+
+    <div class="msg-actions">
       ${prio}
-      <button class="btn-ghost expand-btn" id="ebtn-${msg.id}">${IC.book}<span class="lbl">הרחב</span></button>
       <button class="btn-ghost" style="margin-right:auto" onclick="toggleRead('${msg.id}',this)">${IC.chk}<span class="lbl">${isRead(msg.id)?'לא נקרא':'סמן נקרא'}</span></button>
     </div>
   </div>
 </div>`;
 }
 
-function toggleCard(id, cardEl) {
-  const full=document.getElementById('mf-'+id);
-  const preview=cardEl.querySelector('.msg-preview');
-  const btn=document.getElementById('ebtn-'+id);
-  if (!full) return;
-  const open=cardEl.classList.toggle('expanded');
-  full.classList.toggle('open', open);
-  preview.classList.toggle('hidden', open);
-  if (btn) btn.querySelector('.lbl').textContent=open?'הסתר':'הרחב';
-  if (open) { markRead(id,true); cardEl.classList.remove('is-unread'); updateBadge(); }
-  // smooth scroll into view
-  if (open) setTimeout(()=>cardEl.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
+function toggleCard(id, e) {
+  e.stopPropagation();
+  const full = document.getElementById('mf-'+id);
+  const preview = document.getElementById('mt-'+id);
+  const btn = document.getElementById('ebtn-'+id);
+  const card = document.getElementById('mc-'+id);
+  if (!full || !btn) return;
+
+  const open = full.classList.toggle('open');
+  // collapse/expand preview clamp
+  if (preview) preview.classList.toggle('expanded', open);
+  // rotate arrow
+  btn.classList.toggle('open', open);
+  btn.innerHTML = open
+    ? 'סגור <span class="expand-arrow">▾</span>'
+    : 'קרא עוד <span class="expand-arrow">▾</span>';
+
+  if (open) {
+    markRead(id, true);
+    card?.classList.remove('is-unread');
+    updateBadge();
+    setTimeout(() => card?.scrollIntoView({behavior:'smooth', block:'nearest'}), 60);
+  }
 }
 function toggleRead(id,btn) {
   const now=!isRead(id); markRead(id,now);
@@ -1302,17 +1367,29 @@ async function doRefresh() {
 function openQuickAdd() {
   const overlay = document.getElementById('quick-add-overlay');
   overlay.style.display = 'flex';
+  // scroll-lock
+  document.getElementById('app').style.overflow = 'hidden';
   // set today as default date
   const today = new Date();
-  const pad = n => String(n).padStart(2,'0');
-  document.getElementById('qa-date').value = `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
-  requestAnimationFrame(() => overlay.classList.add('open'));
-  document.getElementById('qa-title').focus();
+  const p2 = n => String(n).padStart(2,'0');
+  document.getElementById('qa-date').value = `${today.getFullYear()}-${p2(today.getMonth()+1)}-${p2(today.getDate())}`;
+  // reset form state
+  document.getElementById('qa-title').value = '';
+  document.getElementById('qa-time').value = '';
+  document.getElementById('qa-notes').value = '';
+  document.querySelectorAll('#qa-kids .qa-pill, #qa-cats .qa-cat').forEach(el => el.classList.remove('active'));
+  requestAnimationFrame(() => {
+    overlay.classList.add('open');
+    setTimeout(() => document.getElementById('qa-title').focus(), 400);
+  });
 }
 function closeQuickAdd() {
   const overlay = document.getElementById('quick-add-overlay');
   overlay.classList.remove('open');
-  overlay.addEventListener('transitionend', () => { overlay.style.display = 'none'; }, { once: true });
+  document.getElementById('app').style.overflow = '';
+  overlay.addEventListener('transitionend', () => {
+    overlay.style.display = 'none';
+  }, { once: true });
 }
 
 // Kid pills
@@ -1379,6 +1456,13 @@ function handleQuickAdd(e) {
   // reset form
   e.target.reset();
   document.querySelectorAll('#qa-kids .qa-pill, #qa-cats .qa-cat').forEach(el=>el.classList.remove('active'));
+}
+
+// ─── PWA: Service Worker ──────────────────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  });
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────

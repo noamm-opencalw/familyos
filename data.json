@@ -19,7 +19,12 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 1
+      "id": 1,
+      "category": "sport",
+      "categoryIcon": "⚽",
+      "summary_points": [],
+      "drive_link": null,
+      "conflict": false
     },
     {
       "from": "רוית כהן איבי 🤍",
@@ -33,7 +38,12 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 2,
+      "category": "other",
+      "categoryIcon": "📌",
+      "summary_points": [],
+      "drive_link": null,
+      "conflict": false
     },
     {
       "from": "זולי חיים",
@@ -47,7 +57,12 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 3
+      "id": 3,
+      "category": "other",
+      "categoryIcon": "📌",
+      "summary_points": [],
+      "drive_link": null,
+      "conflict": false
     },
     {
       "from": "זולי חיים",
@@ -61,7 +76,12 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 4
+      "id": 4,
+      "category": "other",
+      "categoryIcon": "📌",
+      "summary_points": [],
+      "drive_link": null,
+      "conflict": false
     },
     {
       "from": "רינת מאיר- הדרכת הורים\\nליווי ייעוץ והדרכת הורים למתבגרים",
@@ -75,7 +95,12 @@
       "read": false,
       "priority": "urgent",
       "source": "whatsapp",
-      "id": 5
+      "id": 5,
+      "category": "other",
+      "categoryIcon": "📌",
+      "summary_points": [],
+      "drive_link": null,
+      "conflict": false
     },
     {
       "from": "זולי חיים",
@@ -89,7 +114,12 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 6
+      "id": 6,
+      "category": "school",
+      "categoryIcon": "🎒",
+      "summary_points": [],
+      "drive_link": null,
+      "conflict": false
     },
     {
       "from": "מלכה מנשורי",
@@ -103,7 +133,12 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 7
+      "id": 7,
+      "category": "other",
+      "categoryIcon": "📌",
+      "summary_points": [],
+      "drive_link": null,
+      "conflict": false
     },
     {
       "from": "גל בן שמחון",
@@ -117,7 +152,12 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 8
+      "id": 8,
+      "category": "other",
+      "categoryIcon": "📌",
+      "summary_points": [],
+      "drive_link": null,
+      "conflict": false
     },
     {
       "from": "נופר אברהם-ששון",
@@ -131,7 +171,12 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 9
+      "id": 9,
+      "category": "other",
+      "categoryIcon": "📌",
+      "summary_points": [],
+      "drive_link": null,
+      "conflict": false
     },
     {
       "from": "Avital",
@@ -145,7 +190,12 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 10
+      "id": 10,
+      "category": "school",
+      "categoryIcon": "🎒",
+      "summary_points": [],
+      "drive_link": null,
+      "conflict": false
     },
     {
       "from": "Avital",
@@ -161,7 +211,12 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "תכנון_ליום_רביעי_11.3.26",
-      "id": 11
+      "id": 11,
+      "category": "other",
+      "categoryIcon": "📌",
+      "summary_points": [],
+      "drive_link": null,
+      "conflict": false
     },
     {
       "from": "Avital",
@@ -175,7 +230,12 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 12
+      "id": 12,
+      "category": "other",
+      "categoryIcon": "📌",
+      "summary_points": [],
+      "drive_link": null,
+      "conflict": false
     }
   ],
   "academics": [],
@@ -186,7 +246,10 @@
       "title": "📚 [נוגה] זום עם אביטל",
       "date": "2026-03-11T09:00:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "gcal_id": null,
+      "conflict": false,
+      "assignedParent": null
     },
     {
       "id": 501,
@@ -194,7 +257,10 @@
       "title": "📚 [נוגה] זום עם אביטל",
       "date": "2026-03-11T11:00:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "gcal_id": null,
+      "conflict": false,
+      "assignedParent": null
     },
     {
       "id": 502,
@@ -202,7 +268,10 @@
       "title": "📚 [נוגה] זום עם אביטל",
       "date": "2026-03-11T11:20:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "gcal_id": null,
+      "conflict": false,
+      "assignedParent": null
     },
     {
       "id": 503,
@@ -210,7 +279,10 @@
       "title": "📚 [נוגה] זום עם אביטל",
       "date": "2026-03-11T11:40:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "gcal_id": null,
+      "conflict": false,
+      "assignedParent": null
     },
     {
       "id": 504,
@@ -218,7 +290,10 @@
       "title": "📚 [נוגה] מפגש זום",
       "date": "2026-03-11T12:00:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "gcal_id": null,
+      "conflict": false,
+      "assignedParent": null
     },
     {
       "id": 505,
@@ -226,7 +301,10 @@
       "title": "📚 [נוגה] מפגש זום",
       "date": "2026-03-11T12:30:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "gcal_id": null,
+      "conflict": false,
+      "assignedParent": null
     },
     {
       "id": 506,
@@ -234,7 +312,10 @@
       "title": "📚 [נוגה] מפגש זום",
       "date": "2026-03-11T13:30:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "gcal_id": null,
+      "conflict": false,
+      "assignedParent": null
     },
     {
       "id": 507,
@@ -242,7 +323,10 @@
       "title": "📚 [נוגה] מפגש זום",
       "date": "2026-03-11T14:00:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "gcal_id": null,
+      "conflict": false,
+      "assignedParent": null
     }
   ],
   "actions": []
