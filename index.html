@@ -459,6 +459,150 @@
     .msg-card-expand { cursor: pointer; }
     .msg-card-expand.expanded { box-shadow: var(--shadow-card-hi); }
 
+    /* ── QUICK ADD FAB ── */
+    .quick-add-fab {
+      background: linear-gradient(135deg, #6366f1, #a855f7) !important;
+      border-radius: 50% !important;
+      width: 52px !important; height: 52px !important;
+      min-width: 52px;
+      box-shadow: 0 4px 14px rgba(99,102,241,0.45);
+      margin-bottom: 2px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .quick-add-fab:active { transform: scale(0.92); }
+    .quick-add-fab .nav-icon { stroke: white; width: 22px; height: 22px; }
+    .quick-add-fab .nav-label { color: white; font-weight: 700; font-size: 0.65rem; }
+    .quick-add-fab .nav-pip  { display: none; }
+
+    /* ── QUICK ADD OVERLAY ── */
+    .qa-overlay {
+      position: absolute; inset: 0; z-index: 100;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .qa-backdrop {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .qa-sheet {
+      position: relative; z-index: 1;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(209,213,219,0.4);
+      border-radius: 28px 28px 0 0;
+      padding: 20px 20px calc(20px + var(--safe-b));
+      max-height: 88vh; overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 0.38s cubic-bezier(0.16,1,0.3,1);
+    }
+    .qa-overlay.open .qa-sheet { transform: translateY(0); }
+    .qa-pull-bar {
+      width: 40px; height: 5px; background: #d1d5db;
+      border-radius: 99px; margin: 0 auto 18px;
+    }
+    .qa-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 20px;
+    }
+    .qa-title {
+      font-size: 1.35rem; font-weight: 800;
+      background: linear-gradient(to left, #6366f1, #a855f7);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .qa-close {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #f3f4f6; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: #6b7280; transition: background .15s;
+    }
+    .qa-close:hover { background: #e5e7eb; }
+    .qa-form { display: flex; flex-direction: column; gap: 16px; }
+    .qa-field-wrap {
+      background: rgba(255,255,255,0.6);
+      border: 1.5px solid #e5e7eb; border-radius: 16px; overflow: hidden;
+    }
+    .qa-field-wrap.qa-field-icon { position: relative; }
+    .qa-field-svg {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      width: 16px; height: 16px; color: #9ca3af; pointer-events: none;
+      stroke: #9ca3af;
+    }
+    .qa-input {
+      width: 100%; padding: 14px 16px; background: transparent;
+      border: none; font-family: inherit; font-size: 1rem; color: #1f2937;
+      direction: rtl;
+    }
+    .qa-input.qa-input-icon { padding-right: 42px; }
+    .qa-input:focus { outline: none; }
+    .qa-field-wrap:focus-within { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
+    .qa-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .qa-section-label {
+      display: block; font-size: 0.8rem; font-weight: 700;
+      color: #6b7280; margin-bottom: 10px; padding-right: 4px;
+    }
+    /* Kid Pills */
+    .qa-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .qa-pill {
+      display: flex; align-items: center; gap: 7px;
+      padding: 8px 14px; border-radius: 99px;
+      border: 2px solid #e5e7eb; background: rgba(255,255,255,0.5);
+      font-family: inherit; font-size: 0.88rem; font-weight: 600;
+      color: #4b5563; cursor: pointer; transition: all .18s;
+    }
+    .qa-pill.active {
+      border-color: var(--kc); background: color-mix(in srgb, var(--kc) 12%, transparent);
+      color: var(--kc);
+    }
+    .qa-avatar {
+      width: 22px; height: 22px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: 800; color: white; flex-shrink: 0;
+    }
+    /* Category grid */
+    .qa-cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .qa-cat {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 10px 8px; border-radius: 14px;
+      background: rgba(255,255,255,0.4); border: 1.5px solid #e5e7eb;
+      cursor: pointer; font-family: inherit; gap: 5px; transition: all .18s;
+    }
+    .qa-cat svg { width: 22px; height: 22px; stroke: #9ca3af; transition: stroke .18s; }
+    .qa-cat span { font-size: 0.72rem; font-weight: 600; color: #6b7280; }
+    .qa-cat.active {
+      border-color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.08);
+    }
+    .qa-cat.active svg  { stroke: #a855f7; }
+    .qa-cat.active span { color: #a855f7; }
+    .qa-textarea {
+      width: 100%; padding: 12px 14px; border-radius: 14px;
+      border: 1.5px solid #e5e7eb; background: rgba(255,255,255,0.5);
+      font-family: inherit; font-size: 0.9rem; color: #374151;
+      resize: none; direction: rtl;
+    }
+    .qa-textarea:focus { outline: none; border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
+    .qa-submit {
+      width: 100%; padding: 16px;
+      background: linear-gradient(to left, #6366f1, #a855f7);
+      color: white; font-family: inherit; font-size: 1.05rem; font-weight: 700;
+      border: none; border-radius: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 6px 20px rgba(99,102,241,0.35);
+      transition: transform .15s, box-shadow .15s;
+    }
+    .qa-submit:active { transform: scale(0.97); box-shadow: 0 3px 10px rgba(99,102,241,0.25); }
+    .qa-toast {
+      position: absolute; bottom: calc(var(--nav-h) + 16px + var(--safe-b));
+      left: 50%; transform: translateX(-50%);
+      background: #1f2937; color: white;
+      padding: 10px 20px; border-radius: 99px;
+      font-size: 0.9rem; font-weight: 600; white-space: nowrap;
+      opacity: 0; transition: opacity .3s; pointer-events: none; z-index: 200;
+    }
+    .qa-toast.show { opacity: 1; }
+
     /* ── OLDER MESSAGES SECTION ── */
     .older-section {
       margin-bottom: 1rem; border-radius: var(--radius-card);
@@ -534,10 +678,101 @@
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>
       <span class="nav-label">נעוצים</span>
     </button>
+    <!-- Quick Add FAB -->
+    <button class="nav-btn quick-add-fab" onclick="openQuickAdd()" aria-label="הוספה מהירה">
+      <div class="nav-pip"></div>
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      <span class="nav-label">הוסף</span>
+    </button>
   </nav>
+
+  <!-- ── QUICK ADD OVERLAY ── -->
+  <div id="quick-add-overlay" class="qa-overlay" aria-modal="true" role="dialog" aria-label="הוספה מהירה" style="display:none">
+    <div class="qa-backdrop" onclick="closeQuickAdd()"></div>
+    <div class="qa-sheet" id="qa-sheet">
+      <div class="qa-pull-bar"></div>
+      <div class="qa-header">
+        <h2 class="qa-title">הוספה מהירה</h2>
+        <button class="qa-close" onclick="closeQuickAdd()" aria-label="סגור">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form class="qa-form" onsubmit="handleQuickAdd(event)">
+        <!-- Title -->
+        <div class="qa-field-wrap">
+          <input class="qa-input" id="qa-title" placeholder="כותרת האירוע / משימה" type="text" required autocomplete="off"/>
+        </div>
+        <!-- Date & Time -->
+        <div class="qa-row">
+          <div class="qa-field-wrap qa-field-icon">
+            <svg class="qa-field-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            <input class="qa-input qa-input-icon" id="qa-date" type="date"/>
+          </div>
+          <div class="qa-field-wrap qa-field-icon">
+            <svg class="qa-field-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <input class="qa-input qa-input-icon" id="qa-time" type="time"/>
+          </div>
+        </div>
+        <!-- Kid Selector -->
+        <div class="qa-section">
+          <span class="qa-section-label">מי משתתף?</span>
+          <div class="qa-pills" id="qa-kids">
+            <button type="button" class="qa-pill" data-kid="ran"  style="--kc:#6366f1"><span class="qa-avatar" style="background:#6366f1">ר</span>רן</button>
+            <button type="button" class="qa-pill" data-kid="itai" style="--kc:#10b981"><span class="qa-avatar" style="background:#10b981">א</span>איתי</button>
+            <button type="button" class="qa-pill" data-kid="noga" style="--kc:#f59e0b"><span class="qa-avatar" style="background:#f59e0b">נ</span>נוגה</button>
+            <button type="button" class="qa-pill" data-kid="alon" style="--kc:#f43f5e"><span class="qa-avatar" style="background:#f43f5e">א</span>אלון</button>
+            <button type="button" class="qa-pill" data-kid="all"  style="--kc:#6B7280"><span class="qa-avatar" style="background:#6B7280">כ</span>כולם</button>
+          </div>
+        </div>
+        <!-- Category -->
+        <div class="qa-section">
+          <span class="qa-section-label">קטגוריה</span>
+          <div class="qa-cats" id="qa-cats">
+            <button type="button" class="qa-cat" data-cat="school">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              <span>לימודים</span>
+            </button>
+            <button type="button" class="qa-cat" data-cat="transport">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <span>הסעות</span>
+            </button>
+            <button type="button" class="qa-cat" data-cat="medical">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <span>רפואה</span>
+            </button>
+            <button type="button" class="qa-cat" data-cat="leisure">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <span>פנאי</span>
+            </button>
+            <button type="button" class="qa-cat" data-cat="food">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+              <span>אוכל</span>
+            </button>
+            <button type="button" class="qa-cat" data-cat="other">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+              <span>אחר</span>
+            </button>
+          </div>
+        </div>
+        <!-- Notes -->
+        <textarea id="qa-notes" class="qa-textarea" rows="2" placeholder="הערות (אופציונלי)..."></textarea>
+        <!-- Submit -->
+        <button type="submit" class="qa-submit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          הוסף למשפחה
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="qa-toast" class="qa-toast"></div>
 
 </div>
 <script>
+// Escape to close quick-add
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeQuickAdd(); });
+
 // ─── SVG ICONS ────────────────────────────────────────────────────────────────
 const IC = {
   pin:  '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>',
@@ -1061,6 +1296,89 @@ async function doRefresh() {
   } catch(e){}
   await loadData();
   btn.classList.remove('spinning'); btn.disabled=false;
+}
+
+// ─── QUICK ADD ────────────────────────────────────────────────────────────────
+function openQuickAdd() {
+  const overlay = document.getElementById('quick-add-overlay');
+  overlay.style.display = 'flex';
+  // set today as default date
+  const today = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  document.getElementById('qa-date').value = `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+  requestAnimationFrame(() => overlay.classList.add('open'));
+  document.getElementById('qa-title').focus();
+}
+function closeQuickAdd() {
+  const overlay = document.getElementById('quick-add-overlay');
+  overlay.classList.remove('open');
+  overlay.addEventListener('transitionend', () => { overlay.style.display = 'none'; }, { once: true });
+}
+
+// Kid pills
+document.addEventListener('click', e => {
+  const pill = e.target.closest('#qa-kids .qa-pill');
+  if (!pill) return;
+  if (pill.dataset.kid === 'all') {
+    const allActive = !pill.classList.contains('active');
+    document.querySelectorAll('#qa-kids .qa-pill').forEach(p => p.classList.toggle('active', allActive));
+    return;
+  }
+  pill.classList.toggle('active');
+  const allPill = document.querySelector('#qa-kids .qa-pill[data-kid="all"]');
+  const allSelected = [...document.querySelectorAll('#qa-kids .qa-pill:not([data-kid="all"])')].every(p=>p.classList.contains('active'));
+  allPill.classList.toggle('active', allSelected);
+});
+
+// Category buttons
+document.addEventListener('click', e => {
+  const cat = e.target.closest('#qa-cats .qa-cat');
+  if (!cat) return;
+  document.querySelectorAll('#qa-cats .qa-cat').forEach(c => c.classList.remove('active'));
+  cat.classList.add('active');
+});
+
+function handleQuickAdd(e) {
+  e.preventDefault();
+  const title    = document.getElementById('qa-title').value.trim();
+  const date     = document.getElementById('qa-date').value;
+  const time     = document.getElementById('qa-time').value;
+  const notes    = document.getElementById('qa-notes').value.trim();
+  const kids     = [...document.querySelectorAll('#qa-kids .qa-pill.active')].map(p=>p.dataset.kid);
+  const catEl    = document.querySelector('#qa-cats .qa-cat.active');
+  const category = catEl?.dataset.cat || 'other';
+  const child    = kids.includes('all') ? 'all' : (kids[0] || 'all');
+
+  const entry = {
+    id: 'qa_' + Date.now(),
+    title,
+    date: time ? `${date}T${time}:00` : date,
+    child,
+    kids,
+    category,
+    notes,
+    source: 'quick-add',
+    createdAt: new Date().toISOString()
+  };
+
+  // שמור ב-DATA.events ורנדר מחדש
+  if (!DATA) DATA = {};
+  if (!DATA.events) DATA.events = [];
+  DATA.events.unshift(entry);
+
+  renderCalendar();
+  renderTasks();
+  closeQuickAdd();
+
+  // toast
+  const toast = document.getElementById('qa-toast');
+  toast.textContent = `✅ ${title} נוסף`;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+
+  // reset form
+  e.target.reset();
+  document.querySelectorAll('#qa-kids .qa-pill, #qa-cats .qa-cat').forEach(el=>el.classList.remove('active'));
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
