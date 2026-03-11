@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-11T09:05:49.173564+00:00",
+  "updated_at": "2026-03-11T09:30:06.791225+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -7,6 +7,20 @@
     "periods": []
   },
   "messages": [
+    {
+      "from": "רוית כהן איבי 🤍",
+      "group": "הורי ט׳3",
+      "child": "itai",
+      "text": "את אלופה זולי \nוהרעיון מדהים 🩷\nותפעילי אותנו אם צריך להביא משהו - אל תטרחי",
+      "summary": "את אלופה זולי \nוהרעיון מדהים 🩷\nותפעילי אותנו אם צריך להביא משהו - אל תטרחי",
+      "time": "2026-03-11T09:21:53.810000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1
+    },
     {
       "from": "זולי חיים",
       "group": "הורי ט׳3",
@@ -19,7 +33,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "זולי חיים",
@@ -33,7 +47,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "רינת מאיר- הדרכת הורים\\nליווי ייעוץ והדרכת הורים למתבגרים",
@@ -47,7 +61,7 @@
       "read": false,
       "priority": "urgent",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "זולי חיים",
@@ -61,7 +75,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
       "from": "מלכה מנשורי",
@@ -75,7 +89,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "גל בן שמחון",
@@ -89,7 +103,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 6
+      "id": 7
     },
     {
       "from": "נופר אברהם-ששון",
@@ -103,7 +117,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 7
+      "id": 8
     },
     {
       "from": "Avital",
@@ -117,7 +131,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 8
+      "id": 9
     },
     {
       "from": "Avital",
@@ -133,7 +147,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "תכנון_ליום_רביעי_11.3.26",
-      "id": 9
+      "id": 10
     },
     {
       "from": "Avital",
@@ -147,7 +161,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 10
+      "id": 11
     }
   ],
   "academics": [],
