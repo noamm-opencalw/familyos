@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FamilyOS — הוספה מהירה</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            primary: '#6366f1',
+            secondary: '#a855f7',
+            accent: '#ec4899',
+          }
+        },
+        backdropBlur: { xs: '2px' }
+      }
+    }
+  }
+</script>
+<style data-purpose="glassmorphism">
+  .glass-modal {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(209, 213, 219, 0.3);
+  }
+  .glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  .floating-label-group { position: relative; }
+  .floating-label-group input:placeholder-shown ~ label {
+    top: 1rem; font-size: 1rem; color: #9ca3af;
+  }
+  .floating-label-group input:focus ~ label,
+  .floating-label-group input:not(:placeholder-shown) ~ label {
+    top: -0.5rem; right: 0.75rem; font-size: 0.75rem;
+    color: #6366f1; background: white; padding: 0 4px;
+  }
+  input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  }
+</style>
+<style data-purpose="layout-animations">
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+  .animate-slide-up { animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+  .bottom-sheet { max-width: 450px; margin: 0 auto; }
+
+  /* Kid pill avatar initials */
+  .kid-avatar {
+    width: 1.5rem; height: 1.5rem; border-radius: 9999px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; font-weight: 700; color: white;
+  }
+</style>
+</head>
+<body class="bg-slate-100 font-sans antialiased text-slate-900 overflow-hidden">
+
+<!-- Background Feed Mockup -->
+<main aria-hidden="true" class="h-screen w-full p-4 flex flex-col gap-4 opacity-40 select-none pointer-events-none">
+  <div class="h-12 w-full bg-white rounded-xl shadow-sm"></div>
+  <div class="h-64 w-full bg-white rounded-2xl shadow-sm"></div>
+  <div class="h-48 w-full bg-white rounded-2xl shadow-sm"></div>
+</main>
+
+<!-- Modal Overlay -->
+<div class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 flex flex-col justify-end">
+  <div class="bottom-sheet glass-modal w-full rounded-t-[2.5rem] p-6 shadow-2xl animate-slide-up z-50 overflow-y-auto max-h-[90vh]">
+
+    <!-- Pull Bar -->
+    <div class="w-12 h-1.5 bg-slate-300 rounded-full mx-auto mb-8"></div>
+
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-l from-brand-primary to-brand-secondary">
+        הוספה מהירה
+      </h2>
+      <button onclick="window.history.back()" class="p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors">
+        <i class="w-5 h-5 text-slate-500" data-lucide="x"></i>
+      </button>
+    </div>
+
+    <!-- Form -->
+    <form class="space-y-6" onsubmit="handleSubmit(event)">
+
+      <!-- Title -->
+      <div class="floating-label-group">
+        <input class="w-full px-4 py-4 rounded-2xl border border-slate-200 focus:border-brand-primary focus:ring-0 transition-all bg-white/50"
+               id="task-title" placeholder=" " type="text" required/>
+        <label class="absolute right-4 transition-all pointer-events-none" for="task-title">כותרת האירוע / משימה</label>
+      </div>
+
+      <!-- Date & Time -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="relative">
+          <i class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" data-lucide="calendar"></i>
+          <input class="w-full pr-10 pl-4 py-4 rounded-2xl border border-slate-200 focus:border-brand-primary focus:ring-0 bg-white/50 text-slate-600"
+                 type="date" id="event-date"/>
+        </div>
+        <div class="relative">
+          <i class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" data-lucide="clock"></i>
+          <input class="w-full pr-10 pl-4 py-4 rounded-2xl border border-slate-200 focus:border-brand-primary focus:ring-0 bg-white/50 text-slate-600"
+                 type="time" id="event-time"/>
+        </div>
+      </div>
+
+      <!-- Kid Selector -->
+      <div data-purpose="kid-selector">
+        <span class="block text-sm font-semibold text-slate-500 mb-3 px-1">מי משתתף?</span>
+        <div class="flex flex-wrap gap-2" id="kid-pills">
+
+          <!-- רן -->
+          <button type="button" data-kid="ran"
+            class="kid-pill flex items-center gap-2 px-4 py-2 rounded-full border-2 border-slate-100 bg-white/50 text-slate-600 font-medium hover:border-slate-200 transition-all">
+            <div class="kid-avatar" style="background:#6366f1">ר</div>
+            רן
+          </button>
+
+          <!-- איתי -->
+          <button type="button" data-kid="itai"
+            class="kid-pill flex items-center gap-2 px-4 py-2 rounded-full border-2 border-slate-100 bg-white/50 text-slate-600 font-medium hover:border-slate-200 transition-all">
+            <div class="kid-avatar" style="background:#a855f7">א</div>
+            איתי
+          </button>
+
+          <!-- נוגה -->
+          <button type="button" data-kid="noga"
+            class="kid-pill flex items-center gap-2 px-4 py-2 rounded-full border-2 border-slate-100 bg-white/50 text-slate-600 font-medium hover:border-slate-200 transition-all">
+            <div class="kid-avatar" style="background:#ec4899">נ</div>
+            נוגה
+          </button>
+
+          <!-- אלון -->
+          <button type="button" data-kid="alon"
+            class="kid-pill flex items-center gap-2 px-4 py-2 rounded-full border-2 border-slate-100 bg-white/50 text-slate-600 font-medium hover:border-slate-200 transition-all">
+            <div class="kid-avatar" style="background:#f59e0b">א</div>
+            אלון
+          </button>
+
+          <!-- כולם -->
+          <button type="button" data-kid="all"
+            class="kid-pill flex items-center gap-2 px-4 py-2 rounded-full border-2 border-slate-100 bg-white/50 text-slate-600 font-medium hover:border-slate-200 transition-all">
+            <div class="kid-avatar" style="background:#10b981">כ</div>
+            כולם
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Category Selector -->
+      <div data-purpose="category-selector">
+        <span class="block text-sm font-semibold text-slate-500 mb-3 px-1">קטגוריה</span>
+        <div class="grid grid-cols-3 gap-3">
+          <button type="button" data-cat="school"
+            class="cat-btn flex flex-col items-center justify-center p-3 rounded-2xl glass-card border border-slate-200 hover:border-brand-primary/50 group transition-all">
+            <i class="w-6 h-6 mb-1 text-slate-400 group-hover:text-brand-primary" data-lucide="graduation-cap"></i>
+            <span class="text-xs font-medium text-slate-500">לימודים</span>
+          </button>
+          <button type="button" data-cat="food"
+            class="cat-btn flex flex-col items-center justify-center p-3 rounded-2xl glass-card border border-slate-200 hover:border-brand-primary/50 group transition-all">
+            <i class="w-6 h-6 mb-1 text-slate-400 group-hover:text-brand-primary" data-lucide="utensils"></i>
+            <span class="text-xs font-medium text-slate-500">אוכל</span>
+          </button>
+          <button type="button" data-cat="leisure"
+            class="cat-btn flex flex-col items-center justify-center p-3 rounded-2xl glass-card border border-slate-200 hover:border-brand-primary/50 group transition-all">
+            <i class="w-6 h-6 mb-1 text-slate-400 group-hover:text-brand-primary" data-lucide="heart"></i>
+            <span class="text-xs font-medium text-slate-500">פנאי</span>
+          </button>
+          <button type="button" data-cat="medical"
+            class="cat-btn flex flex-col items-center justify-center p-3 rounded-2xl glass-card border border-slate-200 hover:border-brand-primary/50 group transition-all">
+            <i class="w-6 h-6 mb-1 text-slate-400 group-hover:text-brand-primary" data-lucide="stethoscope"></i>
+            <span class="text-xs font-medium text-slate-500">רפואה</span>
+          </button>
+          <button type="button" data-cat="transport"
+            class="cat-btn flex flex-col items-center justify-center p-3 rounded-2xl glass-card border border-slate-200 hover:border-brand-primary/50 group transition-all">
+            <i class="w-6 h-6 mb-1 text-slate-400 group-hover:text-brand-primary" data-lucide="car"></i>
+            <span class="text-xs font-medium text-slate-500">הסעות</span>
+          </button>
+          <button type="button" data-cat="other"
+            class="cat-btn flex flex-col items-center justify-center p-3 rounded-2xl glass-card border border-slate-200 hover:border-brand-primary/50 group transition-all">
+            <i class="w-6 h-6 mb-1 text-slate-400 group-hover:text-brand-primary" data-lucide="more-horizontal"></i>
+            <span class="text-xs font-medium text-slate-500">אחר</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Notes (optional) -->
+      <div>
+        <textarea id="event-notes" rows="2" placeholder="הערות (אופציונלי)..."
+          class="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:border-brand-primary focus:ring-0 bg-white/50 text-slate-600 resize-none text-sm"></textarea>
+      </div>
+
+      <!-- Submit -->
+      <div class="pt-2">
+        <button type="submit"
+          class="w-full py-4 bg-gradient-to-l from-brand-primary to-brand-secondary text-white font-bold text-lg rounded-2xl shadow-lg shadow-brand-primary/30 hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2">
+          <i class="w-5 h-5" data-lucide="plus-circle"></i>
+          הוסף למשפחה
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<script>
+  lucide.createIcons();
+
+  // Kid pills toggle
+  document.querySelectorAll('.kid-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isActive = btn.classList.contains('border-brand-primary');
+      // If "כולם" clicked — toggle all
+      if (btn.dataset.kid === 'all') {
+        const allActive = !isActive;
+        document.querySelectorAll('.kid-pill').forEach(b => setKidActive(b, allActive));
+        return;
+      }
+      setKidActive(btn, !isActive);
+    });
+  });
+
+  function setKidActive(btn, active) {
+    if (active) {
+      btn.classList.add('border-brand-primary', 'bg-brand-primary/10', 'text-brand-primary');
+      btn.classList.remove('border-slate-100', 'bg-white/50', 'text-slate-600');
+    } else {
+      btn.classList.remove('border-brand-primary', 'bg-brand-primary/10', 'text-brand-primary');
+      btn.classList.add('border-slate-100', 'bg-white/50', 'text-slate-600');
+    }
+  }
+
+  // Category selector
+  document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cat-btn').forEach(b => {
+        b.classList.remove('border-brand-secondary/30', 'bg-brand-secondary/5');
+        b.querySelector('span').classList.remove('text-brand-secondary');
+        b.querySelector('i').classList.remove('text-brand-secondary');
+        b.querySelector('span').classList.add('text-slate-500');
+        b.querySelector('i').classList.add('text-slate-400');
+      });
+      btn.classList.add('border-brand-secondary/30', 'bg-brand-secondary/5');
+      btn.querySelector('span').classList.remove('text-slate-500');
+      btn.querySelector('span').classList.add('text-brand-secondary');
+      btn.querySelector('i').classList.remove('text-slate-400');
+      btn.querySelector('i').classList.add('text-brand-secondary');
+    });
+  });
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const title = document.getElementById('task-title').value;
+    const date  = document.getElementById('event-date').value;
+    const time  = document.getElementById('event-time').value;
+    const notes = document.getElementById('event-notes').value;
+    const kids  = [...document.querySelectorAll('.kid-pill.border-brand-primary')].map(b => b.dataset.kid);
+    const cat   = document.querySelector('.cat-btn.bg-brand-secondary\\/5')?.dataset.cat || '';
+
+    const entry = { title, date, time, notes, kids, category: cat, createdAt: new Date().toISOString() };
+    console.log('New entry:', entry);
+
+    // TODO: POST to FamilyOS backend / data.json
+    alert(`✅ נוסף: ${title}`);
+  }
+</script>
+</body>
+</html>
