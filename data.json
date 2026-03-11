@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-11T06:00:32.979772+00:00",
+  "updated_at": "2026-03-11T07:04:30.050799+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -7,6 +7,20 @@
     "periods": []
   },
   "messages": [
+    {
+      "from": "נופר אברהם-ששון",
+      "group": "הורי יא׳7",
+      "child": "ran",
+      "text": "הורים יקרים,\nהיום תחל הלמידה מרחוק מהשעה השלישית (10:10). שיהיה יום שקט🙏",
+      "summary": "הורים יקרים,\nהיום תחל הלמידה מרחוק מהשעה השלישית (10:10). שיהיה יום שקט🙏",
+      "time": "2026-03-11T06:15:26.759000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1
+    },
     {
       "from": "Ortal Mor",
       "group": "כיתה ב׳ לביא",
@@ -19,7 +33,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "Avital",
@@ -33,7 +47,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "Avital",
@@ -49,7 +63,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "תכנון_ליום_רביעי_11.3.26",
-      "id": 3
+      "id": 4
     },
     {
       "from": "מלכה מנשורי",
@@ -65,7 +79,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "יום_רביעי",
-      "id": 4
+      "id": 5
     },
     {
       "from": "זולי חיים",
@@ -79,7 +93,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "Avital",
@@ -93,7 +107,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 6
+      "id": 7
     },
     {
       "from": "מלכה מנשורי",
@@ -107,7 +121,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 7
+      "id": 8
     },
     {
       "from": "מלכה מנשורי",
@@ -121,7 +135,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 8
+      "id": 9
     }
   ],
   "academics": [],
