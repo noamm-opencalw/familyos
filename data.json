@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-11T19:00:10.219015+00:00",
+  "updated_at": "2026-03-12T04:00:06.527309+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -19,12 +19,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 1,
-      "category": "sport",
-      "categoryIcon": "⚽",
-      "summary_points": [],
-      "drive_link": null,
-      "conflict": false
+      "id": 1
     },
     {
       "from": "רוית כהן איבי 🤍",
@@ -38,12 +33,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2,
-      "category": "other",
-      "categoryIcon": "📌",
-      "summary_points": [],
-      "drive_link": null,
-      "conflict": false
+      "id": 2
     },
     {
       "from": "זולי חיים",
@@ -57,12 +47,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 3,
-      "category": "other",
-      "categoryIcon": "📌",
-      "summary_points": [],
-      "drive_link": null,
-      "conflict": false
+      "id": 3
     },
     {
       "from": "זולי חיים",
@@ -76,12 +61,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 4,
-      "category": "other",
-      "categoryIcon": "📌",
-      "summary_points": [],
-      "drive_link": null,
-      "conflict": false
+      "id": 4
     },
     {
       "from": "רינת מאיר- הדרכת הורים\\nליווי ייעוץ והדרכת הורים למתבגרים",
@@ -95,12 +75,7 @@
       "read": false,
       "priority": "urgent",
       "source": "whatsapp",
-      "id": 5,
-      "category": "other",
-      "categoryIcon": "📌",
-      "summary_points": [],
-      "drive_link": null,
-      "conflict": false
+      "id": 5
     },
     {
       "from": "זולי חיים",
@@ -114,12 +89,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 6,
-      "category": "school",
-      "categoryIcon": "🎒",
-      "summary_points": [],
-      "drive_link": null,
-      "conflict": false
+      "id": 6
     },
     {
       "from": "מלכה מנשורי",
@@ -133,12 +103,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 7,
-      "category": "other",
-      "categoryIcon": "📌",
-      "summary_points": [],
-      "drive_link": null,
-      "conflict": false
+      "id": 7
     },
     {
       "from": "גל בן שמחון",
@@ -152,12 +117,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 8,
-      "category": "other",
-      "categoryIcon": "📌",
-      "summary_points": [],
-      "drive_link": null,
-      "conflict": false
+      "id": 8
     },
     {
       "from": "נופר אברהם-ששון",
@@ -171,12 +131,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 9,
-      "category": "other",
-      "categoryIcon": "📌",
-      "summary_points": [],
-      "drive_link": null,
-      "conflict": false
+      "id": 9
     },
     {
       "from": "Avital",
@@ -190,12 +145,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 10,
-      "category": "school",
-      "categoryIcon": "🎒",
-      "summary_points": [],
-      "drive_link": null,
-      "conflict": false
+      "id": 10
     },
     {
       "from": "Avital",
@@ -211,12 +161,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "תכנון_ליום_רביעי_11.3.26",
-      "id": 11,
-      "category": "other",
-      "categoryIcon": "📌",
-      "summary_points": [],
-      "drive_link": null,
-      "conflict": false
+      "id": 11
     },
     {
       "from": "Avital",
@@ -230,12 +175,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 12,
-      "category": "other",
-      "categoryIcon": "📌",
-      "summary_points": [],
-      "drive_link": null,
-      "conflict": false
+      "id": 12
     }
   ],
   "academics": [],
@@ -246,10 +186,7 @@
       "title": "📚 [נוגה] זום עם אביטל",
       "date": "2026-03-11T09:00:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf",
-      "gcal_id": null,
-      "conflict": false,
-      "assignedParent": null
+      "source": "whatsapp-pdf"
     },
     {
       "id": 501,
@@ -257,10 +194,7 @@
       "title": "📚 [נוגה] זום עם אביטל",
       "date": "2026-03-11T11:00:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf",
-      "gcal_id": null,
-      "conflict": false,
-      "assignedParent": null
+      "source": "whatsapp-pdf"
     },
     {
       "id": 502,
@@ -268,10 +202,7 @@
       "title": "📚 [נוגה] זום עם אביטל",
       "date": "2026-03-11T11:20:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf",
-      "gcal_id": null,
-      "conflict": false,
-      "assignedParent": null
+      "source": "whatsapp-pdf"
     },
     {
       "id": 503,
@@ -279,10 +210,7 @@
       "title": "📚 [נוגה] זום עם אביטל",
       "date": "2026-03-11T11:40:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf",
-      "gcal_id": null,
-      "conflict": false,
-      "assignedParent": null
+      "source": "whatsapp-pdf"
     },
     {
       "id": 504,
@@ -290,10 +218,7 @@
       "title": "📚 [נוגה] מפגש זום",
       "date": "2026-03-11T12:00:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf",
-      "gcal_id": null,
-      "conflict": false,
-      "assignedParent": null
+      "source": "whatsapp-pdf"
     },
     {
       "id": 505,
@@ -301,10 +226,7 @@
       "title": "📚 [נוגה] מפגש זום",
       "date": "2026-03-11T12:30:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf",
-      "gcal_id": null,
-      "conflict": false,
-      "assignedParent": null
+      "source": "whatsapp-pdf"
     },
     {
       "id": 506,
@@ -312,10 +234,7 @@
       "title": "📚 [נוגה] מפגש זום",
       "date": "2026-03-11T13:30:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf",
-      "gcal_id": null,
-      "conflict": false,
-      "assignedParent": null
+      "source": "whatsapp-pdf"
     },
     {
       "id": 507,
@@ -323,10 +242,7 @@
       "title": "📚 [נוגה] מפגש זום",
       "date": "2026-03-11T14:00:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf",
-      "gcal_id": null,
-      "conflict": false,
-      "assignedParent": null
+      "source": "whatsapp-pdf"
     }
   ],
   "actions": []
