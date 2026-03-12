@@ -273,5 +273,51 @@
       "gcal_id": null
     }
   ],
-  "actions": []
+  "actions": [],
+  "digest": {
+    "date": "2026-03-12T07:54:33.300633+00:00",
+    "tomorrow": "2026-03-13",
+    "items": [
+      {
+        "id": "llm-0",
+        "text": "למידה מרחוק מהשעה השלישית (10:10)",
+        "child": "ran",
+        "time": "10:10",
+        "source": "AI",
+        "done": false
+      },
+      {
+        "id": "llm-1",
+        "text": "איסוף ציוד לימודי מבית הספר (8:30–10:30)",
+        "child": "noga",
+        "time": "08:30",
+        "source": "AI",
+        "done": false
+      },
+      {
+        "id": "llm-2",
+        "text": "זום עם אביטל",
+        "child": "noga",
+        "time": "09:00",
+        "source": "AI",
+        "done": false
+      },
+      {
+        "id": "llm-3",
+        "text": "זום עם אביטל (שני מפגשים)",
+        "child": "noga",
+        "time": "11:00",
+        "source": "AI",
+        "done": false
+      },
+      {
+        "id": "llm-4",
+        "text": "לוודא שאיתי לא צריך להביא משהו לאירוע",
+        "child": "itai",
+        "time": "",
+        "source": "AI",
+        "done": false
+      }
+    ]
+  }
 }
