@@ -8,6 +8,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#F8F9FA" />
   <title>FamilyOS</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -245,6 +247,7 @@
       font-size: 1rem; color: var(--text-1); line-height: 1.65;
       display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
       word-wrap: break-word; overflow-wrap: break-word;
+      transition: max-height 0.3s ease;
     }
     .card.is-unread .msg-text { font-weight: 600; color: var(--text-1); }
     .msg-text.expanded { -webkit-line-clamp: unset; display: block; }
@@ -258,6 +261,37 @@
       padding: 0.7rem 0.85rem; max-height: 380px; overflow-y: auto;
     }
     .msg-body-full.open { display: block; }
+
+    /* ── EXPAND BUTTON ── */
+    .expand-btn {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-top: 6px; padding: 4px 10px; border-radius: 8px;
+      font-family: inherit; font-size: 0.78rem; font-weight: 700;
+      color: var(--accent); background: var(--accent-dim);
+      border: none; cursor: pointer; transition: all .15s;
+      line-height: 1;
+    }
+    .expand-btn:hover { background: rgba(74,144,226,0.18); }
+    .expand-btn .expand-arrow {
+      display: inline-block; transition: transform .25s cubic-bezier(.34,1.56,.64,1);
+      font-size: 0.7rem;
+    }
+    .expand-btn.open .expand-arrow { transform: rotate(180deg); }
+
+    /* ── CATEGORY BADGE ── */
+    .cat-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.72rem; font-weight: 700;
+      padding: 0.2rem 0.55rem; border-radius: 8px;
+      background: var(--surface-2); border: 1px solid var(--border);
+      color: var(--text-2); flex-shrink: 0;
+    }
+    .cat-badge.school  { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
+    .cat-badge.payment { background: #F0FDF4; color: #15803D; border-color: #BBF7D0; }
+    .cat-badge.medical { background: #FFF1F2; color: #BE123C; border-color: #FECDD3; }
+    .cat-badge.sport   { background: #FFF7ED; color: #C2410C; border-color: #FED7AA; }
+    .cat-badge.trip    { background: #F5F3FF; color: #6D28D9; border-color: #DDD6FE; }
+    .cat-badge.other   { background: var(--surface-2); color: var(--text-3); border-color: var(--border); }
 
     /* action row — 48px touch targets */
     .msg-actions {
@@ -388,6 +422,98 @@
     .cal-day.selected:not(.today) { outline: 2px solid var(--accent); outline-offset: -1px; background: var(--accent-dim); }
     .cal-day:not(.today):not(.other-month):hover { background: var(--surface-2); }
 
+    /* ── STEP 4: Calendar View Toggle ── */
+    .cal-view-toggle {
+      display: flex; gap: 4px; background: var(--surface-2);
+      border: 1px solid var(--border); border-radius: 10px; padding: 3px;
+    }
+    .cal-view-btn {
+      display: flex; align-items: center; gap: 5px;
+      padding: 6px 12px; border-radius: 7px; border: none;
+      background: transparent; font-family: inherit;
+      font-size: 0.78rem; font-weight: 600; color: var(--text-2);
+      cursor: pointer; transition: all .18s; white-space: nowrap;
+    }
+    .cal-view-btn svg { width: 14px; height: 14px; }
+    .cal-view-btn.active {
+      background: var(--surface); color: var(--accent);
+      box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    }
+
+    /* ── STEP 4: Agenda Timeline ── */
+    .agenda-wrap { display: flex; flex-direction: column; gap: 0; }
+    .agenda-day-block { margin-bottom: 16px; }
+    .agenda-day-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 8px; padding: 0 4px;
+    }
+    .agenda-day-dot {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 800;
+    }
+    .agenda-day-dot.today-dot {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 2px 8px rgba(74,144,226,.4);
+    }
+    .agenda-day-dot.past-dot { background: var(--surface-3); color: var(--text-3); }
+    .agenda-day-dot.future-dot { background: var(--surface-2); color: var(--text-1); border: 1.5px solid var(--border-hi); }
+    .agenda-day-label { font-size: 0.88rem; font-weight: 700; color: var(--text-1); }
+    .agenda-day-label span { color: var(--text-3); font-weight: 500; font-size: 0.8rem; margin-right: 4px; }
+    .agenda-day-line {
+      flex: 1; height: 1px; background: var(--border);
+    }
+    .agenda-events { margin-right: 46px; display: flex; flex-direction: column; gap: 8px; }
+    .agenda-card {
+      background: var(--surface); border-radius: 12px;
+      border: 1px solid var(--border); padding: 12px 14px;
+      box-shadow: var(--shadow-card);
+      display: flex; align-items: flex-start; gap: 10px;
+      transition: box-shadow .2s;
+      animation: cardSlideIn .3s cubic-bezier(.22,1,.36,1) both;
+    }
+    .agenda-card:hover { box-shadow: var(--shadow-card-hi); }
+    .agenda-time-col {
+      display: flex; flex-direction: column; align-items: center;
+      min-width: 44px; flex-shrink: 0;
+    }
+    .agenda-time {
+      font-size: 0.78rem; font-weight: 700; color: var(--text-2); white-space: nowrap;
+    }
+    .agenda-time.all-day { font-size: 0.7rem; color: var(--text-3); }
+    .agenda-time-bar {
+      width: 2px; flex: 1; min-height: 12px; margin-top: 4px;
+      border-radius: 2px;
+    }
+    .agenda-content { flex: 1; min-width: 0; }
+    .agenda-title {
+      font-size: 0.95rem; font-weight: 600; color: var(--text-1);
+      line-height: 1.4; margin-bottom: 4px;
+      word-wrap: break-word; overflow-wrap: break-word;
+    }
+    .agenda-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .agenda-source-badge {
+      font-size: 0.68rem; font-weight: 600; padding: 2px 7px;
+      border-radius: 99px; background: var(--surface-2);
+      border: 1px solid var(--border); color: var(--text-3);
+    }
+    .agenda-source-badge.whatsapp { background: #e6f4ea; color: #1a7f37; border-color: #a8d5b5; }
+    .agenda-source-badge.manual   { background: var(--accent-dim); color: var(--accent); border-color: rgba(74,144,226,.3); }
+    .agenda-source-badge.gcal     { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+    .agenda-gcal-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 8px; padding: 5px 10px; border-radius: 8px;
+      font-family: inherit; font-size: 0.75rem; font-weight: 700;
+      background: var(--accent); color: #fff; border: none; cursor: pointer;
+      text-decoration: none; transition: background .15s;
+    }
+    .agenda-gcal-btn:hover { background: #3a7fd5; }
+    .agenda-gcal-btn svg { width: 12px; height: 12px; }
+    .agenda-empty {
+      text-align: center; padding: 40px 20px;
+      color: var(--text-3); font-size: 0.9rem; font-weight: 500;
+    }
+
     /* ── STEP 3: Empty States — clean, informative ── */
     .empty {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -459,6 +585,246 @@
     .msg-card-expand { cursor: pointer; }
     .msg-card-expand.expanded { box-shadow: var(--shadow-card-hi); }
 
+    /* ── QUICK ADD FAB ── */
+    .quick-add-fab {
+      background: linear-gradient(135deg, #6366f1, #a855f7) !important;
+      border-radius: 50% !important;
+      width: 52px !important; height: 52px !important;
+      min-width: 52px;
+      box-shadow: 0 4px 14px rgba(99,102,241,0.45);
+      margin-bottom: 2px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .quick-add-fab:active { transform: scale(0.92); }
+    .quick-add-fab .nav-icon { stroke: white; width: 22px; height: 22px; }
+    .quick-add-fab .nav-label { color: white; font-weight: 700; font-size: 0.65rem; }
+    .quick-add-fab .nav-pip  { display: none; }
+
+    /* ── QUICK ADD OVERLAY ── */
+    .qa-overlay {
+      position: absolute; inset: 0; z-index: 100;
+      display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .qa-backdrop {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .qa-sheet {
+      position: relative; z-index: 1;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(209,213,219,0.4);
+      border-radius: 28px 28px 0 0;
+      padding: 20px 20px calc(20px + var(--safe-b));
+      max-height: 88vh; overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform 0.38s cubic-bezier(0.16,1,0.3,1);
+    }
+    .qa-overlay.open .qa-sheet { transform: translateY(0); }
+    .qa-pull-bar {
+      width: 40px; height: 5px; background: #d1d5db;
+      border-radius: 99px; margin: 0 auto 18px;
+    }
+    .qa-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 20px;
+    }
+    .qa-title {
+      font-size: 1.35rem; font-weight: 800;
+      background: linear-gradient(to left, #6366f1, #a855f7);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .qa-close {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #f3f4f6; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: #6b7280; transition: background .15s;
+    }
+    .qa-close:hover { background: #e5e7eb; }
+    .qa-form { display: flex; flex-direction: column; gap: 16px; }
+    .qa-field-wrap {
+      background: rgba(255,255,255,0.6);
+      border: 1.5px solid #e5e7eb; border-radius: 16px; overflow: hidden;
+    }
+    .qa-field-wrap.qa-field-icon { position: relative; }
+    .qa-field-svg {
+      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+      width: 16px; height: 16px; color: #9ca3af; pointer-events: none;
+      stroke: #9ca3af;
+    }
+    .qa-input {
+      width: 100%; padding: 14px 16px; background: transparent;
+      border: none; font-family: inherit; font-size: 1rem; color: #1f2937;
+      direction: rtl;
+    }
+    .qa-input.qa-input-icon { padding-right: 42px; }
+    .qa-input:focus { outline: none; }
+    .qa-field-wrap:focus-within { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
+    .qa-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .qa-section-label {
+      display: block; font-size: 0.8rem; font-weight: 700;
+      color: #6b7280; margin-bottom: 10px; padding-right: 4px;
+    }
+    /* Kid Pills */
+    .qa-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .qa-pill {
+      display: flex; align-items: center; gap: 7px;
+      padding: 8px 14px; border-radius: 99px;
+      border: 2px solid #e5e7eb; background: rgba(255,255,255,0.5);
+      font-family: inherit; font-size: 0.88rem; font-weight: 600;
+      color: #4b5563; cursor: pointer; transition: all .18s;
+    }
+    .qa-pill.active {
+      border-color: var(--kc); background: color-mix(in srgb, var(--kc) 12%, transparent);
+      color: var(--kc);
+    }
+    .qa-avatar {
+      width: 22px; height: 22px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: 800; color: white; flex-shrink: 0;
+    }
+    /* Category grid */
+    .qa-cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .qa-cat {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 10px 8px; border-radius: 14px;
+      background: rgba(255,255,255,0.4); border: 1.5px solid #e5e7eb;
+      cursor: pointer; font-family: inherit; gap: 5px; transition: all .18s;
+    }
+    .qa-cat svg { width: 22px; height: 22px; stroke: #9ca3af; transition: stroke .18s; }
+    .qa-cat span { font-size: 0.72rem; font-weight: 600; color: #6b7280; }
+    .qa-cat.active {
+      border-color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.08);
+    }
+    .qa-cat.active svg  { stroke: #a855f7; }
+    .qa-cat.active span { color: #a855f7; }
+    .qa-textarea {
+      width: 100%; padding: 12px 14px; border-radius: 14px;
+      border: 1.5px solid #e5e7eb; background: rgba(255,255,255,0.5);
+      font-family: inherit; font-size: 0.9rem; color: #374151;
+      resize: none; direction: rtl;
+    }
+    .qa-textarea:focus { outline: none; border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
+    .qa-submit {
+      width: 100%; padding: 16px;
+      background: linear-gradient(to left, #6366f1, #a855f7);
+      color: white; font-family: inherit; font-size: 1.05rem; font-weight: 700;
+      border: none; border-radius: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 6px 20px rgba(99,102,241,0.35);
+      transition: transform .15s, box-shadow .15s;
+    }
+    .qa-submit:active { transform: scale(0.97); box-shadow: 0 3px 10px rgba(99,102,241,0.25); }
+    .qa-toast {
+      position: absolute; bottom: calc(var(--nav-h) + 16px + var(--safe-b));
+      left: 50%; transform: translateX(-50%);
+      background: #1f2937; color: white;
+      padding: 10px 20px; border-radius: 99px;
+      font-size: 0.9rem; font-weight: 600; white-space: nowrap;
+      opacity: 0; transition: opacity .3s; pointer-events: none; z-index: 200;
+    }
+    .qa-toast.show { opacity: 1; }
+
+    /* ── STEP 5: Digest Tab ── */
+    .digest-header {
+      padding: 20px 4px 12px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+    }
+    .digest-title {
+      font-size: 1.5rem; font-weight: 900; color: var(--text-1); line-height: 1.2;
+    }
+    .digest-subtitle { font-size: 0.82rem; color: var(--text-3); margin-top: 3px; }
+    .digest-date-badge {
+      font-size: 0.78rem; font-weight: 700; padding: 6px 12px;
+      background: var(--accent-dim); color: var(--accent);
+      border: 1px solid rgba(74,144,226,.2); border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+    /* Bento grid */
+    .digest-bento {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-auto-rows: auto;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .bento-card {
+      background: var(--surface); border-radius: 18px;
+      border: 1px solid var(--border); padding: 16px;
+      box-shadow: var(--shadow-card);
+      animation: cardSlideIn .3s cubic-bezier(.22,1,.36,1) both;
+      display: flex; flex-direction: column; gap: 6px;
+      transition: box-shadow .2s;
+    }
+    .bento-card:active { box-shadow: var(--shadow-card-hi); }
+    .bento-card.wide { grid-column: 1 / -1; }          /* רוחב מלא */
+    .bento-card.tall { grid-row: span 2; }              /* גובה כפול */
+    .bento-card.accent-bg {
+      background: linear-gradient(135deg, rgba(74,144,226,.12), rgba(74,144,226,.04));
+      border-color: rgba(74,144,226,.25);
+    }
+    .bento-icon { font-size: 1.6rem; line-height: 1; margin-bottom: 2px; }
+    .bento-label {
+      font-size: 0.72rem; font-weight: 700; color: var(--text-3);
+      text-transform: uppercase; letter-spacing: .05em;
+    }
+    .bento-value {
+      font-size: 1.3rem; font-weight: 800; color: var(--text-1); line-height: 1.2;
+    }
+    .bento-value.small { font-size: 1rem; font-weight: 600; }
+    .bento-value.accent { color: var(--accent); }
+    .bento-sub { font-size: 0.78rem; color: var(--text-3); line-height: 1.5; }
+    /* Digest checklist */
+    .digest-section-title {
+      font-size: 0.88rem; font-weight: 800; color: var(--text-2);
+      margin: 4px 0 10px; display: flex; align-items: center; gap: 6px;
+    }
+    .digest-section-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+    .digest-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 14px; background: var(--surface);
+      border-radius: 14px; border: 1px solid var(--border);
+      box-shadow: var(--shadow-card); margin-bottom: 8px;
+      animation: cardSlideIn .3s cubic-bezier(.22,1,.36,1) both;
+      transition: opacity .25s;
+    }
+    .digest-item.done { opacity: .38; }
+    .digest-check {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      border: 2px solid var(--border-hi); background: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .18s; margin-top: 1px;
+    }
+    .digest-check svg { width: 14px; height: 14px; display: none; }
+    .digest-check.checked { color: #fff; border-color: transparent; }
+    .digest-check.checked svg { display: block; }
+    .digest-item-body { flex: 1; min-width: 0; }
+    .digest-item-text {
+      font-size: 0.92rem; font-weight: 600; color: var(--text-1);
+      line-height: 1.5; word-wrap: break-word;
+    }
+    .digest-item.done .digest-item-text { text-decoration: line-through; color: var(--text-3); }
+    .digest-item-meta {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-top: 5px;
+    }
+    .digest-child-dot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+      margin-top: 6px; align-self: flex-start;
+    }
+    /* stale notice */
+    .digest-stale {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border-radius: 12px; margin-bottom: 12px;
+      background: #fef3c7; border: 1px solid #fcd34d;
+      font-size: 0.8rem; font-weight: 600; color: #92400e;
+    }
+
     /* ── OLDER MESSAGES SECTION ── */
     .older-section {
       margin-bottom: 1rem; border-radius: var(--radius-card);
@@ -509,6 +875,7 @@
   <div class="tab-area">
     <section id="tab-feed"     class="tab-panel active" role="tabpanel"></section>
     <section id="tab-calendar" class="tab-panel"        role="tabpanel"></section>
+    <section id="tab-digest"   class="tab-panel"        role="tabpanel"></section>
     <section id="tab-tasks"    class="tab-panel"        role="tabpanel"></section>
     <section id="tab-pinned"   class="tab-panel"        role="tabpanel"></section>
   </div>
@@ -524,6 +891,11 @@
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
       <span class="nav-label">לוח שנה</span>
     </button>
+    <button class="nav-btn" data-tab="digest" role="tab" aria-selected="false" id="nav-digest">
+      <div class="nav-pip"></div>
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><path d="M22 2 16 8"/><path d="m19 2 3 3-3 3"/></svg>
+      <span class="nav-label">מחר</span>
+    </button>
     <button class="nav-btn" data-tab="tasks" role="tab" aria-selected="false">
       <div class="nav-pip"></div>
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 5-5"/><rect width="18" height="18" x="3" y="3" rx="3"/></svg>
@@ -534,10 +906,101 @@
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>
       <span class="nav-label">נעוצים</span>
     </button>
+    <!-- Quick Add FAB -->
+    <button class="nav-btn quick-add-fab" onclick="openQuickAdd()" aria-label="הוספה מהירה">
+      <div class="nav-pip"></div>
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      <span class="nav-label">הוסף</span>
+    </button>
   </nav>
+
+  <!-- ── QUICK ADD OVERLAY ── -->
+  <div id="quick-add-overlay" class="qa-overlay" aria-modal="true" role="dialog" aria-label="הוספה מהירה" style="display:none">
+    <div class="qa-backdrop" onclick="closeQuickAdd()"></div>
+    <div class="qa-sheet" id="qa-sheet">
+      <div class="qa-pull-bar"></div>
+      <div class="qa-header">
+        <h2 class="qa-title">הוספה מהירה</h2>
+        <button class="qa-close" onclick="closeQuickAdd()" aria-label="סגור">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <form class="qa-form" onsubmit="handleQuickAdd(event)">
+        <!-- Title -->
+        <div class="qa-field-wrap">
+          <input class="qa-input" id="qa-title" placeholder="כותרת האירוע / משימה" type="text" required autocomplete="off"/>
+        </div>
+        <!-- Date & Time -->
+        <div class="qa-row">
+          <div class="qa-field-wrap qa-field-icon">
+            <svg class="qa-field-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            <input class="qa-input qa-input-icon" id="qa-date" type="date"/>
+          </div>
+          <div class="qa-field-wrap qa-field-icon">
+            <svg class="qa-field-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <input class="qa-input qa-input-icon" id="qa-time" type="time"/>
+          </div>
+        </div>
+        <!-- Kid Selector -->
+        <div class="qa-section">
+          <span class="qa-section-label">מי משתתף?</span>
+          <div class="qa-pills" id="qa-kids">
+            <button type="button" class="qa-pill" data-kid="ran"  style="--kc:#6366f1"><span class="qa-avatar" style="background:#6366f1">ר</span>רן</button>
+            <button type="button" class="qa-pill" data-kid="itai" style="--kc:#10b981"><span class="qa-avatar" style="background:#10b981">א</span>איתי</button>
+            <button type="button" class="qa-pill" data-kid="noga" style="--kc:#f59e0b"><span class="qa-avatar" style="background:#f59e0b">נ</span>נוגה</button>
+            <button type="button" class="qa-pill" data-kid="alon" style="--kc:#f43f5e"><span class="qa-avatar" style="background:#f43f5e">א</span>אלון</button>
+            <button type="button" class="qa-pill" data-kid="all"  style="--kc:#6B7280"><span class="qa-avatar" style="background:#6B7280">כ</span>כולם</button>
+          </div>
+        </div>
+        <!-- Category -->
+        <div class="qa-section">
+          <span class="qa-section-label">קטגוריה</span>
+          <div class="qa-cats" id="qa-cats">
+            <button type="button" class="qa-cat" data-cat="school">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              <span>לימודים</span>
+            </button>
+            <button type="button" class="qa-cat" data-cat="transport">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <span>הסעות</span>
+            </button>
+            <button type="button" class="qa-cat" data-cat="medical">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <span>רפואה</span>
+            </button>
+            <button type="button" class="qa-cat" data-cat="leisure">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              <span>פנאי</span>
+            </button>
+            <button type="button" class="qa-cat" data-cat="food">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+              <span>אוכל</span>
+            </button>
+            <button type="button" class="qa-cat" data-cat="other">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+              <span>אחר</span>
+            </button>
+          </div>
+        </div>
+        <!-- Notes -->
+        <textarea id="qa-notes" class="qa-textarea" rows="2" placeholder="הערות (אופציונלי)..."></textarea>
+        <!-- Submit -->
+        <button type="submit" class="qa-submit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          הוסף למשפחה
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="qa-toast" class="qa-toast"></div>
 
 </div>
 <script>
+// Escape to close quick-add
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeQuickAdd(); });
+
 // ─── SVG ICONS ────────────────────────────────────────────────────────────────
 const IC = {
   pin:  '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="17" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>',
@@ -706,69 +1169,100 @@ function cleanBody(body) {
 }
 
 // ─── MESSAGE CARD ─────────────────────────────────────────────────────────────
+// ── Category label map ──
+const CAT_LABELS = {
+  school:'לימודים', payment:'תשלום', medical:'רפואה',
+  sport:'ספורט', trip:'טיול', other:'כללי'
+};
+
 function msgCard(msg, idx) {
-  const c=kid(msg.child);
-  const bg=rgba(c.color,.13);
-  // preview = summary or first 120 chars of text
+  const c   = kid(msg.child);
+  const bg  = rgba(c.color, .13);
+
   const fullText = msg.text || msg.body || '';
-  const preview  = msg.summary || fullText.slice(0,120) + (fullText.length>120?'…':'');
-  const cls=['card','card-animate','msg-card-expand',!isRead(msg.id)?'is-unread':''].filter(Boolean).join(' ');
-  const isWA = msg.source==='whatsapp';
+  const preview  = msg.summary || fullText;
+  // האם יש תוכן מעבר ל-preview?
+  const hasMore  = fullText && fullText !== preview && fullText.length > (msg.summary||'').length + 20;
+
+  const cls = ['card','card-animate',!isRead(msg.id)?'is-unread':''].filter(Boolean).join(' ');
+  const isWA    = msg.source==='whatsapp';
   const isEmail = msg.source==='email';
   const srcLabel = isWA ? '📱 WA' : isEmail ? '✉️ מייל' : '';
-  const srcClass = isWA ? 'wa' : isEmail ? 'email' : '';
-  const delay=Math.min((idx||0)*30,300);
-  const prio=msg.priority==='urgent'?'<span class="priority-badge urgent">דחוף</span>':msg.priority==='high'?'<span class="priority-badge high">חשוב</span>':'';
+  const srcClass = isWA ? 'wa'    : isEmail ? 'email'   : '';
+  const delay = Math.min((idx||0)*30, 300);
+  const prio  = msg.priority==='urgent' ? '<span class="priority-badge urgent">דחוף</span>'
+              : msg.priority==='high'   ? '<span class="priority-badge high">חשוב</span>' : '';
+
+  // Category badge
+  const cat = msg.category || 'other';
+  const catIcon = msg.categoryIcon || '📌';
+  const catLabel = CAT_LABELS[cat] || 'כללי';
+  const catBadge = `<span class="cat-badge ${cat}">${catIcon} ${catLabel}</span>`;
 
   // קובץ מצורף
-  const attach=msg.hasAttachment&&msg.attachmentName
-    ? `<div class="msg-attach"><span class="attach-icon">📎</span><span class="attach-name">${esc(msg.attachmentName)}</span></div>`
-    : '';
+  const attach = msg.hasAttachment && msg.attachmentName
+    ? `<div class="msg-attach"><span class="attach-icon">📎</span><span class="attach-name">${esc(msg.attachmentName)}</span></div>` : '';
 
-  return `<div class="${cls}" data-id="${msg.id}" style="animation-delay:${delay}ms" id="mc-${msg.id}" onclick="toggleCard('${msg.id}',this)">
+  // כפתור expand — מוצג רק אם יש טקסט ארוך
+  const expandBtn = hasMore
+    ? `<button class="expand-btn" id="ebtn-${msg.id}" onclick="toggleCard('${msg.id}',event)">
+        קרא עוד <span class="expand-arrow">▾</span>
+       </button>` : '';
+
+  return `<div class="${cls}" data-id="${msg.id}" style="animation-delay:${delay}ms" id="mc-${msg.id}">
   <div class="card-strip" style="background:${c.color}"></div>
   <div class="card-body">
     <div class="msg-top">
       <div class="msg-pills">
         <span class="child-pill" style="background:${bg};color:${c.color}">${c.name}</span>
-        ${msg.pinned?`<span class="pin-tag" style="color:${c.color}">${IC.pin} נעוץ</span>`:''}
-        ${!isRead(msg.id)?`<span class="dot-unread" style="background:${c.color};color:${c.color}"></span>`:''}
+        ${catBadge}
+        ${msg.pinned ? `<span class="pin-tag" style="color:${c.color}">${IC.pin} נעוץ</span>` : ''}
+        ${!isRead(msg.id) ? `<span class="dot-unread" style="background:${c.color};color:${c.color}"></span>` : ''}
       </div>
       <span class="msg-time">${fmtTime(msg.time)}</span>
     </div>
     <div class="msg-from">${esc(msg.from||msg.group||'')}${srcLabel?`<span class="msg-source-badge ${srcClass}">${srcLabel}</span>`:''}</div>
     <div class="msg-datetime">📅 ${fmtMsgDateTime(msg.time)}</div>
 
-    <!-- preview (collapsed) -->
-    <div class="msg-preview">${esc(preview)}${attach}</div>
+    <!-- preview: 3-line clamp -->
+    <div class="msg-text" id="mt-${msg.id}">${esc(preview)}</div>
 
-    <!-- full content (expanded) -->
-    <div class="msg-full" id="mf-${msg.id}">
-      <div class="msg-full-text">${esc(fullText)}</div>
-      ${attach}
-    </div>
+    <!-- full text (נסתר בהתחלה) -->
+    ${hasMore ? `<div class="msg-body-full" id="mf-${msg.id}"><div class="msg-full-text">${esc(fullText)}</div>${attach}</div>` : attach}
 
-    <div class="msg-actions" onclick="event.stopPropagation()">
+    ${expandBtn}
+
+    <div class="msg-actions">
       ${prio}
-      <button class="btn-ghost expand-btn" id="ebtn-${msg.id}">${IC.book}<span class="lbl">הרחב</span></button>
       <button class="btn-ghost" style="margin-right:auto" onclick="toggleRead('${msg.id}',this)">${IC.chk}<span class="lbl">${isRead(msg.id)?'לא נקרא':'סמן נקרא'}</span></button>
     </div>
   </div>
 </div>`;
 }
 
-function toggleCard(id, cardEl) {
-  const full=document.getElementById('mf-'+id);
-  const preview=cardEl.querySelector('.msg-preview');
-  const btn=document.getElementById('ebtn-'+id);
-  if (!full) return;
-  const open=cardEl.classList.toggle('expanded');
-  full.classList.toggle('open', open);
-  preview.classList.toggle('hidden', open);
-  if (btn) btn.querySelector('.lbl').textContent=open?'הסתר':'הרחב';
-  if (open) { markRead(id,true); cardEl.classList.remove('is-unread'); updateBadge(); }
-  // smooth scroll into view
-  if (open) setTimeout(()=>cardEl.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
+function toggleCard(id, e) {
+  e.stopPropagation();
+  const full = document.getElementById('mf-'+id);
+  const preview = document.getElementById('mt-'+id);
+  const btn = document.getElementById('ebtn-'+id);
+  const card = document.getElementById('mc-'+id);
+  if (!full || !btn) return;
+
+  const open = full.classList.toggle('open');
+  // collapse/expand preview clamp
+  if (preview) preview.classList.toggle('expanded', open);
+  // rotate arrow
+  btn.classList.toggle('open', open);
+  btn.innerHTML = open
+    ? 'סגור <span class="expand-arrow">▾</span>'
+    : 'קרא עוד <span class="expand-arrow">▾</span>';
+
+  if (open) {
+    markRead(id, true);
+    card?.classList.remove('is-unread');
+    updateBadge();
+    setTimeout(() => card?.scrollIntoView({behavior:'smooth', block:'nearest'}), 60);
+  }
 }
 function toggleRead(id,btn) {
   const now=!isRead(id); markRead(id,now);
@@ -915,12 +1409,175 @@ function renderFeed() {
 }
 
 // ─── RENDER CALENDAR ──────────────────────────────────────────────────────────
+// ─── STEP 4: Calendar view state ─────────────────────────────────────────────
+let calView = 'grid'; // 'grid' | 'agenda'
+
+function switchCalView(v) {
+  calView = v;
+  renderCalendar();
+}
+
+// ─── STEP 4: Agenda helpers ───────────────────────────────────────────────────
+const HE_DAYS_SHORT = ['א׳','ב׳','ג׳','ד׳','ה׳','ו׳','ש׳'];
+const HE_DAYS_FULL  = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+
+function agendaDayKey(dateStr) {
+  const d = new Date(dateStr);
+  return isNaN(d) ? '?' : `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+}
+
+function agendaDayLabel(key) {
+  const [y,m,d] = key.split('-').map(Number);
+  const dt = new Date(y, m-1, d);
+  const today = new Date();
+  const isToday = y===today.getFullYear()&&(m-1)===today.getMonth()&&d===today.getDate();
+  const isTomorrow = !isToday && (new Date(y,m-1,d) - new Date(today.getFullYear(),today.getMonth(),today.getDate()) === 86400000);
+  const dow = HE_DAYS_FULL[dt.getDay()];
+  const suffix = isToday ? ' — היום' : isTomorrow ? ' — מחר' : '';
+  return { day: d, monthLabel: HE_MONTHS[m-1], dow, suffix, isToday, isPast: dt < new Date(today.getFullYear(),today.getMonth(),today.getDate()) };
+}
+
+function sourceLabel(ev) {
+  const s = ev.source || 'manual';
+  if (s === 'whatsapp' || s === 'whatsapp-pdf') return ['whatsapp','📱 WA'];
+  if (s === 'gcal') return ['gcal','📅 Google'];
+  return ['manual','➕ ידני'];
+}
+
+function renderAgenda(events) {
+  const panel = document.getElementById('tab-calendar');
+  const today = new Date();
+  const todayKey = `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+
+  // Group by day
+  const byDay = new Map();
+  const sorted = [...events].sort((a,b) => new Date(a.date)-new Date(b.date));
+
+  // Show upcoming 30 days if no events, still show today
+  sorted.forEach(ev => {
+    const key = agendaDayKey(ev.date);
+    if (!byDay.has(key)) byDay.set(key, []);
+    byDay.get(key).push(ev);
+  });
+
+  // Ensure today is always present
+  if (!byDay.has(todayKey)) byDay.set(todayKey, []);
+
+  // Sort keys
+  const dayKeys = [...byDay.keys()].sort();
+
+  if (dayKeys.length === 0) {
+    panel.innerHTML = `
+    <div class="cal-grid-wrap">
+      <div class="cal-nav">
+        <div></div>
+        <span class="cal-month-title">ציר זמן</span>
+        ${calViewToggleHtml()}
+      </div>
+    </div>
+    <div class="agenda-empty">אין אירועים קרובים<br><span style="font-size:2rem;margin-top:8px;display:block">📅</span></div>`;
+    return;
+  }
+
+  let blocksHtml = '';
+  for (const key of dayKeys) {
+    const evs = byDay.get(key);
+    const { day, monthLabel, dow, suffix, isToday, isPast } = agendaDayLabel(key);
+    const dotCls = isToday ? 'today-dot' : isPast ? 'past-dot' : 'future-dot';
+
+    let evHtml = '';
+    if (evs.length === 0) {
+      evHtml = `<div style="font-size:0.8rem;color:var(--text-3);padding:8px 0">אין אירועים</div>`;
+    } else {
+      evHtml = evs.map((ev, i) => agendaCard(ev, i)).join('');
+    }
+
+    blocksHtml += `
+    <div class="agenda-day-block">
+      <div class="agenda-day-header">
+        <div class="agenda-day-dot ${dotCls}">${day}</div>
+        <div class="agenda-day-label">${dow} ${monthLabel}${suffix?`<span>${suffix}</span>`:''}</div>
+        <div class="agenda-day-line"></div>
+      </div>
+      <div class="agenda-events">${evHtml}</div>
+    </div>`;
+  }
+
+  panel.innerHTML = `
+<div class="cal-grid-wrap">
+  <div class="cal-nav">
+    <button class="cal-nav-btn" onclick="agendaScrollToday()" title="היום" style="font-size:0.75rem;font-weight:700;width:auto;padding:0 12px">היום</button>
+    <span class="cal-month-title">ציר זמן</span>
+    ${calViewToggleHtml()}
+  </div>
+</div>
+<div class="agenda-wrap" id="agenda-wrap">${blocksHtml}</div>`;
+}
+
+function agendaCard(ev, idx) {
+  const c = kid(ev.child);
+  const isAllDay = !ev.date.includes('T');
+  const timeStr = isAllDay ? 'כל היום' : fmtTime2(ev.date);
+  const [srcCls, srcTxt] = sourceLabel(ev);
+  const link = calLink(ev);
+  const delay = Math.min(idx * 30, 240);
+
+  return `<div class="agenda-card" style="animation-delay:${delay}ms">
+  <div class="agenda-time-col">
+    <span class="agenda-time ${isAllDay?'all-day':''}">${timeStr}</span>
+    <div class="agenda-time-bar" style="background:${c.color}"></div>
+  </div>
+  <div class="agenda-content">
+    <div class="agenda-title">${esc(ev.title)}</div>
+    <div class="agenda-meta">
+      <span class="child-pill-sm" style="background:${rgba(c.color,.13)};color:${c.color}">${c.name}</span>
+      <span class="agenda-source-badge ${srcCls}">${srcTxt}</span>
+      ${ev.gcal_id ? `<span class="agenda-source-badge gcal">✓ Calendar</span>` : ''}
+    </div>
+    ${ev.location ? `<div style="font-size:0.78rem;color:var(--text-3);margin-top:4px">📍 ${esc(ev.location)}</div>` : ''}
+    <a class="agenda-gcal-btn" href="${link}" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+      הוסף ל-Calendar
+    </a>
+  </div>
+</div>`;
+}
+
+function agendaScrollToday() {
+  const wrap = document.getElementById('agenda-wrap');
+  if (!wrap) return;
+  const today = new Date();
+  const key = `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+  // find block with today dot
+  const todayDot = wrap.querySelector('.today-dot');
+  if (todayDot) todayDot.closest('.agenda-day-block')?.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function calViewToggleHtml() {
+  return `<div class="cal-view-toggle">
+    <button class="cal-view-btn ${calView==='grid'?'active':''}" onclick="switchCalView('grid')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      חודש
+    </button>
+    <button class="cal-view-btn ${calView==='agenda'?'active':''}" onclick="switchCalView('agenda')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3" cy="6" r="1.5" fill="currentColor"/><circle cx="3" cy="12" r="1.5" fill="currentColor"/><circle cx="3" cy="18" r="1.5" fill="currentColor"/></svg>
+      אג׳נדה
+    </button>
+  </div>`;
+}
+
 function renderCalendar() {
   const panel=document.getElementById('tab-calendar');
   let events=(DATA.events||[]);
   if (activeFilter!=='all') events=events.filter(e=>e.child===activeFilter||e.child==='all');
 
-  // mini grid
+  // ── Agenda view ──
+  if (calView === 'agenda') {
+    renderAgenda(events);
+    return;
+  }
+
+  // ── Grid view (original) ──
   const yr=calViewDate.getFullYear(), mo=calViewDate.getMonth();
   const firstDay=new Date(yr,mo,1).getDay();
   const daysInMo=new Date(yr,mo+1,0).getDate();
@@ -967,6 +1624,9 @@ function renderCalendar() {
     <span class="cal-month-title">${HE_MONTHS[mo]} ${yr}</span>
     <button class="cal-nav-btn" onclick="calNext()">›</button>
   </div>
+  <div class="cal-nav" style="margin-top:-4px;margin-bottom:8px;justify-content:flex-end;">
+    ${calViewToggleHtml()}
+  </div>
   <div class="cal-days-hdr"><div>א׳</div><div>ב׳</div><div>ג׳</div><div>ד׳</div><div>ה׳</div><div>ו׳</div><div>ש׳</div></div>
   <div class="cal-days">${gridHtml}</div>
 </div>
@@ -977,6 +1637,210 @@ function calPrev() { calViewDate.setMonth(calViewDate.getMonth()-1); calSelected
 function calNext() { calViewDate.setMonth(calViewDate.getMonth()+1); calSelected=null; renderCalendar(); }
 
 // ─── RENDER TASKS ─────────────────────────────────────────────────────────────
+// ─── STEP 5: RENDER DIGEST ────────────────────────────────────────────────────
+const DIGEST_DONE_KEY = 'familyos_digest_done_v1';
+
+function digestDoneMap() {
+  try { return JSON.parse(localStorage.getItem(DIGEST_DONE_KEY) || '{}'); } catch { return {}; }
+}
+function setDigestDone(id, v) {
+  const m = digestDoneMap(); m[id] = v;
+  localStorage.setItem(DIGEST_DONE_KEY, JSON.stringify(m));
+}
+
+function renderDigest() {
+  const el = document.getElementById('tab-digest');
+  const digest = DATA.digest;
+  const events = DATA.events || [];
+  const messages = DATA.messages || [];
+  const today = new Date();
+  const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+  const tKey = `${tomorrow.getFullYear()}-${pad(tomorrow.getMonth()+1)}-${pad(tomorrow.getDate())}`;
+
+  // ── Bento stats ──
+  const totalKids = 4;
+  const tmrEvents = events.filter(e => {
+    const d = new Date(e.date);
+    return d.getFullYear()===tomorrow.getFullYear()&&d.getMonth()===tomorrow.getMonth()&&d.getDate()===tomorrow.getDate();
+  });
+  const unreadCount = messages.filter(m => !isRead(m.id)).length;
+  const urgentCount = messages.filter(m => m.priority==='urgent'&&!isRead(m.id)).length;
+  const pinnedCount = messages.filter(m => m.pinned).length;
+
+  // ── Stale warning ──
+  let staleHtml = '';
+  if (digest) {
+    const digestDate = new Date(digest.date || 0);
+    const ageH = (Date.now() - digestDate) / 3600000;
+    if (ageH > 26) {
+      staleHtml = `<div class="digest-stale">⏰ הסיכום עודכן לפני ${Math.round(ageH)} שעות — יתחדש ב-20:00</div>`;
+    }
+  }
+
+  // ── Tomorrow events bento ──
+  let tmrEvHtml = '';
+  if (tmrEvents.length) {
+    tmrEvHtml = tmrEvents.map(ev => {
+      const c = kid(ev.child);
+      return `<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+        <span style="width:8px;height:8px;border-radius:50%;background:${c.color};flex-shrink:0"></span>
+        <span style="font-size:0.8rem;color:var(--text-1);font-weight:600;line-height:1.4">${esc(ev.title.replace(/^\[.*?\]\s*/,''))}</span>
+      </div>`;
+    }).join('');
+  } else {
+    tmrEvHtml = `<span style="font-size:0.8rem;color:var(--text-3)">אין אירועים</span>`;
+  }
+
+  // ── Day of week for tomorrow ──
+  const dowHe = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+  const tmrDow = dowHe[tomorrow.getDay()];
+  const tmrLabel = `יום ${tmrDow}, ${tomorrow.getDate()} ב${HE_MONTHS[tomorrow.getMonth()]}`;
+
+  // ── Checklist items ──
+  const doneMap = digestDoneMap();
+  let itemsHtml = '';
+  let items = [];
+
+  if (digest && digest.items && digest.items.length) {
+    items = digest.items;
+  } else {
+    // generate from data when no digest yet
+    items = _autoDigestItems(events, messages, tKey);
+  }
+
+  if (items.length === 0) {
+    itemsHtml = `<div class="empty" style="margin-top:0;padding:32px 20px">
+      <div class="empty-icon" style="font-size:2.5rem;opacity:1">✨</div>
+      <div class="empty-title">הכל ביחד!</div>
+      <div class="empty-sub">אין משימות מיוחדות למחר</div>
+    </div>`;
+  } else {
+    itemsHtml = items.map((item, i) => {
+      const c = kid(item.child || 'all');
+      const id = item.id || `dg-${i}`;
+      const done = doneMap[id] || item.done || false;
+      const delay = Math.min(i * 40, 300);
+      return `<div class="digest-item ${done?'done':''}" id="di-${id}" style="animation-delay:${delay}ms">
+  <div class="digest-child-dot" style="background:${c.color}"></div>
+  <div class="digest-item-body">
+    <div class="digest-item-text">${esc(item.text)}</div>
+    <div class="digest-item-meta">
+      <span class="child-pill-sm" style="background:${rgba(c.color,.13)};color:${c.color}">${c.name}</span>
+      ${item.time ? `<span style="font-size:0.72rem;color:var(--text-3)">⏰ ${esc(item.time)}</span>` : ''}
+      ${item.source ? `<span style="font-size:0.7rem;color:var(--text-3);background:var(--surface-2);border:1px solid var(--border);padding:1px 6px;border-radius:99px">${esc(item.source)}</span>` : ''}
+    </div>
+  </div>
+  <button class="digest-check ${done?'checked':''}" style="${done?`background:${c.color}`:''}" onclick="toggleDigest('${id}',this,'${c.color}')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  </button>
+</div>`;
+    }).join('');
+  }
+
+  const doneCount = items.filter(it => doneMap[it.id || `dg-${items.indexOf(it)}`] || it.done).length;
+  const progress = items.length ? Math.round((doneCount / items.length) * 100) : 0;
+
+  el.innerHTML = `
+<div class="digest-header">
+  <div>
+    <div class="digest-title">מחר 📋</div>
+    <div class="digest-subtitle">סיכום יומי לפני השינה</div>
+  </div>
+  <div class="digest-date-badge">${tmrLabel}</div>
+</div>
+
+${staleHtml}
+
+<div class="digest-bento">
+  <div class="bento-card accent-bg" style="animation-delay:0ms">
+    <div class="bento-icon">📅</div>
+    <div class="bento-label">אירועים מחר</div>
+    <div class="bento-value accent">${tmrEvents.length}</div>
+    <div class="bento-sub" style="max-height:80px;overflow:hidden">${tmrEvHtml}</div>
+  </div>
+  <div class="bento-card" style="animation-delay:60ms">
+    <div class="bento-icon">✅</div>
+    <div class="bento-label">התקדמות</div>
+    <div class="bento-value">${doneCount}/${items.length}</div>
+    <div style="margin-top:6px;height:6px;background:var(--surface-3);border-radius:99px;overflow:hidden">
+      <div style="height:100%;width:${progress}%;background:var(--accent);border-radius:99px;transition:width .4s"></div>
+    </div>
+  </div>
+  <div class="bento-card" style="animation-delay:90ms">
+    <div class="bento-icon">📬</div>
+    <div class="bento-label">לא נקרא</div>
+    <div class="bento-value ${unreadCount>0?'accent':''}">${unreadCount}</div>
+    ${urgentCount>0?`<div class="bento-sub" style="color:#ef4444">⚠️ ${urgentCount} דחופים</div>`:''}
+  </div>
+  <div class="bento-card" style="animation-delay:120ms">
+    <div class="bento-icon">📌</div>
+    <div class="bento-label">נעוצים</div>
+    <div class="bento-value">${pinnedCount}</div>
+  </div>
+</div>
+
+<div class="digest-section-title">משימות למחר</div>
+${itemsHtml}
+
+<div style="text-align:center;padding:16px 0 4px;font-size:0.75rem;color:var(--text-3)">
+  ${digest?.date ? `עודכן ${fmtTime(digest.date)}` : 'נוצר אוטומטית · מתחדש ב-20:00 כל ערב'}
+</div>`;
+}
+
+function _autoDigestItems(events, messages, tKey) {
+  /**
+   * מייצר רשימת משימות אוטומטית כשאין digest מה-LLM:
+   * - אירועי מחר
+   * - הודעות דחופות שלא נקראו
+   */
+  const items = [];
+  let i = 0;
+
+  // אירועי מחר
+  events.forEach(ev => {
+    const d = new Date(ev.date);
+    const dKey = `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+    if (dKey === tKey) {
+      const timeStr = ev.date.includes('T') ? fmtTime2(ev.date) : '';
+      items.push({
+        id: `auto-ev-${ev.id}`,
+        child: ev.child || 'all',
+        text: ev.title.replace(/^\[.*?\]\s*/, ''),
+        time: timeStr !== 'כל היום' ? timeStr : '',
+        source: 'לוח שנה',
+        done: false,
+      });
+    }
+  });
+
+  // הודעות דחופות שלא נקראו
+  messages.filter(m => (m.priority==='urgent'||m.priority==='high') && !isRead(m.id))
+    .slice(0, 3)
+    .forEach(m => {
+      items.push({
+        id: `auto-msg-${m.id}`,
+        child: m.child || 'all',
+        text: (m.summary || m.text || '').slice(0, 80),
+        time: '',
+        source: m.group || '',
+        done: false,
+      });
+    });
+
+  return items;
+}
+
+function toggleDigest(id, btn, color) {
+  const row = document.getElementById('di-' + id);
+  const done = !btn.classList.contains('checked');
+  setDigestDone(id, done);
+  row?.classList.toggle('done', done);
+  btn.classList.toggle('checked', done);
+  btn.style.background = done ? color : '';
+  // re-render progress bar
+  renderDigest();
+}
+
 function renderTasks() {
   const el=document.getElementById('tab-tasks');
   let tasks=(DATA.actions||[]);
@@ -1024,6 +1888,7 @@ function switchTab(id) {
   }
 
   if (id==='calendar') renderCalendar();
+  if (id==='digest')   renderDigest();
 }
 document.querySelectorAll('.nav-btn').forEach(btn=>btn.addEventListener('click',()=>switchTab(btn.dataset.tab)));
 
@@ -1037,7 +1902,7 @@ async function loadData() {
     document.getElementById('header-meta').textContent=DATA.updated_at?('עודכן '+fmtTime(DATA.updated_at)):'';
     buildFilterBar();
     document.getElementById('filter-bar').classList.add('visible');
-    renderFeed(); renderCalendar(); renderTasks(); renderPinned();
+    renderFeed(); renderCalendar(); renderTasks(); renderPinned(); renderDigest();
   } catch(err) {
     console.error(err);
     document.getElementById('tab-feed').innerHTML=empty(IC.warn56,'שגיאה בטעינה',err.message);
@@ -1061,6 +1926,108 @@ async function doRefresh() {
   } catch(e){}
   await loadData();
   btn.classList.remove('spinning'); btn.disabled=false;
+}
+
+// ─── QUICK ADD ────────────────────────────────────────────────────────────────
+function openQuickAdd() {
+  const overlay = document.getElementById('quick-add-overlay');
+  overlay.style.display = 'flex';
+  // scroll-lock
+  document.getElementById('app').style.overflow = 'hidden';
+  // set today as default date
+  const today = new Date();
+  const p2 = n => String(n).padStart(2,'0');
+  document.getElementById('qa-date').value = `${today.getFullYear()}-${p2(today.getMonth()+1)}-${p2(today.getDate())}`;
+  // reset form state
+  document.getElementById('qa-title').value = '';
+  document.getElementById('qa-time').value = '';
+  document.getElementById('qa-notes').value = '';
+  document.querySelectorAll('#qa-kids .qa-pill, #qa-cats .qa-cat').forEach(el => el.classList.remove('active'));
+  requestAnimationFrame(() => {
+    overlay.classList.add('open');
+    setTimeout(() => document.getElementById('qa-title').focus(), 400);
+  });
+}
+function closeQuickAdd() {
+  const overlay = document.getElementById('quick-add-overlay');
+  overlay.classList.remove('open');
+  document.getElementById('app').style.overflow = '';
+  overlay.addEventListener('transitionend', () => {
+    overlay.style.display = 'none';
+  }, { once: true });
+}
+
+// Kid pills
+document.addEventListener('click', e => {
+  const pill = e.target.closest('#qa-kids .qa-pill');
+  if (!pill) return;
+  if (pill.dataset.kid === 'all') {
+    const allActive = !pill.classList.contains('active');
+    document.querySelectorAll('#qa-kids .qa-pill').forEach(p => p.classList.toggle('active', allActive));
+    return;
+  }
+  pill.classList.toggle('active');
+  const allPill = document.querySelector('#qa-kids .qa-pill[data-kid="all"]');
+  const allSelected = [...document.querySelectorAll('#qa-kids .qa-pill:not([data-kid="all"])')].every(p=>p.classList.contains('active'));
+  allPill.classList.toggle('active', allSelected);
+});
+
+// Category buttons
+document.addEventListener('click', e => {
+  const cat = e.target.closest('#qa-cats .qa-cat');
+  if (!cat) return;
+  document.querySelectorAll('#qa-cats .qa-cat').forEach(c => c.classList.remove('active'));
+  cat.classList.add('active');
+});
+
+function handleQuickAdd(e) {
+  e.preventDefault();
+  const title    = document.getElementById('qa-title').value.trim();
+  const date     = document.getElementById('qa-date').value;
+  const time     = document.getElementById('qa-time').value;
+  const notes    = document.getElementById('qa-notes').value.trim();
+  const kids     = [...document.querySelectorAll('#qa-kids .qa-pill.active')].map(p=>p.dataset.kid);
+  const catEl    = document.querySelector('#qa-cats .qa-cat.active');
+  const category = catEl?.dataset.cat || 'other';
+  const child    = kids.includes('all') ? 'all' : (kids[0] || 'all');
+
+  const entry = {
+    id: 'qa_' + Date.now(),
+    title,
+    date: time ? `${date}T${time}:00` : date,
+    child,
+    kids,
+    category,
+    notes,
+    source: 'quick-add',
+    createdAt: new Date().toISOString()
+  };
+
+  // שמור ב-DATA.events ורנדר מחדש
+  if (!DATA) DATA = {};
+  if (!DATA.events) DATA.events = [];
+  DATA.events.unshift(entry);
+
+  renderCalendar();
+  renderTasks();
+  closeQuickAdd();
+
+  // toast
+  const toast = document.getElementById('qa-toast');
+  toast.textContent = `✅ ${title} נוסף`;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+
+  // reset form
+  e.target.reset();
+  document.querySelectorAll('#qa-kids .qa-pill, #qa-cats .qa-cat').forEach(el=>el.classList.remove('active'));
+}
+
+// ─── PWA: Service Worker ──────────────────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  });
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────

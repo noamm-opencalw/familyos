@@ -12,6 +12,9 @@ python3 fetch_messages.py
 echo "📧 Fetching Gmail + Calendar..."
 python3 generate_data.py 2>/dev/null || echo "⚠️  generate_data.py נכשל — נמשיך עם WhatsApp בלבד"
 
+echo "📅 Extracting events + Google Calendar sync..."
+python3 extract_events.py || echo "⚠️  extract_events.py נכשל — ממשיך ללא sync"
+
 echo "📦 Pushing to GitHub Pages..."
 git add data.json
 git diff --cached --quiet && echo "Nothing to commit" && exit 0
