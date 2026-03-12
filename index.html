@@ -422,6 +422,98 @@
     .cal-day.selected:not(.today) { outline: 2px solid var(--accent); outline-offset: -1px; background: var(--accent-dim); }
     .cal-day:not(.today):not(.other-month):hover { background: var(--surface-2); }
 
+    /* ── STEP 4: Calendar View Toggle ── */
+    .cal-view-toggle {
+      display: flex; gap: 4px; background: var(--surface-2);
+      border: 1px solid var(--border); border-radius: 10px; padding: 3px;
+    }
+    .cal-view-btn {
+      display: flex; align-items: center; gap: 5px;
+      padding: 6px 12px; border-radius: 7px; border: none;
+      background: transparent; font-family: inherit;
+      font-size: 0.78rem; font-weight: 600; color: var(--text-2);
+      cursor: pointer; transition: all .18s; white-space: nowrap;
+    }
+    .cal-view-btn svg { width: 14px; height: 14px; }
+    .cal-view-btn.active {
+      background: var(--surface); color: var(--accent);
+      box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    }
+
+    /* ── STEP 4: Agenda Timeline ── */
+    .agenda-wrap { display: flex; flex-direction: column; gap: 0; }
+    .agenda-day-block { margin-bottom: 16px; }
+    .agenda-day-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 8px; padding: 0 4px;
+    }
+    .agenda-day-dot {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 800;
+    }
+    .agenda-day-dot.today-dot {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 2px 8px rgba(74,144,226,.4);
+    }
+    .agenda-day-dot.past-dot { background: var(--surface-3); color: var(--text-3); }
+    .agenda-day-dot.future-dot { background: var(--surface-2); color: var(--text-1); border: 1.5px solid var(--border-hi); }
+    .agenda-day-label { font-size: 0.88rem; font-weight: 700; color: var(--text-1); }
+    .agenda-day-label span { color: var(--text-3); font-weight: 500; font-size: 0.8rem; margin-right: 4px; }
+    .agenda-day-line {
+      flex: 1; height: 1px; background: var(--border);
+    }
+    .agenda-events { margin-right: 46px; display: flex; flex-direction: column; gap: 8px; }
+    .agenda-card {
+      background: var(--surface); border-radius: 12px;
+      border: 1px solid var(--border); padding: 12px 14px;
+      box-shadow: var(--shadow-card);
+      display: flex; align-items: flex-start; gap: 10px;
+      transition: box-shadow .2s;
+      animation: cardSlideIn .3s cubic-bezier(.22,1,.36,1) both;
+    }
+    .agenda-card:hover { box-shadow: var(--shadow-card-hi); }
+    .agenda-time-col {
+      display: flex; flex-direction: column; align-items: center;
+      min-width: 44px; flex-shrink: 0;
+    }
+    .agenda-time {
+      font-size: 0.78rem; font-weight: 700; color: var(--text-2); white-space: nowrap;
+    }
+    .agenda-time.all-day { font-size: 0.7rem; color: var(--text-3); }
+    .agenda-time-bar {
+      width: 2px; flex: 1; min-height: 12px; margin-top: 4px;
+      border-radius: 2px;
+    }
+    .agenda-content { flex: 1; min-width: 0; }
+    .agenda-title {
+      font-size: 0.95rem; font-weight: 600; color: var(--text-1);
+      line-height: 1.4; margin-bottom: 4px;
+      word-wrap: break-word; overflow-wrap: break-word;
+    }
+    .agenda-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .agenda-source-badge {
+      font-size: 0.68rem; font-weight: 600; padding: 2px 7px;
+      border-radius: 99px; background: var(--surface-2);
+      border: 1px solid var(--border); color: var(--text-3);
+    }
+    .agenda-source-badge.whatsapp { background: #e6f4ea; color: #1a7f37; border-color: #a8d5b5; }
+    .agenda-source-badge.manual   { background: var(--accent-dim); color: var(--accent); border-color: rgba(74,144,226,.3); }
+    .agenda-source-badge.gcal     { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+    .agenda-gcal-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 8px; padding: 5px 10px; border-radius: 8px;
+      font-family: inherit; font-size: 0.75rem; font-weight: 700;
+      background: var(--accent); color: #fff; border: none; cursor: pointer;
+      text-decoration: none; transition: background .15s;
+    }
+    .agenda-gcal-btn:hover { background: #3a7fd5; }
+    .agenda-gcal-btn svg { width: 12px; height: 12px; }
+    .agenda-empty {
+      text-align: center; padding: 40px 20px;
+      color: var(--text-3); font-size: 0.9rem; font-weight: 500;
+    }
+
     /* ── STEP 3: Empty States — clean, informative ── */
     .empty {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -1215,12 +1307,175 @@ function renderFeed() {
 }
 
 // ─── RENDER CALENDAR ──────────────────────────────────────────────────────────
+// ─── STEP 4: Calendar view state ─────────────────────────────────────────────
+let calView = 'grid'; // 'grid' | 'agenda'
+
+function switchCalView(v) {
+  calView = v;
+  renderCalendar();
+}
+
+// ─── STEP 4: Agenda helpers ───────────────────────────────────────────────────
+const HE_DAYS_SHORT = ['א׳','ב׳','ג׳','ד׳','ה׳','ו׳','ש׳'];
+const HE_DAYS_FULL  = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+
+function agendaDayKey(dateStr) {
+  const d = new Date(dateStr);
+  return isNaN(d) ? '?' : `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+}
+
+function agendaDayLabel(key) {
+  const [y,m,d] = key.split('-').map(Number);
+  const dt = new Date(y, m-1, d);
+  const today = new Date();
+  const isToday = y===today.getFullYear()&&(m-1)===today.getMonth()&&d===today.getDate();
+  const isTomorrow = !isToday && (new Date(y,m-1,d) - new Date(today.getFullYear(),today.getMonth(),today.getDate()) === 86400000);
+  const dow = HE_DAYS_FULL[dt.getDay()];
+  const suffix = isToday ? ' — היום' : isTomorrow ? ' — מחר' : '';
+  return { day: d, monthLabel: HE_MONTHS[m-1], dow, suffix, isToday, isPast: dt < new Date(today.getFullYear(),today.getMonth(),today.getDate()) };
+}
+
+function sourceLabel(ev) {
+  const s = ev.source || 'manual';
+  if (s === 'whatsapp' || s === 'whatsapp-pdf') return ['whatsapp','📱 WA'];
+  if (s === 'gcal') return ['gcal','📅 Google'];
+  return ['manual','➕ ידני'];
+}
+
+function renderAgenda(events) {
+  const panel = document.getElementById('tab-calendar');
+  const today = new Date();
+  const todayKey = `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+
+  // Group by day
+  const byDay = new Map();
+  const sorted = [...events].sort((a,b) => new Date(a.date)-new Date(b.date));
+
+  // Show upcoming 30 days if no events, still show today
+  sorted.forEach(ev => {
+    const key = agendaDayKey(ev.date);
+    if (!byDay.has(key)) byDay.set(key, []);
+    byDay.get(key).push(ev);
+  });
+
+  // Ensure today is always present
+  if (!byDay.has(todayKey)) byDay.set(todayKey, []);
+
+  // Sort keys
+  const dayKeys = [...byDay.keys()].sort();
+
+  if (dayKeys.length === 0) {
+    panel.innerHTML = `
+    <div class="cal-grid-wrap">
+      <div class="cal-nav">
+        <div></div>
+        <span class="cal-month-title">ציר זמן</span>
+        ${calViewToggleHtml()}
+      </div>
+    </div>
+    <div class="agenda-empty">אין אירועים קרובים<br><span style="font-size:2rem;margin-top:8px;display:block">📅</span></div>`;
+    return;
+  }
+
+  let blocksHtml = '';
+  for (const key of dayKeys) {
+    const evs = byDay.get(key);
+    const { day, monthLabel, dow, suffix, isToday, isPast } = agendaDayLabel(key);
+    const dotCls = isToday ? 'today-dot' : isPast ? 'past-dot' : 'future-dot';
+
+    let evHtml = '';
+    if (evs.length === 0) {
+      evHtml = `<div style="font-size:0.8rem;color:var(--text-3);padding:8px 0">אין אירועים</div>`;
+    } else {
+      evHtml = evs.map((ev, i) => agendaCard(ev, i)).join('');
+    }
+
+    blocksHtml += `
+    <div class="agenda-day-block">
+      <div class="agenda-day-header">
+        <div class="agenda-day-dot ${dotCls}">${day}</div>
+        <div class="agenda-day-label">${dow} ${monthLabel}${suffix?`<span>${suffix}</span>`:''}</div>
+        <div class="agenda-day-line"></div>
+      </div>
+      <div class="agenda-events">${evHtml}</div>
+    </div>`;
+  }
+
+  panel.innerHTML = `
+<div class="cal-grid-wrap">
+  <div class="cal-nav">
+    <button class="cal-nav-btn" onclick="agendaScrollToday()" title="היום" style="font-size:0.75rem;font-weight:700;width:auto;padding:0 12px">היום</button>
+    <span class="cal-month-title">ציר זמן</span>
+    ${calViewToggleHtml()}
+  </div>
+</div>
+<div class="agenda-wrap" id="agenda-wrap">${blocksHtml}</div>`;
+}
+
+function agendaCard(ev, idx) {
+  const c = kid(ev.child);
+  const isAllDay = !ev.date.includes('T');
+  const timeStr = isAllDay ? 'כל היום' : fmtTime2(ev.date);
+  const [srcCls, srcTxt] = sourceLabel(ev);
+  const link = calLink(ev);
+  const delay = Math.min(idx * 30, 240);
+
+  return `<div class="agenda-card" style="animation-delay:${delay}ms">
+  <div class="agenda-time-col">
+    <span class="agenda-time ${isAllDay?'all-day':''}">${timeStr}</span>
+    <div class="agenda-time-bar" style="background:${c.color}"></div>
+  </div>
+  <div class="agenda-content">
+    <div class="agenda-title">${esc(ev.title)}</div>
+    <div class="agenda-meta">
+      <span class="child-pill-sm" style="background:${rgba(c.color,.13)};color:${c.color}">${c.name}</span>
+      <span class="agenda-source-badge ${srcCls}">${srcTxt}</span>
+      ${ev.gcal_id ? `<span class="agenda-source-badge gcal">✓ Calendar</span>` : ''}
+    </div>
+    ${ev.location ? `<div style="font-size:0.78rem;color:var(--text-3);margin-top:4px">📍 ${esc(ev.location)}</div>` : ''}
+    <a class="agenda-gcal-btn" href="${link}" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+      הוסף ל-Calendar
+    </a>
+  </div>
+</div>`;
+}
+
+function agendaScrollToday() {
+  const wrap = document.getElementById('agenda-wrap');
+  if (!wrap) return;
+  const today = new Date();
+  const key = `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+  // find block with today dot
+  const todayDot = wrap.querySelector('.today-dot');
+  if (todayDot) todayDot.closest('.agenda-day-block')?.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function calViewToggleHtml() {
+  return `<div class="cal-view-toggle">
+    <button class="cal-view-btn ${calView==='grid'?'active':''}" onclick="switchCalView('grid')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      חודש
+    </button>
+    <button class="cal-view-btn ${calView==='agenda'?'active':''}" onclick="switchCalView('agenda')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3" cy="6" r="1.5" fill="currentColor"/><circle cx="3" cy="12" r="1.5" fill="currentColor"/><circle cx="3" cy="18" r="1.5" fill="currentColor"/></svg>
+      אג׳נדה
+    </button>
+  </div>`;
+}
+
 function renderCalendar() {
   const panel=document.getElementById('tab-calendar');
   let events=(DATA.events||[]);
   if (activeFilter!=='all') events=events.filter(e=>e.child===activeFilter||e.child==='all');
 
-  // mini grid
+  // ── Agenda view ──
+  if (calView === 'agenda') {
+    renderAgenda(events);
+    return;
+  }
+
+  // ── Grid view (original) ──
   const yr=calViewDate.getFullYear(), mo=calViewDate.getMonth();
   const firstDay=new Date(yr,mo,1).getDay();
   const daysInMo=new Date(yr,mo+1,0).getDate();
@@ -1266,6 +1521,9 @@ function renderCalendar() {
     <button class="cal-nav-btn" onclick="calPrev()">‹</button>
     <span class="cal-month-title">${HE_MONTHS[mo]} ${yr}</span>
     <button class="cal-nav-btn" onclick="calNext()">›</button>
+  </div>
+  <div class="cal-nav" style="margin-top:-4px;margin-bottom:8px;justify-content:flex-end;">
+    ${calViewToggleHtml()}
   </div>
   <div class="cal-days-hdr"><div>א׳</div><div>ב׳</div><div>ג׳</div><div>ד׳</div><div>ה׳</div><div>ו׳</div><div>ש׳</div></div>
   <div class="cal-days">${gridHtml}</div>

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-12T07:30:28.414924+00:00",
+  "updated_at": "2026-03-12T07:46:24.622792+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -181,12 +181,26 @@
   "academics": [],
   "events": [
     {
+      "id": 508,
+      "child": "ran",
+      "title": "[רן] הורים יקרים,",
+      "date": "2026-03-11T10:10:00+02:00",
+      "group": "הורי יא׳7",
+      "source": "whatsapp",
+      "color": "#6366f1",
+      "gcal_id": "dry-run",
+      "_src_text": "הורים יקרים,\nהיום תחל הלמידה מרחוק מהשעה השלישית (10:10). שיהיה יום שקט🙏",
+      "_from": "נופר אברהם-ששון"
+    },
+    {
       "id": 500,
       "child": "noga",
       "title": "📚 [נוגה] זום עם אביטל",
       "date": "2026-03-11T09:00:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "color": "#f59e0b",
+      "gcal_id": null
     },
     {
       "id": 501,
@@ -194,7 +208,9 @@
       "title": "📚 [נוגה] זום עם אביטל",
       "date": "2026-03-11T11:00:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "color": "#f59e0b",
+      "gcal_id": null
     },
     {
       "id": 502,
@@ -202,7 +218,9 @@
       "title": "📚 [נוגה] זום עם אביטל",
       "date": "2026-03-11T11:20:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "color": "#f59e0b",
+      "gcal_id": null
     },
     {
       "id": 503,
@@ -210,7 +228,9 @@
       "title": "📚 [נוגה] זום עם אביטל",
       "date": "2026-03-11T11:40:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "color": "#f59e0b",
+      "gcal_id": null
     },
     {
       "id": 504,
@@ -218,7 +238,9 @@
       "title": "📚 [נוגה] מפגש זום",
       "date": "2026-03-11T12:00:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "color": "#f59e0b",
+      "gcal_id": null
     },
     {
       "id": 505,
@@ -226,7 +248,9 @@
       "title": "📚 [נוגה] מפגש זום",
       "date": "2026-03-11T12:30:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "color": "#f59e0b",
+      "gcal_id": null
     },
     {
       "id": 506,
@@ -234,7 +258,9 @@
       "title": "📚 [נוגה] מפגש זום",
       "date": "2026-03-11T13:30:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "color": "#f59e0b",
+      "gcal_id": null
     },
     {
       "id": 507,
@@ -242,7 +268,9 @@
       "title": "📚 [נוגה] מפגש זום",
       "date": "2026-03-11T14:00:00+02:00",
       "group": "לוח שנה",
-      "source": "whatsapp-pdf"
+      "source": "whatsapp-pdf",
+      "color": "#f59e0b",
+      "gcal_id": null
     }
   ],
   "actions": []
