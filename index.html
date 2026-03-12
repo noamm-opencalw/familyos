@@ -825,6 +825,103 @@
       font-size: 0.8rem; font-weight: 600; color: #92400e;
     }
 
+    /* ── STEP 6: Child-mention badge ── */
+    .mention-badge {
+      font-size: 0.7rem; font-weight: 700; padding: 2px 8px;
+      border-radius: 99px; border: 1px solid; flex-shrink: 0;
+    }
+
+    /* ── STEP 6A: Install Banner ── */
+    .install-banner {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; margin-bottom: 10px;
+      background: linear-gradient(135deg, rgba(99,102,241,.12), rgba(168,85,247,.08));
+      border: 1px solid rgba(99,102,241,.25); border-radius: 14px;
+      animation: cardSlideIn .4s cubic-bezier(.22,1,.36,1) both;
+    }
+    .install-banner-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .install-banner-text { flex: 1; }
+    .install-banner-title { font-size: 0.88rem; font-weight: 700; color: var(--text-1); }
+    .install-banner-sub   { font-size: 0.75rem; color: var(--text-3); margin-top: 1px; }
+    .install-banner-btn {
+      padding: 7px 14px; border-radius: 10px; border: none; cursor: pointer;
+      background: linear-gradient(to left, #6366f1, #a855f7);
+      color: #fff; font-family: inherit; font-size: 0.8rem; font-weight: 700;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .install-banner-dismiss {
+      width: 28px; height: 28px; border-radius: 50%; border: none;
+      background: var(--surface-3); color: var(--text-3); cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* ── STEP 6B: Conflict Badge & Modal ── */
+    .conflict-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.7rem; font-weight: 700; padding: 2px 8px;
+      border-radius: 99px; background: #fef2f2; color: #dc2626;
+      border: 1px solid #fca5a5; flex-shrink: 0;
+    }
+    .conflict-dot { width: 6px; height: 6px; border-radius: 50%; background: #dc2626; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+
+    /* Conflict modal */
+    .conflict-modal-overlay {
+      position: absolute; inset: 0; z-index: 300;
+      background: rgba(0,0,0,0.45); backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      display: flex; align-items: flex-end; justify-content: center;
+    }
+    .conflict-modal {
+      width: 100%; background: var(--surface);
+      border-radius: 24px 24px 0 0; padding: 24px 20px calc(24px + var(--safe-b));
+      max-height: 80vh; overflow-y: auto;
+      transform: translateY(100%);
+      transition: transform .35s cubic-bezier(.16,1,.3,1);
+    }
+    .conflict-modal.open { transform: translateY(0); }
+    .conflict-modal-title { font-size: 1.15rem; font-weight: 800; color: #dc2626; margin-bottom: 4px; }
+    .conflict-modal-sub   { font-size: 0.85rem; color: var(--text-2); margin-bottom: 18px; line-height: 1.5; }
+    .conflict-ev {
+      display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+      background: var(--surface-2); border-radius: 12px; margin-bottom: 8px;
+      border: 1px solid var(--border);
+    }
+    .conflict-ev-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .conflict-ev-info { flex: 1; }
+    .conflict-ev-title { font-size: 0.9rem; font-weight: 600; color: var(--text-1); }
+    .conflict-ev-time  { font-size: 0.78rem; color: var(--text-3); margin-top: 2px; }
+    .conflict-assign-label { font-size: 0.82rem; font-weight: 700; color: var(--text-2); margin: 16px 0 8px; }
+    .conflict-assign-options { display: flex; gap: 8px; flex-wrap: wrap; }
+    .conflict-assign-opt {
+      padding: 8px 16px; border-radius: 10px; border: 2px solid var(--border);
+      background: var(--surface); font-family: inherit; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: all .18s; color: var(--text-1);
+    }
+    .conflict-assign-opt.selected { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+    .conflict-resolve-btn {
+      width: 100%; margin-top: 16px; padding: 14px;
+      background: var(--accent); color: #fff; font-family: inherit;
+      font-size: 1rem; font-weight: 700; border: none; border-radius: 14px;
+      cursor: pointer; transition: background .15s;
+    }
+    .conflict-resolve-btn:hover { background: #3a7fd5; }
+    .conflict-resolve-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+    /* push permission nudge */
+    .push-nudge {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px; margin-bottom: 10px;
+      background: #f0fdf4; border: 1px solid #86efac; border-radius: 14px;
+      font-size: 0.82rem; color: #166534; font-weight: 600;
+    }
+    .push-nudge-btn {
+      margin-right: auto; padding: 6px 12px; border-radius: 8px; border: none;
+      background: #16a34a; color: #fff; font-family: inherit;
+      font-size: 0.78rem; font-weight: 700; cursor: pointer; white-space: nowrap;
+    }
+
     /* ── OLDER MESSAGES SECTION ── */
     .older-section {
       margin-bottom: 1rem; border-radius: var(--radius-card);
@@ -913,6 +1010,23 @@
       <span class="nav-label">הוסף</span>
     </button>
   </nav>
+
+  <!-- ── STEP 6B: CONFLICT MODAL ── -->
+  <div id="conflict-modal-overlay" class="conflict-modal-overlay" style="display:none" onclick="closeConflictModal(event)">
+    <div class="conflict-modal" id="conflict-modal">
+      <div class="conflict-modal-title">⚠️ חפיפה בלוח הזמנים</div>
+      <div class="conflict-modal-sub" id="conflict-modal-sub">שני אירועים מתנגשים — מי הולך?</div>
+      <div id="conflict-modal-events"></div>
+      <div class="conflict-assign-label">מי לוקח?</div>
+      <div class="conflict-assign-options" id="conflict-assign-options">
+        <button class="conflict-assign-opt" data-who="נועם" onclick="selectConflictAssign(this)">👨 נועם</button>
+        <button class="conflict-assign-opt" data-who="רינת" onclick="selectConflictAssign(this)">👩 רינת</button>
+        <button class="conflict-assign-opt" data-who="שניהם" onclick="selectConflictAssign(this)">👫 שניהם</button>
+        <button class="conflict-assign-opt" data-who="ביטול" onclick="selectConflictAssign(this)">❌ לבטל</button>
+      </div>
+      <button class="conflict-resolve-btn" id="conflict-resolve-btn" onclick="resolveConflict()" disabled>✔ אישור</button>
+    </div>
+  </div>
 
   <!-- ── QUICK ADD OVERLAY ── -->
   <div id="quick-add-overlay" class="qa-overlay" aria-modal="true" role="dialog" aria-label="הוספה מהירה" style="display:none">
@@ -1175,6 +1289,40 @@ const CAT_LABELS = {
   sport:'ספורט', trip:'טיול', other:'כללי'
 };
 
+// ── Step 6: Child-name highlight detection ────────────────────────────────────
+const CHILD_NAMES_HE = {
+  ran:  ['רן','ראן'],
+  itai: ['איתי'],
+  noga: ['נוגה'],
+  alon: ['אלון'],
+};
+
+function detectChildMention(text) {
+  /** Returns child key if any child's Hebrew name appears in text, else null */
+  if (!text) return null;
+  for (const [key, names] of Object.entries(CHILD_NAMES_HE)) {
+    if (names.some(n => text.includes(n))) return key;
+  }
+  return null;
+}
+
+function highlightChildNames(text) {
+  /** Wraps child names in <mark> spans with child colour */
+  if (!text) return '';
+  let result = esc(text);
+  for (const [key, names] of Object.entries(CHILD_NAMES_HE)) {
+    const c = kid(key);
+    for (const name of names) {
+      const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      result = result.replace(
+        new RegExp(escaped, 'g'),
+        `<mark style="background:${rgba(c.color,.18)};color:${c.color};border-radius:4px;padding:0 2px;font-weight:700">${name}</mark>`
+      );
+    }
+  }
+  return result;
+}
+
 function msgCard(msg, idx) {
   const c   = kid(msg.child);
   const bg  = rgba(c.color, .13);
@@ -1183,6 +1331,15 @@ function msgCard(msg, idx) {
   const preview  = msg.summary || fullText;
   // האם יש תוכן מעבר ל-preview?
   const hasMore  = fullText && fullText !== preview && fullText.length > (msg.summary||'').length + 20;
+
+  // ── Child-name mention highlight ──
+  const mentionedChild = detectChildMention(preview + ' ' + fullText);
+  const isHighlighted  = mentionedChild && mentionedChild !== msg.child; // ילד שהוזכר — לא "הילד שלו"
+  // הכרטיס מקבל border בולט אם יש אזכור של ילד
+  const highlightBorder = mentionedChild ? `border-color:${rgba(kid(mentionedChild).color, .45)};border-width:1.5px` : '';
+  const mentionBadge = isHighlighted
+    ? `<span class="mention-badge" style="background:${rgba(kid(mentionedChild).color,.15)};color:${kid(mentionedChild).color};border-color:${rgba(kid(mentionedChild).color,.3)}">👤 ${kid(mentionedChild).name}</span>`
+    : '';
 
   const cls = ['card','card-animate',!isRead(msg.id)?'is-unread':''].filter(Boolean).join(' ');
   const isWA    = msg.source==='whatsapp';
@@ -1209,13 +1366,14 @@ function msgCard(msg, idx) {
         קרא עוד <span class="expand-arrow">▾</span>
        </button>` : '';
 
-  return `<div class="${cls}" data-id="${msg.id}" style="animation-delay:${delay}ms" id="mc-${msg.id}">
+  return `<div class="${cls}" data-id="${msg.id}" style="animation-delay:${delay}ms;${highlightBorder}" id="mc-${msg.id}">
   <div class="card-strip" style="background:${c.color}"></div>
   <div class="card-body">
     <div class="msg-top">
       <div class="msg-pills">
         <span class="child-pill" style="background:${bg};color:${c.color}">${c.name}</span>
         ${catBadge}
+        ${mentionBadge}
         ${msg.pinned ? `<span class="pin-tag" style="color:${c.color}">${IC.pin} נעוץ</span>` : ''}
         ${!isRead(msg.id) ? `<span class="dot-unread" style="background:${c.color};color:${c.color}"></span>` : ''}
       </div>
@@ -1224,11 +1382,11 @@ function msgCard(msg, idx) {
     <div class="msg-from">${esc(msg.from||msg.group||'')}${srcLabel?`<span class="msg-source-badge ${srcClass}">${srcLabel}</span>`:''}</div>
     <div class="msg-datetime">📅 ${fmtMsgDateTime(msg.time)}</div>
 
-    <!-- preview: 3-line clamp -->
-    <div class="msg-text" id="mt-${msg.id}">${esc(preview)}</div>
+    <!-- preview: 3-line clamp (with child-name highlights) -->
+    <div class="msg-text" id="mt-${msg.id}">${highlightChildNames(preview)}</div>
 
     <!-- full text (נסתר בהתחלה) -->
-    ${hasMore ? `<div class="msg-body-full" id="mf-${msg.id}"><div class="msg-full-text">${esc(fullText)}</div>${attach}</div>` : attach}
+    ${hasMore ? `<div class="msg-body-full" id="mf-${msg.id}"><div class="msg-full-text">${highlightChildNames(fullText)}</div>${attach}</div>` : attach}
 
     ${expandBtn}
 
@@ -1888,7 +2046,7 @@ function switchTab(id) {
   }
 
   if (id==='calendar') renderCalendar();
-  if (id==='digest')   renderDigest();
+  if (id==='digest')   { renderDigest(); setTimeout(maybeShowPushNudge, 800); }
 }
 document.querySelectorAll('.nav-btn').forEach(btn=>btn.addEventListener('click',()=>switchTab(btn.dataset.tab)));
 
@@ -1903,6 +2061,8 @@ async function loadData() {
     buildFilterBar();
     document.getElementById('filter-bar').classList.add('visible');
     renderFeed(); renderCalendar(); renderTasks(); renderPinned(); renderDigest();
+    // Step 6B: check for conflicts after data loads
+    checkAndShowConflicts(DATA.events || []);
   } catch(err) {
     console.error(err);
     document.getElementById('tab-feed').innerHTML=empty(IC.warn56,'שגיאה בטעינה',err.message);
@@ -2023,11 +2183,259 @@ function handleQuickAdd(e) {
   document.querySelectorAll('#qa-kids .qa-pill, #qa-cats .qa-cat').forEach(el=>el.classList.remove('active'));
 }
 
-// ─── PWA: Service Worker ──────────────────────────────────────────────────────
+// ─── STEP 6A: PWA Install Prompt ─────────────────────────────────────────────
+let _installPrompt = null;
+const INSTALL_DISMISSED_KEY = 'familyos_install_dismissed';
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  _installPrompt = e;
+  if (!localStorage.getItem(INSTALL_DISMISSED_KEY)) {
+    showInstallBanner();
+  }
+});
+
+function showInstallBanner() {
+  // מציג banner מעל הפיד
+  const feed = document.getElementById('tab-feed');
+  if (!feed || document.getElementById('install-banner')) return;
+  const banner = document.createElement('div');
+  banner.id = 'install-banner';
+  banner.className = 'install-banner';
+  banner.innerHTML = `
+    <div class="install-banner-icon">📲</div>
+    <div class="install-banner-text">
+      <div class="install-banner-title">הוסף למסך הבית</div>
+      <div class="install-banner-sub">גישה מהירה בלחיצה אחת</div>
+    </div>
+    <button class="install-banner-btn" onclick="doInstall()">התקן</button>
+    <button class="install-banner-dismiss" onclick="dismissInstall()" title="סגור">✕</button>`;
+  feed.insertAdjacentElement('afterbegin', banner);
+}
+
+async function doInstall() {
+  if (!_installPrompt) return;
+  _installPrompt.prompt();
+  const { outcome } = await _installPrompt.userChoice;
+  _installPrompt = null;
+  document.getElementById('install-banner')?.remove();
+  if (outcome === 'accepted') localStorage.setItem(INSTALL_DISMISSED_KEY, '1');
+}
+
+function dismissInstall() {
+  document.getElementById('install-banner')?.remove();
+  localStorage.setItem(INSTALL_DISMISSED_KEY, '1');
+}
+
+// ─── STEP 6A: Service Worker + Push ──────────────────────────────────────────
+let _swReg = null;
+
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  window.addEventListener('load', async () => {
+    try {
+      _swReg = await navigator.serviceWorker.register('./sw.js');
+      console.log('[SW] registered');
+    } catch(e) {
+      console.warn('[SW] register failed', e);
+    }
   });
+}
+
+// ─── STEP 6C: Web Push ───────────────────────────────────────────────────────
+// VAPID public key — generated once, stored here
+const VAPID_PUBLIC_KEY = 'BOCS8LP0nsWHazpgo7GG7wHbofSUDXlnj0Ogzw3lPNnLinb6ucrpynHC3vng57EEbIpWCSvJprUeIty8Rqiy9Ac';
+const PUSH_SERVER      = 'http://localhost:19876'; // local push relay
+
+async function requestPushPermission() {
+  if (!('Notification' in window)) return;
+  if (Notification.permission === 'granted') {
+    await subscribePush();
+    return;
+  }
+  if (Notification.permission === 'denied') return;
+
+  const result = await Notification.requestPermission();
+  if (result === 'granted') {
+    await subscribePush();
+    hidePushNudge();
+  }
+}
+
+async function subscribePush() {
+  if (!_swReg) return;
+  try {
+    // בדוק אם כבר subscribed
+    const existing = await _swReg.pushManager.getSubscription();
+    if (existing) return existing;
+
+    const sub = await _swReg.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY),
+    });
+    // שלח subscription לשרת
+    await fetch(PUSH_SERVER + '/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(sub),
+    }).catch(() => {});
+    console.log('[Push] subscribed');
+    return sub;
+  } catch(e) {
+    console.warn('[Push] subscribe failed', e);
+  }
+}
+
+function urlBase64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+  const raw = window.atob(base64);
+  return new Uint8Array([...raw].map(c => c.charCodeAt(0)));
+}
+
+// Push nudge — מוצג בטאב ה-digest אחרי אינטראקציה
+function maybeShowPushNudge() {
+  if (Notification.permission !== 'default') return;
+  if (localStorage.getItem('familyos_push_dismissed')) return;
+  const digest = document.getElementById('tab-digest');
+  if (!digest || document.getElementById('push-nudge')) return;
+  const nudge = document.createElement('div');
+  nudge.id = 'push-nudge';
+  nudge.className = 'push-nudge';
+  nudge.innerHTML = `🔔 <span>קבל התראות 1 שעה לפני אירועים</span>
+    <button class="push-nudge-btn" onclick="requestPushPermission()">הפעל</button>
+    <button style="background:none;border:none;cursor:pointer;color:#166534;font-size:1.1rem" onclick="hidePushNudge()">✕</button>`;
+  digest.insertAdjacentElement('afterbegin', nudge);
+}
+
+function hidePushNudge() {
+  document.getElementById('push-nudge')?.remove();
+  localStorage.setItem('familyos_push_dismissed', '1');
+}
+
+// ─── STEP 6B: Conflict Detection ─────────────────────────────────────────────
+let _conflictState = { evA: null, evB: null, assignedWho: null };
+
+function detectConflicts(events) {
+  /**
+   * מחפש זוגות אירועים שחופפים (אותו ילד, ±90 דקות) שטרם טופלו.
+   * מחזיר מערך של {evA, evB} ראשון שמצא.
+   */
+  const timed = events.filter(e => e.date && e.date.includes('T') && !e.conflict_resolved);
+  const conflicts = [];
+
+  for (let i = 0; i < timed.length; i++) {
+    for (let j = i + 1; j < timed.length; j++) {
+      const a = timed[i], b = timed[j];
+      // רק ילדים שונים (מעניין הורה לדעת) או אותו ילד (בלתי אפשרי)
+      const dtA = new Date(a.date), dtB = new Date(b.date);
+      if (isNaN(dtA) || isNaN(dtB)) continue;
+      const diffMin = Math.abs(dtA - dtB) / 60000;
+      if (diffMin <= 90) {
+        conflicts.push({ evA: a, evB: b });
+      }
+    }
+  }
+  return conflicts;
+}
+
+function checkAndShowConflicts(events) {
+  const conflicts = detectConflicts(events);
+  if (!conflicts.length) return;
+
+  // הצג badge בטאב calendar
+  const calBtn = document.querySelector('[data-tab="calendar"]');
+  if (calBtn && !calBtn.querySelector('.conflict-nav-badge')) {
+    calBtn.insertAdjacentHTML('beforeend',
+      `<span class="conflict-nav-badge" style="
+        position:absolute;top:4px;right:4px;
+        width:8px;height:8px;border-radius:50%;
+        background:#dc2626;border:2px solid var(--bg)"></span>`);
+  }
+
+  // הצג modal לראשון
+  openConflictModal(conflicts[0]);
+}
+
+function openConflictModal({ evA, evB }) {
+  _conflictState = { evA, evB, assignedWho: null };
+  const overlay = document.getElementById('conflict-modal-overlay');
+  const modal   = document.getElementById('conflict-modal');
+  const evCont  = document.getElementById('conflict-modal-events');
+  const subEl   = document.getElementById('conflict-modal-sub');
+
+  const cA = kid(evA.child), cB = kid(evB.child);
+  subEl.textContent = `${cA.name} ו${cB.name} — אירועים חופפים`;
+
+  evCont.innerHTML = [evA, evB].map(ev => {
+    const c = kid(ev.child);
+    const timeStr = fmtTime2(ev.date);
+    return `<div class="conflict-ev">
+      <div class="conflict-ev-dot" style="background:${c.color}"></div>
+      <div class="conflict-ev-info">
+        <div class="conflict-ev-title">${esc(ev.title)}</div>
+        <div class="conflict-ev-time">${c.name} · ${fmtDateLabel(ev.date)} ${timeStr !== 'כל היום' ? timeStr : ''}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // reset assign
+  document.querySelectorAll('.conflict-assign-opt').forEach(b => b.classList.remove('selected'));
+  document.getElementById('conflict-resolve-btn').disabled = true;
+
+  overlay.style.display = 'flex';
+  requestAnimationFrame(() => modal.classList.add('open'));
+}
+
+function closeConflictModal(e) {
+  if (e && e.target !== document.getElementById('conflict-modal-overlay')) return;
+  _closeConflictModal();
+}
+
+function _closeConflictModal() {
+  const overlay = document.getElementById('conflict-modal-overlay');
+  const modal   = document.getElementById('conflict-modal');
+  modal.classList.remove('open');
+  setTimeout(() => { overlay.style.display = 'none'; }, 350);
+}
+
+function selectConflictAssign(btn) {
+  document.querySelectorAll('.conflict-assign-opt').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  _conflictState.assignedWho = btn.dataset.who;
+  document.getElementById('conflict-resolve-btn').disabled = false;
+}
+
+function resolveConflict() {
+  const { evA, evB, assignedWho } = _conflictState;
+  if (!assignedWho) return;
+
+  // עדכן events ב-DATA
+  const events = DATA.events || [];
+  [evA, evB].forEach(ev => {
+    const found = events.find(e => e.id === ev.id);
+    if (found) {
+      found.conflict = true;
+      found.conflict_resolved = true;
+      found.assignedParent = assignedWho;
+    }
+  });
+
+  // הסר conflict badge מהניווט
+  document.querySelector('.conflict-nav-badge')?.remove();
+
+  _closeConflictModal();
+  renderCalendar();
+
+  // הצג toast
+  showToast(`✔ הוקצה ל-${assignedWho}`);
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('qa-toast');
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
