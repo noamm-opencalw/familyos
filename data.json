@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-16T08:00:10.772034+00:00",
+  "updated_at": "2026-03-16T08:30:07.090810+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -7,6 +7,20 @@
     "periods": []
   },
   "messages": [
+    {
+      "id": 1,
+      "from": "info@payschool.co.il",
+      "group": "מייל — info@payschool.co.il",
+      "child": "alon",
+      "text": "יתרות חוב/זכות לתלמידים מבית ספר לביא",
+      "summary": "יתרות חוב/זכות לתלמידים מבית ספר לביא",
+      "time": "2026-03-16T10:04:00+02:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "high",
+      "source": "email"
+    },
     {
       "from": "זולי חיים",
       "group": "הורי ט׳3",
@@ -19,7 +33,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "רוית כהן איבי 🤍",
@@ -33,7 +47,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "זולי חיים",
@@ -47,7 +61,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "זולי חיים",
@@ -61,7 +75,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
       "from": "רינת מאיר- הדרכת הורים\\nליווי ייעוץ והדרכת הורים למתבגרים",
@@ -75,7 +89,7 @@
       "read": false,
       "priority": "urgent",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "זולי חיים",
@@ -89,7 +103,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 6
+      "id": 7
     },
     {
       "from": "מלכה מנשורי",
@@ -103,7 +117,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 7
+      "id": 8
     },
     {
       "from": "גל בן שמחון",
@@ -117,7 +131,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 8
+      "id": 9
     },
     {
       "from": "נופר אברהם-ששון",
@@ -131,7 +145,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 9
+      "id": 10
     },
     {
       "from": "Avital",
@@ -145,7 +159,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 10
+      "id": 11
     },
     {
       "from": "Avital",
@@ -161,7 +175,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "תכנון_ליום_רביעי_11.3.26",
-      "id": 11
+      "id": 12
     },
     {
       "from": "Avital",
@@ -175,7 +189,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 12
+      "id": 13
     }
   ],
   "academics": [],
