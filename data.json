@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-17T10:00:27.083026+00:00",
+  "updated_at": "2026-03-17T10:30:12.236260+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -176,20 +176,6 @@
       "hasAttachment": true,
       "attachmentName": "תכנון_ליום_רביעי_11.3.26",
       "id": 12
-    },
-    {
-      "from": "Avital",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "https://edu-il.zoom.us/j/82853612687?pwd=tHyIwn10IVgTufEsHHarbWKlWUh459.1\nמחכה לכם בשתיים עשרה וחצי\nאנא הביאו מחברת עברית / דף וכלי כתיבה",
-      "summary": "https://edu-il.zoom.us/j/82853612687?pwd=tHyIwn10IVgTufEsHHarbWKlWUh459.1\nמחכה לכם בשתיים עשרה וחצי\nאנא הביאו מחברת עברי",
-      "time": "2026-03-10T10:21:22.150000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 13
     }
   ],
   "academics": [],
