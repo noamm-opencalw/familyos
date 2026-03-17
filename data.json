@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-17T16:04:00.456769+00:00",
+  "updated_at": "2026-03-17T16:30:08.424400+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -160,91 +160,10 @@
       "priority": "high",
       "source": "whatsapp",
       "id": 11
-    },
-    {
-      "from": "Avital",
-      "group": "כיתה ו׳2",
-      "child": "noga",
-      "text": "📎 תכנון_ליום_רביעי_11.3.26\n\n• 09:00 — זום עם אביטל\n• 11:00–11:20 — זום עם אביטל\n• 11:20 — זום עם אביטל\n• 11:40 — זום עם אביטל\n• 12:00–12:30 — מפגש זום\n• 12:30 — מפגש זום\n• 13:30–14:00 — מפגש זום\n• 14:00 — מפגש זום",
-      "summary": "• 09:00 — זום עם אביטל\n• 11:00–11:20 — זום עם אביטל\n• 11:20 — זום עם אביטל\n• 11:40 — זום עם אביטל\n• 12:00–12:30 — מפגש ז",
-      "time": "2026-03-10T16:15:32.276000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "high",
-      "source": "whatsapp",
-      "hasAttachment": true,
-      "attachmentName": "תכנון_ליום_רביעי_11.3.26",
-      "id": 12
     }
   ],
   "academics": [],
-  "events": [
-    {
-      "id": 500,
-      "child": "noga",
-      "title": "📚 [נוגה] זום עם אביטל",
-      "date": "2026-03-11T09:00:00+02:00",
-      "group": "לוח שנה",
-      "source": "whatsapp-pdf"
-    },
-    {
-      "id": 501,
-      "child": "noga",
-      "title": "📚 [נוגה] זום עם אביטל",
-      "date": "2026-03-11T11:00:00+02:00",
-      "group": "לוח שנה",
-      "source": "whatsapp-pdf"
-    },
-    {
-      "id": 502,
-      "child": "noga",
-      "title": "📚 [נוגה] זום עם אביטל",
-      "date": "2026-03-11T11:20:00+02:00",
-      "group": "לוח שנה",
-      "source": "whatsapp-pdf"
-    },
-    {
-      "id": 503,
-      "child": "noga",
-      "title": "📚 [נוגה] זום עם אביטל",
-      "date": "2026-03-11T11:40:00+02:00",
-      "group": "לוח שנה",
-      "source": "whatsapp-pdf"
-    },
-    {
-      "id": 504,
-      "child": "noga",
-      "title": "📚 [נוגה] מפגש זום",
-      "date": "2026-03-11T12:00:00+02:00",
-      "group": "לוח שנה",
-      "source": "whatsapp-pdf"
-    },
-    {
-      "id": 505,
-      "child": "noga",
-      "title": "📚 [נוגה] מפגש זום",
-      "date": "2026-03-11T12:30:00+02:00",
-      "group": "לוח שנה",
-      "source": "whatsapp-pdf"
-    },
-    {
-      "id": 506,
-      "child": "noga",
-      "title": "📚 [נוגה] מפגש זום",
-      "date": "2026-03-11T13:30:00+02:00",
-      "group": "לוח שנה",
-      "source": "whatsapp-pdf"
-    },
-    {
-      "id": 507,
-      "child": "noga",
-      "title": "📚 [נוגה] מפגש זום",
-      "date": "2026-03-11T14:00:00+02:00",
-      "group": "לוח שנה",
-      "source": "whatsapp-pdf"
-    }
-  ],
+  "events": [],
   "actions": [],
   "digest": {
     "date": "2026-03-16T18:00:00.774684+00:00",
