@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-18T07:30:06.541664+00:00",
+  "updated_at": "2026-03-18T08:00:11.782490+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -118,20 +118,6 @@
       "priority": "normal",
       "source": "whatsapp",
       "id": 8
-    },
-    {
-      "from": "גל בן שמחון",
-      "group": "כיתה ב׳ לביא",
-      "child": "alon",
-      "text": "אנחנו מחכים לאישור כניסה לזום",
-      "summary": "אנחנו מחכים לאישור כניסה לזום",
-      "time": "2026-03-11T07:59:01.008000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 9
     }
   ],
   "academics": [],
