@@ -1,12 +1,27 @@
 {
-  "updated_at": "2026-03-18T18:00:12.722583+00:00",
+  "updated_at": "2026-03-18T18:30:06.864290+00:00",
   "custody": {
     "today": false,
     "current": null,
     "next": null,
     "periods": []
   },
-  "messages": [],
+  "messages": [
+    {
+      "id": 1,
+      "from": "info@payschool.co.il",
+      "group": "מייל — info@payschool.co.il",
+      "child": "alon",
+      "text": "יתרות חוב/זכות לתלמידים מבית ספר לביא",
+      "summary": "יתרות חוב/זכות לתלמידים מבית ספר לביא",
+      "time": "2026-03-16T10:04:00+02:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "high",
+      "source": "email"
+    }
+  ],
   "academics": [],
   "events": [],
   "actions": [],
