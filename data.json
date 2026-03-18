@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-18T06:00:21.713399+00:00",
+  "updated_at": "2026-03-18T06:30:06.313437+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -132,20 +132,6 @@
       "priority": "normal",
       "source": "whatsapp",
       "id": 9
-    },
-    {
-      "from": "נופר אברהם-ששון",
-      "group": "הורי יא׳7",
-      "child": "ran",
-      "text": "הורים יקרים,\nהיום תחל הלמידה מרחוק מהשעה השלישית (10:10). שיהיה יום שקט🙏",
-      "summary": "הורים יקרים,\nהיום תחל הלמידה מרחוק מהשעה השלישית (10:10). שיהיה יום שקט🙏",
-      "time": "2026-03-11T06:15:26.759000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "high",
-      "source": "whatsapp",
-      "id": 10
     }
   ],
   "academics": [],
