@@ -11,17 +11,8 @@
   "events": [],
   "actions": [],
   "digest": {
-    "date": "2026-03-18T18:00:00.509447+00:00",
-    "tomorrow": "2026-03-19",
-    "items": [
-      {
-        "id": "rb-msg-0",
-        "text": "יתרות חוב/זכות לתלמידים מבית ספר לביא",
-        "child": "alon",
-        "time": "",
-        "source": "מייל — info@payschool.co.il",
-        "done": false
-      }
-    ]
+    "date": "2026-03-19T18:00:00.602197+00:00",
+    "tomorrow": "2026-03-20",
+    "items": []
   }
 }
