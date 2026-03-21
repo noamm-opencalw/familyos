@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-21T18:00:06.792240+00:00",
+  "updated_at": "2026-03-21T18:30:07.788384+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -40,6 +40,20 @@
   },
   "messages": [
     {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "שבוע טוב תלמידים יקרים 🙏\nנפגש מחר בשעה 13:00 בכיתה שלנו👏👏👏\nנא להביא מחברת עברית וקלמר.\nמצפה לכם 🙏",
+      "summary": "שבוע טוב תלמידים יקרים 🙏\nנפגש מחר בשעה 13:00 בכיתה שלנו👏👏👏\nנא להביא מחברת עברית וקלמר.\nמצפה לכם 🙏",
+      "time": "2026-03-21T18:00:06.016000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
       "from": "זולי חיים",
       "group": "הורי ט׳3",
       "child": "itai",
@@ -51,7 +65,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "זולי חיים",
@@ -65,7 +79,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "לא ידוע",
@@ -79,10 +93,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
-      "id": 4,
+      "id": 5,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
