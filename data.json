@@ -1,14 +1,104 @@
 {
-  "updated_at": "2026-03-20T20:30:07.398542+00:00",
+  "updated_at": "2026-03-21T12:01:09.070990+00:00",
   "custody": {
     "today": false,
     "current": null,
-    "next": null,
-    "periods": []
+    "next": {
+      "start": "2026-03-22T00:00:00+02:00",
+      "end": "2026-03-24T00:00:00+02:00"
+    },
+    "periods": [
+      {
+        "start": "2026-03-22T00:00:00+02:00",
+        "end": "2026-03-24T00:00:00+02:00"
+      },
+      {
+        "start": "2026-03-26T00:00:00+02:00",
+        "end": "2026-03-29T00:00:00+02:00"
+      },
+      {
+        "start": "2026-03-31T08:00:00+02:00",
+        "end": "2026-04-01T09:45:00+02:00"
+      },
+      {
+        "start": "2026-04-05T00:00:00+02:00",
+        "end": "2026-04-07T00:00:00+02:00"
+      },
+      {
+        "start": "2026-04-09T00:00:00+02:00",
+        "end": "2026-04-12T00:00:00+02:00"
+      },
+      {
+        "start": "2026-04-14T08:00:00+02:00",
+        "end": "2026-04-15T09:45:00+02:00"
+      },
+      {
+        "start": "2026-04-19T00:00:00+02:00",
+        "end": "2026-04-21T00:00:00+02:00"
+      }
+    ]
   },
-  "messages": [],
+  "messages": [
+    {
+      "from": "לא ידוע",
+      "group": "שכבה ב׳ לביא",
+      "child": "alon",
+      "text": "[cron:0c19d3d3-65bc-4b7f-afa6-e49ea6710ccc WhatsApp Schools Monitor] אתה סוכן ניטור ווטסאפ + FamilyOS updater. עשה את הצעדים הבאים:\n\n1. לכל אחת מהקבוצות הבאות — poll עם limit=50:\n   - כיתה ב תשפו - אלון (120363280306116883@g.us)\n   - שכבה ב הורים - אלון (120363297963911587@g.us)\n   - כיתה ו2 - נוגה (972528618633-1597665940@g.us)\n   - הורי כיתה ט3 - איתי (120363151256867420@g.us)\n   - הורי ט3 - איתי (120363166861908196@g.us)\n   - הורי כיתה יא7 - רן (120363307180171348@g.us)\n\n2. סנן הודעות מ-24h האחרונות שהן חשובות (לא ack, לא אמוג׳י בלבד).\n   לכל הודעה חשובה — הפעל exec:\n   python3 /Users/noam/.openclaw/workspace-main/family/wa_handler.py --add '{\"group\":\"<JID>\",\"from\":\"<שם>\",\"text\":\"<טקסט>\",\"time\":\"<ISO>\"}'\n\n3. לאחר שמירת כל ההודעות — הפעל exec:\n   bash /Users/noam/.openclaw/workspace-main/family/familyos-push.sh\n\n4. אם היו הודעות חשובות — שלח תקציר קצר לנועם בטלגרם. אם לא — לא לשלוח כלום.\nCurrent time: Friday, March 20th, 2026 — 4:00 PM (Asia/Hebron) / 2026-03-20 14:00 UTC\n\nReturn your summary as plain text; it will be delivered automatically. If the task explicitly calls for messaging a specific external recipient, note who/where it should go instead of sending it yourself.",
+      "summary": "[cron:0c19d3d3-65bc-4b7f-afa6-e49ea6710ccc WhatsApp Schools Monitor] אתה סוכן ניטור ווטסאפ + FamilyOS updater. עשה את הצ",
+      "time": "2026-03-20T14:00:12.648000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "from": "info@payschool.co.il",
+      "group": "מייל — info@payschool.co.il",
+      "child": "alon",
+      "text": "יתרות חוב/זכות לתלמידים מבית ספר לביא",
+      "summary": "יתרות חוב/זכות לתלמידים מבית ספר לביא",
+      "time": "2026-03-16T10:04:00+02:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "high",
+      "source": "email"
+    }
+  ],
   "academics": [],
-  "events": [],
+  "events": [
+    {
+      "id": 4,
+      "child": "all",
+      "title": "🧹 ניקיון — אחת לשבועיים",
+      "date": "2026-03-30T10:00:00+02:00",
+      "group": "לוח שנה"
+    },
+    {
+      "id": 6,
+      "child": "alon",
+      "title": "🐴 רכיבת סוסים — כפר רות",
+      "date": "2026-03-31T18:15:00+02:00",
+      "group": "חוג"
+    },
+    {
+      "id": 9,
+      "child": "all",
+      "title": "🧹 ניקיון — אחת לשבועיים",
+      "date": "2026-04-13T10:00:00+02:00",
+      "group": "לוח שנה"
+    },
+    {
+      "id": 11,
+      "child": "alon",
+      "title": "🐴 רכיבת סוסים — כפר רות",
+      "date": "2026-04-14T18:15:00+02:00",
+      "group": "חוג"
+    }
+  ],
   "actions": [],
   "digest": {
     "date": "2026-03-19T18:00:00.602197+00:00",
