@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-21T12:01:09.070990+00:00",
+  "updated_at": "2026-03-21T12:30:08.261575+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -40,6 +40,20 @@
   },
   "messages": [
     {
+      "from": "זולי חיים",
+      "group": "הורי ט׳3",
+      "child": "itai",
+      "text": "הורים יקרים שבת שלום😊\nמחר נתחיל את המפגשים בעזרת השם.\nהקבוצה הראשונה שתגיע אלי מחר באחת וחצי :\nאיתי לוי\nאיליי צרפתי\nאיתמר גרשון \nמאור איבגי \nרועי הלוי.\nמחכה ומתרגשת 😊",
+      "summary": "הורים יקרים שבת שלום😊\nמחר נתחיל את המפגשים בעזרת השם.\nהקבוצה הראשונה שתגיע אלי מחר באחת וחצי :\nאיתי לוי\nאיליי צרפתי\nאיתמ",
+      "time": "2026-03-21T12:08:34.062000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
       "from": "לא ידוע",
       "group": "שכבה ב׳ לביא",
       "child": "alon",
@@ -51,10 +65,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
-      "id": 2,
+      "id": 3,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
