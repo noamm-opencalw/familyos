@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-21T19:30:06.695653+00:00",
+  "updated_at": "2026-03-21T20:00:08.867513+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -40,6 +40,20 @@
   },
   "messages": [
     {
+      "from": "מלכה מנשורי",
+      "group": "כיתה ב׳ לביא",
+      "child": "alon",
+      "text": "מתנצלת על השעה לצורך ניקיון יסודי של הכיתה אשמח שכל תלמיד/ה יביא :\n\nמטלית\nסקוטש\nמגבונים.\nשקית סופר .",
+      "summary": "מתנצלת על השעה לצורך ניקיון יסודי של הכיתה אשמח שכל תלמיד/ה יביא :\n\nמטלית\nסקוטש\nמגבונים.\nשקית סופר .",
+      "time": "2026-03-21T19:57:57.469000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
       "from": "Avital",
       "group": "כיתה ו׳2",
       "child": "noga",
@@ -51,7 +65,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "זולי חיים",
@@ -65,7 +79,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "זולי חיים",
@@ -79,7 +93,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "לא ידוע",
@@ -93,10 +107,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
-      "id": 5,
+      "id": 6,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
