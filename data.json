@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-22T07:30:09.796998+00:00",
+  "updated_at": "2026-03-22T08:00:09.725696+00:00",
   "custody": {
     "today": true,
     "current": {
@@ -43,6 +43,20 @@
   },
   "messages": [
     {
+      "from": "נופר אברהם-ששון",
+      "group": "הורי יא׳7",
+      "child": "ran",
+      "text": "יש מתמטיקה עכשיו...",
+      "summary": "יש מתמטיקה עכשיו...",
+      "time": "2026-03-22T07:30:13.755000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
       "from": "לא ידוע",
       "group": "שכבה ב׳ לביא",
       "child": "alon",
@@ -54,7 +68,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "Avital",
@@ -68,7 +82,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "זולי חיים",
@@ -82,7 +96,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "מלכה מנשורי",
@@ -96,7 +110,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
       "from": "מלכה מנשורי",
@@ -110,7 +124,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "Avital",
@@ -124,7 +138,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 6
+      "id": 7
     },
     {
       "from": "meitalheftzadi",
@@ -138,7 +152,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 7
+      "id": 8
     },
     {
       "from": "Ilan Zaken",
@@ -152,7 +166,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 8
+      "id": 9
     },
     {
       "from": "Moshe Harshish",
@@ -166,7 +180,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 9
+      "id": 10
     },
     {
       "from": "מלכה מנשורי",
@@ -180,7 +194,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 10
+      "id": 11
     },
     {
       "from": "Avital",
@@ -194,7 +208,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 11
+      "id": 12
     },
     {
       "from": "לא ידוע",
@@ -208,10 +222,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 12
+      "id": 13
     },
     {
-      "id": 13,
+      "id": 14,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
