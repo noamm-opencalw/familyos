@@ -286,8 +286,49 @@
   ],
   "actions": [],
   "digest": {
-    "date": "2026-03-19T18:00:00.602197+00:00",
-    "tomorrow": "2026-03-20",
-    "items": []
+    "date": "2026-03-22T18:00:00.966679+00:00",
+    "tomorrow": "2026-03-23",
+    "items": [
+      {
+        "id": "rb-msg-0",
+        "text": "[cron:0c19d3d3-65bc-4b7f-afa6-e49ea6710ccc WhatsApp Schools Monitor] א",
+        "child": "alon",
+        "time": "",
+        "source": "שכבה ב׳ לביא",
+        "done": false
+      },
+      {
+        "id": "rb-msg-1",
+        "text": "הורים יקרים, מחר באחת נקיים מפגש לכל הבנות בבית של נויה ארוך. \nמצפה גם",
+        "child": "itai",
+        "time": "",
+        "source": "הורי ט׳3",
+        "done": false
+      },
+      {
+        "id": "rb-msg-2",
+        "text": "[cron:0c19d3d3-65bc-4b7f-afa6-e49ea6710ccc WhatsApp Schools Monitor] א",
+        "child": "alon",
+        "time": "",
+        "source": "שכבה ב׳ לביא",
+        "done": false
+      },
+      {
+        "id": "rb-msg-3",
+        "text": "עדכון לוז להיום:\n🎯10:30 זום אנגלית בקישור הזה:\nhttps://meet.google.com",
+        "child": "noga",
+        "time": "",
+        "source": "כיתה ו׳2",
+        "done": false
+      },
+      {
+        "id": "rb-msg-4",
+        "text": "שבוע טוב תלמידים יקרים 🙏\nנפגש מחר בשעה 13:00 בכיתה שלנו👏👏👏\nנא להביא מח",
+        "child": "noga",
+        "time": "",
+        "source": "כיתה ו׳2",
+        "done": false
+      }
+    ]
   }
 }
