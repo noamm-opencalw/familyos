@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-22T06:00:22.103852+00:00",
+  "updated_at": "2026-03-22T06:30:06.688928+00:00",
   "custody": {
     "today": true,
     "current": {
@@ -43,6 +43,34 @@
   },
   "messages": [
     {
+      "from": "Avital",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "עדכון לוז להיום:\n🎯10:30 זום אנגלית בקישור הזה:\nhttps://meet.google.com/aih-hgkh-wjc\n\n🎯11:30 זום חברתי איתי בקישור הזה: https://edu-il.zoom.us/j/82853612687?pwd=tHyIwn10IVgTufEsHHarbWKlWUh459.1\n🎯12:30 זום בנושא פסח",
+      "summary": "עדכון לוז להיום:\n🎯10:30 זום אנגלית בקישור הזה:\nhttps://meet.google.com/aih-hgkh-wjc\n\n🎯11:30 זום חברתי איתי בקישור הזה: h",
+      "time": "2026-03-22T06:21:10.885000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
+      "from": "זולי חיים",
+      "group": "הורי ט׳3",
+      "child": "itai",
+      "text": "הורים יקרים, מתנצלת על הבלאגן עם המפגשים, קיבלתי שיחה מצופית המנהלת על הבוקר שאין אישור לקיים את המפגשים אצלי,  לאור מה שקרה אתמול. \nמבחינתה שאני אגיע לבתים של תלמידים ולא הם אלי.\n😢😢😢",
+      "summary": "הורים יקרים, מתנצלת על הבלאגן עם המפגשים, קיבלתי שיחה מצופית המנהלת על הבוקר שאין אישור לקיים את המפגשים אצלי,  לאור מה ",
+      "time": "2026-03-22T06:03:50.067000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 2
+    },
+    {
       "from": "מלכה מנשורי",
       "group": "כיתה ב׳ לביא",
       "child": "alon",
@@ -54,7 +82,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 1
+      "id": 3
     },
     {
       "from": "מלכה מנשורי",
@@ -68,7 +96,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 2
+      "id": 4
     },
     {
       "from": "Avital",
@@ -82,7 +110,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 3
+      "id": 5
     },
     {
       "from": "meitalheftzadi",
@@ -96,7 +124,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 4
+      "id": 6
     },
     {
       "from": "Ilan Zaken",
@@ -110,7 +138,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 5
+      "id": 7
     },
     {
       "from": "Moshe Harshish",
@@ -124,7 +152,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 6
+      "id": 8
     },
     {
       "from": "מלכה מנשורי",
@@ -138,7 +166,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 7
+      "id": 9
     },
     {
       "from": "Avital",
@@ -147,34 +175,6 @@
       "text": "שבוע טוב תלמידים יקרים 🙏\nנפגש מחר בשעה 13:00 בכיתה שלנו👏👏👏\nנא להביא מחברת עברית וקלמר.\nמצפה לכם 🙏",
       "summary": "שבוע טוב תלמידים יקרים 🙏\nנפגש מחר בשעה 13:00 בכיתה שלנו👏👏👏\nנא להביא מחברת עברית וקלמר.\nמצפה לכם 🙏",
       "time": "2026-03-21T18:00:06.016000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "high",
-      "source": "whatsapp",
-      "id": 8
-    },
-    {
-      "from": "זולי חיים",
-      "group": "הורי ט׳3",
-      "child": "itai",
-      "text": "הועד דואג לפיצות וגלידה, נראה לי מספיק לא?",
-      "summary": "הועד דואג לפיצות וגלידה, נראה לי מספיק לא?",
-      "time": "2026-03-21T17:59:01.169000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 9
-    },
-    {
-      "from": "זולי חיים",
-      "group": "הורי ט׳3",
-      "child": "itai",
-      "text": "הורים יקרים שבת שלום😊\nמחר נתחיל את המפגשים בעזרת השם.\nהקבוצה הראשונה שתגיע אלי מחר באחת וחצי :\nאיתי לוי\nאיליי צרפתי\nאיתמר גרשון \nמאור איבגי \nרועי הלוי.\nמחכה ומתרגשת 😊",
-      "summary": "הורים יקרים שבת שלום😊\nמחר נתחיל את המפגשים בעזרת השם.\nהקבוצה הראשונה שתגיע אלי מחר באחת וחצי :\nאיתי לוי\nאיליי צרפתי\nאיתמ",
-      "time": "2026-03-21T12:08:34.062000+00:00",
       "isRinat": false,
       "pinned": true,
       "read": false,
