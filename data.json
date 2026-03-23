@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-23T08:00:08.907366+00:00",
+  "updated_at": "2026-03-23T08:30:07.516922+00:00",
   "custody": {
     "today": true,
     "current": {
@@ -101,20 +101,6 @@
       "id": 4
     },
     {
-      "from": "נופר אברהם-ששון",
-      "group": "הורי יא׳7",
-      "child": "ran",
-      "text": "הורים יקרים ערב טוב,\nשמחתי לפגוש חלק מהתלמידים היום במפגשי אחהצ שהמחנכים ארגנו להם.😊\n\nשלחתי למספר הורים הודעה מעזר המורה לספרות. אשמח שתעזרו לי לרתום אותם לשלוח לו הודעה. משרד החינוך לא ביטל את המטלות המתוקפות לבגרות והוא חייב לפתוח להם סביבה באתר, אז למרות הקושי הם יצטרכו לתת פוש אחרון ולהגיש... 🙏🏻  \n\nמחר יום אחרון של למידה מרחוק ואז יוצאים לחופשת פסח. מקווה שתצא הנחייה לגבי הבגרויות- חלק מהתלמידים קצת בלחץ וחלק התנתקו לגמרי. \n\nלילה טוב והמשך שבוע שקט 🙏🏻",
-      "summary": "הורים יקרים ערב טוב,\nשמחתי לפגוש חלק מהתלמידים היום במפגשי אחהצ שהמחנכים ארגנו להם.😊\n\nשלחתי למספר הורים הודעה מעזר המורה",
-      "time": "2026-03-22T19:10:46.093000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "high",
-      "source": "whatsapp",
-      "id": 5
-    },
-    {
       "from": "Avital",
       "group": "כיתה ו׳2",
       "child": "noga",
@@ -126,7 +112,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 6
+      "id": 5
     },
     {
       "from": "מריה קדמי אייזיקס",
@@ -140,7 +126,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 7
+      "id": 6
     },
     {
       "from": "לא ידוע",
@@ -154,7 +140,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 8
+      "id": 7
     },
     {
       "from": "זולי חיים",
@@ -168,7 +154,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 9
+      "id": 8
     },
     {
       "from": "זולי חיים",
@@ -182,21 +168,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 10
-    },
-    {
-      "from": "נופר אברהם-ששון",
-      "group": "הורי יא׳7",
-      "child": "ran",
-      "text": "יש מתמטיקה עכשיו...",
-      "summary": "יש מתמטיקה עכשיו...",
-      "time": "2026-03-22T07:30:13.755000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 11
+      "id": 9
     },
     {
       "from": "Avital",
@@ -210,7 +182,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 12
+      "id": 10
     },
     {
       "from": "זולי חיים",
@@ -224,7 +196,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 13
+      "id": 11
     },
     {
       "from": "Avital",
@@ -238,7 +210,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 14
+      "id": 12
     },
     {
       "from": "Avital",
@@ -252,7 +224,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 15
+      "id": 13
     },
     {
       "from": "לא ידוע",
@@ -266,10 +238,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 16
+      "id": 14
     },
     {
-      "id": 17,
+      "id": 15,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
