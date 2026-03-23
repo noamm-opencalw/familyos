@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-23T14:04:25.639328+00:00",
+  "updated_at": "2026-03-23T14:30:07.661758+00:00",
   "custody": {
     "today": true,
     "current": {
@@ -173,20 +173,6 @@
       "id": 9
     },
     {
-      "from": "לא ידוע",
-      "group": "שכבה ב׳ לביא",
-      "child": "alon",
-      "text": "[cron:0c19d3d3-65bc-4b7f-afa6-e49ea6710ccc WhatsApp Schools Monitor] אתה סוכן ניטור ווטסאפ + FamilyOS updater. עשה את הצעדים הבאים:\n\n1. לכל אחת מהקבוצות הבאות — poll עם limit=50:\n   - כיתה ב תשפו - אלון (120363280306116883@g.us)\n   - שכבה ב הורים - אלון (120363297963911587@g.us)\n   - כיתה ו2 - נוגה (972528618633-1597665940@g.us)\n   - הורי כיתה ט3 - איתי (120363151256867420@g.us)\n   - הורי ט3 - איתי (120363166861908196@g.us)\n   - הורי כיתה יא7 - רן (120363307180171348@g.us)\n\n2. סנן הודעות מ-24h האחרונות שהן חשובות (לא ack, לא אמוג׳י בלבד).\n   לכל הודעה חשובה — הפעל exec:\n   python3 /Users/noam/.openclaw/workspace-main/family/wa_handler.py --add '{\"group\":\"<JID>\",\"from\":\"<שם>\",\"text\":\"<טקסט>\",\"time\":\"<ISO>\"}'\n\n3. לאחר שמירת כל ההודעות — הפעל exec:\n   bash /Users/noam/.openclaw/workspace-main/family/familyos-push.sh\n\n4. אם היו הודעות חשובות — שלח תקציר קצר לנועם בטלגרם. אם לא — לא לשלוח כלום.\nCurrent time: Sunday, March 22nd, 2026 — 4:00 PM (Asia/Hebron) / 2026-03-22 14:00 UTC\n\nReturn your summary as plain text; it will be delivered automatically. If the task explicitly calls for messaging a specific external recipient, note who/where it should go instead of sending it yourself.",
-      "summary": "[cron:0c19d3d3-65bc-4b7f-afa6-e49ea6710ccc WhatsApp Schools Monitor] אתה סוכן ניטור ווטסאפ + FamilyOS updater. עשה את הצ",
-      "time": "2026-03-22T14:00:13.403000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "high",
-      "source": "whatsapp",
-      "id": 10
-    },
-    {
       "from": "זולי חיים",
       "group": "הורי ט׳3",
       "child": "itai",
@@ -198,7 +184,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 11
+      "id": 10
     },
     {
       "from": "זולי חיים",
@@ -212,7 +198,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 12
+      "id": 11
     },
     {
       "from": "זולי חיים",
@@ -226,7 +212,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 13
+      "id": 12
     },
     {
       "from": "לא ידוע",
@@ -240,10 +226,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 14
+      "id": 13
     },
     {
-      "id": 15,
+      "id": 14,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
