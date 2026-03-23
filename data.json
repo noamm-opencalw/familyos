@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-23T18:30:07.757965+00:00",
+  "updated_at": "2026-03-23T19:00:07.896905+00:00",
   "custody": {
     "today": true,
     "current": {
@@ -43,6 +43,20 @@
   },
   "messages": [
     {
+      "from": "מלכה מנשורי",
+      "group": "כיתה ב׳ לביא",
+      "child": "alon",
+      "text": "הורים ותלמידים יקרים חג פסח כשר ושמח!\n\nשנזכה לנחת, בריאות, שלווה וחירות אמיתית🌸🌸\nדש חמה לכל הילדים\n💗💗💗",
+      "summary": "הורים ותלמידים יקרים חג פסח כשר ושמח!\n\nשנזכה לנחת, בריאות, שלווה וחירות אמיתית🌸🌸\nדש חמה לכל הילדים\n💗💗💗",
+      "time": "2026-03-23T18:38:24.809000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
       "from": "לא ידוע",
       "group": "שכבה ב׳ לביא",
       "child": "alon",
@@ -54,7 +68,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "לא ידוע",
@@ -68,7 +82,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "לא ידוע",
@@ -82,7 +96,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "39691",
@@ -96,7 +110,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
       "from": "לא ידוע",
@@ -110,7 +124,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "לא ידוע",
@@ -124,7 +138,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 6
+      "id": 7
     },
     {
       "from": "לא ידוע",
@@ -138,7 +152,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 7
+      "id": 8
     },
     {
       "from": "נופר אברהם-ששון",
@@ -154,7 +168,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "חדשות_המצב",
-      "id": 8
+      "id": 9
     },
     {
       "from": "לא ידוע",
@@ -168,7 +182,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 9
+      "id": 10
     },
     {
       "from": "מלכה מנשורי",
@@ -184,7 +198,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "חוזר_להורים_להפצה_-_פסח_תשפו",
-      "id": 10
+      "id": 11
     },
     {
       "from": "מלכה מנשורי",
@@ -198,7 +212,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 11
+      "id": 12
     },
     {
       "from": "39691",
@@ -212,7 +226,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 12
+      "id": 13
     },
     {
       "from": "מריה קדמי אייזיקס",
@@ -226,7 +240,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 13
+      "id": 14
     },
     {
       "from": "זולי חיים",
@@ -240,7 +254,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 14
+      "id": 15
     },
     {
       "from": "זולי חיים",
@@ -254,7 +268,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 15
+      "id": 16
     },
     {
       "from": "זולי חיים",
@@ -268,7 +282,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 16
+      "id": 17
     },
     {
       "from": "לא ידוע",
@@ -282,10 +296,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 17
+      "id": 18
     },
     {
-      "id": 18,
+      "id": 19,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
