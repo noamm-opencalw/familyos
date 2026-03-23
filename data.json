@@ -342,12 +342,12 @@
     }
   ],
   "digest": {
-    "date": "2026-03-22T18:00:00.966679+00:00",
-    "tomorrow": "2026-03-23",
+    "date": "2026-03-23T18:00:00.589631+00:00",
+    "tomorrow": "2026-03-24",
     "items": [
       {
         "id": "rb-msg-0",
-        "text": "[cron:0c19d3d3-65bc-4b7f-afa6-e49ea6710ccc WhatsApp Schools Monitor] א",
+        "text": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash",
         "child": "alon",
         "time": "",
         "source": "שכבה ב׳ לביא",
@@ -355,15 +355,15 @@
       },
       {
         "id": "rb-msg-1",
-        "text": "הורים יקרים, מחר באחת נקיים מפגש לכל הבנות בבית של נויה ארוך. \nמצפה גם",
-        "child": "itai",
+        "text": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash",
+        "child": "alon",
         "time": "",
-        "source": "הורי ט׳3",
+        "source": "שכבה ב׳ לביא",
         "done": false
       },
       {
         "id": "rb-msg-2",
-        "text": "[cron:0c19d3d3-65bc-4b7f-afa6-e49ea6710ccc WhatsApp Schools Monitor] א",
+        "text": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash",
         "child": "alon",
         "time": "",
         "source": "שכבה ב׳ לביא",
@@ -371,18 +371,26 @@
       },
       {
         "id": "rb-msg-3",
-        "text": "עדכון לוז להיום:\n🎯10:30 זום אנגלית בקישור הזה:\nhttps://meet.google.com",
-        "child": "noga",
+        "text": "System: [2026-03-23 16:23:58 GMT+2] WhatsApp gateway disconnected (sta",
+        "child": "alon",
         "time": "",
-        "source": "כיתה ו׳2",
+        "source": "שכבה ב׳ לביא",
         "done": false
       },
       {
         "id": "rb-msg-4",
-        "text": "שבוע טוב תלמידים יקרים 🙏\nנפגש מחר בשעה 13:00 בכיתה שלנו👏👏👏\nנא להביא מח",
-        "child": "noga",
+        "text": "[cron:0c19d3d3-65bc-4b7f-afa6-e49ea6710ccc WhatsApp Schools Monitor] א",
+        "child": "alon",
         "time": "",
-        "source": "כיתה ו׳2",
+        "source": "שכבה ב׳ לביא",
+        "done": false
+      },
+      {
+        "id": "rb-act-5",
+        "text": "⚠️ רן: להכין את הילדים שגם החג ככל הנראה יראה אחרת‪ ,‬חופשת הפסח תר",
+        "child": "ran",
+        "time": "",
+        "source": "משימות",
         "done": false
       }
     ]
