@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-23T05:30:06.685843+00:00",
+  "updated_at": "2026-03-23T06:00:25.117702+00:00",
   "custody": {
     "today": true,
     "current": {
@@ -43,6 +43,20 @@
   },
   "messages": [
     {
+      "from": "39691",
+      "group": "שכבה ב׳ לביא",
+      "child": "alon",
+      "text": "System: [2026-03-23 07:48:05 GMT+2] WhatsApp gateway disconnected (status 408)\nSystem: [2026-03-23 07:48:09 GMT+2] WhatsApp gateway connected.\n\nלעצור את העדכונים השוטפים על ריצה תקינה כגון זה ריצה תקינה — 20 הודעות WhatsApp + 1 מייל, 0 פעולות, 0 אירועים חריגים. NO_REPLY",
+      "summary": "System: [2026-03-23 07:48:05 GMT+2] WhatsApp gateway disconnected (status 408)\nSystem: [2026-03-23 07:48:09 GMT+2] Whats",
+      "time": "2026-03-23T05:56:02.706000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
       "from": "נופר אברהם-ששון",
       "group": "הורי יא׳7",
       "child": "ran",
@@ -54,7 +68,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "Avital",
@@ -68,7 +82,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "מריה קדמי אייזיקס",
@@ -82,7 +96,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "מריה קדמי אייזיקס",
@@ -96,7 +110,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
       "from": "מלכה מנשורי",
@@ -110,7 +124,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "מלכה מנשורי",
@@ -124,7 +138,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 6
+      "id": 7
     },
     {
       "from": "לא ידוע",
@@ -138,7 +152,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 7
+      "id": 8
     },
     {
       "from": "גל בן שמחון",
@@ -152,7 +166,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 8
+      "id": 9
     },
     {
       "from": "פינוקי",
@@ -166,7 +180,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 9
+      "id": 10
     },
     {
       "from": "זולי חיים",
@@ -180,7 +194,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 10
+      "id": 11
     },
     {
       "from": "זולי חיים",
@@ -194,7 +208,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 11
+      "id": 12
     },
     {
       "from": "מלכה מנשורי",
@@ -208,7 +222,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 12
+      "id": 13
     },
     {
       "from": "מלכה מנשורי",
@@ -222,7 +236,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 13
+      "id": 14
     },
     {
       "from": "נופר אברהם-ששון",
@@ -236,7 +250,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 14
+      "id": 15
     },
     {
       "from": "לא ידוע",
@@ -250,7 +264,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 15
+      "id": 16
     },
     {
       "from": "Avital",
@@ -264,7 +278,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 16
+      "id": 17
     },
     {
       "from": "זולי חיים",
@@ -278,7 +292,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 17
+      "id": 18
     },
     {
       "from": "Avital",
@@ -292,7 +306,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 18
+      "id": 19
     },
     {
       "from": "Avital",
@@ -306,7 +320,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 19
+      "id": 20
     },
     {
       "from": "לא ידוע",
@@ -320,10 +334,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 20
+      "id": 21
     },
     {
-      "id": 21,
+      "id": 22,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
