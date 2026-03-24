@@ -407,43 +407,11 @@
   ],
   "actions": [],
   "digest": {
-    "date": "2026-03-23T18:00:00.589631+00:00",
-    "tomorrow": "2026-03-24",
+    "date": "2026-03-24T18:00:01.153539+00:00",
+    "tomorrow": "2026-03-25",
     "items": [
       {
         "id": "rb-msg-0",
-        "text": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash",
-        "child": "alon",
-        "time": "",
-        "source": "שכבה ב׳ לביא",
-        "done": false
-      },
-      {
-        "id": "rb-msg-1",
-        "text": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash",
-        "child": "alon",
-        "time": "",
-        "source": "שכבה ב׳ לביא",
-        "done": false
-      },
-      {
-        "id": "rb-msg-2",
-        "text": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash",
-        "child": "alon",
-        "time": "",
-        "source": "שכבה ב׳ לביא",
-        "done": false
-      },
-      {
-        "id": "rb-msg-3",
-        "text": "System: [2026-03-23 16:23:58 GMT+2] WhatsApp gateway disconnected (sta",
-        "child": "alon",
-        "time": "",
-        "source": "שכבה ב׳ לביא",
-        "done": false
-      },
-      {
-        "id": "rb-msg-4",
         "text": "[cron:0c19d3d3-65bc-4b7f-afa6-e49ea6710ccc WhatsApp Schools Monitor] א",
         "child": "alon",
         "time": "",
@@ -451,11 +419,35 @@
         "done": false
       },
       {
-        "id": "rb-act-5",
-        "text": "⚠️ רן: להכין את הילדים שגם החג ככל הנראה יראה אחרת‪ ,‬חופשת הפסח תר",
+        "id": "rb-msg-1",
+        "text": "הורים יקרים💜\n\nהיום הראשון בקייטנה\nהתחלנו את הבוקר בקייטנה עם  משחקים,כ",
+        "child": "alon",
+        "time": "",
+        "source": "שכבה ב׳ לביא",
+        "done": false
+      },
+      {
+        "id": "rb-msg-2",
+        "text": "ההקלות הן תוספת זמן של 15% ו20% הפתחתה בחומר, שזה אומר נושא במקרה הטוב",
         "child": "ran",
         "time": "",
-        "source": "משימות",
+        "source": "הורי יא׳7",
+        "done": false
+      },
+      {
+        "id": "rb-msg-3",
+        "text": "היי, שלחתי לשליש כיתה הודעות לגבי העבודה בתנך. \n\nצריך להגיש את העבודה",
+        "child": "ran",
+        "time": "",
+        "source": "הורי יא׳7",
+        "done": false
+      },
+      {
+        "id": "rb-msg-4",
+        "text": "הורים ותלמידים יקרים,\nהיום הסתיימו להם שלושה שבועות של למידה מרחוק , ת",
+        "child": "ran",
+        "time": "",
+        "source": "הורי יא׳7",
         "done": false
       }
     ]
