@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-24T16:02:39.340664+00:00",
+  "updated_at": "2026-03-24T16:30:12.543328+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -288,20 +288,6 @@
       "id": 18
     },
     {
-      "from": "לא ידוע",
-      "group": "שכבה ב׳ לביא",
-      "child": "alon",
-      "text": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash /Users/noam/.openclaw/workspace-main/family/familyos-push.sh\n\nלאחר ריצה מוצלחת — **אל תשלח הודעה לטלגרם** אלא אם כן:\n1. יש פעולה נדרשת (action) חדשה\n2. יש אירוע חריג (ביטול לימודים, אירוע דחוף)\n3. יש שגיאה קריטית בריצה\n\nאחרת — שתיקה מוחלטת (NO_REPLY).\nCurrent time: Monday, March 23rd, 2026 — 6:01 PM (Asia/Hebron) / 2026-03-23 16:01 UTC",
-      "summary": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash /Users/noam/.openclaw/workspace-main/family/family",
-      "time": "2026-03-23T16:01:51.983000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "high",
-      "source": "whatsapp",
-      "id": 19
-    },
-    {
       "from": "מלכה מנשורי",
       "group": "כיתה ב׳ לביא",
       "child": "alon",
@@ -315,7 +301,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "חוזר_להורים_להפצה_-_פסח_תשפו",
-      "id": 20
+      "id": 19
     },
     {
       "from": "מלכה מנשורי",
@@ -329,7 +315,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 21
+      "id": 20
     },
     {
       "from": "זולי חיים",
@@ -343,7 +329,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 22
+      "id": 21
     },
     {
       "from": "זולי חיים",
@@ -357,7 +343,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 23
+      "id": 22
     },
     {
       "from": "זולי חיים",
@@ -371,7 +357,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 24
+      "id": 23
     },
     {
       "from": "לא ידוע",
@@ -385,10 +371,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 25
+      "id": 24
     },
     {
-      "id": 26,
+      "id": 25,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
