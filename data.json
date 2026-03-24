@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-24T08:00:07.622480+00:00",
+  "updated_at": "2026-03-24T08:30:10.919314+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -37,6 +37,20 @@
   "messages": [
     {
       "from": "לא ידוע",
+      "group": "כיתה ב׳ לביא",
+      "child": "alon",
+      "text": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash /Users/noam/.openclaw/workspace-main/family/familyos-push.sh\n\nלאחר ריצה מוצלחת — **אל תשלח הודעה לטלגרם** אלא אם כן:\n1. יש פעולה נדרשת (action) חדשה\n2. יש אירוע חריג (ביטול לימודים, אירוע דחוף)\n3. יש שגיאה קריטית בריצה\n\nאחרת — שתיקה מוחלטת (NO_REPLY).\nCurrent time: Tuesday, March 24th, 2026 — 10:00 AM (Asia/Hebron) / 2026-03-24 08:00 UTC",
+      "summary": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash /Users/noam/.openclaw/workspace-main/family/family",
+      "time": "2026-03-24T08:00:00.102000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
+      "from": "לא ידוע",
       "group": "שכבה ב׳ לביא",
       "child": "alon",
       "text": "[cron:0c19d3d3-65bc-4b7f-afa6-e49ea6710ccc WhatsApp Schools Monitor] אתה סוכן ניטור ווטסאפ + FamilyOS updater. עשה את הצעדים הבאים:\n\n1. לכל אחת מהקבוצות הבאות — poll עם limit=50:\n   - כיתה ב תשפו - אלון (120363280306116883@g.us)\n   - שכבה ב הורים - אלון (120363297963911587@g.us)\n   - כיתה ו2 - נוגה (972528618633-1597665940@g.us)\n   - הורי כיתה ט3 - איתי (120363151256867420@g.us)\n   - הורי ט3 - איתי (120363166861908196@g.us)\n   - הורי כיתה יא7 - רן (120363307180171348@g.us)\n\n2. סנן הודעות מ-24h האחרונות שהן חשובות (לא ack, לא אמוג׳י בלבד).\n   **הודעות מועברות (forwarded) — תמיד לכלול אותן, הן מכילות מידע חשוב** (חוזרים, הודעות הנהלה, PDF וכו׳).\n   לכל הודעה חשובה — הפעל exec:\n   python3 /Users/noam/.openclaw/workspace-main/family/wa_handler.py --add '{\"group\":\"<JID>\",\"from\":\"<שם>\",\"text\":\"<טקסט>\",\"time\":\"<ISO>\"}'\n\n3. לאחר שמירת כל ההודעות — הפעל exec:\n   bash /Users/noam/.openclaw/workspace-main/family/familyos-push.sh\n\n4. אם היו הודעות חשובות — שלח תקציר קצר לנועם בטלגרם. אם לא — לא לשלוח כלום.\nCurrent time: Tuesday, March 24th, 2026 — 9:03 AM (Asia/Hebron) / 2026-03-24 07:03 UTC",
@@ -47,7 +61,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "לא ידוע",
@@ -61,7 +75,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "לא ידוע",
@@ -75,7 +89,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "לא ידוע",
@@ -89,7 +103,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
       "from": "לא ידוע",
@@ -103,7 +117,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "לא ידוע",
@@ -117,7 +131,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 6
+      "id": 7
     },
     {
       "from": "לא ידוע",
@@ -131,7 +145,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 7
+      "id": 8
     },
     {
       "from": "Orly Shem Tov Kaplan",
@@ -145,7 +159,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 8
+      "id": 9
     },
     {
       "from": "לא ידוע",
@@ -159,7 +173,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 9
+      "id": 10
     },
     {
       "from": "מעיין נוריאל",
@@ -173,7 +187,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 10
+      "id": 11
     },
     {
       "from": "מלכה מנשורי",
@@ -187,7 +201,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 11
+      "id": 12
     },
     {
       "from": "לא ידוע",
@@ -201,7 +215,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 12
+      "id": 13
     },
     {
       "from": "לא ידוע",
@@ -215,7 +229,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 13
+      "id": 14
     },
     {
       "from": "לא ידוע",
@@ -229,7 +243,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 14
+      "id": 15
     },
     {
       "from": "לא ידוע",
@@ -243,7 +257,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 15
+      "id": 16
     },
     {
       "from": "לא ידוע",
@@ -257,7 +271,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 16
+      "id": 17
     },
     {
       "from": "לא ידוע",
@@ -271,7 +285,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 17
+      "id": 18
     },
     {
       "from": "נופר אברהם-ששון",
@@ -287,7 +301,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "חדשות_המצב",
-      "id": 18
+      "id": 19
     },
     {
       "from": "מלכה מנשורי",
@@ -303,7 +317,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "חוזר_להורים_להפצה_-_פסח_תשפו",
-      "id": 19
+      "id": 20
     },
     {
       "from": "מלכה מנשורי",
@@ -317,7 +331,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 20
+      "id": 21
     },
     {
       "from": "מריה קדמי אייזיקס",
@@ -331,7 +345,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 21
+      "id": 22
     },
     {
       "from": "זולי חיים",
@@ -345,7 +359,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 22
+      "id": 23
     },
     {
       "from": "זולי חיים",
@@ -359,7 +373,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 23
+      "id": 24
     },
     {
       "from": "זולי חיים",
@@ -373,7 +387,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 24
+      "id": 25
     },
     {
       "from": "לא ידוע",
@@ -387,10 +401,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 25
+      "id": 26
     },
     {
-      "id": 26,
+      "id": 27,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
