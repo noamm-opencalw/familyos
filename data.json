@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-24T09:00:08.850200+00:00",
+  "updated_at": "2026-03-24T09:38:42.299558+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -36,6 +36,20 @@
   },
   "messages": [
     {
+      "from": "נופר אברהם-ששון",
+      "group": "הורי יא׳7",
+      "child": "ran",
+      "text": "הורים ותלמידים יקרים,\nהיום הסתיימו להם שלושה שבועות של למידה מרחוק , תקופה מאתגרת עבור המורים והתלמידים כאחד. לצד אזעקות, ריצה למרחבים מוגנים, וחוסר הוודאות, השתדלנו לשמור ככל האפשר על תחושת שגרה ורצף לימודי.\nשמחנו לראות את התלמידים שהגיעו אתמול והיום לנקודות המפגש והבנו, עד כמה התגעגענו.\n\nתודה לכם על התמיכה, הסבלנות ושיתוף הפעולה לאורך תקופה זו. מי יתן ויגיעו ימים של שקט ובטחון, ונזכה לפגוש את התלמידים במהרה בבית הספר, עם חזרתנו המתוכננת ב9.4\n*עדכונים חשובים:*\n- תזכורת ליוצאים לצו הראשון ב15.4- יש למלא את כל הטפסים הנדרשים ולהעלות אותם לאתר.\n- *ימי הורים - 12.4,15.4-* יתקיימו בהתאם למצב, באופן פרונטלי או מקוון.\n חג שמח ושקט🌹🙏",
+      "summary": "הורים ותלמידים יקרים,\nהיום הסתיימו להם שלושה שבועות של למידה מרחוק , תקופה מאתגרת עבור המורים והתלמידים כאחד. לצד אזעקות",
+      "time": "2026-03-24T09:24:54.845000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
       "from": "לא ידוע",
       "group": "כיתה ב׳ לביא",
       "child": "alon",
@@ -47,7 +61,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "לא ידוע",
@@ -61,7 +75,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "לא ידוע",
@@ -75,7 +89,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "לא ידוע",
@@ -89,7 +103,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
       "from": "לא ידוע",
@@ -103,7 +117,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "לא ידוע",
@@ -117,7 +131,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 6
+      "id": 7
     },
     {
       "from": "לא ידוע",
@@ -131,7 +145,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 7
+      "id": 8
     },
     {
       "from": "לא ידוע",
@@ -145,7 +159,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 8
+      "id": 9
     },
     {
       "from": "Orly Shem Tov Kaplan",
@@ -159,7 +173,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 9
+      "id": 10
     },
     {
       "from": "לא ידוע",
@@ -173,7 +187,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 10
+      "id": 11
     },
     {
       "from": "מעיין נוריאל",
@@ -187,7 +201,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 11
+      "id": 12
     },
     {
       "from": "מלכה מנשורי",
@@ -201,7 +215,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 12
+      "id": 13
     },
     {
       "from": "לא ידוע",
@@ -215,7 +229,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 13
+      "id": 14
     },
     {
       "from": "לא ידוע",
@@ -229,7 +243,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 14
+      "id": 15
     },
     {
       "from": "לא ידוע",
@@ -243,7 +257,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 15
+      "id": 16
     },
     {
       "from": "לא ידוע",
@@ -257,7 +271,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 16
+      "id": 17
     },
     {
       "from": "לא ידוע",
@@ -271,7 +285,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 17
+      "id": 18
     },
     {
       "from": "לא ידוע",
@@ -285,22 +299,6 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 18
-    },
-    {
-      "from": "נופר אברהם-ששון",
-      "group": "הורי יא׳7",
-      "child": "ran",
-      "text": "📎 חדשות_המצב\n\n⚠️ להכין את הילדים שגם החג ככל הנראה יראה אחרת‪ ,‬חופשת הפסח תר",
-      "summary": "⚠️ להכין את הילדים שגם החג ככל הנראה יראה אחרת‪ ,‬חופשת הפסח תר",
-      "time": "2026-03-23T13:15:51.303000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "hasAttachment": true,
-      "attachmentName": "חדשות_המצב",
       "id": 19
     },
     {
@@ -449,17 +447,7 @@
       "group": "חוג"
     }
   ],
-  "actions": [
-    {
-      "id": 200,
-      "child": "ran",
-      "title": "⚠️ רן: להכין את הילדים שגם החג ככל הנראה יראה אחרת‪ ,‬חופשת הפסח תר",
-      "priority": "high",
-      "dueDate": "2026-03-23T07:00:00+02:00",
-      "done": false,
-      "source": "whatsapp-pdf"
-    }
-  ],
+  "actions": [],
   "digest": {
     "date": "2026-03-23T18:00:00.589631+00:00",
     "tomorrow": "2026-03-24",
