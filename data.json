@@ -1,20 +1,13 @@
 {
-  "updated_at": "2026-03-23T20:30:08.157061+00:00",
+  "updated_at": "2026-03-24T04:00:07.308964+00:00",
   "custody": {
-    "today": true,
-    "current": {
-      "start": "2026-03-22T00:00:00+02:00",
-      "end": "2026-03-24T00:00:00+02:00"
-    },
+    "today": false,
+    "current": null,
     "next": {
       "start": "2026-03-26T00:00:00+02:00",
       "end": "2026-03-29T00:00:00+02:00"
     },
     "periods": [
-      {
-        "start": "2026-03-22T00:00:00+02:00",
-        "end": "2026-03-24T00:00:00+02:00"
-      },
       {
         "start": "2026-03-26T00:00:00+02:00",
         "end": "2026-03-29T00:00:00+02:00"
@@ -43,6 +36,20 @@
   },
   "messages": [
     {
+      "from": "לא ידוע",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash /Users/noam/.openclaw/workspace-main/family/familyos-push.sh\n\nלאחר ריצה מוצלחת — **אל תשלח הודעה לטלגרם** אלא אם כן:\n1. יש פעולה נדרשת (action) חדשה\n2. יש אירוע חריג (ביטול לימודים, אירוע דחוף)\n3. יש שגיאה קריטית בריצה\n\nאחרת — שתיקה מוחלטת (NO_REPLY).\nCurrent time: Monday, March 23rd, 2026 — 10:30 PM (Asia/Hebron) / 2026-03-23 20:30 UTC",
+      "summary": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash /Users/noam/.openclaw/workspace-main/family/family",
+      "time": "2026-03-23T20:30:00.101000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
       "from": "Orly Shem Tov Kaplan",
       "group": "כיתה ו׳2",
       "child": "noga",
@@ -54,7 +61,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "לא ידוע",
@@ -68,7 +75,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "מעיין נוריאל",
@@ -82,7 +89,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "מלכה מנשורי",
@@ -96,7 +103,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
       "from": "לא ידוע",
@@ -110,7 +117,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "לא ידוע",
@@ -124,7 +131,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 6
+      "id": 7
     },
     {
       "from": "לא ידוע",
@@ -133,20 +140,6 @@
       "text": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash /Users/noam/.openclaw/workspace-main/family/familyos-push.sh\n\nלאחר ריצה מוצלחת — **אל תשלח הודעה לטלגרם** אלא אם כן:\n1. יש פעולה נדרשת (action) חדשה\n2. יש אירוע חריג (ביטול לימודים, אירוע דחוף)\n3. יש שגיאה קריטית בריצה\n\nאחרת — שתיקה מוחלטת (NO_REPLY).\nCurrent time: Monday, March 23rd, 2026 — 5:30 PM (Asia/Hebron) / 2026-03-23 15:30 UTC",
       "summary": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash /Users/noam/.openclaw/workspace-main/family/family",
       "time": "2026-03-23T15:30:00.097000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "high",
-      "source": "whatsapp",
-      "id": 7
-    },
-    {
-      "from": "39691",
-      "group": "שכבה ב׳ לביא",
-      "child": "alon",
-      "text": "System: [2026-03-23 16:23:58 GMT+2] WhatsApp gateway disconnected (status 499)\nSystem: [2026-03-23 16:24:03 GMT+2] WhatsApp gateway connected.\nSystem: [2026-03-23 16:37:59 GMT+2] WhatsApp gateway disconnected (status 428)\nSystem: [2026-03-23 16:38:04 GMT+2] WhatsApp gateway connected.\n\nהסיכום קבוצות וואטסאפ 23.3 טוב. להתייחס להודעות מועברות בוואטסאפ, הן מכילות מידע חשוב בד\"כ.",
-      "summary": "System: [2026-03-23 16:23:58 GMT+2] WhatsApp gateway disconnected (status 499)\nSystem: [2026-03-23 16:24:03 GMT+2] Whats",
-      "time": "2026-03-23T14:44:32.732000+00:00",
       "isRinat": false,
       "pinned": true,
       "read": false,
@@ -257,20 +250,6 @@
       "id": 15
     },
     {
-      "from": "39691",
-      "group": "שכבה ב׳ לביא",
-      "child": "alon",
-      "text": "System: [2026-03-23 07:48:05 GMT+2] WhatsApp gateway disconnected (status 408)\nSystem: [2026-03-23 07:48:09 GMT+2] WhatsApp gateway connected.\n\nלעצור את העדכונים השוטפים על ריצה תקינה כגון זה ריצה תקינה — 20 הודעות WhatsApp + 1 מייל, 0 פעולות, 0 אירועים חריגים. NO_REPLY",
-      "summary": "System: [2026-03-23 07:48:05 GMT+2] WhatsApp gateway disconnected (status 408)\nSystem: [2026-03-23 07:48:09 GMT+2] Whats",
-      "time": "2026-03-23T05:56:02.706000+00:00",
-      "isRinat": false,
-      "pinned": false,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 16
-    },
-    {
       "from": "מריה קדמי אייזיקס",
       "group": "שכבה ב׳ לביא",
       "child": "alon",
@@ -282,7 +261,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 17
+      "id": 16
     },
     {
       "from": "זולי חיים",
@@ -296,7 +275,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 18
+      "id": 17
     },
     {
       "from": "זולי חיים",
@@ -310,7 +289,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 19
+      "id": 18
     },
     {
       "from": "זולי חיים",
@@ -324,7 +303,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 20
+      "id": 19
     },
     {
       "from": "לא ידוע",
@@ -338,10 +317,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 21
+      "id": 20
     },
     {
-      "id": 22,
+      "id": 21,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
@@ -358,28 +337,28 @@
   "academics": [],
   "events": [
     {
-      "id": 4,
+      "id": 3,
       "child": "all",
       "title": "🧹 ניקיון — אחת לשבועיים",
       "date": "2026-03-30T10:00:00+02:00",
       "group": "לוח שנה"
     },
     {
-      "id": 6,
+      "id": 5,
       "child": "alon",
       "title": "🐴 רכיבת סוסים — כפר רות",
       "date": "2026-03-31T18:15:00+02:00",
       "group": "חוג"
     },
     {
-      "id": 9,
+      "id": 8,
       "child": "all",
       "title": "🧹 ניקיון — אחת לשבועיים",
       "date": "2026-04-13T10:00:00+02:00",
       "group": "לוח שנה"
     },
     {
-      "id": 11,
+      "id": 10,
       "child": "alon",
       "title": "🐴 רכיבת סוסים — כפר רות",
       "date": "2026-04-14T18:15:00+02:00",
