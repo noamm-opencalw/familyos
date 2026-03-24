@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-24T05:30:07.281651+00:00",
+  "updated_at": "2026-03-24T06:01:01.690343+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -37,6 +37,20 @@
   "messages": [
     {
       "from": "לא ידוע",
+      "group": "שכבה ב׳ לביא",
+      "child": "alon",
+      "text": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash /Users/noam/.openclaw/workspace-main/family/familyos-push.sh\n\nלאחר ריצה מוצלחת — **אל תשלח הודעה לטלגרם** אלא אם כן:\n1. יש פעולה נדרשת (action) חדשה\n2. יש אירוע חריג (ביטול לימודים, אירוע דחוף)\n3. יש שגיאה קריטית בריצה\n\nאחרת — שתיקה מוחלטת (NO_REPLY).\nCurrent time: Tuesday, March 24th, 2026 — 7:30 AM (Asia/Hebron) / 2026-03-24 05:30 UTC",
+      "summary": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash /Users/noam/.openclaw/workspace-main/family/family",
+      "time": "2026-03-24T05:30:00.095000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
+      "from": "לא ידוע",
       "group": "כיתה ב׳ לביא",
       "child": "alon",
       "text": "[cron:934aaba4-ccba-4979-8625-b81f183c1f08 familyos-update] הרץ: bash /Users/noam/.openclaw/workspace-main/family/familyos-push.sh\n\nלאחר ריצה מוצלחת — **אל תשלח הודעה לטלגרם** אלא אם כן:\n1. יש פעולה נדרשת (action) חדשה\n2. יש אירוע חריג (ביטול לימודים, אירוע דחוף)\n3. יש שגיאה קריטית בריצה\n\nאחרת — שתיקה מוחלטת (NO_REPLY).\nCurrent time: Tuesday, March 24th, 2026 — 7:00 AM (Asia/Hebron) / 2026-03-24 05:00 UTC",
@@ -47,7 +61,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "לא ידוע",
@@ -61,7 +75,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "לא ידוע",
@@ -75,7 +89,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "Orly Shem Tov Kaplan",
@@ -89,7 +103,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
       "from": "לא ידוע",
@@ -103,7 +117,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "מעיין נוריאל",
@@ -117,7 +131,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 6
+      "id": 7
     },
     {
       "from": "מלכה מנשורי",
@@ -131,7 +145,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 7
+      "id": 8
     },
     {
       "from": "לא ידוע",
@@ -145,7 +159,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 8
+      "id": 9
     },
     {
       "from": "לא ידוע",
@@ -159,7 +173,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 9
+      "id": 10
     },
     {
       "from": "לא ידוע",
@@ -173,7 +187,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 10
+      "id": 11
     },
     {
       "from": "לא ידוע",
@@ -187,7 +201,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 11
+      "id": 12
     },
     {
       "from": "לא ידוע",
@@ -201,7 +215,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 12
+      "id": 13
     },
     {
       "from": "לא ידוע",
@@ -215,7 +229,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 13
+      "id": 14
     },
     {
       "from": "נופר אברהם-ששון",
@@ -231,7 +245,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "חדשות_המצב",
-      "id": 14
+      "id": 15
     },
     {
       "from": "לא ידוע",
@@ -245,7 +259,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 15
+      "id": 16
     },
     {
       "from": "מלכה מנשורי",
@@ -261,7 +275,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "חוזר_להורים_להפצה_-_פסח_תשפו",
-      "id": 16
+      "id": 17
     },
     {
       "from": "מלכה מנשורי",
@@ -275,7 +289,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 17
+      "id": 18
     },
     {
       "from": "מריה קדמי אייזיקס",
@@ -289,7 +303,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 18
+      "id": 19
     },
     {
       "from": "זולי חיים",
@@ -303,7 +317,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 19
+      "id": 20
     },
     {
       "from": "זולי חיים",
@@ -317,7 +331,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 20
+      "id": 21
     },
     {
       "from": "זולי חיים",
@@ -331,7 +345,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 21
+      "id": 22
     },
     {
       "from": "לא ידוע",
@@ -345,10 +359,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 22
+      "id": 23
     },
     {
-      "id": 23,
+      "id": 24,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
