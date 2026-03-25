@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-25T11:30:08.677670+00:00",
+  "updated_at": "2026-03-25T12:00:13.349453+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -40,6 +40,20 @@
   },
   "messages": [
     {
+      "from": "זולי חיים",
+      "group": "הורי ט׳3",
+      "child": "itai",
+      "text": "בהתרגשות שיא נפגשנו היום בבית של עיליי בבינסקי ♥️♥️♥️\nתודה רבה ליאנה אמא של עליי שפתחה את ביתה ולאוולין מהוועד שפינקה בפיצה טעימה🍕",
+      "summary": "בהתרגשות שיא נפגשנו היום בבית של עיליי בבינסקי ♥️♥️♥️\nתודה רבה ליאנה אמא של עליי שפתחה את ביתה ולאוולין מהוועד שפינקה בפ",
+      "time": "2026-03-25T11:41:49.729000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
       "from": "לא ידוע",
       "group": "שכבה ב׳ לביא",
       "child": "alon",
@@ -51,7 +65,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "לא ידוע",
@@ -65,7 +79,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "נופר אברהם-ששון",
@@ -79,7 +93,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "נופר אברהם-ששון",
@@ -93,7 +107,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
       "from": "נופר אברהם-ששון",
@@ -107,7 +121,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "Orly Shem Tov Kaplan",
@@ -121,7 +135,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 6
+      "id": 7
     },
     {
       "from": "מעיין נוריאל",
@@ -135,7 +149,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 7
+      "id": 8
     },
     {
       "from": "מלכה מנשורי",
@@ -149,7 +163,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 8
+      "id": 9
     },
     {
       "from": "מלכה מנשורי",
@@ -165,7 +179,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "חוזר_להורים_להפצה_-_פסח_תשפו",
-      "id": 9
+      "id": 10
     },
     {
       "from": "מלכה מנשורי",
@@ -179,49 +193,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 10
-    },
-    {
-      "from": "זולי חיים",
-      "group": "הורי ט׳3",
-      "child": "itai",
-      "text": "אני אגיע בשמחה לכל מפגש",
-      "summary": "אני אגיע בשמחה לכל מפגש",
-      "time": "2026-03-22T08:31:51.656000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
       "id": 11
-    },
-    {
-      "from": "זולי חיים",
-      "group": "הורי ט׳3",
-      "child": "itai",
-      "text": "הורים יקרים, מחר באחת נקיים מפגש לכל הבנות בבית של נויה ארוך. \nמצפה גם מהבנים ליזום מפגשים בביתם 🙏🙏🙏",
-      "summary": "הורים יקרים, מחר באחת נקיים מפגש לכל הבנות בבית של נויה ארוך. \nמצפה גם מהבנים ליזום מפגשים בביתם 🙏🙏🙏",
-      "time": "2026-03-22T08:31:03.441000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "high",
-      "source": "whatsapp",
-      "id": 12
-    },
-    {
-      "from": "זולי חיים",
-      "group": "הורי ט׳3",
-      "child": "itai",
-      "text": "הורים יקרים, מתנצלת על הבלאגן עם המפגשים, קיבלתי שיחה מצופית המנהלת על הבוקר שאין אישור לקיים את המפגשים אצלי,  לאור מה שקרה אתמול. \nמבחינתה שאני אגיע לבתים של תלמידים ולא הם אלי.\n😢😢😢",
-      "summary": "הורים יקרים, מתנצלת על הבלאגן עם המפגשים, קיבלתי שיחה מצופית המנהלת על הבוקר שאין אישור לקיים את המפגשים אצלי,  לאור מה ",
-      "time": "2026-03-22T06:03:50.067000+00:00",
-      "isRinat": false,
-      "pinned": true,
-      "read": false,
-      "priority": "normal",
-      "source": "whatsapp",
-      "id": 13
     },
     {
       "from": "לא ידוע",
@@ -235,10 +207,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 14
+      "id": 12
     },
     {
-      "id": 15,
+      "id": 13,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
