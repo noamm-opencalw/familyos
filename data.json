@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-25T13:00:08.787241+00:00",
+  "updated_at": "2026-03-25T14:00:08.646847+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -40,6 +40,20 @@
   },
   "messages": [
     {
+      "from": "שרית",
+      "group": "שכבה ב׳ לביא",
+      "child": "alon",
+      "text": "הורים יקרים💜\n\nהיום השני לקייטנה\nהתחלנו את הבוקר בקייטנה עם  משחקים,כדורים,\nמוסיקה וריקודים💃🏿💃🏿\n\nכינוס בוקר בו\nדיברנו על חוקים וכללים בקייטנה שלנו \n*0 סבלנות לאלימות בקייטנה*❣️\nמילולית ופיזית!\n\nהחתמנו דרכונים ונכנסנו ל\"אתיופיה\"\n\nבבוקר לימודי,עבדנו בדפים עברית וחשבון\nבכל הקבוצות \n          \n              💜💜💜\n\nבהפסקות:\nמשתוללים רצים *וממלאים את מסדרונות בית הספר*🙌🙌❤️\nיש לנו כדורים,גומי,איפור,\nקעקועים עוד ועוד....\n\nהיתה לנו הפעלה חיצונית מאת\"אבי משחקי חשיבה\"\nהילדים ישבו, שיחקו ונהנו ממש🙌🙌\n\n             💜💜💜\n\nמחר❣️❣️❣️\n*\"שוקחתן\" שלחו רקק משחקים/פריטים שאינם בשימוש*\n\n*לכם הורים יקרים תודה על שיתוף הפעולה*💜💜💜\n\nמירב וצוות לביא \"קייטנת פסח מסביב לעולם בבנימין\"⭐⭐⭐⭐",
+      "summary": "הורים יקרים💜\n\nהיום השני לקייטנה\nהתחלנו את הבוקר בקייטנה עם  משחקים,כדורים,\nמוסיקה וריקודים💃🏿💃🏿\n\nכינוס בוקר בו\nדיברנו על ",
+      "time": "2026-03-25T13:26:13.698000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "high",
+      "source": "whatsapp",
+      "id": 1
+    },
+    {
       "from": "זולי חיים",
       "group": "הורי ט׳3",
       "child": "itai",
@@ -51,7 +65,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "זולי חיים",
@@ -65,7 +79,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "לא ידוע",
@@ -79,7 +93,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "לא ידוע",
@@ -93,7 +107,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
       "from": "נופר אברהם-ששון",
@@ -107,7 +121,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "נופר אברהם-ששון",
@@ -121,7 +135,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 6
+      "id": 7
     },
     {
       "from": "נופר אברהם-ששון",
@@ -135,7 +149,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 7
+      "id": 8
     },
     {
       "from": "Orly Shem Tov Kaplan",
@@ -149,7 +163,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 8
+      "id": 9
     },
     {
       "from": "מעיין נוריאל",
@@ -163,7 +177,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 9
+      "id": 10
     },
     {
       "from": "מלכה מנשורי",
@@ -177,7 +191,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 10
+      "id": 11
     },
     {
       "from": "מלכה מנשורי",
@@ -193,7 +207,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "חוזר_להורים_להפצה_-_פסח_תשפו",
-      "id": 11
+      "id": 12
     },
     {
       "from": "מלכה מנשורי",
@@ -207,7 +221,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 12
+      "id": 13
     },
     {
       "from": "לא ידוע",
@@ -221,10 +235,10 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 13
+      "id": 14
     },
     {
-      "id": 14,
+      "id": 15,
       "from": "info@payschool.co.il",
       "group": "מייל — info@payschool.co.il",
       "child": "alon",
