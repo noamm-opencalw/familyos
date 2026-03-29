@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-29T07:30:40.107205+00:00",
+  "updated_at": "2026-03-29T08:00:07.302684+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -7,6 +7,20 @@
     "periods": []
   },
   "messages": [
+    {
+      "from": "טל מלול",
+      "group": "כיתה ו׳2",
+      "child": "noga",
+      "text": "מזל טוב לרומי 🎂🎊🎁🎈\nליאל תגיע בשמחה❤️",
+      "summary": "מזל טוב לרומי 🎂🎊🎁🎈\nליאל תגיע בשמחה❤️",
+      "time": "2026-03-29T07:34:04.719000+00:00",
+      "isRinat": false,
+      "pinned": false,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1
+    },
     {
       "from": "אפרת והבה",
       "group": "כיתה ו׳2",
@@ -19,7 +33,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "ליאת אשכולי",
@@ -33,7 +47,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "זולי חיים",
@@ -47,7 +61,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "זולי חיים",
@@ -61,7 +75,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
       "from": "מלכה מנשורי",
@@ -75,7 +89,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "מלכה מנשורי",
@@ -91,7 +105,7 @@
       "source": "whatsapp",
       "hasAttachment": true,
       "attachmentName": "חוזר_להורים_להפצה_-_פסח_תשפו",
-      "id": 6
+      "id": 7
     },
     {
       "from": "מלכה מנשורי",
@@ -105,7 +119,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 7
+      "id": 8
     }
   ],
   "academics": [],
