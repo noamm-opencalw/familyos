@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-01T06:30:06.171521+00:00",
+  "updated_at": "2026-04-01T07:00:09.453326+00:00",
   "custody": {
     "today": false,
     "current": null,
@@ -7,6 +7,20 @@
     "periods": []
   },
   "messages": [
+    {
+      "from": "נופר אברהם-ששון",
+      "group": "הורי יא׳7",
+      "child": "ran",
+      "text": "הורים יקרים שלום,\nבפתחו של חג הפסח אאחל לכם חג שמח, שקט ובטוח. מי ייתן שהאביב יביא עמו ביטחון אישי ולאומי ובשורות טובות.🙏🏻🪬\n\nשני עדכונים: \n\n1. שיחות הורים- מצ\"ב טבלת שיבוץ לימים ראשון צהריים- ערב ושני בוקר. \nhttps://docs.google.com/spreadsheets/d/1WkcFknIsZaGRK7seuyAFQ-YZ31pZAT87AJAtRN50dO0/edit?usp=sharing\n\n2. מיד אחרי החג, ביום ד 15.4 יתקיים *צו ראשון* לחלק מהתלמידים. והפעם, במקום נסיעה ללשכת הגיוס, לשכת הגיוס תגיע עד אליהם ומבחני צו אחוד יתקיימו בביהס אבני חן (קל\"ב).😊 נצלו את ימי חול המועד לביצוע בדיקות דם, ראייה ושתן כדי לייעל זמנים. \n\nחג שמח,\nנופר",
+      "summary": "הורים יקרים שלום,\nבפתחו של חג הפסח אאחל לכם חג שמח, שקט ובטוח. מי ייתן שהאביב יביא עמו ביטחון אישי ולאומי ובשורות טובות.",
+      "time": "2026-04-01T06:39:05.568000+00:00",
+      "isRinat": false,
+      "pinned": true,
+      "read": false,
+      "priority": "normal",
+      "source": "whatsapp",
+      "id": 1
+    },
     {
       "from": "זולי חיים",
       "group": "הורי ט׳3",
@@ -19,7 +33,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 1
+      "id": 2
     },
     {
       "from": "שרית",
@@ -33,7 +47,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 2
+      "id": 3
     },
     {
       "from": "שרית",
@@ -47,7 +61,7 @@
       "read": false,
       "priority": "high",
       "source": "whatsapp",
-      "id": 3
+      "id": 4
     },
     {
       "from": "טל מלול",
@@ -61,7 +75,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 4
+      "id": 5
     },
     {
       "from": "אפרת והבה",
@@ -75,7 +89,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 5
+      "id": 6
     },
     {
       "from": "ליאת אשכולי",
@@ -89,7 +103,7 @@
       "read": false,
       "priority": "normal",
       "source": "whatsapp",
-      "id": 6
+      "id": 7
     }
   ],
   "academics": [],
